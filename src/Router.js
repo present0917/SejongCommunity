@@ -6,14 +6,14 @@ import App from "./App";
 
 const Router = () => {
   return (
-    <BrowserRouter>
+   
       <Routes>
         <Route path="/" element={<App/>} />
         <Route path="/main" element={<Main/>} />
         <Route path="/search" element={<Search/>} />
         <Route path="/my" element={<My />} />
       </Routes>
-    </BrowserRouter>
+    
   );
 };
 
