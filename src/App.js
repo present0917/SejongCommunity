@@ -1,7 +1,12 @@
+import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
 function App() {
   return (
     <div>
-      hello world
+
+      hello
+      <button>
+      <Link to ='/main'>button</Link>
+      </button>
     </div>
   );
 }
