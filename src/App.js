@@ -1,12 +1,26 @@
-import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
 function App() {
   return (
     <div>
+      <div>
+        main1
+      </div>
+      <div>
+        main2
+      </div>
+      <div>
+        main3
+      </div>
+      <div>
+        main
+      </div>
+      <div>
+        main4
+      </div>
+      <div>
+        main5
+      </div>
 
-      hello
-      <button>
-      <Link to ='/main'>button</Link>
-      </button>
+      
     </div>
   );
 }
