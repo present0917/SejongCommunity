@@ -1,27 +1,15 @@
+import Set from './components/Pages/Set'
+import { BrowserRouter } from 'react-router-dom';
+import {useState, useEffect} from 'react';
+import Login from './components/Pages/Login';
+import { Routes,Route } from 'react-router-dom';
 function App() {
+  const [isLogin, setisLogin]=useState(localStorage.getItem('login'));
   return (
-    <div>
-      <div>
-        main1
-      </div>
-      <div>
-        main2
-      </div>
-      <div>
-        main3
-      </div>
-      <div>
-        main
-      </div>
-      <div>
-        main4
-      </div>
-      <div>
-        main5
-      </div>
-
-      
-    </div>
+    <Routes>
+      <Route path="/" element={<Set/>} />
+      <Route path="/login" element={<Login/>} />
+    </Routes>
   );
 }
 export default App;

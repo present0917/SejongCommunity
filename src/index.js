@@ -1,15 +1,15 @@
-import Test from './components/Nav/Test'
+import Navi from './components/Nav/Navi';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import Router from './Router';
+import Router from './components/Pages/SetRouter';
 import { BrowserRouter } from 'react-router-dom';
+import Set from './components/Pages/Set';
+import App from './App'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <div>
     <BrowserRouter>
-      <Test>
-        <Router/>
-      </Test>
+    <App/>
     </BrowserRouter>
   </div>
 );

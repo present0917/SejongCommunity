@@ -22,7 +22,7 @@ const Header = () => {
 
             <menu className={buttonClick ? "show" : "hide"}>
                 <ul>
-                    <li>menu1</li>
+                <Link to='./login'> <li>menu1</li></Link>
                     <li>menu2</li>
                     <li>menu3</li>
                     <li>menu4</li>
