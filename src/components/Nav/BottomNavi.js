@@ -16,7 +16,7 @@ const BottomNavi = () => {
                     <Link to='./my'><FontAwesomeIcon icon="user" /></Link>
                 </div>
             </nav>
-           
+
         </div>
     )
 }
