@@ -30,8 +30,8 @@
   z-index:-1;
   left:0%;
   top:0%;
-  background-color:aqua;
-  width:30%;
+  background-color: #dde0ea;
+  width:20%;
   height:80%;
   padding-left:0px;
   border-style:double;
@@ -41,4 +41,15 @@
 .bar
 {
   z-index:2;
+}
+
+menu>ul{
+  list-style:none;
+}
+menu>ul>li{
+  border:1px solid black;
+  padding:5px;
+  margin:5px;
+  width:100px;
+  
 }
