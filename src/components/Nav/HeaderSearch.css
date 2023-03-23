@@ -1,0 +1,31 @@
+.header {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    background-color: #dde0ea;
+}
+
+.search {
+    align-items: center;
+    position: relative;
+    top: 1.5px;
+}
+
+.search-text{
+    height: 40px;
+    width: 85%;
+    
+
+    background: #FFFFFF;
+    border: 2px solid #000000;
+    border-radius: 13px;
+}
+.search-button{
+    height: 40px;
+    width: 40px;
+    background: #FFFFFF;
+    border: 2px solid #000000;
+    border-radius: 13px;
+}
