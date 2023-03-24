@@ -1,9 +1,9 @@
-import './Header.css'
-import "./FontAwesome";
+import './HeaderDefault.css'
+import "../FontAwesome";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import { useState } from 'react';
-const Header = () => {
+const HeaderDefault = () => {
     const [buttonClick, setbuttonClick] = useState(false);
     const test = () => {
         setbuttonClick(!buttonClick);
@@ -15,7 +15,7 @@ const Header = () => {
                     <FontAwesomeIcon icon={buttonClick ? "xmark" : "bars"} onClick={test} className='bar' />
                 </div>
                 <div>
-                    <Link to='./search'><FontAwesomeIcon icon="compass" /></Link>
+                    <Link to='./hsearch'><FontAwesomeIcon icon="compass" /></Link>
                 </div>
             </div>
 
@@ -30,10 +30,8 @@ const Header = () => {
                 </ul>
 
             </menu>
-
-
         </header>
     )
 }
 
-export default Header
+export default HeaderDefault;

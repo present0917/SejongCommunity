@@ -1,18 +1,16 @@
 import Test from './components/Nav/Test'
 import ReactDOM from 'react-dom/client';
-import HeaderSearch from './components/Nav/HeaderSearch';
+import HeaderSearch from './components/Nav/Header/HeaderSearch';
 import './index.css';
 import Router from './Router';
 import { BrowserRouter } from 'react-router-dom';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <div>
-    {/* <BrowserRouter>
+    <BrowserRouter>
       <Test>
         <Router />
       </Test>
-    </BrowserRouter> */}
-    <HeaderSearch />
-
+    </BrowserRouter>
   </div>
 );

@@ -1,13 +1,13 @@
 import './Test.css'
 import "./FontAwesome";
 import Footer from "./Footer"
-import Header from "./Header"
+import HeaderRouter from './Header/HeaderRouter';
 
 const Test =  (props) => {
     
     return (
         <div className='padding'>
-            <Header/>
+            <HeaderRouter/>
             <main>
                 {props.children}
             </main>
