@@ -1,27 +1,29 @@
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import Search from './components/Pages/Search';
+import My from './components/Pages/My';
+import Layout from './components/Nav/Layout';
+import Error from './components/Pages/Error';
+import First from './components/Pages/First';
+import Login from './components/Pages/Login';
 function App() {
+  const router = createBrowserRouter([
+    {
+      path: '/',
+      element: <Layout />,
+      errorElement: <Error />,
+      children: [
+        { path: '', element: <First /> },
+        { path: 'login', element: <Login/> },
+        { path: 'my', element: <My /> },
+      ],
+    }
+  ]);
   return (
-    <div>
-      <div>
-        main1
-      </div>
-      <div>
-        main2
-      </div>
-      <div>
-        main3
-      </div>
-      <div>
-        main
-      </div>
-      <div>
-        main4
-      </div>
-      <div>
-        main5
-      </div>
 
-      
-    </div>
+    <>
+      <RouterProvider router={router} />
+    </>
+
   );
 }
 export default App;
