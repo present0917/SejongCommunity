@@ -4,7 +4,6 @@ import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import "./HeaderSearch.css";
-import Header from "./Header";
 
 const HeaderSearch = (props) => {
   const [search, setSearch] = useState("");
@@ -28,10 +27,10 @@ const HeaderSearch = (props) => {
           onChange={() => props.handleChange}
           className="search-text"
         />
-        <button type="submit" className="search-button">
+        <button type="submit" className="search-button" onClick={() => props.setsearchBarOpen(false)}>
           <Link to="./search">
-            <FontAwesomeIcon icon="magnifying-glass" onClick={() => false} />
-          </Link>{" "}
+            <FontAwesomeIcon icon="magnifying-glass" />
+          </Link>
         </button>
       </form>
     </header>

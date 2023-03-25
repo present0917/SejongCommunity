@@ -1,8 +1,10 @@
 .xbutton {
   position: absolute;
+  margin-right: 5px;
+  margin-top: 5px;
   width: 5%;
   height: 5%;
-  right: 2%;
+  right: 0;
   top: 0;
 }
 .show {
@@ -12,7 +14,7 @@
   left: 0%;
   top: 0%;
   background-color: #dde0ea;
-  width: 20%;
+  width: 30%;
   height: 80%;
   padding-left: 0px;
   border-style: double;

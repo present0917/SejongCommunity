@@ -1,7 +1,6 @@
 import "./Header.css";
 import "../FontAwesome";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router-dom";
 import { useState } from "react";
 import ReactModal from "react-modal";
 import HeaderSearch from "./HeaderSearch";
@@ -9,13 +8,6 @@ import SideBar from "./SideBar";
 const Header = (props) => {
   const [searchBarOpen, setsearchBarOpen] = useState(false);
   const [listOpen, setlistOpen] = useState(false);
-
-  const handleSideBar = () => {
-    setlistOpen(!listOpen);
-  };
-  const handleSearchBar = (props) => {
-    setsearchBarOpen(!searchBarOpen);
-  };
 
   return (
     <header className="header">
@@ -25,7 +17,7 @@ const Header = (props) => {
           onRequestClose={() => setsearchBarOpen(false)}
           className="searchbar"
         >
-          <HeaderSearch />
+          <HeaderSearch setsearchBarOpen={setsearchBarOpen}/>
         </ReactModal>
         <div>
           <FontAwesomeIcon
@@ -36,12 +28,12 @@ const Header = (props) => {
         </div>
         <div>
           <FontAwesomeIcon
-            icon="compass"
+            icon="magnifying-glass"
             onClick={() => setsearchBarOpen(true)}
           />
         </div>
       </div>
-      <SideBar listOpen={listOpen} setlistOpen={setlistOpen} />
+      <SideBar listOpen={listOpen} setlistOpen={setlistOpen}/>
     </header>
   );
 };

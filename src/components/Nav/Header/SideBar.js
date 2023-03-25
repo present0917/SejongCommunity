@@ -1,19 +1,20 @@
 import ReactModal from "react-modal";
 import "../FontAwesome";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
+import "./SideBar.css"
 const SideBar = (props) => {
   return (
-    <ReactModal
-      className="show"
+     <ReactModal 
       isOpen={props.listOpen}
-      onRequestClose={() => props.setlistOpen(true)}
+      onRequestClose={() => props.setlistOpen(false)}
+      className = "show"
     >
       <FontAwesomeIcon
         icon="xmark"
         onClick={() => props.setlistOpen(false)}
         className="xbutton"
       />
+      <br/>
       <ul>
         <li>menu1</li>
         <li>menu2</li>
