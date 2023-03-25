@@ -24,33 +24,20 @@
   color: blue;
 }
 
-.show {
-  margin-top: 50px;
-  margin-bottom: 45px;
-  z-index: -1;
-  left: 0%;
-  top: 0%;
-  background-color: #dde0ea;
-  width: 20%;
-  height: 80%;
-  padding-left: 0px;
-  border-style: double;
-  border-color: black;
-  position: fixed;
-}
-
 .bar {
   z-index: 2;
 }
+.searchbar {
+  z-index: 2;
+}
 
-menu>ul {
+menu > ul {
   list-style: none;
 }
 
-menu>ul>li {
+menu > ul > li {
   border: 1px solid black;
   padding: 5px;
   margin: 5px;
   width: 100px;
-
 }

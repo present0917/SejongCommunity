@@ -1,18 +1,15 @@
-import './Test.css'
+import "./Test.css";
 import "./FontAwesome";
-import Footer from "./Footer"
-import HeaderRouter from './Header/HeaderRouter';
+import Footer from "./Footer";
+import Header from "./Header/Header";
 
-const Test =  (props) => {
-    
-    return (
-        <div className='padding'>
-            <HeaderRouter/>
-            <main>
-                {props.children}
-            </main>
-            <Footer/>
-        </div>
-    )
-}
-export default Test
+const Test = (props) => {
+  return (
+    <div className="padding">
+      <Header />
+      <main>{props.children}</main>
+      <Footer />
+    </div>
+  );
+};
+export default Test;

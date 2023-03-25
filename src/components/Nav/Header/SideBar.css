@@ -1,0 +1,21 @@
+.xbutton {
+  position: absolute;
+  width: 5%;
+  height: 5%;
+  right: 2%;
+  top: 0;
+}
+.show {
+  margin-top: 50px;
+  margin-bottom: 45px;
+  z-index: -1;
+  left: 0%;
+  top: 0%;
+  background-color: #dde0ea;
+  width: 20%;
+  height: 80%;
+  padding-left: 0px;
+  border-style: double;
+  border-color: black;
+  position: fixed;
+}
