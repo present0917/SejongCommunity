@@ -1,24 +1,23 @@
 import { Link } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
-const Login=()=>
+const Login=(props)=>
 {
     const navigate = useNavigate();
     const nav=()=>
     {
-        if(JSON.parse(localStorage.getItem('login'))==true)
+        if({/*JSON.parse(localStorage.getItem('isLoggedin'))==true*/})
         {
-            navigate("..");
+            navigate('..')
+            console.log("oka");
         }
     }
     const set=()=>
     {
-        localStorage.setItem("login",true);
-        console.log(localStorage.getItem('login'));
+        props.onlogin('a','b');
     }
     const unset=()=>
     {
-        localStorage.setItem("login",false);
-        console.log(localStorage.getItem('login'));
+        props.onlogout();
     }
     return(
         <div>
