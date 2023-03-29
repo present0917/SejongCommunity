@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider, loader } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider  } from 'react-router-dom'
 import { useState,useEffect } from 'react';
 import My from './components/Pages/My';
 import Layout from './components/Nav/Layout';
@@ -8,6 +8,7 @@ import Login from './components/Pages/Login';
 import Errorl from './components/Pages/Errorl';
 import Forcheck from './components/Pages/ForCheck';
 import AutoLogin from './context/auto-login';
+import Alert from './components/Pages/Alert';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   useEffect(() => {
@@ -36,6 +37,7 @@ function App() {
           children: [
             { index: true, element: <First /> },
             { path: 'my', element: <My /> },
+            { path: 'alert', element: <Alert /> },
           ]
         },
       ],

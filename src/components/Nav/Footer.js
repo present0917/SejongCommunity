@@ -7,13 +7,13 @@ const Footer = () => {
       <footer>
         <nav className="bottom">
                 <div>
-                    <Link to='./'><FontAwesomeIcon icon="home" /></Link>
+                    <Link to='/'><FontAwesomeIcon icon="home" /></Link>
                 </div>
                 <div>
-                    <Link to='./search'><FontAwesomeIcon icon="compass" /></Link>
+                    <Link to='alert'><FontAwesomeIcon icon="bell" /></Link>
                 </div>
                 <div>
-                    <Link to='./my'><FontAwesomeIcon icon="user" /></Link>
+                    <Link to='my'><FontAwesomeIcon icon="user" /></Link>
                 </div>
             </nav>
       </footer>
