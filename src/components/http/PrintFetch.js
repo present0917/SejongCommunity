@@ -7,7 +7,6 @@ const PrintFetch=(props)=>
             Fetch
             <ul>
                 {props.data.map((element)=>(
-                    
                     <Fetchprop prop={element} key={element.id}/>
                 ))}
                 

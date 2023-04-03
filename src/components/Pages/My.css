@@ -1,0 +1,27 @@
+.container {
+  display:relative;
+  margin:auto;
+    max-width: 80vh;
+    max-height: 80vh;
+  }
+  .board{
+    border: 1px solid black;
+    max-width: 80vh;
+    max-height: 80vh;
+    position: relative;
+  }
+.card {
+  position: absolute;
+  border: 1px solid black;
+  margin: 10px;
+  max-width: 10vh;
+  max-height: 10vh;
+  }
+  .image-container {
+    position: relative;
+  }
+  .text-container {
+    position: absolute;
+    top: 0%;
+    left: 50%;
+  }
