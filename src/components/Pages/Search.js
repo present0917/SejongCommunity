@@ -1,17 +1,37 @@
-const Search = () => {
+import { useState, useEffect } from "react";
+import searchTest from "./searchTest.json";
+const Search = (props) => {
+  const [searchData, setSearchData] = useState([]);
+  // async function fetchData() {
+  //   const response = await fetch("url");
+  //   const data = await response.json();
+  // const mapping = await data.results.map((element) => {
+  //   return {
+  //       id: element.id,
+  //       title: element.title,
+  //       mainText: element.maintext,
+  //       tags: [element.tags],
+  //   };
+  // });
+  //   setSearchData(mapping);
+  // }
   return (
     <div>
       it's search
-      <div>list1</div>
-      <div>list2</div>
-      <div>list3</div>
-      <div>list4</div>
-      <div>list5</div>
-      <div>list6</div>
-      <div>list7</div>
-      <div>list8</div>
-      <div>list9</div>
-      <div>list10</div>
+      <hr />
+      {searchTest.posts.map((post) => (
+        <section>
+          <h3>{post.title}</h3>
+          <p>{post.maintext}</p>
+          <p>
+            {post.tags.map((tag) => (
+              <i>#{tag}</i>
+            ))}
+          </p>
+          <hr />
+        </section>
+      ))}
+      {/*나중에 Link로 감싸서 해당 게시판 호출*/}
       <div>
         <button>next</button>
         <button>back</button>
