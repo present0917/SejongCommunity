@@ -1,27 +1,47 @@
 .container {
-  display:relative;
+  overflow: auto;
   margin:auto;
-    max-width: 80vh;
-    max-height: 80vh;
+    width: 80vmax;
+    height: 80vmin;
   }
   .board{
-    border: 1px solid black;
-    max-width: 80vh;
-    max-height: 80vh;
-    position: relative;
+    overflow: auto;
+    /* border: 1px solid black; */
+    width: 80vmax;
+    height: 80vmin;
+    position: absolute;
+
   }
 .card {
-  position: absolute;
-  border: 1px solid black;
+  float:left;
+  position: relative;
+  /* border: 1px solid black; */
   margin: 10px;
-  max-width: 10vh;
-  max-height: 10vh;
+  max-width: 12vmax;
+  max-height: 12vmax;
+  top:15px;
+  left:15px;
   }
   .image-container {
     position: relative;
   }
+ 
   .text-container {
     position: absolute;
-    top: 0%;
-    left: 50%;
+    top: 20%;
+    left:5%
+    
+  }
+  .text{
+    position: relative;
+    font-size:2vh;
+    
+  }
+  .spa{
+    right:50px;
+    bottom:50px;
+    margin:auto;
+    position: fixed;
+    max-width: 20vh;
+    max-height: 20vh;
   }

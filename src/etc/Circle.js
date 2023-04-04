@@ -1,7 +1,7 @@
 import styled from "styled-components"
 const Cir= styled.div`
-    width : 100px;
-    height : 100px;
+    width : 7vmin;
+    height : 7vmin;
     border-radius: 50%;
     background-color: tomato;
 `;
