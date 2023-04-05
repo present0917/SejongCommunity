@@ -1,18 +1,19 @@
+
 .container {
   overflow: auto;
   margin:auto;
-    width: 80vmax;
-    height: 80vmin;
+  width: 80vmax;
+  height: 80vmin;
+  max-width: 80vmax;
+  max-height: 80vmin;
   }
   .board{
-    overflow: auto;
     /* border: 1px solid black; */
     width: 80vmax;
     height: 80vmin;
     position: absolute;
-
   }
-.card {
+.Crd {
   float:left;
   position: relative;
   /* border: 1px solid black; */
@@ -22,20 +23,15 @@
   top:15px;
   left:15px;
   }
-  .image-container {
-    position: relative;
-  }
- 
+
   .text-container {
     position: absolute;
-    top: 20%;
-    left:5%
-    
-  }
-  .text{
-    position: relative;
+    top: 15%;
+    left:15%;
+    width: 80%;
+    height: 80%;
     font-size:2vh;
-    
+    overflow-wrap: break-word;
   }
   .spa{
     right:50px;

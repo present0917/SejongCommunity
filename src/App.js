@@ -10,6 +10,7 @@ import Forcheck from "./components/Pages/ForCheck";
 import AutoLogin from "./context/auto-login";
 import Alert from "./components/Pages/Alert";
 import Search from "./components/Pages/Search";
+//  import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
