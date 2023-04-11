@@ -16,6 +16,17 @@ const Header = (props) => {
           isOpen={searchBarOpen}
           onRequestClose={() => setsearchBarOpen(false)}
           className="searchbar"
+          style={{
+            overlay: {
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              backgroundColor: 'rgba(255, 255, 255, 1)'
+            }
+          }}
+          ariaHideApp={false}
         >
           <HeaderSearch setsearchBarOpen={setsearchBarOpen}/>
         </ReactModal>

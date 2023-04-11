@@ -1,12 +1,62 @@
-.form {
+.signup-form {
   justify-content: center;
-  align-content: center;
+  align-items: center;
+
   width: 80%;
   height: 80%;
 }
-.form-el {
+.signup-form-el {
   position: relative;
   width: 150px;
   height: 40px;
-  margin-top: 10px;
+  left: 20px;;
+  margin-bottom: 40px;
+}
+.signup-form input {
+  border: 1px solid #000000;
+  height: 25px;
+  min-width: 180px;
+  width: 30vw;
+  border-radius: 25px;
+  text-align: left;
+}
+.alert{
+  font-size: 8px;
+  color: crimson;
+}
+.alert-ok {
+  font-size: 8px;
+  color: blue;
+}
+.actions {
+  position: absolute;
+  text-align: right;
+  right: 5%;
+  bottom: 5%;
+}
+.actions button {
+  font: inherit;
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid #3792A6;
+  min-width: 50px;
+  width: 12vw;
+  height: 5vh;
+  min-height: 30px;
+  border-radius: 25px;
+  margin-left: 10px;
+}
+.actions button:hover,
+.actions button:active {
+  background-color: #3792A6;
+  border-color: #3792A6;
+  color: white;
+}
+
+.actions .button--alt {
+  color: #3792A6;
+}
+.actions .button {
+  background-color: #3792A6;
+  color: white;
 }

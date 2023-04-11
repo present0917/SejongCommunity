@@ -20,12 +20,12 @@ const Search = (props) => {
       it's search
       <hr />
       {searchTest.posts.map((post) => (
-        <section>
-          <h3>{post.title}</h3>
-          <p>{post.maintext}</p>
+        <section key={post.id}>
+          <h3 key={post.title}>{post.title}</h3>
+          <p key={post.maintext}>{post.maintext}</p>
           <p>
             {post.tags.map((tag) => (
-              <i>#{tag}</i>
+              <i key={tag}>#{tag} </i>
             ))}
           </p>
           <hr />
