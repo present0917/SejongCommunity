@@ -83,11 +83,12 @@ const My = () => {
         },
         
       ]);
-      function handleClick() {
+      function handleClick(data) {
+
         const newObject = {
           id: cards.length + 1,
           image: imagePaths[Math.floor(Math.random() * imagePaths.length)],
-          text: `${cards.length+1} card`,
+          text: `${data.text} card`,
         };
         setCards([...cards, newObject]);
       }
@@ -101,13 +102,12 @@ const My = () => {
                     />
                 ))}
             </div>
-            {ModalIsShown && <Form onClose={hideModalHandler} />}
+            {ModalIsShown && <Form onClose={hideModalHandler} onClick={handleClick} />}
             <button onClick={showModalHandler}>test</button>
             
-            <span className="spa" onClick={handleClick}>
-              
+            {/* <span className="spa" onClick={handleClick}>
             <Circle />
-            </span>   
+            </span>    */}
 
         </div>
     )

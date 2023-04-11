@@ -8,9 +8,11 @@ const Form = (props) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-
-
     console.log(name, text);
+    const data={name,text};
+    props.onClick(data);
+    props.onClose();
+    
   };
 
   return (
@@ -35,9 +37,9 @@ const Form = (props) => {
           />
         </div>
         <div className={classes.actions}>
-          <button className={classes['button--alt']} onClick={props.onClose}>
+          <button type="button" className={classes['button--alt']} onClick={props.onClose}>
             Close
-          </button>
+          </button> 
           <button type="submit" className={classes.button}>
             Add
           </button>
