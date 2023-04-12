@@ -1,12 +1,19 @@
 {
-  "posts": [
+  "post": [
     {
-      "name": 1,
-      "text": "test3"
+      "id": 1,
+      "name": "2",
+      "text": "3"
     },
     {
-      "name": 3,
-      "text": "test2"
+      "id": 2,
+      "name": "2",
+      "text": "1"
+    },
+    {
+      "id": 3,
+      "name": "2",
+      "text": "12"
     }
   ]
 }

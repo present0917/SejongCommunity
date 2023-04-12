@@ -9,7 +9,7 @@ const Crd = ( props ) => {
   const style = { top, left }; // 스타일 객체 생성
   return (
     <div className="Crd">
-        <img src={image} style=
+        <img src={Number(image)} style=
         {{width:"10vmin", height:"12vmin"}}
         
         />
