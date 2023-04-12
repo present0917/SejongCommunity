@@ -1,17 +1,18 @@
 import { React, useState } from "react";
+import ReactModal from "react-modal";
 import "./SignUp.css";
-const SignUp = () => {
+const SignUp = (props) => {
+  
+
   const [id, setId] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
 
   const [idMessage, setIdMessage] = useState("");
   const [nameMessage, setNameMessage] = useState("");
-  const [passwordMessage, setPasswordMessage] = useState("");
 
   const [isId, setIsId] = useState(false);
-  const [isname, setIsName] = useState(false);
-  const [isPassword, setIsPassword] = useState(false);
+  const [isName, setIsName] = useState(false);
 
   //id 유효성검사
   const onChangeId = (e) => {
@@ -28,6 +29,11 @@ const SignUp = () => {
       setIsId(true);
     }
   };
+
+  const onChangePassword = (e) => {
+    const currentPassword = e.target.value;
+    setPassword(currentPassword);
+  }
   //닉네임 유효성검사
   const onChangeName = (e) => {
     const currentName = e.target.value;
@@ -42,32 +48,68 @@ const SignUp = () => {
     }
   };
 
+
   return (
     // “/members/add”
-    <div className="form">
-      <form>
+    
+    <ReactModal isOpen={props.signUpOpen}
+    onRequestClose={() => props.setSignUpOpen(false)}
+    style={{
+      overlay: {
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: 'rgba(0, 0, 0, 0.75)'
+      },
+      content: {
+        position: 'absolute',
+        top: '20%',
+        left: '20%',
+        right: '20%',
+        bottom: '20%',
+        border: '1px solid #ccc',
+        background: '#fff',
+        overflow: 'auto',
+        WebkitOverflowScrolling: 'touch',
+        borderRadius: '20px',
+        outline: 'none',
+        padding: '20px'
+      }
+    }}
+    ariaHideApp={false}>
+      <div className="form">
+      <form action="/members/add"> {/*action="/members/add"*/}
         <div className="form-el">
           <label htmlFor="Id">Id</label> <br />
           <input id="id" name="id" value={id} onChange={onChangeId} />
-          <p> {idMessage} </p>
+          <i className="alert"> {idMessage} </i>
+        </div>
+
+        <div className="form-el">
+          <label htmlFor="password">Password</label> <br />
+          <input id="password" name="password" value={password}onChange={onChangePassword}  />
         </div>
 
         <div className="form-el">
           <label htmlFor="name">Nick Name</label> <br />
           <input id="name" name="name" value={name} onChange={onChangeName} />
-          <p>{nameMessage}</p>
+          <i className={isName ? "alert-ok":"alert"}>{nameMessage}</i>
         </div>
 
-        <div className="form-el">
-          <label htmlFor="password">Password</label> <br />
-          <input id="password" name="password" value={password} />
-          <p>{passwordMessage}</p>
+        <br />
+        <br />
+        <br />
+        <br />
+        <div className="actions">
+          <button type="submit" className="button">가입</button>
+          <button type="button" className="button--alt" onClick={()=>props.setSignUpOpen(false)}>취소</button>
         </div>
-        <br />
-        <br />
-        <button type="submit">Submit</button>
       </form>
+      
     </div>
+    </ReactModal>
   );
 };
 export default SignUp;
