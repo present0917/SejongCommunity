@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { useState, useEffect } from "react";
 import My from "./components/Pages/My";
+import Mytest from "./components/Pages/Mytest";
 import Layout from "./components/Nav/Layout";
 import Error from "./components/Pages/Error";
 import First from "./components/Pages/First";
@@ -38,7 +39,7 @@ function App() {
           element: <Layout />,
           children: [
             { index: true, element: <First /> },
-            { path: "my", element: <My /> },
+            { path: "my", element: <Mytest /> },
             { path: "alert", element: <Alert /> },
             { path: "search", element: <Search /> },
           ],

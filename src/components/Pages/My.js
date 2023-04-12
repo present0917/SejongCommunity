@@ -33,62 +33,20 @@ const My = () => {
           id: 1,
           title: "Card 1",
           description: "This is card 1",
-          image: imagePaths[Math.floor(Math.random() * imagePaths.length)],
+          // image: imagePaths[Math.floor(Math.random() * imagePaths.length)],
+          image:imagePaths[0],
           text: `it's text ${1}`,
           // top: Math.random() * 50 + "vh", 
           // left: Math.random() * 50 + "vd" 
-        },
-        {
-          id: 2,
-          title: "Card ",
-          description: "This is card 1",
-          image: imagePaths[Math.floor(Math.random() * imagePaths.length)],
-          text: "it's text",
-        },
-        {
-          id: 3,
-          title: "Card 1",
-          description: "This is card 1",
-          image: imagePaths[Math.floor(Math.random() * imagePaths.length)],
-          text: "it's text ",
-        },
-        {
-          id: 4,
-          title: "Card 1",
-          description: "This is card 1",
-          image: imagePaths[Math.floor(Math.random() * imagePaths.length)],
-          text: "it's text ",
-        },
-        {
-          id: 5,
-          title: "Card 1",
-          description: "This is card 1",
-          image: imagePaths[Math.floor(Math.random() * imagePaths.length)],
-          text: "it's text ",
-        },
-        {
-          id: 6,
-          title: "Card 1",
-          description: "This is card 1",
-          image: imagePaths[Math.floor(Math.random() * imagePaths.length)],
-          text: "it's text ",
-        },
+        }
 
-        {
-          id: 7,
-          title: "Card 1",
-          description: "This is card 1",
-          image: imagePaths[Math.floor(Math.random() * imagePaths.length)],
-          text: "it's text ",
-        },
-        
       ]);
       function handleClick(data) {
 
         const newObject = {
           id: cards.length + 1,
-          image: imagePaths[Math.floor(Math.random() * imagePaths.length)],
-          text: `${data.text} card`,
+          image: imagePaths[data.name],
+          text: `${data.text}`,
         };
         setCards([...cards, newObject]);
       }

@@ -7,12 +7,6 @@ position: relative;
 const Crd = ( props ) => {
   const { image, text, top, left,title } = props.data;
   const style = { top, left }; // 스타일 객체 생성
-
-  const Fortest=()=>
-  {
-    console.log(`${props.data.title}`);
-  }
-
   return (
     <div className="Crd">
         <img src={image} style=
@@ -22,9 +16,9 @@ const Crd = ( props ) => {
         <div className="text-container" 
         onClick={()=>{
           props.func();
-          Fortest();
+          
           }}>
-          {text}
+          {image}
       </div>
     </div>
   );
