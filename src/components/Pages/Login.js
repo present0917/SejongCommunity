@@ -46,7 +46,7 @@ const Login=(props)=>
     return(
         <div>
             <div className="login-form">
-                <form>
+                <form action="">
                     <div>
                         <div className="login-form-el">
                             <label htmlFor="ID">ID:</label><br/>

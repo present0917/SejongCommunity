@@ -1,26 +1,37 @@
 import { useState, useEffect } from "react";
-import searchTest from "./searchTest.json";
+
 const Search = (props) => {
   const [searchData, setSearchData] = useState([]);
-  // async function fetchData() {
-  //   const response = await fetch("url");
-  //   const data = await response.json();
-  // const mapping = await data.results.map((element) => {
-  //   return {
-  //       id: element.id,
-  //       title: element.title,
-  //       mainText: element.maintext,
-  //       tags: [element.tags],
-  //   };
-  // });
-  //   setSearchData(mapping);
-  // }
+  async function fetchData() {
+    const response = await fetch("http://localhost:3010/db");
+    if (!response.ok) {
+      throw new Error('Failed to fetch Search data');
+    }
+    const data = await response.json();
+    if (!data) {
+      throw new Error('No Search Data');
+    }
+    const mapping = await data.posts.map((element) => {
+    return {
+        id: element.id,
+        title: element.title,
+        maintext: element.maintext,
+        tags: [element.tags],
+      };
+    });
+    setSearchData(mapping);
+  }
+
+  useEffect(()=>{
+    fetchData();
+  },[])
+
   return (
     <div>
       it's search
       <hr />
-      {searchTest.posts.map((post) => (
-        <section key={post.id}>
+      {searchData.map((post) => (
+        <div key={post.id}>
           <h3 key={post.title}>{post.title}</h3>
           <p key={post.maintext}>{post.maintext}</p>
           <p>
@@ -29,7 +40,7 @@ const Search = (props) => {
             ))}
           </p>
           <hr />
-        </section>
+        </div>
       ))}
       {/*나중에 Link로 감싸서 해당 게시판 호출*/}
       <div>

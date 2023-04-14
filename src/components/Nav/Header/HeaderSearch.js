@@ -1,19 +1,34 @@
 import "../FontAwesome";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef,useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./HeaderSearch.css";
 
 const HeaderSearch = (props) => {
   const searchInputRef = useRef();
   const [search, setSearch] = useState("");
+  const navigate = useNavigate();
+  async function putQuery(query) {
+    const response = await fetch('http://localhost:3011/q', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        isDone: true,
+        q:query,
+    }),
+    }).then(res =>{
+      if(res.ok){
+        console.log(query);
+      }
+    });
+    navigate('/search');
+    props.setsearchBarOpen(false);
+  }
 
   const handleChange = (event) => {
     setSearch(event.target.value);
-  }; //변경사항 처리
-  const handleSearch = () => {
-    localStorage.setItem("isSearchOn", "1");
-    props.setsearchBarOpen(false);
   };
 
   const handleSubmission = (event) => {
@@ -26,26 +41,24 @@ const HeaderSearch = (props) => {
 
   return (
     <header className="header">
-      <form onSubmit={handleSubmission} className="search">
+      <form action="/forest" onSubmit={handleSubmission} className="search">
         <input
           ref={searchInputRef}
           type="text"
-          id="search"
+          id="q"
           value={search}
           placeholder="검색어를 입력하세요."
           onChange={handleChange}
           className="search-text"
         />
 
-        <Link to="search">
-          <button
-            type="submit"
-            className="search-button"
-            onClick={handleSearch}
-          >
-            <FontAwesomeIcon icon="magnifying-glass" id="search-button" />
-          </button>
-        </Link>
+        <button
+          type="submit"
+          className="search-button"
+          onClick={()=>putQuery(search)}
+        >
+          <FontAwesomeIcon icon="magnifying-glass" id="search-button" />
+        </button>
       </form>
     </header>
   );
