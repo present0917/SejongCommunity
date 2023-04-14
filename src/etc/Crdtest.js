@@ -27,9 +27,11 @@ const Crdtest = ( props ) => {
         />
         <div className="text-container" 
         onClick={()=>{
-          props.func();
+          props.func(props.data);
 
-          }}>
+          }
+          }
+          >
           {text}
       </div>
     </div>
