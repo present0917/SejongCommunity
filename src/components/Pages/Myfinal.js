@@ -39,6 +39,28 @@ const Myfinal = () => {
   };
   const [cards, setCards] = useState([]);
 
+  async function deletecard(data) {
+    const response = await fetch('http://localhost:3001/post/' +data.id, {
+      method: 'DELETE',
+    });
+    console.log('delete');
+    fetchcard();
+  }
+
+  async function patch(data) {
+    const response = await fetch('http://localhost:3001/post/' +data.id, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        memo: 'patched'
+      })
+    });
+    console.log('patched');
+    fetchcard();
+  }
+
   async function fetchcard() {
     const response = await fetch('http://localhost:3001/db');
     if (!response.ok) {
@@ -90,7 +112,7 @@ const Myfinal = () => {
   function handleClick(data) {
 
     const newObject = {
-      id: cards.length + 1,
+      id: Math.random(),
       name: `${data.name}`,
       text: `${data.text}`,
       memo: `${data.memo}`
@@ -108,7 +130,7 @@ const Myfinal = () => {
           />
         ))} 
       </div>
-      {showmadalshow && <Show onClose={hidemodal} data={cardInfo}/>}
+      {showmadalshow && <Show onClose={hidemodal} data={cardInfo} delete={deletecard} patch={patch}/>}
       {ModalIsShown && <Form onClose={hideModalHandler} onClick={handleClick} />}
       <button onClick={showModalHandler}>test</button>
       <button onClick={fortest}>fortest</button>
