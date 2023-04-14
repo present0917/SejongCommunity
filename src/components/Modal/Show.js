@@ -3,22 +3,17 @@ import classes from './Form.module.css';
 import { useState } from 'react';
 
 const Show = (props) => {
-  const [name, setName] = useState('');
-  const [quantity, setQuantity] = useState('');
-
-  const submitHandler = (event) => {
-    event.preventDefault();
-
-
-    console.log(name, quantity);
-  };
-
+  const { name, text, memo } = props.data;
   return (
     <Modal onClose={props.onClose}>
       
       <div>
-        {props.title}
+        {name}
       </div>
+        <div>
+          {text}
+        </div>
+      {memo}
         <div className={classes.actions}>
           <button className={classes['button--alt']} onClick={props.onClose}>
             Close

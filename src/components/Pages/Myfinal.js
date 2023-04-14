@@ -1,7 +1,5 @@
-import Circle from "../../etc/Circle"
 import './My.css'
 import board from '../../pic/board.png'
-import Crd from "../../etc/Crd"
 import Crdtest from "../../etc/Crdtest"
 import post from "../../pic/post.png"
 import post1 from "../../pic/post1.png"
@@ -9,7 +7,6 @@ import post2 from "../../pic/post2.png"
 import { useState,useEffect } from "react"
 import Form from "../Modal/Form";
 import Show from "../Modal/Show"
-import testdata from "./testdata.json";
 const imagePaths = [
   post,
   post1,
@@ -17,6 +14,20 @@ const imagePaths = [
 ];
 const Myfinal = () => {
   const [ModalIsShown, setModalIsShown] = useState(false);
+  const [showmadalshow, setshowmodalshow] = useState(false);
+  const [cardInfo, setCardInfo] = useState(null);
+
+
+  const showmodal = (info) => {
+    setshowmodalshow(true);
+    setCardInfo(info);
+    console.log(info);
+    // console.log('show');
+  };
+
+  const hidemodal = () => {
+    setshowmodalshow(false);
+  };
 
   const showModalHandler = () => {
     setModalIsShown(true);
@@ -41,7 +52,8 @@ const Myfinal = () => {
       return {
         name: element.name,
         text: element.text,
-        id:element.id
+        id:element.id,
+        memo:element.memo
       };
     });
     setCards(mapping);
@@ -63,6 +75,7 @@ const Myfinal = () => {
     });
     const data = await response.json();
     console.log(data);
+    fetchcard();
   }
 
   function fortest(data) {
@@ -80,6 +93,7 @@ const Myfinal = () => {
       id: cards.length + 1,
       name: `${data.name}`,
       text: `${data.text}`,
+      memo: `${data.memo}`
     };
     // setCards([...cards, newObject]);
      postcard(newObject);
@@ -90,10 +104,11 @@ const Myfinal = () => {
         <img src={board} className="board" />
          {cards.map((cardData) => (
           <Crdtest key={cardData.id} data={cardData}
-            func={showModalHandler}
+            func={showmodal}
           />
         ))} 
       </div>
+      {showmadalshow && <Show onClose={hidemodal} data={cardInfo}/>}
       {ModalIsShown && <Form onClose={hideModalHandler} onClick={handleClick} />}
       <button onClick={showModalHandler}>test</button>
       <button onClick={fortest}>fortest</button>

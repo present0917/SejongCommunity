@@ -5,7 +5,7 @@ import { useState } from 'react';
 const Form = (props) => {
   const [name, setName] = useState('');
   const [text, settext] = useState('');
-
+  const [memo, setmemo] = useState('');
   const submitHandler = (event) => {
     event.preventDefault();
     console.log(name, text);
@@ -41,6 +41,15 @@ const Form = (props) => {
             id="text"
             value={text}
             onChange={(event) => settext(event.target.value)}
+          />
+        </div>
+        <div className={classes['form-control']}>
+          <label htmlFor="text">메모</label>
+          <textarea
+            type="text"
+            id="text"
+            value={memo}
+            onChange={(event) => setmemo(event.target.value)}
           />
         </div>
         <div className={classes.actions}>
