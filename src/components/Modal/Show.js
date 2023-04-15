@@ -17,6 +17,12 @@ const Show = (props) => {
      props.onClose();
      props.patch(props.data);
   }
+  const openhandler=(event)=>  
+  {
+     event.preventDefault();
+     props.open();
+     
+  }
   return (
     <Modal onClose={props.onClose}>
       <form onSubmit={Submithandler}>
@@ -34,9 +40,13 @@ const Show = (props) => {
           <button className={classes['button--alt']} onClick={patchhandler}>
             patch
           </button>
+          <button className={classes['button--alt']} onClick={openhandler}>
+            open
+          </button>
           <button type="submit" className={classes.button}>
             delete
           </button>
+          
         </div>
         </form>
     </Modal>

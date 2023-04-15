@@ -7,6 +7,7 @@ import post2 from "../../pic/post2.png"
 import { useState,useEffect } from "react"
 import Form from "../Modal/Form";
 import Show from "../Modal/Show"
+import Patchform from '../Modal/Patchform'
 const imagePaths = [
   post,
   post1,
@@ -15,31 +16,39 @@ const imagePaths = [
 const Myfinal = () => {
   const [ModalIsShown, setModalIsShown] = useState(false);
   const [showmadalshow, setshowmodalshow] = useState(false);
+  const [patchmadalshow, setpatchmodalshow] = useState(false);
   const [cardInfo, setCardInfo] = useState(null);
 
+  const showpatchmodal = () => {//수정 모달
+    setpatchmodalshow(true);
+    // console.log('show');
+  };
 
-  const showmodal = (info) => {
+  const hidepatchmodal = () => { //수정 모달 숨기기
+    setpatchmodalshow(false);
+  };
+  const showmodal = (info) => {// 뷰 모달
     setshowmodalshow(true);
     setCardInfo(info);
     console.log(info);
     // console.log('show');
   };
 
-  const hidemodal = () => {
+  const hidemodal = () => { //뷰 모달 숨기기
     setshowmodalshow(false);
   };
 
-  const showModalHandler = () => {
+  const showModalHandler = () => {//입력 모달
     setModalIsShown(true);
     // console.log('show');
   };
 
-  const hideModalHandler = () => {
+  const hideModalHandler = () => { //입력 모달 숨기기
     setModalIsShown(false);
   };
-  const [cards, setCards] = useState([]);
+  const [cards, setCards] = useState([]); //입력 내용 담을곳
 
-  async function deletecard(data) {
+  async function deletecard(data) { //삭제
     const response = await fetch('http://localhost:3001/post/' +data.id, {
       method: 'DELETE',
     });
@@ -61,7 +70,7 @@ const Myfinal = () => {
     fetchcard();
   }
 
-  async function fetchcard() {
+  async function fetchcard() { //불러오기
     const response = await fetch('http://localhost:3001/db');
     if (!response.ok) {
       throw new Error('Failed to fetch card data');
@@ -87,7 +96,7 @@ const Myfinal = () => {
   }, []);
 
 
-  async function postcard(card) {
+  async function postcard(card) { //입력
     const response = await fetch('http://localhost:3001/post', {
       method: 'POST',
       body: JSON.stringify(card),
@@ -130,8 +139,9 @@ const Myfinal = () => {
           />
         ))} 
       </div>
-      {showmadalshow && <Show onClose={hidemodal} data={cardInfo} delete={deletecard} patch={patch}/>}
+      {showmadalshow && <Show onClose={hidemodal} data={cardInfo} delete={deletecard} patch={patch} open={showpatchmodal}/>}
       {ModalIsShown && <Form onClose={hideModalHandler} onClick={handleClick} />}
+      {patchmadalshow && <Patchform onClose={hidepatchmodal} onClick={1} />}
       <button onClick={showModalHandler}>test</button>
       <button onClick={fortest}>fortest</button>
 

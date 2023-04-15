@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 const Search = (props) => {
   const [searchData, setSearchData] = useState([]);
   async function fetchData() {
-    const response = await fetch("http://localhost:3010/db");
+    const response = await fetch("http://localhost:3001/db");
     if (!response.ok) {
       throw new Error('Failed to fetch Search data');
     }

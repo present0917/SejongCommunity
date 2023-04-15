@@ -2,14 +2,14 @@ import Modal from './Modal';
 import classes from './Form.module.css';
 import { useState } from 'react';
 
-const Form = (props) => {
+const Patchform = (props) => {
   const [name, setName] = useState('');
   const [text, settext] = useState('');
   const [memo, setmemo] = useState('');
   const submitHandler = (event) => {
     event.preventDefault();
     console.log(name, text);
-    const data = { name, text ,memo};
+    const data = { name, text };
     props.onClick(data);
     props.onClose();
 
@@ -22,7 +22,7 @@ const Form = (props) => {
     <Modal onClose={props.onClose}>
       <form onSubmit={submitHandler}>
         <div className={classes['form-control']}>
-          <label htmlFor="name">스티커종류</label>
+          <label htmlFor="name">수정스티커종류</label>
           <div>
           <label>
               <input type="radio" name="sticker" value="1" checked={name === '1'} onChange={radioHandler} />
@@ -65,4 +65,4 @@ const Form = (props) => {
   );
 };
 
-export default Form;
+export default Patchform;
