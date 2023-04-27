@@ -48,6 +48,16 @@ const SignUp = (props) => {
     }
   };
 
+  const datatestprint=()=>
+    {
+        const authData={
+            id: {id},
+            password: {password},
+            name :{name},
+        };
+        console.log(authData);
+    }
+
 
   return (
     // “/members/add”
@@ -102,7 +112,9 @@ const SignUp = (props) => {
         <br />
         <br />
         <br />
+        <button className="button" onClick={()=>{datatestprint();}}>PostTest</button>
         <div className="actions">
+        
           <button type="submit" className="button">가입</button>
           <button type="button" className="button--alt" onClick={()=>props.setSignUpOpen(false)}>취소</button>
         </div>

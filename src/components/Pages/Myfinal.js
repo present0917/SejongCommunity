@@ -104,7 +104,9 @@ const Myfinal = () => {
         'Content-Type': 'application/json'
       }
     });
+    
     const data = await response.json();
+    console.log('데이터');
     console.log(data);
     fetchcard();
   }
