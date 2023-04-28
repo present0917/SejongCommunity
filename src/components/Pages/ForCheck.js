@@ -4,6 +4,7 @@ import { useContext } from "react"
 const Forcheck =()=>
 {
     const location = useLocation();
+    console.log("forcheck입니다.");
     const ctx =useContext(AuthLogin);
     return(
         localStorage.getItem('isLoggedin')=='1' ? <Outlet/> :  <Navigate to="/login" replace state={{ from: location }} />
