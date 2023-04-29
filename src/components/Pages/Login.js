@@ -77,28 +77,27 @@ const Login = (props) => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                studentId: { id },
-                password: { password },
+                studentId:id ,
+                password:password,
             }),
         });
         //const data = await response.json();
-        // const testres = await fetch('http://localhost:3001/loginres');//테스트용
-        // const data = await testres.json();//테스트용
-        // try{
-        //     if(!testres.ok){//서버 연결시 response로 교체
-        //         throw new Error(`${testres.status} 에러가 발생했습니다.`)//서버 연결시 response로 교체
-        //     }
-        //     else if(data.message != ""){
-        //         throw new Error(`Error Code:${data.errorCode} ${data.message}`);
-        //     }
-        // }
-        // catch(e){
-        //     alert(e);
-        //     setId('');
-        //     setPassword('');
-        // }
-        //localStorage.setItem('token', data.sessionId);
-        nav();
+        const testres = await fetch('http://localhost:3001/res');//테스트용
+        const data = await testres.json();//테스트용
+        try{
+            if(!testres.ok){//서버 연결시 response로 교체
+                throw new Error(`${testres.status} 에러가 발생했습니다.`)//서버 연결시 response로 교체
+            }
+            else if(data.message != ""){
+                throw new Error(`Error Code:${data.errorCode} ${data.message}`);
+            }
+            sessionStorage.setItem('token', data.sessionId);
+            nav();
+        } catch(e){
+            alert(e);
+            setId('');
+            setPassword('');
+        }
     }
 
 

@@ -1,2 +1,14 @@
 {
+  "login": {
+    "studentId": "18010757",
+    "password": "qwerqwsdf"
+  },
+  "res": {
+    "errorCode": 401,
+    "message": "",
+    "sessionId": "98765q4321"
+  },
+  "auth": {
+    "token": "98765q4321"
+  }
 }
