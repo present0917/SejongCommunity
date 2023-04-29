@@ -7,8 +7,12 @@ const Login = (props) => {
 
     const [id, setId] = useState("");
     const [password, setPassword] = useState("");
-    const [idMessage, setIdMessage] = useState("test");
+    const [idMessage, setIdMessage] = useState("");
+    const [passwordMessage, setPasswordMessage] = useState("");
     const [isId, setIsId] = useState(false);
+    const [isPass, setIsPass] = useState(false);
+
+    const [disabled, setDisabled] = useState(false);
 
     const navigate = useNavigate();
     const nav = () => {
@@ -19,22 +23,37 @@ const Login = (props) => {
         }
     }
 
-//로그인유효성검사
+    const handleSubmit = (event) => {
+        setDisabled(true);
+        event.preventDefault();
+        if(!isId || !isPass){
+            alert("아이디, 비밀번호를 확인해주세요.");
+        } else {
+            const authData = {
+                studentId: { id },
+                password: { password },
+            };
+            loginSubmit(authData); //서버 연결됐을때 사용
+            //nav();
+        }
+        setDisabled(false);
+    }
+
     const datatestprint = () => {  
         const authData = {
-            id: { id },
+            studentId: { id },
             password: { password },
         };
         logintest(authData);
     }
 
-    async function logintest(info) {
+    async function logintest() {
         const response = await fetch('http://localhost:3001/post/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(info),
+            body: JSON.stringify(),
         });
         if(response.status === 401){
             console.log('error 401');
@@ -51,6 +70,37 @@ const Login = (props) => {
         localStorage.setItem('token', token);
     }
 
+    async function loginSubmit(info) {
+        const response = await fetch('http://localhost:3001/login', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                studentId: { id },
+                password: { password },
+            }),
+        });
+        //const data = await response.json();
+        // const testres = await fetch('http://localhost:3001/loginres');//테스트용
+        // const data = await testres.json();//테스트용
+        // try{
+        //     if(!testres.ok){//서버 연결시 response로 교체
+        //         throw new Error(`${testres.status} 에러가 발생했습니다.`)//서버 연결시 response로 교체
+        //     }
+        //     else if(data.message != ""){
+        //         throw new Error(`Error Code:${data.errorCode} ${data.message}`);
+        //     }
+        // }
+        // catch(e){
+        //     alert(e);
+        //     setId('');
+        //     setPassword('');
+        // }
+        //localStorage.setItem('token', data.sessionId);
+        nav();
+    }
+
 
     const set = () => {
         props.onlogin('a', 'b');
@@ -65,35 +115,49 @@ const Login = (props) => {
         const idRegExp = /^[0-9]{8}$/;
 
         if (!idRegExp.test(currentId)) {
-            setIdMessage("학번을 입력해주세요!");
+            setIdMessage("학번을 입력해주세요");
             setIsId(false);
+            setDisabled(true);
         } else {
             setIdMessage("");
             setIsId(true);
+            setDisabled(false);
         }
     };
     const onChangePass = (e) => {
-        const currentpass = e.target.value;
-        setPassword(currentpass);
+        const currentPass = e.target.value;
+        setPassword(currentPass);
+        const passRegExp = /^[a-zA-Zㄱ-힣0-9~!@#$%^&*()_+|<>?:{}]{8,30}$/;
+        if (!passRegExp.test(currentPass)) {
+            setPasswordMessage("비밀번호를 확인해주세요");
+            setIsPass(false);
+            setDisabled(true);
+        } else {
+            setPasswordMessage("");
+            setIsPass(true);
+            setDisabled(false);
+        }
     };
 
     return (
         <div>
             <div className="login-form">
-                <form action="">
+                <form onSubmit={handleSubmit}>
                     <div>
                         <div className="login-form-el">
                             <label htmlFor="ID">ID:</label><br />
-                            <input id="id" name="id" value={id} onChange={onChangeId} /><br />
+                            <input id="id" name="id" value={id} onChange={onChangeId} />
+                            <span> {idMessage} </span>
                         </div>
                         <div className="login-form-el">
                             <label htmlFor="password">PASSWORD:</label><br />
-                            <input id="password" name="password" value={password} onChange={onChangePass} /> <br />
+                            <input type="password" id="password" name="password" value={password} onChange={onChangePass} />
+                            <span> {passwordMessage} </span>
                         </div>
                     </div>
-                    <span> {idMessage} </span><br />
+                    
                     <div className="login-actions">
-                        <button className="button" type="submit" onClick={() => { nav(); }}>Login</button>
+                        <button className="button" type="submit" disabled={disabled}>Login</button>
                         <button className="button" type="button" onClick={() => { setSignUpOpen(true); }}>Sign Up</button>
                     </div>
                 </form>
@@ -102,7 +166,6 @@ const Login = (props) => {
             <button onClick={() => { unset(); }}>logout</button>
             
             <button onClick={() => { datatestprint(); }}>DataTestButton</button> 
-            {/* 로그인유효성검사 */}
             <SignUp signUpOpen={signUpOpen} setSignUpOpen={setSignUpOpen}></SignUp>
         </div>
     )
