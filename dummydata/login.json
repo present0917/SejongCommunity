@@ -10,5 +10,14 @@
   },
   "auth": {
     "token": "98765q4321"
+  },
+  "signup": {
+    "studentId": "18010757",
+    "password": "asdfasdasd",
+    "nickname": "asd",
+    "dataRange": {
+      "studentId": false,
+      "department": true
+    }
   }
 }

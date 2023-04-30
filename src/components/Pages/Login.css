@@ -30,8 +30,16 @@
     border-radius: 25px;
     margin-left: 10px;
 }
-  .login-actions .button {
+.login-actions .button {
     background-color: white;
     color: #3792A6;
+}
+.alert{
+    font-size: 10px;
+    color: crimson;
+}
+.alert-ok {
+    font-size: 10px;
+    color: rgb(0, 255, 0);
 }
   

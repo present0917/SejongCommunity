@@ -33,7 +33,7 @@ const Login = (props) => {
                 studentId: { id },
                 password: { password },
             };
-            loginSubmit(authData); //서버 연결됐을때 사용
+            loginSubmit(authData);
             //nav();
         }
         setDisabled(false);
@@ -47,13 +47,13 @@ const Login = (props) => {
         logintest(authData);
     }
 
-    async function logintest() {
+    async function logintest(info) {
         const response = await fetch('http://localhost:3001/post/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(),
+            body: JSON.stringify(info),
         });
         if(response.status === 401){
             console.log('error 401');
@@ -72,7 +72,7 @@ const Login = (props) => {
 
     async function loginSubmit(info) {
         const response = await fetch('http://localhost:3001/login', {
-            method: 'PUT',
+            method: 'PUT',//테스트용 연동 때 POST로 바꾸면 됨
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -118,7 +118,7 @@ const Login = (props) => {
             setIsId(false);
             setDisabled(true);
         } else {
-            setIdMessage("");
+            setIdMessage("ok!");
             setIsId(true);
             setDisabled(false);
         }
@@ -132,7 +132,7 @@ const Login = (props) => {
             setIsPass(false);
             setDisabled(true);
         } else {
-            setPasswordMessage("");
+            setPasswordMessage("ok!");
             setIsPass(true);
             setDisabled(false);
         }
@@ -146,12 +146,12 @@ const Login = (props) => {
                         <div className="login-form-el">
                             <label htmlFor="ID">ID:</label><br />
                             <input id="id" name="id" value={id} onChange={onChangeId} />
-                            <span> {idMessage} </span>
+                            <i className={isId ? "alert-ok" : "alert"}> {idMessage} </i>
                         </div>
                         <div className="login-form-el">
                             <label htmlFor="password">PASSWORD:</label><br />
                             <input type="password" id="password" name="password" value={password} onChange={onChangePass} />
-                            <span> {passwordMessage} </span>
+                            <i className={isPass ? "alert-ok" : "alert"}> {passwordMessage} </i>
                         </div>
                     </div>
                     
