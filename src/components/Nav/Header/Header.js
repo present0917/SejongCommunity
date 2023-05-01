@@ -5,19 +5,20 @@ import { useState } from "react";
 import ReactModal from "react-modal";
 import HeaderSearch from "./HeaderSearch";
 import SideBar from "./SideBar";
+import { Link } from "react-router-dom";
 const Header = (props) => {
   const [searchBarOpen, setsearchBarOpen] = useState(false);
   const [listOpen, setlistOpen] = useState(false);
 
   return (
     <header className="header">
-      <ReactModal
+      {/* <ReactModal
         isOpen={searchBarOpen}
         onRequestClose={() => setsearchBarOpen(false)}
         className="searchbar"
         style={{
           overlay: {
-            position: "fixed",
+            position:  "fixed",
             top: 0,
             left: 0,
             right: 0,
@@ -28,7 +29,7 @@ const Header = (props) => {
         ariaHideApp={false}
       >
         <HeaderSearch setsearchBarOpen={setsearchBarOpen} />
-      </ReactModal>
+      </ReactModal> */}
       <div className="contents">
         <div>
           <FontAwesomeIcon
@@ -38,10 +39,11 @@ const Header = (props) => {
           />
         </div>
         <div>
-          <FontAwesomeIcon
+        <Link to='searchtest'><FontAwesomeIcon icon="magnifying-glass" /></Link>
+          {/* <FontAwesomeIcon
             icon="magnifying-glass"
             onClick={() => setsearchBarOpen(true)}
-          />
+          /> */}
         </div>
       </div>
 

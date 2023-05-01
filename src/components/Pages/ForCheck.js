@@ -29,7 +29,6 @@ const Forcheck = () => {
       alert(e);
       localStorage.setItem("isLoggedin", "0");
     }
-<<<<<<< HEAD
   }
 
   async function authTest() {
@@ -63,12 +62,3 @@ const Forcheck = () => {
   );
 };
 export default Forcheck;
-=======
-    authCheck();
-    const ctx =useContext(AuthLogin);
-    return(
-        localStorage.getItem('isLoggedin')=='1' ? <Outlet/> :  <Navigate to="/login" replace state={{ from: location }} />
-    ) 
-}
-export default Forcheck
->>>>>>> origin/master

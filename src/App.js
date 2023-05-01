@@ -12,6 +12,7 @@ import AutoLogin from "./context/auto-login";
 import Alert from "./components/Pages/Alert";
 import Search from "./components/Pages/Search";
 import MyPage from "./components/Pages/MyPage";
+import SearchTest from "./components/Pages/SearchTest";
 //  import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
@@ -51,6 +52,11 @@ function App() {
     {
       path: "/login",
       element: <Login onlogin={loginHandler} onlogout={logoutHandler} />,
+      errorElement: <Errorl />,
+    },
+    {
+      path: "/searchtest",
+      element: <SearchTest />,
       errorElement: <Errorl />,
     },
   ]);

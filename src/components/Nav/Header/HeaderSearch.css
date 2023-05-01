@@ -5,12 +5,12 @@
   height: auto;
   align-items: right;
   background-color: #dde0ea;
-}
+} 
 
 .search-textbox {
   position: relative;
   height: 43px;
-  width: 100vw;
+  width: 50vw;
   background: #ffffff;
   border: 2px solid #000000;
   border-radius: 13px;

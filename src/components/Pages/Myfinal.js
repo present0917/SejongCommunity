@@ -49,7 +49,7 @@ const Myfinal = () => {
   const [cards, setCards] = useState([]); //입력 내용 담을곳
 
   async function deletecard(data) { //삭제
-    const response = await fetch('http://localhost:3001/post/' +data.id, {
+    const response = await fetch('http://localhost:3002/post/' +data.id, {
       method: 'DELETE',
     });
     console.log('delete');
@@ -57,7 +57,7 @@ const Myfinal = () => {
   }
 
   async function fix(data) { //수정
-    const response = await fetch('http://localhost:3001/post/' +data.id, {
+    const response = await fetch('http://localhost:3002/post/' +data.id, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json'
@@ -70,7 +70,7 @@ const Myfinal = () => {
 
 
   async function patch(data) {
-    const response = await fetch('http://localhost:3001/post/' +data.id, {
+    const response = await fetch('http://localhost:3002/post/' +data.id, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json'
@@ -84,7 +84,7 @@ const Myfinal = () => {
   }
 
   async function fetchcard() { //불러오기
-    const response = await fetch('http://localhost:3001/db');
+    const response = await fetch('http://localhost:3002/db');
     if (!response.ok) {
       throw new Error('Failed to fetch card data');
     }
@@ -110,7 +110,7 @@ const Myfinal = () => {
 
 
   async function postcard(card) { //입력
-    const response = await fetch('http://localhost:3001/post', {
+    const response = await fetch('http://localhost:3002/post', {
       method: 'POST',
       body: JSON.stringify(card),
       headers: {
