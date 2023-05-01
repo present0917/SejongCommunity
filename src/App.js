@@ -11,7 +11,7 @@ import Forcheck from "./components/Pages/ForCheck";
 import AutoLogin from "./context/auto-login";
 import Alert from "./components/Pages/Alert";
 import Search from "./components/Pages/Search";
-//import MyPage from "./components/Pages/MyPage";
+import MyPage from "./components/Pages/MyPage";
 //  import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
@@ -43,7 +43,7 @@ function App() {
             { path: "my", element: <Myfinal /> },
             { path: "alert", element: <Alert /> },
             { path: "search", element: <Search /> },
-            // { path: "mypage", element: <MyPage /> },
+            { path: "mypage", element: <MyPage /> },
           ],
         },
       ],

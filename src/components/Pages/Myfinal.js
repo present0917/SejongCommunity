@@ -56,12 +56,25 @@ const Myfinal = () => {
     fetchcard();
   }
 
-  async function patch(data) {
+  async function fix(data) { //수정
     const response = await fetch('http://localhost:3001/post/' +data.id, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json'
       },
+      body: JSON.stringify(data),
+    });
+    console.log('fixed');
+    fetchcard();
+  }
+
+
+  async function patch(data) {
+    const response = await fetch('http://localhost:3001/post/' +data.id, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },  
       body: JSON.stringify({
         memo: 'patched'
       })
@@ -143,7 +156,7 @@ const Myfinal = () => {
       </div>
       {showmadalshow && <Show onClose={hidemodal} data={cardInfo} delete={deletecard} patch={patch} open={showpatchmodal}/>}
       {ModalIsShown && <Form onClose={hideModalHandler} onClick={handleClick} />}
-      {patchmadalshow && <Patchform onClose={hidepatchmodal} onClick={1} />}
+      {patchmadalshow && <Patchform onClose={hidepatchmodal} onClick={fix} />}
       <button onClick={showModalHandler}>test</button>
       <button onClick={fortest}>fortest</button>
 

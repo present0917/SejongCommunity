@@ -26,7 +26,7 @@ const Forcheck =()=>
             localStorage.setItem('isLoggedin','0');
         }
     }
-    //authCheck();
+    authCheck();
     const ctx =useContext(AuthLogin);
     return(
         localStorage.getItem('isLoggedin')=='1' ? <Outlet/> :  <Navigate to="/login" replace state={{ from: location }} />
