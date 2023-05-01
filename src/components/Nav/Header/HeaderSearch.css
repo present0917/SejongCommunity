@@ -1,31 +1,29 @@
-.header {
-  position: absolute;
-  left: 0;
+.container {
   top: 0;
-  width: 100%;
-  height: 50px;
+  left: 0;
+  right: 0;
+  height: auto;
+  align-items: right;
   background-color: #dde0ea;
 }
 
-.search {
+.search-textbox {
   position: relative;
-  align-items: center;
-  top: 0;
-}
-
-.search-text {
-  height: 50px;
-  width: 90%;
-
+  height: 43px;
+  width: 100vw;
   background: #ffffff;
   border: 2px solid #000000;
   border-radius: 13px;
-  z-index: 0;
+}
+.search-tag {
+}
+.search-tag-el {
 }
 .search-button {
-  height: 40px;
+  height: 48px;
   width: 40px;
   right: 0;
   background: #ffffff;
-  z-index: -1;
+  border: 2px solid #000000;
+  border-radius: 13px;
 }

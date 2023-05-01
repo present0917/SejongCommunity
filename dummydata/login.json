@@ -1,7 +1,7 @@
 {
   "login": {
     "studentId": "18010757",
-    "password": "qwerqwsdf"
+    "password": "qwerqwre"
   },
   "res": {
     "errorCode": 401,
@@ -19,5 +19,6 @@
       "studentId": false,
       "department": true
     }
-  }
+  },
+  "search": {}
 }

@@ -1,66 +1,61 @@
 import "../FontAwesome";
-import React, { useState, useRef,useEffect } from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
 import "./HeaderSearch.css";
 
 const HeaderSearch = (props) => {
-  const searchInputRef = useRef();
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
   async function putQuery(query) {
-    const response = await fetch('http://localhost:3011/q', {
-      method: 'PUT',
+    const response = await fetch("http://localhost:3001/search", {
+      method: "PUT",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         isDone: true,
-        q:query,
-    }),
-    }).then(res =>{
-      if(res.ok){
-        console.log(query);
-      }
+        search: query,
+      }),
     });
-    navigate('/search');
-    props.setsearchBarOpen(false);
+    try {
+      if (!response.ok) {
+        throw new Error(`${response.status}`);
+      }
+      navigate("/search");
+      props.setsearchBarOpen(false);
+    } catch (e) {}
   }
 
   const handleChange = (event) => {
     setSearch(event.target.value);
   };
 
-  const handleSubmission = (event) => {
-    event.preventDefault();
-
-    console.log(search);
-    const enteredValue = searchInputRef.current.value;
-    console.log(enteredValue);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const searchData = {
+      search: search,
+    };
+    navigate("/search", { state: searchData });
+    props.setsearchBarOpen(false);
   };
 
   return (
-    <header className="header">
-      <form action="/forest" onSubmit={handleSubmission} className="search">
+    <div>
+      <form onSubmit={handleSubmit} className="container">
         <input
-          ref={searchInputRef}
           type="text"
-          id="q"
+          id="search"
           value={search}
           placeholder="검색어를 입력하세요."
           onChange={handleChange}
-          className="search-text"
+          className="search-textbox"
         />
-
-        <button
-          type="submit"
-          className="search-button"
-          onClick={()=>putQuery(search)}
-        >
+        <button type="submit" className="search-button">
           <FontAwesomeIcon icon="magnifying-glass" id="search-button" />
         </button>
       </form>
-    </header>
+    </div>
   );
 };
 export default HeaderSearch;

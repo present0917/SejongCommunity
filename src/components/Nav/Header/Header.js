@@ -11,25 +11,25 @@ const Header = (props) => {
 
   return (
     <header className="header">
+      <ReactModal
+        isOpen={searchBarOpen}
+        onRequestClose={() => setsearchBarOpen(false)}
+        className="searchbar"
+        style={{
+          overlay: {
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: "rgba(255, 255, 255, 1)",
+          },
+        }}
+        ariaHideApp={false}
+      >
+        <HeaderSearch setsearchBarOpen={setsearchBarOpen} />
+      </ReactModal>
       <div className="contents">
-        <ReactModal
-          isOpen={searchBarOpen}
-          onRequestClose={() => setsearchBarOpen(false)}
-          className="searchbar"
-          style={{
-            overlay: {
-              position: 'fixed',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              backgroundColor: 'rgba(255, 255, 255, 1)'
-            }
-          }}
-          ariaHideApp={false}
-        >
-          <HeaderSearch setsearchBarOpen={setsearchBarOpen}/>
-        </ReactModal>
         <div>
           <FontAwesomeIcon
             icon="bars"
@@ -44,7 +44,8 @@ const Header = (props) => {
           />
         </div>
       </div>
-      <SideBar listOpen={listOpen} setlistOpen={setlistOpen}/>
+
+      <SideBar listOpen={listOpen} setlistOpen={setlistOpen} />
     </header>
   );
 };
