@@ -18,7 +18,19 @@
     position: relative;
     text-align: center;
 }
-.login-actions button {
+/* .login-actions button {
+    font: inherit;
+    cursor: pointer;
+    background-color: transparent;
+    border: 1px solid #ffffff;
+    min-width: 70px;
+    width: 12vw;
+    height: 5vh;
+    min-height: 30px;
+    border-radius: 25px;
+    margin-left: 10px;
+} */
+/* .login-actions button {
     font: inherit;
     cursor: pointer;
     background-color: transparent;
@@ -33,7 +45,7 @@
 .login-actions .button {
     background-color: white;
     color: #3792A6;
-}
+} */
 .alert{
     font-size: 10px;
     color: crimson;

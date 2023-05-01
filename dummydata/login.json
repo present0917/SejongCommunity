@@ -12,12 +12,12 @@
     "token": "98765q4321"
   },
   "signup": {
-    "studentId": "18010757",
-    "password": "asdfasdasd",
-    "nickname": "asd",
+    "studentId": "12312312",
+    "password": "thisischange",
+    "nickname": "testq",
     "dataRange": {
-      "studentId": false,
-      "department": true
+      "studentId": true,
+      "department": false
     }
   },
   "search": {}

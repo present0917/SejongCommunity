@@ -1,0 +1,81 @@
+button {
+    font: inherit;
+    cursor: pointer;
+    background-color: #52b1c6;
+    border: 1px solid #ffffff;
+    min-width: 70px;
+    width: 12vw;
+    height: 5vh;
+    min-height: 30px;
+    border-radius: 25px;
+    margin-left: 10px;
+    color: white;
+} 
+button:hover,
+button:active {
+  background-color: #225966;
+  border-color: #225966;
+  color:  white;
+}
+
+
+
+/* button {
+  font: inherit;
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid #ffffff;
+  min-width: 70px;
+  width: 12vw;
+  height: 5vh;
+  min-height: 30px;
+  border-radius: 25px;
+  margin-left: 10px;
+}
+
+button:hover,
+button:active {
+  background-color: #225966;
+  border-color: #225966;
+}
+
+
+/* button {
+  font: inherit;
+  cursor: pointer;
+  border: 1px solid #3792A6;
+  padding: 0.25rem 2rem;
+  border-radius: 20px;
+  font-weight: bold;
+  background-color: white;
+  color: #3792A6;
+  min-width: 50px;
+  width: 12vw;
+  height: 5vh;
+  min-height: 30px;
+  border-radius: 25px;
+  margin-left: 10px;
+}
+
+button:hover,
+button:active {
+  background-color: #225966;
+  border-color: #225966;
+}
+
+.login-actions button {
+  font: inherit;
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid #ffffff;
+  min-width: 70px;
+  width: 12vw;
+  height: 5vh;
+  min-height: 30px;
+  border-radius: 25px;
+  margin-left: 10px;
+}
+.login-actions .button {
+  background-color: white;
+  color: #3792A6;
+} */ 

@@ -2,6 +2,7 @@ import ReactModal from "react-modal";
 import "../FontAwesome";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./SideBar.css"
+import { Link } from "react-router-dom";
 const SideBar = (props) => {
   return (
      <ReactModal 
@@ -27,11 +28,7 @@ const SideBar = (props) => {
       />
       <br/>
       <ul>
-        <li>menu1</li>
-        <li>menu2</li>
-        <li>menu3</li>
-        <li>menu4</li>
-        <li>menu5</li>
+        <li> <Link to='/mypage'>MyPage</Link></li>
       </ul>
     </ReactModal>
   );
