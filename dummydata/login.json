@@ -13,11 +13,11 @@
   },
   "signup": {
     "studentId": "12312312",
-    "password": "asasasas",
-    "nickname": "testq",
+    "password": "ㅁㄴㅇㅁㄴㅇㅁㄴㅇ",
+    "nickname": "ㅂㅈㄷ",
     "dataRange": {
       "studentId": false,
-      "department": false
+      "department": true
     }
   },
   "search": {}

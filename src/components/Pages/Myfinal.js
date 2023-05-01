@@ -62,24 +62,10 @@ const Myfinal = () => {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(data)
     });
     console.log('fixed');
-    fetchcard();
-  }
-
-
-  async function patch(data) {
-    const response = await fetch('http://localhost:3002/post/' +data.id, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json'
-      },  
-      body: JSON.stringify({
-        memo: 'patched'
-      })
-    });
-    console.log('patched');
+    console.log(data);
     fetchcard();
   }
 
@@ -89,10 +75,10 @@ const Myfinal = () => {
       throw new Error('Failed to fetch card data');
     }
     const data = await response.json();
-    if (!data.post) {
+    if (!data.tree1) {
       throw new Error('Invalid card data');
     }
-    const mapping = await data.post.map((element) => {
+    const mapping = await data.tree1.map((element) => {
       return {
         name: element.name,
         text: element.text,
@@ -108,7 +94,6 @@ const Myfinal = () => {
     fetchcard();
   }, []);
 
-
   async function postcard(card) { //입력
     const response = await fetch('http://localhost:3002/post', {
       method: 'POST',
@@ -123,16 +108,6 @@ const Myfinal = () => {
     console.log(data);
     fetchcard();
   }
-
-  function fortest(data) {
-
-    const newObject = {
-      id: cards.length + 1,
-      image: imagePaths[data.name],
-      text: `${data.text}`,
-    };
-    setCards([...cards, newObject]);
-  }
   function handleClick(data) {
 
     const newObject = {
@@ -141,7 +116,7 @@ const Myfinal = () => {
       text: `${data.text}`,
       memo: `${data.memo}`
     };
-    // setCards([...cards, newObject]);
+     setCards([...cards, newObject]);
      postcard(newObject);
   }
   return (
@@ -154,11 +129,10 @@ const Myfinal = () => {
           />
         ))} 
       </div>
-      {showmadalshow && <Show onClose={hidemodal} data={cardInfo} delete={deletecard} patch={patch} open={showpatchmodal}/>}
+      {showmadalshow && <Show onClose={hidemodal} data={cardInfo} delete={deletecard} open={showpatchmodal}/>}
       {ModalIsShown && <Form onClose={hideModalHandler} onClick={handleClick} />}
-      {patchmadalshow && <Patchform onClose={hidepatchmodal} onClick={fix} />}
-      <button onClick={showModalHandler}>test</button>
-      <button onClick={fortest}>fortest</button>
+      {patchmadalshow && <Patchform onClose={hidepatchmodal} onClick={fix} data={cardInfo} />}
+      <button onClick={showModalHandler} className='test'>스티커붙이기</button>
 
       {/* <span className="spa" onClick={handleClick}>
             <Circle />
