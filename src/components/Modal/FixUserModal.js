@@ -37,6 +37,7 @@ const FixUserModal = (props) => {
           if(data.errorCode != null){
             throw new Error(`Error Code:${data.errorCode} ${data.message}`);
           }
+          
           setName(data.nickname);
           setId(data.studentId);
 
@@ -212,7 +213,7 @@ const FixUserModal = (props) => {
           <Checkbox values="studentId" checked={allowId} onChange={setAllowId}>학번</Checkbox>
           <Checkbox values="department" checked={allowDepartment} onChange={setAllowDepartment}>학과</Checkbox>
         </CheckboxGroup>
-        <button className="button" onClick={()=>{datatestprint();}}>PostTest</button>
+        {/* <button className="button" onClick={()=>{datatestprint();}}>PostTest</button> */}
         <div className="actions">
         
           <button type="submit" className="button" disabled={disabled}>가입</button>

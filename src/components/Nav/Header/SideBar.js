@@ -28,7 +28,7 @@ const SideBar = (props) => {
       />
       <br/>
       <ul>
-        <li> <Link to='/mypage'>MyPage</Link></li>
+        <li> <Link to='/mypage' onClick={1}>MyPage</Link></li>
       </ul>
     </ReactModal>
   );

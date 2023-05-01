@@ -1,12 +1,11 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { useState, useEffect } from "react";
-import My from "./components/Pages/My";
 import Myfinal from "./components/Pages/Myfinal";
 import Layout from "./components/Nav/Layout";
-import Error from "./components/Pages/Error";
+import Error from "./components/Pages/Error/Error";
 import First from "./components/Pages/First";
 import Login from "./components/Pages/Login";
-import Errorl from "./components/Pages/Errorl";
+import Errorl from "./components/Pages/Error/Errorl";
 import Forcheck from "./components/Pages/ForCheck";
 import AutoLogin from "./context/auto-login";
 import Alert from "./components/Pages/Alert";
