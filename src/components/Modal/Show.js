@@ -30,7 +30,7 @@ const Show = (props) => {
             Close
           </button>
           <button className={classes['button--alt']} onClick={openhandler}>
-            open
+            Fix
           </button>
           <button type="submit" className={classes.button}>
             delete

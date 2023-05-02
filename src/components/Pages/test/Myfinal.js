@@ -1,13 +1,14 @@
-import './My.css'
-import board from '../../pic/board.png'
-import Crdtest from "../../etc/Crdtest"
-import post from "../../pic/post.png"
-import post1 from "../../pic/post1.png"
-import post2 from "../../pic/post2.png"
+import '.././My.css'
+import board from '../../../pic/board.png'
+import Crdtest from "../../../etc/Crdtest"
+import post from "../../../pic/post.png"
+import post1 from "../../../pic/post1.png"
+import post2 from "../../../pic/post2.png"
 import { useState,useEffect } from "react"
-import Form from "../Modal/Form";
-import Show from "../Modal/Show"
-import Patchform from '../Modal/Patchform'
+import Form from "../../Modal/Form";
+import Show from "../../Modal/Show"
+import Patchform from '../../Modal/Patchform'
+import { useParams } from 'react-router-dom'
 const imagePaths = [
   post,
   post1,
@@ -18,7 +19,7 @@ const Myfinal = () => {
   const [showmadalshow, setshowmodalshow] = useState(false);
   const [patchmadalshow, setpatchmodalshow] = useState(false);
   const [cardInfo, setCardInfo] = useState(null);
-
+  const params = useParams();
   const showpatchmodal = () => {//수정 모달
     setpatchmodalshow(true);
     // console.log('show');
@@ -52,7 +53,7 @@ const Myfinal = () => {
   const [cards, setCards] = useState([]); //입력 내용 담을곳
 
   async function deletecard(data) { //삭제
-    const response = await fetch('http://localhost:3002/tree1/' +data.id, {
+    const response = await fetch(`http://localhost:3002/${params.id}/${+data.id}` , {
       method: 'DELETE',
     });
     console.log('delete');
@@ -60,7 +61,7 @@ const Myfinal = () => {
   }
 
   async function fix(data) { //수정
-    const response = await fetch('http://localhost:3002/tree1/' +data.id, {
+    const response = await fetch(`http://localhost:3002/${params.id}/${+data.id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json'
@@ -73,15 +74,16 @@ const Myfinal = () => {
   }
 
   async function fetchcard() { //불러오기
-    const response = await fetch('http://localhost:3002/db');
+    const num=params.id;
+    const response = await fetch(`http://localhost:3002/db/`);
     if (!response.ok) {
       throw new Error('Failed to fetch card data');
     }
     const data = await response.json();
-    if (!data.tree1) {
-      throw new Error('Invalid card data');
-    }
-    const mapping = await data.tree1.map((element) => {
+    // if (!data.tree1) {
+    //   throw new Error('Invalid card data');
+    // }
+    const mapping = await data[num].map((element) => {
       return {
         name: element.name,
         text: element.text,
@@ -91,7 +93,6 @@ const Myfinal = () => {
       };
     });
     setCards(mapping);
-    console.log(mapping);
   };
 
   useEffect(() => {
@@ -99,7 +100,7 @@ const Myfinal = () => {
   }, []);
 
   async function postcard(card) { //입력
-    const response = await fetch('http://localhost:3002/tree1', {
+    const response = await fetch(`http://localhost:3002/${params.id}`, {
       method: 'POST',
       body: JSON.stringify(card),
       headers: {
@@ -126,8 +127,11 @@ const Myfinal = () => {
      setCards([...cards, newObject]);
      postcard(newObject);
   }
+ 
+
   return (
     <div>
+      <div>{params.id}</div>
       <div className="container">
         <img src={board} className="board" />
          {cards.map((cardData) => (

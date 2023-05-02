@@ -174,6 +174,7 @@ const SignUp = (props) => {
           <div className="form-el">
             <label htmlFor="password">Password</label> <br />
             <input
+            type="password"
               id="password"
               name="password"
               value={password}

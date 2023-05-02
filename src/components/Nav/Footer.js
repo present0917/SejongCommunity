@@ -13,7 +13,7 @@ const Footer = () => {
                     <Link to='alert'><FontAwesomeIcon icon="bell" /></Link>
                 </div>
                 <div>
-                    <Link to='my'><FontAwesomeIcon icon="user" /></Link>
+                    <Link to='tree'><FontAwesomeIcon icon="user" /></Link>
                 </div>
             </nav>
       </footer>

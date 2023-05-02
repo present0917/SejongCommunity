@@ -1,7 +1,7 @@
 {
   "login": {
-    "studentId": "12121212",
-    "password": "1212121212"
+    "studentId": "12312312",
+    "password": "123123123"
   },
   "res": {
     "errorCode": 401,
@@ -12,12 +12,12 @@
     "token": "98765q4321"
   },
   "signup": {
-    "studentId": "12312312",
-    "password": "ㅁㄴㅇㅁㄴㅇㅁㄴㅇ",
-    "nickname": "ㅂㅈㄷ",
+    "studentId": "18012345",
+    "password": "qweqweqwe",
+    "nickname": "fixe",
     "dataRange": {
       "studentId": false,
-      "department": true
+      "department": false
     }
   },
   "search": {}
