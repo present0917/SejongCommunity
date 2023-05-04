@@ -1,6 +1,5 @@
 import Modal from './Modal';
 import classes from './Form.module.css';
-import { useState } from 'react';
 
 const Show = (props) => {
   const { id, name, text, memo } = props.data;
@@ -9,13 +8,6 @@ const Show = (props) => {
      event.preventDefault();
      props.onClose();
      props.delete(props.data);
-  }
-
-  const patchhandler=(event)=>  
-  {
-     event.preventDefault();
-     props.onClose();
-     props.patch(props.data);
   }
   const openhandler=(event)=>  
   {
@@ -37,11 +29,8 @@ const Show = (props) => {
           <button className={classes['button--alt']} onClick={props.onClose}>
             Close
           </button>
-          <button className={classes['button--alt']} onClick={patchhandler}>
-            patch
-          </button>
           <button className={classes['button--alt']} onClick={openhandler}>
-            open
+            Fix
           </button>
           <button type="submit" className={classes.button}>
             delete

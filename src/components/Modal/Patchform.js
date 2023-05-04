@@ -6,10 +6,13 @@ const Patchform = (props) => {
   const [name, setName] = useState('');
   const [text, settext] = useState('');
   const [memo, setmemo] = useState('');
+  const [id, setid] = useState(props.data.id);
   const submitHandler = (event) => {
     event.preventDefault();
-    console.log(name, text);
-    const data = { name, text };
+    const data = { name, text,memo,id };
+    console.log('print id')
+    console.log(data.id)
+    console.log('print id')
     props.onClick(data);
     props.onClose();
 

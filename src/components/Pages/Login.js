@@ -44,13 +44,13 @@ const Login = (props) => {
     setDisabled(false);
   };
 
-  const datatestprint = () => {
-    const authData = {
-      studentId: { id },
-      password: { password },
-    };
-    logintest(authData);
-  };
+  // const datatestprint = () => {
+  //   const authData = {
+  //     studentId: { id },
+  //     password: { password },
+  //   };
+  //   logintest(authData);
+  // };
 
   async function logintest(info) {
     const response = await fetch("http://localhost:3001/post/", {
@@ -137,12 +137,12 @@ const Login = (props) => {
     }
   }
 
-  const set = () => {
-    props.onlogin("a", "b");
-  };
-  const unset = () => {
-    props.onlogout();
-  };
+  // const set = () => {
+  //   props.onlogin("a", "b");
+  // };
+  // const unset = () => {
+  //   props.onlogout();
+  // };
 
   const onChangeId = (e) => {
     const currentId = e.target.value;
@@ -218,7 +218,7 @@ const Login = (props) => {
           </div>
         </form>
       </div>
-      <button
+      {/* <button
         onClick={() => {
           set();
         }}
@@ -239,7 +239,7 @@ const Login = (props) => {
         }}
       >
         DataTestButton
-      </button>
+      </button> */}
       <SignUp signUpOpen={signUpOpen} setSignUpOpen={setSignUpOpen}></SignUp>
     </div>
   );

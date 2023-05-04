@@ -29,7 +29,6 @@ const MyPage = () => {
         },[])
         return (
         <div>
-            내 정보
             <Rec data={searchData}></Rec>
             <button onClick={() => { setSignUpOpen(true); }}>정보 수정</button>
             <FixUserModal signUpOpen={signUpOpen} setSignUpOpen={setSignUpOpen}></FixUserModal>
