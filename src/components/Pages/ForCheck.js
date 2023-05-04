@@ -1,9 +1,12 @@
-import { Outlet, Navigate, useLocation } from "react-router-dom";
+import { Outlet, Navigate, useLocation, useNavigate } from "react-router-dom";
 import AuthLogin from "../../context/auto-login";
 import { useContext, useEffect } from "react";
 const Forcheck = () => {
   const location = useLocation();
   console.log("forcheck입니다.");
+
+  const navigate = useNavigate();
+
   async function authCheck() {
     //실제
     const response = await fetch("http://localhost:3001/auth", {
@@ -16,10 +19,12 @@ const Forcheck = () => {
       }),
     });
     try {
-      if (!response.ok) {
+      //서버 응답 x
+      if (!response.ok) { 
         throw new Error("서버와의 연결이 끊어졌습니다. 다시 로그인해주세요.");
       }
       const data = await response.json();
+      //서버 sessionId와 클라 sessionId 불일치
       if (!data.res) {
         sessionStorage.setItem("token", "");
         throw new Error("로그인이 만료되었습니다.");
@@ -28,6 +33,7 @@ const Forcheck = () => {
     } catch (e) {
       alert(e);
       localStorage.setItem("isLoggedin", "0");
+      navigate('/login');
     }
   }
 
@@ -51,6 +57,7 @@ const Forcheck = () => {
       localStorage.setItem("isLoggedin", "0");
       sessionStorage.setItem("token", "");
       sessionStorage.setItem("tokenkey", "");
+      navigate('/login');
     }
   }
   //authCheck(); //실제
