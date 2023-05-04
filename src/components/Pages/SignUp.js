@@ -121,14 +121,14 @@ const SignUp = (props) => {
     }
   }
 
-  const datatestprint = () => {
-    const authData = {
-      id: { id },
-      password: { password },
-      name: { name },
-    };
-    console.log(authData);
-  };
+  // const datatestprint = () => {
+  //   const authData = {
+  //     id: { id },
+  //     password: { password },
+  //     name: { name },
+  //   };
+  //   console.log(authData);
+  // };
 
   return (
     // “/members/add”
@@ -203,14 +203,14 @@ const SignUp = (props) => {
               학과
             </Checkbox>
           </CheckboxGroup>
-          <button
+          {/* <button
             className="button"
             onClick={() => {
               datatestprint();
             }}
           >
             PostTest
-          </button>
+          </button> */}
           <div className="actions">
             <button type="submit" className="button" disabled={disabled}>
               가입

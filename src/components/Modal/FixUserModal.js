@@ -97,7 +97,7 @@ const FixUserModal = (props) => {
   }
   const handleSubmit = (e) => {
     setDisabled(true);
-    e.preventDefault();
+    // e.preventDefault();
     if(!isPass || !isName){
         alert("입력 정보를 다시 확인해주세요.");
     } else {
