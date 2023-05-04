@@ -1,6 +1,6 @@
 import { Outlet, Navigate, useLocation } from "react-router-dom";
 import AuthLogin from "../../context/auto-login";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 const Forcheck = () => {
   const location = useLocation();
   console.log("forcheck입니다.");
@@ -41,20 +41,20 @@ const Forcheck = () => {
       }
       sessionStorage.setItem("tokenkey", data.token);
       if (
-        sessionStorage.getItem("tokenkey") === sessionStorage.getItem("token")
+        sessionStorage.getItem("tokenkey") !== sessionStorage.getItem("token")
       ) {
-        localStorage.setItem("isLoggedin", "1");
-      } else {
-        localStorage.setItem("isLoggedin", "0");
+        throw new Error("로그인이 만료되었습니다.");
       }
+      localStorage.setItem("isLoggedin", "1");
     } catch (e) {
       alert(e);
       localStorage.setItem("isLoggedin", "0");
+      sessionStorage.setItem("token", "");
+      sessionStorage.setItem("tokenkey", "");
     }
   }
   //authCheck(); //실제
   authTest(); // 테스트
-
   return localStorage.getItem("isLoggedin") === "1" ? (
     <Outlet />
   ) : (

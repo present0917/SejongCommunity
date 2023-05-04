@@ -98,6 +98,7 @@ const Login = (props) => {
         throw new Error(`Error Code:${data.errorCode} ${data.message}`);
       }
       sessionStorage.setItem("token", data.sessionId);
+      localStorage.setItem("isLoggedin", "1");
       navigate("..");
     } catch (e) {
       alert(e);
@@ -127,6 +128,7 @@ const Login = (props) => {
         throw new Error(`Error Code:${data.errorCode} ${data.message}`);
       }
       sessionStorage.setItem("token", data.sessionId);
+      localStorage.setItem("isLoggedin", "1");
       navigate("..");
     } catch (e) {
       alert(e);
