@@ -73,9 +73,32 @@ const Myfinal = () => {
     fetchcard();
   }
 
+  // async function fetchcard() { //불러오기
+  //   const num=params.id;
+  //   const response = await fetch(`http://localhost:3002/db/`);
+  //   if (!response.ok) {
+  //     throw new Error('Failed to fetch card data');
+  //   }
+  //   const data = await response.json();
+  //   // if (!data.tree1) {
+  //   //   throw new Error('Invalid card data');
+  //   // }
+  //   const mapping = await data[num].map((element) => {
+  //     return {
+  //       name: element.name,
+  //       text: element.text,
+  //       id:element.id,
+  //       memo:element.memo,
+  //       user:element.user
+  //     };
+  //   });
+  //   setCards(mapping);
+  // };
+
   async function fetchcard() { //불러오기
     const num=params.id;
-    const response = await fetch(`http://localhost:3002/db/`);
+    console.log(num);
+    const response = await fetch(`http://localhost:3002/${num}`);
     if (!response.ok) {
       throw new Error('Failed to fetch card data');
     }
@@ -83,7 +106,7 @@ const Myfinal = () => {
     // if (!data.tree1) {
     //   throw new Error('Invalid card data');
     // }
-    const mapping = await data[num].map((element) => {
+    const mapping = await data.map((element) => {
       return {
         name: element.name,
         text: element.text,
@@ -94,6 +117,34 @@ const Myfinal = () => {
     });
     setCards(mapping);
   };
+
+  // async function fetchcard() { //불러오기 토큰
+  //   const token=sessionStorage.getItem("tokenkey");
+  //   const num=params.id;
+  //   const response = await fetch(`http://localhost:3002/stickers`, {
+  //     method: 'GET',
+  //     headers: {
+  //       'Authorization': `${token}`
+  //     },
+  //   });
+  //   if (!response.ok) {
+  //     throw new Error('Failed to fetch card data');
+  //   }
+  //   const data = await response.json();
+  //   // if (!data.tree1) {
+  //   //   throw new Error('Invalid card data');
+  //   // }
+  //   const mapping = await data.map((element) => {
+  //     return {
+  //       name: element.name,
+  //       text: element.text,
+  //       id:element.id,
+  //       memo:element.memo,
+  //       user:element.user
+  //     };
+  //   });
+  //   setCards(mapping);
+  // };
 
   useEffect(() => {
     fetchcard();
