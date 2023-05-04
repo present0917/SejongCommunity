@@ -21,7 +21,7 @@ console.log(props);
       <div>
         <h3>{props.data.studentId}</h3>
         <div className={classes.description}>{props.data.nickname}</div>
-        <div className={classes.price}>something</div>
+        <div className={classes.price}></div>
         
       </div>
       <div>

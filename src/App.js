@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { useState, useEffect } from "react";
-import Myfinal from "./components/Pages/Myfinal";
+import Myfinal from "./components/Pages/test/Myfinal";
 import Layout from "./components/Nav/Layout";
 import Error from "./components/Pages/Error/Error";
 import First from "./components/Pages/First";
@@ -12,6 +12,8 @@ import Alert from "./components/Pages/Alert";
 import Search from "./components/Pages/Search";
 import MyPage from "./components/Pages/MyPage";
 import SearchTest from "./components/Pages/SearchTest";
+import Treeselect from "./components/Pages/Treeselect";
+import Dynamictest from "./components/Pages/test/Dynamictest";
 //  import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
@@ -44,6 +46,8 @@ function App() {
             { path: "alert", element: <Alert /> },
             { path: "search", element: <Search /> },
             { path: "mypage", element: <MyPage /> },
+            { path: "tree", element: <Treeselect /> },
+            { path: "tree/:id", element: <Myfinal /> },
           ],
         },
       ],

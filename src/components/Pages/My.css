@@ -41,3 +41,9 @@
     max-width: 20vh;
     max-height: 20vh;
   }
+  .test{
+    position: absolute;
+    top: 85%;
+    left:85%;
+
+  }
