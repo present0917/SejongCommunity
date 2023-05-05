@@ -21,6 +21,7 @@ const Myfinal = () => {
   const [cardInfo, setCardInfo] = useState(null);
   const [idopen, setidopen] = useState(null);
   const [majoropen, setmajoropen] = useState(null);
+  const [cards, setCards] = useState([]); //입력 내용 담을곳
 
   const params = useParams();
   const showpatchmodal = () => {//수정 모달
@@ -33,14 +34,14 @@ const Myfinal = () => {
   };
   const showmodal = (info) => {// 뷰 모달
     setCardInfo(info);
-    console.log(info);
     if(info.user==1)
-    setshowmodalshow(true);
+    {
+      setshowmodalshow(true);
+    }
     else
     setshowmodalshow(false);
     // console.log('show');
   };
-
   const hidemodal = () => { //뷰 모달 숨기기
     setshowmodalshow(false);
   };
@@ -53,7 +54,7 @@ const Myfinal = () => {
   const hideModalHandler = () => { //입력 모달 숨기기
     setModalIsShown(false);
   };
-  const [cards, setCards] = useState([]); //입력 내용 담을곳
+  
 
   async function deletecard(data) { //삭제
     const response = await fetch(`http://localhost:3002/${params.id}/${+data.id}` , {
@@ -115,7 +116,6 @@ const Myfinal = () => {
         name: element.name,
         text: element.text,
         id:element.id,
-        memo:element.memo,
         user:element.user
       };
     });
@@ -195,7 +195,7 @@ const Myfinal = () => {
           />
         ))} 
       </div>
-      {showmadalshow && <Show onClose={hidemodal} data={cardInfo} delete={deletecard} open={showpatchmodal}/>}
+      {showmadalshow && <Show onClose={hidemodal} data={cardInfo} delete={deletecard} open={showpatchmodal} treeid={params.id}/>}
       {ModalIsShown && <Form onClose={hideModalHandler} onClick={handleClick} />}
       {patchmadalshow && <Patchform onClose={hidepatchmodal} onClick={fix} data={cardInfo} />}
       <button onClick={showModalHandler} className='test'>스티커붙이기</button>

@@ -1,8 +1,13 @@
 import Modal from './Modal';
 import classes from './Form.module.css';
-
+import { useEffect,useState } from 'react';
+import { useParams } from 'react-router-dom';
 const Show = (props) => {
+  const params = useParams();
   const { id, name, text, memo } = props.data;
+  const [des, setdes] = useState('need to get maybe error'); //입력 내용 담을곳
+  console.log(id);//스티커아이디
+  console.log(props.treeid);//트리id
   const Submithandler=(event)=>  
   {
      event.preventDefault();
@@ -15,6 +20,30 @@ const Show = (props) => {
      props.open();
      
   }
+  useEffect(() => {
+    desfetch();
+  }, []);
+  async function desfetch() { //불러오기 GET /forest/{treeId}/stickers/{id}
+    const num=params.id;
+    //console.log(num);
+    const response = await fetch(`http://localhost:3002/${num}`);
+    if (!response.ok) {
+      throw new Error('Failed to fetch card data');
+    }
+    const data = await response.json();
+    // if (!data.tree1) {
+    //   throw new Error('Invalid card data');
+    // }
+    const mapping = await data.map((element) => {
+      return {
+        des: element.memo
+      };
+    });
+    //setdes('test');
+    setdes(mapping.des);
+    console.log(data);
+    console.log(mapping.des);
+  };
   return (
     <Modal onClose={props.onClose}>
       <form onSubmit={Submithandler}>
@@ -24,7 +53,7 @@ const Show = (props) => {
         <div>
           {text}
         </div>
-      {memo}
+      {des}
         <div className={classes.actions}>
           <button className={classes['button--alt']} onClick={props.onClose}>
             Close
