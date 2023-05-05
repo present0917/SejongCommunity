@@ -98,7 +98,7 @@ const Login = (props) => {
       if (!testres.ok) {
         //서버 연결시 response로 교체
         throw new Error(`${testres.status} 에러가 발생했습니다.`); //서버 연결시 response로 교체
-      } else if (data.message != "") {
+      } else if (data.message !== "") {
         throw new Error(`Error Code:${data.errorCode} ${data.message}`);
       }
       sessionStorage.setItem("token", data.sessionId);
@@ -131,7 +131,8 @@ const Login = (props) => {
         throw new Error(`${response.status} 에러가 발생했습니다.`);
       }
       const data = await response.json();
-      if (data.message !== "") {
+      // errorCode !== 0 에러
+      if (data.errorCode !== 0) {
         throw new Error(`Error Code:${data.errorCode} ${data.message}`);
       }
       sessionStorage.setItem("token", data.sessionId);

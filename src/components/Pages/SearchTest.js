@@ -4,8 +4,6 @@ const SearchTest = (props) => {
   return (
     <div>
       <HeaderSearch></HeaderSearch>
-      <button>next</button>
-      <button>back</button>
     </div>
   );
 };
