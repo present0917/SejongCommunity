@@ -22,7 +22,7 @@ const SignUp = (props) => {
 
   useEffect(() => {
     initInput();
-  });
+  }, []);
 
   const onChangeId = (e) => {
     const currentId = e.target.value;
@@ -110,7 +110,7 @@ const SignUp = (props) => {
         throw new Error(`${response.status} 에러가 발생했습니다.`);
       }
       const data = await response.json();
-      if (data.errorCode != null) {
+      if (data.errorCode !== 0) {
         throw new Error(`Error Code:${data.errorCode} ${data.message}`);
       }
       alert("회원가입이 완료되었습니다.");
@@ -174,7 +174,7 @@ const SignUp = (props) => {
           <div className="form-el">
             <label htmlFor="password">Password</label> <br />
             <input
-            type="password"
+              type="password"
               id="password"
               name="password"
               value={password}

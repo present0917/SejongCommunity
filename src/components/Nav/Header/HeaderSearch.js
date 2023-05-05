@@ -8,13 +8,12 @@ const HeaderSearch = (props) => {
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
   async function putQuery(query) {
-    const response = await fetch("http://localhost:3001/search", {
-      method: "PUT",
+    const response = await fetch("/forest", {
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        isDone: true,
         search: query,
       }),
     });
@@ -37,23 +36,19 @@ const HeaderSearch = (props) => {
       search: search,
     };
     navigate("/search", { state: searchData });
-    props.setsearchBarOpen(false);
+    //props.setsearchBarOpen(false);
   };
 
   return (
     <div>
-      <form onSubmit={handleSubmit} className="container">
+      <form className="search" onSubmit={handleSubmit}>
         <input
           type="text"
           id="search"
           value={search}
           placeholder="검색어를 입력하세요."
           onChange={handleChange}
-          className="search-textbox"
         />
-        <button type="submit" className="search-button">
-          <FontAwesomeIcon icon="magnifying-glass" id="search-button" />
-        </button>
       </form>
     </div>
   );
