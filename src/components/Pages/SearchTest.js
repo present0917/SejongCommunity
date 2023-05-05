@@ -1,9 +1,9 @@
-import HeaderSearch from "../Nav/Header/HeaderSearch";
+import SearchBar from "../Nav/Header/SearchBar";
 
 const SearchTest = (props) => {
   return (
     <div>
-      <HeaderSearch></HeaderSearch>
+      <SearchBar></SearchBar>
     </div>
   );
 };

@@ -2,9 +2,9 @@ import "../FontAwesome";
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
-import "./HeaderSearch.css";
+import "./SearchBar.css";
 
-const HeaderSearch = (props) => {
+const SearchBar = (props) => {
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
   async function putQuery(query) {
@@ -48,9 +48,15 @@ const HeaderSearch = (props) => {
           value={search}
           placeholder="검색어를 입력하세요."
           onChange={handleChange}
+          className="search-inputtext"
         />
+        <ul>
+          <li>1</li>
+          <li>2</li>
+          <li>3</li>
+        </ul>
       </form>
     </div>
   );
 };
-export default HeaderSearch;
+export default SearchBar;

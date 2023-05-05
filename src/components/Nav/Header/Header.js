@@ -3,7 +3,7 @@ import "../FontAwesome";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import ReactModal from "react-modal";
-import HeaderSearch from "./HeaderSearch";
+import SearchBar from "./SearchBar";
 import SideBar from "./SideBar";
 import { Link } from "react-router-dom";
 const Header = (props) => {
@@ -36,11 +36,16 @@ const Header = (props) => {
             icon="bars"
             onClick={() => setlistOpen(true)}
             className="bar"
-            style={{color: 'white'}}
+            style={{ color: "white" }}
           />
         </div>
         <div>
-        <Link to='searchtest'><FontAwesomeIcon icon="magnifying-glass" style={{color: 'white'}}/></Link>
+          <Link to="searchtest">
+            <FontAwesomeIcon
+              icon="magnifying-glass"
+              style={{ color: "white" }}
+            />
+          </Link>
           {/* <FontAwesomeIcon
             icon="magnifying-glass"
             onClick={() => setsearchBarOpen(true)}
