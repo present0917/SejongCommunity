@@ -1,7 +1,7 @@
 button {
     font: inherit;
     cursor: pointer;
-    background-color: #52b1c6;
+    background-color: #ab132f;
     border: 1px solid #ffffff;
     min-width: 70px;
     width: 12vw;
@@ -13,8 +13,8 @@ button {
 } 
 button:hover,
 button:active {
-  background-color: #225966;
-  border-color: #225966;
+  background-color: #4b0a16;
+  border-color: #ffffff;
   color:  white;
 }
 

@@ -36,10 +36,11 @@ const Header = (props) => {
             icon="bars"
             onClick={() => setlistOpen(true)}
             className="bar"
+            style={{color: 'white'}}
           />
         </div>
         <div>
-        <Link to='searchtest'><FontAwesomeIcon icon="magnifying-glass" /></Link>
+        <Link to='searchtest'><FontAwesomeIcon icon="magnifying-glass" style={{color: 'white'}}/></Link>
           {/* <FontAwesomeIcon
             icon="magnifying-glass"
             onClick={() => setsearchBarOpen(true)}

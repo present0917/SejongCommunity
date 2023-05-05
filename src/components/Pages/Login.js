@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { React, useState, useEffect } from "react";
 import SignUp from "./SignUp";
 import "./Login.css";
+import logo from '../../pic/logo.png'
 const Login = (props) => {
   const [signUpOpen, setSignUpOpen] = useState(false);
 
@@ -87,6 +88,9 @@ const Login = (props) => {
         password: password,
       }),
     });
+    const check = await response.json();
+    console.log('로그확인');
+    console.log(check)
     //const data = await response.json();
     const testres = await fetch("http://localhost:3001/res"); //테스트용
     const data = await testres.json(); //테스트용
@@ -114,10 +118,13 @@ const Login = (props) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        studentId: id,
+        studentId: Number(id),
         password: password,
       }),
     });
+    const check = await response.json();
+    console.log('로그확인');
+    console.log(check)
 
     try {
       if (!response.ok) {
@@ -175,10 +182,13 @@ const Login = (props) => {
   };
 
   return (
-    <div>
+    <div className="entire">
+   <img src={logo} className='logo'/>
       <div className="login-form">
+      
         <form onSubmit={handleSubmit}>
           <div>
+           
             <div className="login-form-el">
               <label htmlFor="ID">ID:</label>
               <br />

@@ -73,6 +73,7 @@ const Maketreemodal = (props) => {
 
       };
       signUpSubmit(signUpData);
+      alert(`${name}트리가 생성되었습니다`);
     }
     setDisabled(false);
   }

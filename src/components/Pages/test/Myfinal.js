@@ -19,6 +19,9 @@ const Myfinal = () => {
   const [showmadalshow, setshowmodalshow] = useState(false);
   const [patchmadalshow, setpatchmodalshow] = useState(false);
   const [cardInfo, setCardInfo] = useState(null);
+  const [idopen, setidopen] = useState(null);
+  const [majoropen, setmajoropen] = useState(null);
+
   const params = useParams();
   const showpatchmodal = () => {//수정 모달
     setpatchmodalshow(true);
@@ -106,6 +109,7 @@ const Myfinal = () => {
     // if (!data.tree1) {
     //   throw new Error('Invalid card data');
     // }
+    
     const mapping = await data.map((element) => {
       return {
         name: element.name,
