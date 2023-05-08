@@ -3,18 +3,16 @@ import { useLocation } from "react-router";
 
 const Search = (props) => {
   const [searchData, setSearchData] = useState([]);
+  const [page, setPage] = useState(1);
   const { state } = useLocation();
-  async function submitSearch(q) {
-    const searchText = q.target.value;
-    const response = await fetch("http://localhost:3001/search", {
+  //console.log(state);
+  async function submitSearch() {
+    const response = await fetch(`${state}&page=${page}`, {
       //"/forest"
-      method: "POST",
+      method: "GET",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        search: { searchText },
-      }),
     });
     try {
       if (!response.ok) {
@@ -24,7 +22,7 @@ const Search = (props) => {
       alert(e);
     }
   }
-  async function fetchData() {
+  async function searchTest() {
     const response = await fetch("http://localhost:3012/db");
     if (!response.ok) {
       throw new Error("Failed to fetch Search data");
@@ -43,11 +41,6 @@ const Search = (props) => {
     });
     setSearchData(mapping);
   }
-
-  useEffect(() => {
-    //fetchData();
-    console.log(state);
-  }, [state]);
 
   return (
     <div>

@@ -6,7 +6,7 @@
   border-bottom: 1px solid #e3e3e3;
   background-color: #fff;
 }
-.search-inputtext {
+.searchInputText {
   padding: 0 35px 0 10px;
   width: calc(100vw - 10px);
   height: 40px;
@@ -18,17 +18,9 @@
   background: #f2f2f2 url("/src/pic/search.png") no-repeat right 10px center;
   background-size: 15px 15px;
 }
-.search-inputtext:focus {
+.searchInputText:focus {
   outline: none;
 }
 .search > input::-ms-clear {
   display: none;
-}
-
-.search > ul {
-  list-style: none;
-}
-
-.search > ul > li {
-  float: left;
 }

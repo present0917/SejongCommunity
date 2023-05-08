@@ -20,7 +20,7 @@ const Forcheck = () => {
     });
     try {
       //서버 응답 x
-      if (!response.ok) { 
+      if (!response.ok) {
         throw new Error("서버와의 연결이 끊어졌습니다. 다시 로그인해주세요.");
       }
       const data = await response.json();
@@ -33,7 +33,7 @@ const Forcheck = () => {
     } catch (e) {
       alert(e);
       localStorage.setItem("isLoggedin", "0");
-      navigate('/login');
+      navigate("/login");
     }
   }
 
@@ -57,7 +57,7 @@ const Forcheck = () => {
       localStorage.setItem("isLoggedin", "0");
       sessionStorage.setItem("token", "");
       sessionStorage.setItem("tokenkey", "");
-      navigate('/login');
+      navigate("/login");
     }
   }
   //authCheck(); //실제
