@@ -1,7 +1,7 @@
 {
   "login": {
-    "studentId": "21212121",
-    "password": "121212121"
+    "studentId": "12121212",
+    "password": "121212122"
   },
   "res": {
     "errorCode": 401,
@@ -9,7 +9,7 @@
     "sessionId": "98765q4321"
   },
   "auth": {
-    "token": "98765q4321"
+    "status": 1
   },
   "signup": {
     "studentId": "12312312",

@@ -15,13 +15,24 @@ const Rec = (props) => {
 //       price: props.price
 //     });
 //   };
+        async function logout() {   //로그아웃
+          console.log('out');
+          const response = await fetch("/logout");
+          if (!response.ok) {
+            throw new Error('Failed to log out');
+          }
+        }
+
+
 console.log(props);
   return (
     <li className={classes.meal}>
       <div>
-        <h3>{props.data.studentId}</h3>
+        <h3>{props.data.studentId} <button onClick={logout}>log out</button></h3>
+        
         <div className={classes.description}>{props.data.nickname}</div>
-        <div className={classes.price}></div>
+        
+        <div className={classes.price}> </div>
         
       </div>
       <div>

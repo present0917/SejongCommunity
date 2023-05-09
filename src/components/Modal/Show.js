@@ -5,7 +5,8 @@ import { useParams } from 'react-router-dom';
 const Show = (props) => {
   const params = useParams();
   const { id, name, text, memo } = props.data;
-  const [des, setdes] = useState('need to get maybe error'); //입력 내용 담을곳
+  const [des, setdes] = useState('here is description'); //입력 내용 담을곳
+  const [stuid, setid] = useState('here is student id'); //입력 내용 담을곳
   console.log(id);//스티커아이디
   console.log(props.treeid);//트리id
   const Submithandler=(event)=>  
@@ -28,7 +29,9 @@ const Show = (props) => {
     const num=params.id;
     //console.log(num);
     const response = await fetch(`http://localhost:3002/${num}`);
-    //const response = await fetch(`http://localhost:3002/${num}/${id}`);
+
+    //const response = await fetch(`/${num}/${id}`);
+
     if (!response.ok) {
       throw new Error('Failed to fetch card data');
     }
@@ -38,11 +41,13 @@ const Show = (props) => {
     // }
     const mapping = await data.map((element) => {
       return {
-        des: element.memo
+        des: element.memo,
+        studid: element.studentId
       };
     });
     //setdes('test');
     setdes(mapping.des);
+    setid(mapping.studid);
     console.log(data);
     console.log(mapping);
   };
@@ -57,6 +62,10 @@ const Show = (props) => {
         </div>
         <div>
       {des}
+      </div>
+
+      <div>
+      {stuid}
       </div>
         <div className={classes.actions}>
           <button className={classes['button--alt']} onClick={props.onClose}>

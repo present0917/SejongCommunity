@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import { useState ,useEffect} from "react";
+import Rec2 from "../../etc/Rec2";
 
 const Treeselect =()=>
 {
@@ -60,12 +61,19 @@ const Treeselect =()=>
     return(
        
         <div>
-            test
+            {/* test
              {trees.map((treedata) => (
           
           <li key={treedata}> <Link to={`${treedata}`}>{treedata}</Link> </li>
+        ))}   */}
+
+        {trees.map((treedata) => (
+          
+          <Rec2 key={treedata} data={treedata}></Rec2>
         ))}  
+
         </div>
+
     )
 }
 export default Treeselect

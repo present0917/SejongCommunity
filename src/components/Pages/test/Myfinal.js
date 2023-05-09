@@ -160,15 +160,15 @@ const Myfinal = () => {
     fetchcard();
   }
 
-  function handleClick(data) {
+  function handleClick(data) { // 이거로 값을 채워서 스티커를 post로 보낸다.
 
     const newObject = {
-      id: Math.random(),
+      id: Math.random(), // 연동시 주석
       name: `${data.name}`,
       text: `${data.text}`,
       memo: `${data.memo}`,
-      //session: `session.storage ,
-      user: 1
+      user: 1,//연동시주석
+      treeid:params.id
     };
      setCards([...cards, newObject]);
      postcard(newObject);

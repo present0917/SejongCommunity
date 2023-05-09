@@ -10,7 +10,9 @@ const MyPage = () => {
         const [searchData, setSearchData] = useState([]);
         const [signUpOpen, setSignUpOpen] = useState(false);
         const [maketreeOpen, setmaketreeOpen] = useState(false);
-        async function fetchData() {
+
+
+        async function fetchData() {   //마이페이지정보
           const response = await fetch("http://localhost:3001/signup");
           if (!response.ok) {
             throw new Error('Failed to fetch Search data');
@@ -30,14 +32,27 @@ const MyPage = () => {
         function mytree(){
           navigate('/tree');
         }
-        // async function fetchData() {//연동시
-        //   const token=sessionStorage.getItem('token');
-        //   const response = await fetch(`http://localhost:3001/stickers`, {
-        //     method: 'GET',
-        //     headers: {
-        //       'Authorization': `${token}`
-        //     },
-        //   });
+        // async function fetchData() {  //마이페이지정보 연동시, 내 트리 번호도 받아야함.
+        //   const response = await fetch("/mypage");
+        //   if (!response.ok) {
+        //     throw new Error('Failed to fetch Search data');
+        //   }
+        //   const data = await response.json();
+        //   if (!data) {
+        //     throw new Error('No Search Data');
+        //   }
+        // //   const mapping = await data.posts.map((element) => {
+        // //   return {
+        // //       id: response.studentId,
+        // //       nickname: response.nickname,
+        // //     };
+        // //   });
+        //   setSearchData(data);
+        // }
+
+        
+        // async function logout() {   //로그아웃
+        //   const response = await fetch("/logout");
         //   if (!response.ok) {
         //     throw new Error('Failed to fetch Search data');
         //   }
@@ -48,7 +63,14 @@ const MyPage = () => {
         //   setSearchData(data);
         // }
 
+
+        function mytree(){
+
+          navigate('/tree');
+        }
       
+
+
         useEffect(()=>{
           fetchData();
         },[])
@@ -59,7 +81,8 @@ const MyPage = () => {
 
             <button onClick={() => { setmaketreeOpen(true); }}>트리생성</button>
 
-            <button onClick={() => { mytree() }}>내 트리로 이동하기</button>
+
+            <button onClick={() => { mytree() }}>내 트리</button>
 
             <FixUserModal signUpOpen={signUpOpen} setSignUpOpen={setSignUpOpen}> </FixUserModal>
             <Maketreemodal maketreeOpen={maketreeOpen} setmaketreeOpen={setmaketreeOpen}></Maketreemodal>
