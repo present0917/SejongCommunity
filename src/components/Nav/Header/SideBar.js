@@ -3,6 +3,7 @@ import "../FontAwesome";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./SideBar.css"
 import { Link } from "react-router-dom";
+import MyPage from "../../Pages/MyPage";
 const SideBar = (props) => {
   return (
      <ReactModal 
@@ -27,9 +28,10 @@ const SideBar = (props) => {
         className="xbutton"
       />
       <br/>
-      <ul>
+      {/* <ul>
         <li> <Link to='/mypage' onClick={1}>MyPage</Link></li>
-      </ul>
+      </ul> */}
+      <MyPage></MyPage>
     </ReactModal>
   );
 };
