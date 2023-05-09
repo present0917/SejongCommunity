@@ -4,7 +4,7 @@ import '../../etc/Button.css'
 import FixUserModal from "../Modal/FixUserModal";
 import Maketreemodal from "../Modal/Maketreemodal";
 import { useNavigate } from "react-router-dom";
-const MyPage = () => {
+const MyPage = (prop) => {
  
   const navigate = useNavigate();
         const [searchData, setSearchData] = useState([]);
@@ -28,9 +28,6 @@ const MyPage = () => {
         //     };
         //   });
           setSearchData(data);
-        }
-        function mytree(){
-          navigate('/tree');
         }
         // async function fetchData() {  //마이페이지정보 연동시, 내 트리 번호도 받아야함.
         //   const response = await fetch("/mypage");
@@ -66,7 +63,7 @@ const MyPage = () => {
 
         function mytree(){
 
-          navigate('/tree');
+          navigate(`/tree/${1}`); // 받은 값으로 이동하도록
         }
       
 
@@ -82,8 +79,8 @@ const MyPage = () => {
             <button onClick={() => { setmaketreeOpen(true); }}>트리생성</button>
 
 
-            <button onClick={() => { mytree() }}>내 트리</button>
-
+            <button onClick={() => { mytree(); prop.func(false)  } }>내 트리</button> 
+            {/* prop.func(false) */}
             <FixUserModal signUpOpen={signUpOpen} setSignUpOpen={setSignUpOpen}> </FixUserModal>
             <Maketreemodal maketreeOpen={maketreeOpen} setmaketreeOpen={setmaketreeOpen}></Maketreemodal>
             

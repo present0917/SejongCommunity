@@ -22,6 +22,7 @@ const Myfinal = () => {
   const [idopen, setidopen] = useState(null);
   const [majoropen, setmajoropen] = useState(null);
   const [cards, setCards] = useState([]); //입력 내용 담을곳
+  const [ismine, setismine] = useState(false); //입력 내용 담을곳
 
   const params = useParams();
   const showpatchmodal = () => {//수정 모달
@@ -33,8 +34,8 @@ const Myfinal = () => {
     setpatchmodalshow(false);
   };
   const showmodal = (info) => {// 뷰 모달
-    setCardInfo(info);
-    if(info.user==1)
+    setCardInfo(info.data);
+    if(info.data.user==1||ismine)
     {
       setshowmodalshow(true);
     }
@@ -124,7 +125,7 @@ const Myfinal = () => {
 
   // async function fetchcard() { //불러오기 연동시
   //   const num=params.id;
-  //   const response = await fetch(`/stickers/${num}`,;
+  //   const response = await fetch(`/forest/${num}/stickers`,;
   //   if (!response.ok) {
   //     throw new Error('Failed to fetch card data');
   //   }
@@ -139,6 +140,21 @@ const Myfinal = () => {
   //     };
   //   });
   //   setCards(mapping);
+  // };
+
+    // async function ismine() { //내 트리인지 불러오기
+  //   const num=params.id;
+  //   const response = await fetch(`/forest/${num}`,;
+  //   if (!response.ok) {
+  //     throw new Error('Failed to fetch card data');
+  //   }
+  //   const data = await response.json();
+  //   const mapping = await data.map((element) => {
+  //     return {
+  //      mine:element.ismine
+  //     };
+  //   });
+  //   setismine(mapping.mine);
   // };
 
   useEffect(() => {
