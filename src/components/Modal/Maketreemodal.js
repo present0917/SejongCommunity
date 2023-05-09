@@ -1,7 +1,7 @@
 import { React, useState,useEffect } from "react";
 import ReactModal from "react-modal";
-import CheckboxGroup from "../ui/checkbox/CheckboxGroup"
-import Checkbox from "../ui/checkbox/Checkbox";
+import CheckboxGroup from "../ui/checkbox/pre/CheckboxGroup"
+import Checkbox from "../ui/checkbox/pre/Checkbox";
 
 const Maketreemodal = (props) => {
 
@@ -160,7 +160,7 @@ const Maketreemodal = (props) => {
         {/* <button className="button" onClick={()=>{datatestprint();}}>PostTest</button> */}
         <div className="actions">
         
-          <button type="submit" className="button" disabled={disabled}>가입</button>
+          <button type="submit" className="button" disabled={disabled}>생성</button>
           <button type="button" className="button--alt" onClick={()=>props.setmaketreeOpen(false)}>취소</button>
         </div>
       </form>

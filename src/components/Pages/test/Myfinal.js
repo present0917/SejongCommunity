@@ -122,22 +122,13 @@ const Myfinal = () => {
     setCards(mapping);
   };
 
-  // async function fetchcard() { //불러오기 토큰
-  //   const token=sessionStorage.getItem("tokenkey");
+  // async function fetchcard() { //불러오기 연동시
   //   const num=params.id;
-  //   const response = await fetch(`http://localhost:3002/stickers`, {
-  //     method: 'GET',
-  //     headers: {
-  //       'Authorization': `${token}`
-  //     },
-  //   });
+  //   const response = await fetch(`/stickers/${num}`,;
   //   if (!response.ok) {
   //     throw new Error('Failed to fetch card data');
   //   }
   //   const data = await response.json();
-  //   // if (!data.tree1) {
-  //   //   throw new Error('Invalid card data');
-  //   // }
   //   const mapping = await data.map((element) => {
   //     return {
   //       name: element.name,
@@ -169,15 +160,15 @@ const Myfinal = () => {
     fetchcard();
   }
 
-  function handleClick(data) {
+  function handleClick(data) { // 이거로 값을 채워서 스티커를 post로 보낸다.
 
     const newObject = {
-      id: Math.random(),
+      id: Math.random(), // 연동시 주석
       name: `${data.name}`,
       text: `${data.text}`,
       memo: `${data.memo}`,
-      //session: `session.storage ,
-      user: 1
+      user: 1,//연동시주석
+      treeid:params.id
     };
      setCards([...cards, newObject]);
      postcard(newObject);
