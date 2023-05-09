@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from "react";
 import ReactModal from "react-modal";
-import CheckboxGroup from "../ui/checkbox/CheckboxGroup"
+import CheckboxGroup from "../ui/checkbox/CheckboxGroup";
 import Checkbox from "../ui/checkbox/Checkbox";
 import "./SignUp.css";
 const SignUp = (props) => {
@@ -92,12 +92,37 @@ const SignUp = (props) => {
           department: allowDepartment,
         },
       };
-      signUpSubmit(signUpData);
+      signUpSubmitTest(signUpData); //test
+      //signUpSubmit(signUpData); //실제
     }
     setDisabled(false);
   };
-  async function signUpSubmit(info) {
+  async function signUpSubmitTest(info) {
     const response = await fetch("http://localhost:3001/signup", {
+      ///members/add"
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(info),
+    });
+    try {
+      if (!response.ok) {
+        throw new Error(`${response.status} 에러가 발생했습니다.`);
+      }
+      const data = await response.json();
+      if (data.errorCode !== 0) {
+        throw new Error(`Error Code:${data.errorCode} ${data.message}`);
+      }
+      alert("회원가입이 완료되었습니다.");
+      props.setSignUpOpen(false);
+    } catch (e) {
+      alert(e);
+      initInput();
+    }
+  }
+  async function signUpSubmit(info) {
+    const response = await fetch("/signup", {
       ///members/add"
       method: "POST",
       headers: {

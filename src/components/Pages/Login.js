@@ -39,7 +39,7 @@ const Login = (props) => {
         password: { password },
       };
       //loginSubmit(authData); //실제
-      loginSubmitTest(authData); //테스트용
+      loginSubmitTest(authData); //test
       //nav();
     }
     setDisabled(false);
@@ -112,7 +112,7 @@ const Login = (props) => {
   }
   //실제
   async function loginSubmit(info) {
-    const response = await fetch("http://localhost:3001/login", {
+    const response = await fetch("/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

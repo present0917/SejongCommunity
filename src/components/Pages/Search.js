@@ -34,8 +34,8 @@ const Search = (props) => {
       alert(e);
     }
   }
-  async function searchTest() {
-    const response = await fetch("http://localhost:3012/db");
+  async function submitSearchTest() {
+    const response = await fetch("http://localhost:3001/forest");
     if (!response.ok) {
       throw new Error("Failed to fetch Search data");
     }

@@ -16,36 +16,26 @@ const Check = () => {
       if (!response.ok) {
         throw new Error("로그인 정보가 없습니다.");
       }
-      
-       if (
-            data.status==0
-       ) {
+
+      if (data.status === 0) {
         throw new Error("로그인이 만료되었습니다.");
-       }
-      
-       console.log('로그인확인')
-       setstatus(data.status);
-       console.log(status);
+      }
+
+      console.log("로그인확인");
+      setstatus(data.status);
+      console.log(status);
     } catch (e) {
-        console.log('error');
-      navigate('/login');
+      console.log("error");
+      navigate("/login");
     }
   }
 
-
   authTest();
 
+  if (status) console.log("ok");
+  else console.log("no");
 
-
-  
-
-  
-  if(status)
-  console.log('ok')
-  else
-  console.log('no')
-
-  return status ==1 ? (
+  return status === 1 ? (
     <Outlet />
   ) : (
     <Navigate to="/login" replace state={{ from: location }} />
