@@ -38,8 +38,8 @@ const Login = (props) => {
         studentId: { id },
         password: { password },
       };
-      //loginSubmit(authData); //실제
-      loginSubmitTest(authData); //test
+      loginSubmit(authData); //실제
+      // loginSubmitTest(authData); //test
       //nav();
     }
     setDisabled(false);
@@ -111,9 +111,20 @@ const Login = (props) => {
     }
   }
   //실제
-  async function loginSubmit(info) {
-    const response = await fetch("/login", {
+
+  // async function postcard(card) { //입력
+  //   const response = await fetch(`http://localhost:3002/${params.id}`, {
+  //     method: 'POST',
+  //     body: JSON.stringify(card),
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     }
+  //   });
+
+  async function loginSubmit() {
+    const response = await fetch("http://localhost:3001/login", {
       method: "POST",
+
       headers: {
         "Content-Type": "application/json",
       },
@@ -122,10 +133,6 @@ const Login = (props) => {
         password: password,
       }),
     });
-    const check = await response.json();
-    console.log("로그확인");
-    console.log(check);
-
     try {
       if (!response.ok) {
         throw new Error(`${response.status} 에러가 발생했습니다.`);
@@ -253,4 +260,5 @@ const Login = (props) => {
     </div>
   );
 };
+
 export default Login;

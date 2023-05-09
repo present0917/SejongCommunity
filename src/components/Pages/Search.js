@@ -30,10 +30,13 @@ const Search = (props) => {
       if (!response.ok) {
         throw new Error(`${response.status}`);
       }
+      const data = await response.json();
+      console.log(data);
     } catch (e) {
       alert(e);
     }
   }
+  submitSearch();
   async function submitSearchTest() {
     const response = await fetch("http://localhost:3001/forest");
     if (!response.ok) {
