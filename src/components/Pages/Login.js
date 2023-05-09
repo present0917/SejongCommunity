@@ -39,7 +39,11 @@ const Login = (props) => {
         password: { password },
       };
       loginSubmit(authData); //실제
+<<<<<<< HEAD
       //loginSubmitTest(authData); //test
+=======
+      // loginSubmitTest(authData); //test
+>>>>>>> origin/master
       //nav();
     }
     setDisabled(false);
@@ -134,7 +138,6 @@ const Login = (props) => {
       })
      
     });
-
     try {
       if (!response.ok) {
         throw new Error(`${response.status} 에러가 발생했습니다.`);
