@@ -57,11 +57,11 @@ function App() {
       element: <Login onlogin={loginHandler} onlogout={logoutHandler} />,
       errorElement: <Errorl />,
     },
-    {
-      path: "/searchtest",
-      element: <SearchTest />,
-      errorElement: <Errorl />,
-    },
+    // {
+    //   path: "/searchtest",
+    //   element: <SearchTest />,
+    //   errorElement: <Errorl />,
+    // },
   ]);
   return (
     <AutoLogin.Provider

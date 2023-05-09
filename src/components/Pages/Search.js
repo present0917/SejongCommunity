@@ -5,7 +5,19 @@ const Search = (props) => {
   const [searchData, setSearchData] = useState([]);
   const [page, setPage] = useState(1);
   const { state } = useLocation();
-  //console.log(state);
+
+  const handlePageUp = () => {
+    const nextPage = page + 1;
+    setPage(nextPage);
+    //submitSearch();
+  };
+  const handlePageDown = () => {
+    const nextPage = page - 1;
+    setPage(nextPage);
+    //submitSearch()
+  };
+
+  console.log(state);
   async function submitSearch() {
     const response = await fetch(`${state}&page=${page}`, {
       //"/forest"
@@ -60,8 +72,11 @@ const Search = (props) => {
       ))}
       {/*나중에 Link로 감싸서 해당 게시판 호출*/}
       <div>
-        <button>next</button>
-        <button>back</button>
+        <button hidden={page === 1} onClick={handlePageDown}>
+          back
+        </button>
+        {page}
+        <button onClick={handlePageUp}>next</button>
       </div>
     </div>
   );

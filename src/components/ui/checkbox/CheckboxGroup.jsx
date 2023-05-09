@@ -5,7 +5,8 @@ function CheckboxGroup({
   children,
   disabled: groupDisabled,
   values,
-  onChange
+  onChange,
+  style,
 }) {
   const isDisabled = (disabled) => disabled || groupDisabled;
   //isDisabled()함수는 disabled prop이 true로 넘어왔을 경우 내부에 있는 체크박스를 비활성시켜줌.
@@ -21,7 +22,7 @@ function CheckboxGroup({
   //toggleValue() 함수는 체크박스가 체크 여부에 따라서 values prop에 해당 값을 추가하거나 제거해줌.
 
   return (
-    <fieldset>
+    <fieldset className={style}>
       <legend>{label}</legend>
       <CheckboxContext.Provider value={{ isDisabled, isChecked, toggleValue }}>
         {children}
@@ -29,4 +30,4 @@ function CheckboxGroup({
     </fieldset>
   );
 }
-export default CheckboxGroup
+export default CheckboxGroup;

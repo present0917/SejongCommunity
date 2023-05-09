@@ -187,7 +187,9 @@ const SignUp = (props) => {
             <input id="name" name="name" value={name} onChange={onChangeName} />
             <i className={isName ? "alert-ok" : "alert"}>{nameMessage}</i>
           </div>
-          <CheckboxGroup label="공개할 정보를 선택하세요.">
+          <div>
+            공개할 정보
+            <br />
             <Checkbox
               values="studentId"
               checked={allowId}
@@ -202,7 +204,7 @@ const SignUp = (props) => {
             >
               학과
             </Checkbox>
-          </CheckboxGroup>
+          </div>
           {/* <button
             className="button"
             onClick={() => {

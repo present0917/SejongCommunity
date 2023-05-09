@@ -22,14 +22,14 @@ function ToggleButtonGroup({
   //toggleValue() 함수는 체크박스가 체크 여부에 따라서 values prop에 해당 값을 추가하거나 제거해줌.
 
   return (
-    <fieldset className={style}>
+    <div className={style}>
       <legend>{label}</legend>
       <ToggleButtonContext.Provider
         value={{ isDisabled, isChecked, toggleValue }}
       >
         {children}
       </ToggleButtonContext.Provider>
-    </fieldset>
+    </div>
   );
 }
 export default ToggleButtonGroup;

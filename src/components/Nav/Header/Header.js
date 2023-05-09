@@ -5,7 +5,7 @@ import { useState } from "react";
 import ReactModal from "react-modal";
 import SearchBar from "./SearchBar";
 import SideBar from "./SideBar";
-import { Link } from "react-router-dom";
+
 const Header = (props) => {
   const [searchBarOpen, setsearchBarOpen] = useState(false);
   const [listOpen, setlistOpen] = useState(false);

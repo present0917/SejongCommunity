@@ -21,12 +21,11 @@ function Checkbox({ children, disabled, value, checked, onChange, style }) {
   const { isDisabled, isChecked, toggleValue } = context;
 
   return (
-    <label>
+    <label className={style}>
       <input
         type="checkbox"
         disabled={isDisabled(disabled)}
         checked={isChecked(value)}
-        className={style}
         onChange={({ target: { checked } }) => toggleValue({ checked, value })}
       />
       {children}

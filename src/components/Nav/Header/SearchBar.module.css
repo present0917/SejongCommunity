@@ -6,7 +6,7 @@
   border-bottom: 1px solid #e3e3e3;
   background-color: #fff;
 }
-.searchInputText {
+/* .searchInputText {
   padding: 0 35px 0 10px;
   width: calc(100vw - 10px);
   height: 40px;
@@ -17,10 +17,90 @@
   font-size: 14px;
   background: #f2f2f2 url("/src/pic/search.png") no-repeat right 10px center;
   background-size: 15px 15px;
+} */
+.searchBox {
+  width: 100vw;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 5px;
 }
-.searchInputText:focus {
+.searchBoxSelect {
+  padding: 0 35px 0 10px;
+  width: 100px;
+  height: 40px;
+  line-height: 20px;
+  box-sizing: border-box;
+  border: 1px solid #e3e3e3;
+  color: #444444;
+  font-size: 14px;
+  text-align: left;
+  background: #f2f2f2;
+  margin-right: 5px;
+}
+.searchBoxSelect:focus {
+  outline: none;
+}
+.searchBoxText {
+  padding: 0 35px 0 10px;
+  width: calc(100vw - 115px);
+  height: 40px;
+  line-height: 20px;
+  box-sizing: border-box;
+  border: 1px solid #e3e3e3;
+  color: #444444;
+  font-size: 14px;
+  background: #f2f2f2 url("/src/pic/search.png") no-repeat right 10px center;
+  background-size: 15px 15px;
+}
+.searchBoxText:focus {
   outline: none;
 }
 .search > input::-ms-clear {
   display: none;
+}
+.searchToggleBox {
+  width: 100vw;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+.button > input {
+  display: none;
+}
+.button {
+  font: inherit;
+  cursor: pointer;
+  background-color: #ab132f;
+  border: 1px solid #ffffff;
+  width: 100px;
+  height: 25px;
+  border-radius: 25px;
+  color: white;
+  text-align: center;
+}
+
+.checked {
+  font: inherit;
+  cursor: pointer;
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  width: 100px;
+  height: 25px;
+  border-radius: 25px;
+  color: rgb(0, 0, 0);
+  text-align: center;
+}
+.default {
+  font: inherit;
+  cursor: pointer;
+  background-color: #ab132f;
+  border: 1px solid #ffffff;
+  width: 100px;
+  height: 25px;
+  border-radius: 25px;
+  color: white;
+  text-align: center;
 }
