@@ -14,7 +14,8 @@ function ToggleButtonGroup({
   //isChecked() 함수는 특정 체크박스의 값이 values prop에 포함되었는지를 확인해줌.
   const toggleValue = ({ checked, value }) => {
     if (checked) {
-      onChange(values.concat(value));
+      onChange([value]); //단일선택시
+      //onChange(values.concat(value)); //다중선택 사용시
     } else {
       onChange(values.filter((v) => v !== value));
     }
