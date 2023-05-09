@@ -49,6 +49,7 @@ const Header = (props) => {
           <FontAwesomeIcon
             icon="magnifying-glass"
             onClick={() => setsearchBarOpen(true)}
+            style={{ color: "white" }}
           />
         </div>
       </div>

@@ -38,8 +38,8 @@ const Login = (props) => {
         studentId: { id },
         password: { password },
       };
-      //loginSubmit(authData); //실제
-      loginSubmitTest(authData); //test
+      loginSubmit(authData); //실제
+      //loginSubmitTest(authData); //test
       //nav();
     }
     setDisabled(false);
@@ -111,20 +111,29 @@ const Login = (props) => {
     }
   }
   //실제
-  async function loginSubmit(info) {
-    const response = await fetch("/login", {
+
+  // async function postcard(card) { //입력
+  //   const response = await fetch(`http://localhost:3002/${params.id}`, {
+  //     method: 'POST',
+  //     body: JSON.stringify(card),
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     }
+  //   });
+
+  async function loginSubmit() {
+    const response = await fetch("http://localhost:3001/login", {
       method: "POST",
+     
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
         studentId: Number(id),
         password: password,
-      }),
+      })
+     
     });
-    const check = await response.json();
-    console.log("로그확인");
-    console.log(check);
 
     try {
       if (!response.ok) {
@@ -144,6 +153,7 @@ const Login = (props) => {
       setPassword("");
     }
   }
+  
 
   // const set = () => {
   //   props.onlogin("a", "b");
@@ -252,5 +262,6 @@ const Login = (props) => {
       <SignUp signUpOpen={signUpOpen} setSignUpOpen={setSignUpOpen}></SignUp>
     </div>
   );
-};
+}
+
 export default Login;

@@ -9,6 +9,7 @@ const Check = () => {
   const [status, setstatus] = useState(false);
   async function authTest() {
     //테스트용
+
     const response = await fetch("http://localhost:3001/auth");
     try {
       const data = await response.json();
