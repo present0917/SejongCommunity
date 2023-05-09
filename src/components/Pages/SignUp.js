@@ -92,8 +92,8 @@ const SignUp = (props) => {
           department: allowDepartment,
         },
       };
-      signUpSubmitTest(signUpData); //test
-      //signUpSubmit(signUpData); //실제
+      // signUpSubmitTest(signUpData); //test
+      signUpSubmit(signUpData); //실제
     }
     setDisabled(false);
   };
@@ -122,7 +122,7 @@ const SignUp = (props) => {
     }
   }
   async function signUpSubmit(info) {
-    const response = await fetch("/signup", {
+    const response = await fetch("/members", {
       ///members/add"
       method: "POST",
       headers: {

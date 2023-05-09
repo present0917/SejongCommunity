@@ -8,7 +8,7 @@ import ToggleButtonGroup from "../../ui/toggle/toggleButtonGroup";
 
 const SearchBar = (props) => {
   const [search, setSearch] = useState("");
-  const [tags, setTags] = useState([]);
+  const [tags, setTags] = useState([""]);
   const [select, setSelect] = useState("title");
 
   const navigate = useNavigate();
@@ -16,20 +16,27 @@ const SearchBar = (props) => {
     switch (select) {
       case "title":
         return `title=${search}`;
-      case "content":
-        return `content=${search}`;
+      case "description":
+        return `description=${search}`;
       case "nickname":
         return `nickname=${search}`;
       case "titcont":
-        return `title=${search}&content=${search}`;
+        return `title=${search}&description=${search}`;
       default:
         break;
     }
   }
   const handleSubmit = (e) => {
     e.preventDefault();
-    const search = `/forest?${handleSelect()}&tag=${tags.join("&tag=")}`;
-    navigate("/search", { state: search });
+    if(tags[0] === ""){
+      const search = `/forest?${handleSelect()}`;
+      navigate("/search", { state: search });
+    }
+    else{
+      const search = `/forest?${handleSelect()}&tag=${tags.join("&tag=")}`;
+      navigate("/search", { state: search });
+    }
+
     props.setsearchBarOpen(false);
   };
 
