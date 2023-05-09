@@ -14,6 +14,7 @@ import MyPage from "./components/Pages/MyPage";
 import SearchTest from "./components/Pages/SearchTest";
 import Treeselect from "./components/Pages/Treeselect";
 import Dynamictest from "./components/Pages/test/Dynamictest";
+import Check from "./components/Pages/Check";
 //  import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {

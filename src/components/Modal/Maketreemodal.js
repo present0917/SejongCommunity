@@ -1,7 +1,7 @@
 import { React, useState,useEffect } from "react";
 import ReactModal from "react-modal";
-import CheckboxGroup from "../ui/checkbox/CheckboxGroup"
-import Checkbox from "../ui/checkbox/Checkbox";
+import CheckboxGroup from "../ui/checkbox/pre/CheckboxGroup"
+import Checkbox from "../ui/checkbox/pre/Checkbox";
 
 const Maketreemodal = (props) => {
 
