@@ -3,8 +3,10 @@ import { useState,useEffect } from 'react';
 import '../../etc/Button.css'
 import FixUserModal from "../Modal/FixUserModal";
 import Maketreemodal from "../Modal/Maketreemodal";
+import { useNavigate } from "react-router-dom";
 const MyPage = () => {
  
+  const navigate = useNavigate();
         const [searchData, setSearchData] = useState([]);
         const [signUpOpen, setSignUpOpen] = useState(false);
         const [maketreeOpen, setmaketreeOpen] = useState(false);
@@ -25,7 +27,9 @@ const MyPage = () => {
         //   });
           setSearchData(data);
         }
-        
+        function mytree(){
+          navigate('/tree');
+        }
         // async function fetchData() {//연동시
         //   const token=sessionStorage.getItem('token');
         //   const response = await fetch(`http://localhost:3001/stickers`, {
@@ -55,7 +59,7 @@ const MyPage = () => {
 
             <button onClick={() => { setmaketreeOpen(true); }}>트리생성</button>
 
-            <button onClick={() => {  }}>내 트리로 이동하기</button>
+            <button onClick={() => { mytree() }}>내 트리로 이동하기</button>
 
             <FixUserModal signUpOpen={signUpOpen} setSignUpOpen={setSignUpOpen}> </FixUserModal>
             <Maketreemodal maketreeOpen={maketreeOpen} setmaketreeOpen={setmaketreeOpen}></Maketreemodal>

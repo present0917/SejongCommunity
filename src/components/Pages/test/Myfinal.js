@@ -122,22 +122,13 @@ const Myfinal = () => {
     setCards(mapping);
   };
 
-  // async function fetchcard() { //불러오기 토큰
-  //   const token=sessionStorage.getItem("tokenkey");
+  // async function fetchcard() { //불러오기 연동시
   //   const num=params.id;
-  //   const response = await fetch(`http://localhost:3002/stickers`, {
-  //     method: 'GET',
-  //     headers: {
-  //       'Authorization': `${token}`
-  //     },
-  //   });
+  //   const response = await fetch(`/stickers/${num}`,;
   //   if (!response.ok) {
   //     throw new Error('Failed to fetch card data');
   //   }
   //   const data = await response.json();
-  //   // if (!data.tree1) {
-  //   //   throw new Error('Invalid card data');
-  //   // }
   //   const mapping = await data.map((element) => {
   //     return {
   //       name: element.name,

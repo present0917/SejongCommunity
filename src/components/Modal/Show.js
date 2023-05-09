@@ -23,10 +23,12 @@ const Show = (props) => {
   useEffect(() => {
     desfetch();
   }, []);
-  async function desfetch() { //불러오기 GET /forest/{treeId}/stickers/{id}
+  async function desfetch() { //상세 불러오기 GET /stickers/{stickerKey}
+    console.log('desfetch');
     const num=params.id;
     //console.log(num);
     const response = await fetch(`http://localhost:3002/${num}`);
+    //const response = await fetch(`http://localhost:3002/${num}/${id}`);
     if (!response.ok) {
       throw new Error('Failed to fetch card data');
     }
@@ -42,7 +44,7 @@ const Show = (props) => {
     //setdes('test');
     setdes(mapping.des);
     console.log(data);
-    console.log(mapping.des);
+    console.log(mapping);
   };
   return (
     <Modal onClose={props.onClose}>
@@ -53,7 +55,9 @@ const Show = (props) => {
         <div>
           {text}
         </div>
+        <div>
       {des}
+      </div>
         <div className={classes.actions}>
           <button className={classes['button--alt']} onClick={props.onClose}>
             Close
