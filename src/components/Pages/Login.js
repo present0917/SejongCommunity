@@ -38,8 +38,8 @@ const Login = (props) => {
         studentId: { id },
         password: { password },
       };
-      //loginSubmit(authData); //실제
-      loginSubmitTest(authData); //test
+      loginSubmit(authData); //실제
+      // loginSubmitTest(authData); //test
       //nav();
     }
     setDisabled(false);
@@ -122,10 +122,6 @@ const Login = (props) => {
         password: password,
       }),
     });
-    const check = await response.json();
-    console.log("로그확인");
-    console.log(check);
-
     try {
       if (!response.ok) {
         throw new Error(`${response.status} 에러가 발생했습니다.`);

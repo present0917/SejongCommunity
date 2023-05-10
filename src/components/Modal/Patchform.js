@@ -3,6 +3,7 @@ import classes from './Form.module.css';
 import { useState } from 'react';
 
 const Patchform = (props) => {
+  console.log(props);
   const [name, setName] = useState('');
   const [text, settext] = useState('');
   const [memo, setmemo] = useState('');

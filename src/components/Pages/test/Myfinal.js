@@ -35,7 +35,7 @@ const Myfinal = () => {
   };
   const showmodal = (info) => {// 뷰 모달
     setCardInfo(info.data);
-    if(info.data.user==1||ismine)
+    if(info.data.user==1||info.ismine)
     {
       setshowmodalshow(true);
     }
@@ -66,7 +66,7 @@ const Myfinal = () => {
   }
 
   async function fix(data) { //수정
-    const response = await fetch(`http://localhost:3002/${params.id}/${+data.id}`, {
+    const response = await fetch(`/${params.id}/${+data.id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json'
@@ -100,47 +100,52 @@ const Myfinal = () => {
   //   setCards(mapping);
   // };
 
-  async function fetchcard() { //불러오기
-    const num=params.id;
-    console.log(num);
-    const response = await fetch(`http://localhost:3002/${num}`);
-    if (!response.ok) {
-      throw new Error('Failed to fetch card data');
-    }
-    const data = await response.json();
-    // if (!data.tree1) {
-    //   throw new Error('Invalid card data');
-    // }
-    
-    const mapping = await data.map((element) => {
-      return {
-        name: element.name,
-        text: element.text,
-        id:element.id,
-        user:element.user
-      };
-    });
-    setCards(mapping);
-  };
-
-  // async function fetchcard() { //불러오기 연동시
+  // async function fetchcard() { //불러오기
   //   const num=params.id;
-  //   const response = await fetch(`/forest/${num}/stickers`,;
+  //   console.log(num);
+  //   const response = await fetch(`http://localhost:3002/${num}`);
   //   if (!response.ok) {
   //     throw new Error('Failed to fetch card data');
   //   }
   //   const data = await response.json();
+  //   // if (!data.tree1) {
+  //   //   throw new Error('Invalid card data');
+  //   // }
+    
   //   const mapping = await data.map((element) => {
   //     return {
   //       name: element.name,
   //       text: element.text,
   //       id:element.id,
-  //       memo:element.memo,
   //       user:element.user
   //     };
   //   });
   //   setCards(mapping);
   // };
+
+  async function fetchcard() { //불러오기 연동시
+    const num=params.id;
+    const response = await fetch(`/forest/${num}`);
+    if (!response.ok) {
+      throw new Error('Failed to fetch card data');
+    }
+    const data = await response.json();
+    console.log(data)
+    const mapping = await data.stickers.map((element) => {
+      return {
+        name: 1,
+        text: element.title,
+        id:element.stickerKey,
+        memo:element.message,
+        user:element.writer
+      };
+    });
+    const status =await data.isMine;
+    setCards(mapping);
+    console.log(status);
+    setismine(status);
+    console.log(cards);
+  };
 
     // async function ismine() { //내 트리인지 불러오기
   //   const num=params.id;
@@ -197,8 +202,8 @@ const Myfinal = () => {
       <div className="container">
         <img src={board} className="board" />
          {cards.map((cardData) => (
-          <Crdtest key={cardData.id} data={cardData}
-            func={showmodal}
+          <Crdtest key={Math.random()} data={cardData}
+            func={showmodal} ismine={ismine}
           />
         ))} 
       </div>

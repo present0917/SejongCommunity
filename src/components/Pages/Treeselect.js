@@ -22,16 +22,26 @@ const Treeselect =()=>
     //   };    
 
       async function fetchtrees() { //불러오기 테스트
-        const response = await fetch('http://localhost:3002/db');
+        const response = await fetch('/forest');
         if (!response.ok) {
           throw new Error('Failed to fetch trees');
         }
         const data = await response.json();
 
-        const filteredData =Object.keys(data);
+        //const filteredData =Object.keys(data);
 
-        console.log(filteredData);
-        settrees(filteredData)
+        const mapping = await data.data.map((element) => {
+          return {
+            id: element.treeKey,
+            title: element.title,
+            maintext: element.description,
+            tags: [element.tags],
+          };
+        });
+        console.log(mapping);
+
+        //settrees(filteredData)
+        settrees(mapping)
 
       };    
 
@@ -69,7 +79,7 @@ const Treeselect =()=>
 
         {trees.map((treedata) => (
           
-          <Rec2 key={treedata} data={treedata}></Rec2>
+          <Rec2 key={treedata.id} data={treedata}></Rec2>
         ))}  
 
         </div>
