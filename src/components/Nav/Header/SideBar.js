@@ -31,7 +31,7 @@ const SideBar = (props) => {
       {/* <ul>
         <li> <Link to='/mypage' onClick={1}>MyPage</Link></li>
       </ul> */}
-      <MyPage></MyPage>
+      <MyPage func={props.setlistOpen}></MyPage>
     </ReactModal>
   );
 };
