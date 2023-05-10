@@ -111,18 +111,8 @@ const Login = (props) => {
     }
   }
   //실제
-
-  // async function postcard(card) { //입력
-  //   const response = await fetch(`http://localhost:3002/${params.id}`, {
-  //     method: 'POST',
-  //     body: JSON.stringify(card),
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     }
-  //   });
-
-  async function loginSubmit() {
-    const response = await fetch("http://localhost:3001/login", {
+  async function loginSubmit(info) {
+    const response = await fetch("/login", {
       method: "POST",
 
       headers: {
