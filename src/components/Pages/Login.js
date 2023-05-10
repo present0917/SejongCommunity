@@ -39,7 +39,7 @@ const Login = (props) => {
         password: { password },
       };
       loginSubmit(authData); //실제
-      //loginSubmitTest(authData); //test
+      // loginSubmitTest(authData); //test
       //nav();
     }
     setDisabled(false);
@@ -134,6 +134,9 @@ const Login = (props) => {
       })
      
     });
+    const check = await response.json();
+    console.log("로그확인");
+    console.log(check);
 
     try {
       if (!response.ok) {
