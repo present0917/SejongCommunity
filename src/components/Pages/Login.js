@@ -3,7 +3,7 @@ import { React, useState, useEffect } from "react";
 import SignUp from "./SignUp";
 import "./Login.css";
 import schoollogo from "../../pic/logo.png";
-import logo from "../../pic/logo2.png";
+import logo from "../../pic/logo3.png";
 import LoginFooter from "../Nav/LoginFooter";
 const Login = (props) => {
   const [signUpOpen, setSignUpOpen] = useState(false);
