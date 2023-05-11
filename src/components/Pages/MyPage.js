@@ -62,11 +62,47 @@ const MyPage = (prop) => {
         // }
 
 
+        async function logincheck() {   //test
+          console.log('check');
+          const response = await fetch(`/login`, {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+             
+          });
+
+          if (!response.ok) {
+            throw new Error('Failed to check');
+          }
+          console.log(response);
+        }
+
+
         function mytree(){
 
           navigate(`/tree/${1}`); // 받은 값으로 이동하도록
         }
       
+
+        async function deletemytree() {   //내트리지우기
+          const response = await fetch("");
+          if (!response.ok) {
+            throw new Error('Failed to fetch del tree data');
+          }
+          const data = await response.json();
+          if (!data) {
+            throw new Error('No Search Data');
+          }
+          console.log(data);
+        //   const mapping = await data.posts.map((element) => {
+        //   return {
+        //       id: response.studentId,
+        //       nickname: response.nickname,
+        //     };
+        //   });
+          setSearchData(data);
+        }
 
 
         useEffect(()=>{
@@ -75,13 +111,15 @@ const MyPage = (prop) => {
         return (
         <div>
             <Rec data={searchData}></Rec>
+            {/* 로그아웃함수도 Rec속에있다. */}
             <button onClick={() => { setSignUpOpen(true); }}>정보 수정</button>
 
             <button onClick={() => { setmaketreeOpen(true); }}>트리생성</button>
 
 
             <button onClick={() => { mytree(); prop.func(false)  } }>내 트리</button> 
-            <button onClick={() => { mytree(); prop.func(false)  } }>트리삭제</button> 
+            <button onClick={() => { deletemytree(); prop.func(false)  } }>트리삭제</button> 
+            <button onClick={logincheck}>check</button>
             {/* prop.func(false) */}
             <FixUserModal signUpOpen={signUpOpen} setSignUpOpen={setSignUpOpen}> </FixUserModal>
             <Maketreemodal maketreeOpen={maketreeOpen} setmaketreeOpen={setmaketreeOpen}></Maketreemodal>

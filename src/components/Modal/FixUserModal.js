@@ -99,7 +99,7 @@ const FixUserModal = (props) => {
   const handleSubmit = (e) => {
     setDisabled(true);
     // e.preventDefault();
-    if(!isPass || !isName){
+    if( !isName){
         alert("입력 정보를 다시 확인해주세요.");
     } else {
       const signUpData = {
@@ -190,11 +190,11 @@ const FixUserModal = (props) => {
           <i className={isId ? "alert-ok":"alert"}> {idMessage} </i>
         </div>
 
-        <div className="form-el">
+        {/* <div className="form-el">
           <label htmlFor="password">Password</label> <br />
           <input type="password" id="password" name="password" value={password} onChange={onChangePassword}  />
           <i className={isPass ? "alert-ok":"alert"}>{passwordMessage}</i>
-        </div>
+        </div> */}
 
         <div className="form-el">
           <label htmlFor="name">Nick Name</label> <br />

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import PrintFetch from "../http/PrintFetch";
-
+import Alertlist from "../../etc/Alertlist";
 const Alert = () => {
     const [testData,setTestData] = useState([])
     async function fetchtest() {
@@ -18,9 +18,9 @@ const Alert = () => {
     return (
 
         <div>
-            alert
-            <button onClick={fetchtest}>fetch</button>
-            <PrintFetch data={testData} key={testData.id}></PrintFetch>
+            alert page
+            {/* <button onClick={fetchtest}>fetch</button> */}
+            <Alertlist data={1} key={1}></Alertlist>
         </div>
     )
 }
