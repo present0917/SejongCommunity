@@ -15,6 +15,7 @@
     "i": "^0.3.7",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.2",
+    "react-cookies": "^0.1.1",
     "react-dom": "^18.2.0",
     "react-modal": "^3.16.1",
     "react-router-dom": "^6.9.0",
@@ -22,14 +23,12 @@
     "styled-components": "^5.3.8",
     "web-vitals": "^2.1.4"
   },
-  
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -49,5 +48,4 @@
     ]
   },
   "proxy": "http://localhost:8080"
-
 }

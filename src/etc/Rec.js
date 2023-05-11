@@ -1,5 +1,4 @@
 import { useState,useEffect } from 'react';
-
 import classes from './Rec.module.css';
 
 const Rec = (props) => {
@@ -17,11 +16,21 @@ const Rec = (props) => {
 //   };
         async function logout() {   //로그아웃
           console.log('out');
-          const response = await fetch("/logout");
+          const response = await fetch(`/logout`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+             
+          });
+
           if (!response.ok) {
             throw new Error('Failed to log out');
           }
+          console.log(response);
         }
+
+       
 
 
 console.log(props);
@@ -29,6 +38,7 @@ console.log(props);
     <li className={classes.meal}>
       <div>
         <h3>{props.data.studentId} <button onClick={logout}>log out</button></h3>
+       
         <div className={classes.price}>{props.data.name} </div>
         <div className={classes.price}>{props.data.department} </div>
         <div className={classes.description}>닉네임: {props.data.nickname}</div>
