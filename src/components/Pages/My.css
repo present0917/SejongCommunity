@@ -2,15 +2,15 @@
 .container {
   overflow: auto;
   margin:auto;
-  width: 80vmax;
-  height: 80vmin;
-  max-width: 80vmax;
-  max-height: 80vmin;
+  width: 80vw;
+  height: 70vh;
+  max-width:  80vw;
+  max-height:  70vh;
   }
   .board{
     /* border: 1px solid black; */
-    width: 80vmax;
-    height: 80vmin;
+    width: 80vw;
+    height: 70vh;
     position: absolute;
   }
 .Crd {
@@ -18,8 +18,8 @@
   position: relative;
   /* border: 1px solid black; */
   margin: 10px;
-  max-width: 12vmax;
-  max-height: 12vmax;
+  max-width: 15vmax;
+  max-height: 15vmax;
   top:15px;
   left:15px;
   }
@@ -42,8 +42,9 @@
     max-height: 20vh;
   }
   .test{
-    position: absolute;
+    position: fixed;
     top: 85%;
-    left:85%;
+   
+    right:40vw;
 
   }

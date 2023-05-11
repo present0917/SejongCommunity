@@ -199,7 +199,6 @@ const Myfinal = () => {
 
   return (
     <div>
-      <div>{params.id}</div>
       <div className="container">
         <img src={board} className="board" />
          {cards.map((cardData) => (

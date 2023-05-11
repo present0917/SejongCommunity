@@ -59,11 +59,10 @@ console.log(props);
       <button onClick={check}>log out</button>
         <h3>{props.data.studentId} </h3>
 
-        <div className={classes.price}>{props.data.name} </div>
-        <div className={classes.price}>{props.data.department} </div>
-        <div className={classes.description}>닉네임: {props.data.nickname}</div>
+        <div>{props.data.name} </div>
+        <div>{props.data.department} </div>
+        <div>닉네임: {props.data.nickname}</div>
         
-        <div className={classes.price}> </div>
         
       </div>
       <div>

@@ -137,7 +137,7 @@ const MyPage = (prop) => {
 
             <button onClick={() => { mytree(); prop.func(false)  } }>내 트리</button> 
             <button onClick={() => { deletemytree(); prop.func(false)  } }>트리삭제</button> 
-            <button onClick={logincheck}>check</button>
+            {/* <button onClick={logincheck}>check</button> */}
             {/* prop.func(false) */}
             <FixUserModal signUpOpen={signUpOpen} setSignUpOpen={setSignUpOpen}> </FixUserModal>
             <Maketreemodal maketreeOpen={maketreeOpen} setmaketreeOpen={setmaketreeOpen}></Maketreemodal>
