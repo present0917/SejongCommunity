@@ -52,17 +52,13 @@ console.log(props);
   return (
     <li className={classes.meal}>
       <div>
-<<<<<<< HEAD
-        <h3>{props.data.studentId} <button onClick={logout}>log out</button></h3>
-       
-=======
+
         
         
       {/* <button onClick={login}>log in</button> */}
       <button onClick={check}>log out</button>
         <h3>{props.data.studentId} </h3>
-        
->>>>>>> origin/master
+
         <div className={classes.price}>{props.data.name} </div>
         <div className={classes.price}>{props.data.department} </div>
         <div className={classes.description}>닉네임: {props.data.nickname}</div>

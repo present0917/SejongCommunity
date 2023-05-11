@@ -117,10 +117,7 @@ const MyPage = (prop) => {
         //     };
         //   });
           setSearchData(data);
-<<<<<<< HEAD
-=======
-          
->>>>>>> origin/master
+         
         }
 
 
@@ -131,18 +128,16 @@ const MyPage = (prop) => {
         <div>
             <Rec data={searchData}></Rec>
             {/* 로그아웃함수도 Rec속에있다. */}
-<<<<<<< HEAD
-            <button onClick={() => { setSignUpOpen(true); }}>정보 수정</button>
-=======
+
             <button onClick={() => { setSignUpOpen(true);   } }>정보 수정</button>
->>>>>>> origin/master
+
 
             <button onClick={() => { setmaketreeOpen(true);   }}>트리생성</button>
 
 
             <button onClick={() => { mytree(); prop.func(false)  } }>내 트리</button> 
             <button onClick={() => { deletemytree(); prop.func(false)  } }>트리삭제</button> 
-            <button onClick={logincheck}>check</button>
+            {/* <button onClick={logincheck}>check</button> */}
             {/* prop.func(false) */}
             <FixUserModal signUpOpen={signUpOpen} setSignUpOpen={setSignUpOpen}> </FixUserModal>
             <Maketreemodal maketreeOpen={maketreeOpen} setmaketreeOpen={setmaketreeOpen}></Maketreemodal>
