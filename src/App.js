@@ -56,7 +56,7 @@ function App() {
     {
       path: "/login",
       element: <Login onlogin={loginHandler} onlogout={logoutHandler} />,
-      errorElement: <Errorl />,
+      errorElement: <Error />,
     },
     // {
     //   path: "/searchtest",

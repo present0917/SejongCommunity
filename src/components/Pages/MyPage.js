@@ -102,6 +102,7 @@ const MyPage = (prop) => {
         //     };
         //   });
           setSearchData(data);
+          
         }
 
 
@@ -112,9 +113,9 @@ const MyPage = (prop) => {
         <div>
             <Rec data={searchData}></Rec>
             {/* 로그아웃함수도 Rec속에있다. */}
-            <button onClick={() => { setSignUpOpen(true); }}>정보 수정</button>
+            <button onClick={() => { setSignUpOpen(true);   } }>정보 수정</button>
 
-            <button onClick={() => { setmaketreeOpen(true); }}>트리생성</button>
+            <button onClick={() => { setmaketreeOpen(true);   }}>트리생성</button>
 
 
             <button onClick={() => { mytree(); prop.func(false)  } }>내 트리</button> 

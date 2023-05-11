@@ -2,8 +2,9 @@ import { React, useState,useEffect } from "react";
 import ReactModal from "react-modal";
 import CheckboxGroup from "../ui/checkbox/pre/CheckboxGroup"
 import Checkbox from "../ui/checkbox/pre/Checkbox";
+import { useNavigate } from "react-router";
 const FixUserModal = (props) => {
-
+const navigate=useNavigate();
   const [id, setId] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
@@ -32,6 +33,7 @@ const FixUserModal = (props) => {
         console.log(response);
         try{
           if(!response.ok){
+            navigate('/error');
             throw new Error(`${response.status} 에러가 발생했습니다.`);
           }
           const data = await response.json();
@@ -127,6 +129,7 @@ const FixUserModal = (props) => {
         try{
           if(!response.ok){
             throw new Error(`${response.status} 에러가 발생했습니다.`);
+            
           }
           const data = await response.json();
           if(data.errorCode != null){

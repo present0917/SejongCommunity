@@ -3,8 +3,18 @@
     bottom: 0;
     left: 0;
     right: 0;
-    height: 45px;
+    height: 7vh;
     background-color: #3b3939;
+}
+
+.bottomlogin {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 10vh;
+    background-color: #3b3939;
+    text-align: center;
 }
 
 nav {
@@ -17,4 +27,11 @@ nav>div {
     width: 33%;
     height: 45px;
     line-height: 45px;
+}
+.bottomicon{
+    margin-top:1vh;
+    font-size:calc(3vh + 1vw);
+    
+   
+
 }

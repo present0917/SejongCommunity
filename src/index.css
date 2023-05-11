@@ -6,9 +6,23 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #EEEDE3 !important; 
+ font-family:"neofont"; 
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+/* @font-face {
+  font-family: 'newfont';
+  src: url("./font/NeoDunggeunmoPro-Regular.woff2") format('woff2'),
+  url("./font/NeoDunggeunmoPro-Regular.woff") format('woff'),
+  url("./font/NeoDunggeunmoPro-Regular.ttf") format('truetype')
+} */
+
+@font-face {
+	font-family: "newfont";
+	src: url("./font/NeoDunggeunmoPro-Regular.woff2"),
+  url("./font/NeoDunggeunmoPro-Regular.woff"),
+  url("./font/NeoDunggeunmoPro-Regular.ttf")
 }

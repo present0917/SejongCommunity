@@ -2,7 +2,9 @@ import { useNavigate } from "react-router-dom";
 import { React, useState, useEffect } from "react";
 import SignUp from "./SignUp";
 import "./Login.css";
-import logo from "../../pic/logo.png";
+import schoollogo from "../../pic/logo.png";
+import logo from "../../pic/logo2.png";
+import LoginFooter from "../Nav/LoginFooter";
 const Login = (props) => {
   const [signUpOpen, setSignUpOpen] = useState(false);
 
@@ -181,23 +183,26 @@ const Login = (props) => {
 
   return (
     <div className="entire">
-      <img src={logo} className="logo" />
+        
+      {/* <img src={schoollogo} className="schoollogo" /> */}
+      <img src={logo} className="logo" />      
       <div className="login-form">
         <form onSubmit={handleSubmit}>
           <div>
             <div className="login-form-el">
-              <label htmlFor="ID">ID:</label>
+              <label htmlFor="ID"></label>
               <br />
-              <input id="id" name="id" value={id} onChange={onChangeId} />
+              <input id="id" name="id" value={id} onChange={onChangeId} placeholder="ID" />
               <i className={isId ? "alert-ok" : "alert"}> {idMessage} </i>
             </div>
             <div className="login-form-el">
-              <label htmlFor="password">PASSWORD:</label>
+              <label htmlFor="password"></label>
               <br />
               <input
                 type="password"
                 id="password"
                 name="password"
+                placeholder="PASSWORD"
                 value={password}
                 onChange={onChangePass}
               />
@@ -206,11 +211,13 @@ const Login = (props) => {
                 {passwordMessage}{" "}
               </i>
             </div>
+
+            <br></br>
           </div>
 
           <div className="login-actions">
             <button className="button" type="submit" disabled={disabled}>
-              Login
+            Login
             </button>
             <button
               className="button"
@@ -247,6 +254,8 @@ const Login = (props) => {
         DataTestButton
       </button> */}
       <SignUp signUpOpen={signUpOpen} setSignUpOpen={setSignUpOpen}></SignUp>
+      <LoginFooter></LoginFooter>
+
     </div>
   );
 };
