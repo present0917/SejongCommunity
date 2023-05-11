@@ -31,28 +31,28 @@ const Header = (props) => {
         <SearchBar setsearchBarOpen={setsearchBarOpen} />
       </ReactModal>
       <div className="contents">
-        <div>
+
+        <div className="topicon">
           <FontAwesomeIcon
             icon="bars"
             onClick={() => setlistOpen(true)}
             className="bar"
             style={{ color: "white" }}
           />
-        </div>
-        <div>
-          {/* <Link to="searchtest">
-            <FontAwesomeIcon
-              icon="magnifying-glass"
-              style={{ color: "white" }}
-            />
-          </Link> */}
+          </div>
+
+
+          <div className="topicon">
           <FontAwesomeIcon
             icon="magnifying-glass"
             onClick={() => setsearchBarOpen(true)}
             style={{ color: "white" }}
           />
+          </div>
+
+
         </div>
-      </div>
+
 
       <SideBar listOpen={listOpen} setlistOpen={setlistOpen} />
     </header>

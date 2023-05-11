@@ -6,13 +6,13 @@ const Footer = () => {
     return (
       <footer>
         <nav className="bottom">
-                <div>
+                <div className="bottomicon">
                     <Link to='/'><FontAwesomeIcon icon="home" style={{color: 'white'}} /></Link>
                 </div>
-                <div>
+                <div className="bottomicon">
                     <Link to='alert'><FontAwesomeIcon icon="bell" style={{color: 'white'}} /></Link>
                 </div>
-                <div>
+                <div className="bottomicon">
                     <Link to='tree'><FontAwesomeIcon icon="user" style={{color: 'white'}} /></Link>
                 </div>
             </nav>

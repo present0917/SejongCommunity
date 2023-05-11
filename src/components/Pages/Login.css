@@ -1,29 +1,36 @@
 .login-form {
     justify-content: center;
     align-content: center;
+    border: 2px solid #b3b1b1;
+    padding: 50px 100px 50px 100px;
 }
 .logo{
     position: relative;
     text-align: center;
+    width: 40vh;
+    max-width: 40vh;
+    height: auto;
 }
 .entire{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 80vh;
     flex-direction: column;
+    
 }
 .login-form-el {
     position: relative;
+   
     
 }
 .login-form input {
     border: 1px solid #000000;
-    height: 25px;
-    min-width: 180px;
-    width: 50vw;
-    border-radius: 25px;
+    height: 30px;
+    min-width: 50px;
+    width: 30vw;
     text-align: left;
+    
 }
 .login-actions {
     position: relative;

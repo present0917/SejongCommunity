@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router"
 import { useEffect } from "react";
-const Error =()=>
+const Errorlogin =()=>
 {
     const navigate= useNavigate();
     useEffect(() => {
@@ -16,9 +16,9 @@ const Error =()=>
       }, []); 
     return(
         <div className="error">
-            에러가 발생했습니다.<br></br>
+            로그인이 만료되었습니다.<br></br>
             3초 후 로그인 화면으로 이동합니다.
         </div>
     )
 }
-export default Error
+export default Errorlogin

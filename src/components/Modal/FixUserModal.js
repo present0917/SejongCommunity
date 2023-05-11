@@ -2,8 +2,9 @@ import { React, useState,useEffect } from "react";
 import ReactModal from "react-modal";
 import CheckboxGroup from "../ui/checkbox/pre/CheckboxGroup"
 import Checkbox from "../ui/checkbox/pre/Checkbox";
+import { useNavigate } from "react-router";
 const FixUserModal = (props) => {
-
+const navigate=useNavigate();
   const [id, setId] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
@@ -32,6 +33,7 @@ const FixUserModal = (props) => {
         console.log(response);
         try{
           if(!response.ok){
+            navigate('/error');
             throw new Error(`${response.status} 에러가 발생했습니다.`);
           }
           const data = await response.json();
@@ -99,7 +101,7 @@ const FixUserModal = (props) => {
   const handleSubmit = (e) => {
     setDisabled(true);
     // e.preventDefault();
-    if(!isPass || !isName){
+    if( !isName){
         alert("입력 정보를 다시 확인해주세요.");
     } else {
       const signUpData = {
@@ -127,6 +129,7 @@ const FixUserModal = (props) => {
         try{
           if(!response.ok){
             throw new Error(`${response.status} 에러가 발생했습니다.`);
+            
           }
           const data = await response.json();
           if(data.errorCode != null){
@@ -190,11 +193,11 @@ const FixUserModal = (props) => {
           <i className={isId ? "alert-ok":"alert"}> {idMessage} </i>
         </div>
 
-        <div className="form-el">
+        {/* <div className="form-el">
           <label htmlFor="password">Password</label> <br />
           <input type="password" id="password" name="password" value={password} onChange={onChangePassword}  />
           <i className={isPass ? "alert-ok":"alert"}>{passwordMessage}</i>
-        </div>
+        </div> */}
 
         <div className="form-el">
           <label htmlFor="name">Nick Name</label> <br />
