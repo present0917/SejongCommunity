@@ -6,12 +6,27 @@ import Maketreemodal from "../Modal/Maketreemodal";
 import { useNavigate } from "react-router-dom";
 const MyPage = (prop) => {
  
+  
   const navigate = useNavigate();
         const [searchData, setSearchData] = useState([]);
         const [signUpOpen, setSignUpOpen] = useState(false);
         const [maketreeOpen, setmaketreeOpen] = useState(false);
-
-
+        const [islogin, setislogin] = useState(false);
+        async function logintest() {
+          //실제
+          const response = await fetch("/login",);
+          
+            //서버 응답 x
+            if (!response.ok) { 
+              navigate('/login');
+            }
+            const data = await response.json();
+            console.log(data);
+            if(data==false)
+              navigate('/Errorlogin');
+      
+          
+        }
         async function fetchData() {   //마이페이지정보
           const response = await fetch("/members");
           if (!response.ok) {

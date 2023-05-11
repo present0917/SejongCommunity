@@ -2,7 +2,10 @@ import { useState,useEffect } from 'react';
 import classes from './Rec.module.css';
 import { useNavigate } from 'react-router';
 const Rec = (props) => {
+
   const navigate= useNavigate();
+ 
+
 //   const cartCtx = useContext(CartContext);
 
 //   const price = `$${props.price.toFixed(2)}`;
@@ -15,6 +18,11 @@ const Rec = (props) => {
 //       price: props.price
 //     });
 //   };
+function check(){
+  const confirm = window.confirm("정말 로그아웃 하시겠습니까?");
+  if(confirm==true)
+  logout();
+}
         async function logout() {   //로그아웃
           console.log('out');
           const response = await fetch(`/logout`, {
@@ -28,12 +36,13 @@ const Rec = (props) => {
           if (!response.ok) {
             throw new Error('Failed to log out');
           }
+          navigate('/login');
           console.log(response);
         }
-function login()
-{
-  navigate('/login');
-}
+// function login()
+// {
+//   navigate('/login');
+// }
        
 
        
@@ -49,8 +58,8 @@ console.log(props);
 =======
         
         
-      <button onClick={login}>log in</button>
-      <button onClick={logout}>log out</button>
+      {/* <button onClick={login}>log in</button> */}
+      <button onClick={check}>log out</button>
         <h3>{props.data.studentId} </h3>
         
 >>>>>>> origin/master
