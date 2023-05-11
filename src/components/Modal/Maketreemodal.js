@@ -2,9 +2,12 @@ import { React, useState,useEffect } from "react";
 import ReactModal from "react-modal";
 import CheckboxGroup from "../ui/checkbox/pre/CheckboxGroup"
 import Checkbox from "../ui/checkbox/pre/Checkbox";
-
+import ToggleButton from "../ui/toggle/toggleButton";
+import ToggleButtonGroup from "../ui/toggle/toggleButtonGroup";
+import styles from "../Nav/Header/SearchBar.module.css";
 const Maketreemodal = (props) => {
 
+  const [tags, setTags] = useState([""]);
   const [id, setId] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
@@ -57,9 +60,9 @@ const Maketreemodal = (props) => {
     setAllowId(false);
     setAllowDepartment(false);
   }
-  const handleSubmit = (e) => {
+  const handleSubmit = (e) => { //제출
     setDisabled(true);
-    // e.preventDefault();
+     e.preventDefault();
     if(!isPass || !isName){
         alert("입력 정보를 다시 확인해주세요.");
     } else {
@@ -70,15 +73,17 @@ const Maketreemodal = (props) => {
            studentId: allowId,
            department:allowDepartment
          },
+        //  tag:tags[0]
 
       };
       signUpSubmit(signUpData);
+      console.log(signUpData);
       alert(`${name}트리가 생성되었습니다`);
     }
     setDisabled(false);
   }
   async function signUpSubmit(info) {
-    const response = await fetch('http://localhost:3002/3', {///members/add"
+    const response = await fetch('/forest', {///members/add"
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -92,6 +97,7 @@ const Maketreemodal = (props) => {
           if(data.errorCode != null){
             throw new Error(`Error Code:${data.errorCode} ${data.message}`);
           }
+          console.log(data);
           props.setmaketreeOpen(false);
   }
 
@@ -157,11 +163,50 @@ const Maketreemodal = (props) => {
           <Checkbox values="studentId" checked={allowId} onChange={setAllowId}>학번</Checkbox>
           <Checkbox values="department" checked={allowDepartment} onChange={setAllowDepartment}>학과</Checkbox>
         </CheckboxGroup>
+        <ToggleButtonGroup
+          values={tags}
+          onChange={setTags}
+          style={styles.searchToggleBox}
+        >
+          <ToggleButton
+            style={
+              tags.find((v) => v === "밥약") ? styles.default : styles.checked
+            }
+            value="밥약"
+          >
+            #밥약
+          </ToggleButton>
+          <ToggleButton
+            style={
+              tags.find((v) => v === "스터디") ? styles.default : styles.checked
+            }
+            value="스터디"
+          >
+            #스터디
+          </ToggleButton>
+          <ToggleButton
+            style={
+              tags.find((v) => v === "공모전") ? styles.default : styles.checked
+            }
+            value="공모전"
+          >
+            #공모전
+          </ToggleButton>
+          <ToggleButton
+            style={
+              tags.find((v) => v === "번개") ? styles.default : styles.checked
+            }
+            value="번개"
+          >
+            #번개
+          </ToggleButton>
+        </ToggleButtonGroup>
         {/* <button className="button" onClick={()=>{datatestprint();}}>PostTest</button> */}
         <div className="actions">
         
           <button type="submit" className="button" disabled={disabled}>생성</button>
           <button type="button" className="button--alt" onClick={()=>props.setmaketreeOpen(false)}>취소</button>
+         
         </div>
       </form>
       

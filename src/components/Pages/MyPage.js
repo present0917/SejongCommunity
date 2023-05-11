@@ -13,7 +13,7 @@ const MyPage = (prop) => {
 
 
         async function fetchData() {   //마이페이지정보
-          const response = await fetch("http://localhost:3001/signup");
+          const response = await fetch("/members");
           if (!response.ok) {
             throw new Error('Failed to fetch Search data');
           }
@@ -21,6 +21,7 @@ const MyPage = (prop) => {
           if (!data) {
             throw new Error('No Search Data');
           }
+          console.log(data);
         //   const mapping = await data.posts.map((element) => {
         //   return {
         //       id: response.studentId,
@@ -80,6 +81,7 @@ const MyPage = (prop) => {
 
 
             <button onClick={() => { mytree(); prop.func(false)  } }>내 트리</button> 
+            <button onClick={() => { mytree(); prop.func(false)  } }>트리삭제</button> 
             {/* prop.func(false) */}
             <FixUserModal signUpOpen={signUpOpen} setSignUpOpen={setSignUpOpen}> </FixUserModal>
             <Maketreemodal maketreeOpen={maketreeOpen} setmaketreeOpen={setmaketreeOpen}></Maketreemodal>

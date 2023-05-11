@@ -167,7 +167,7 @@ const Myfinal = () => {
   }, []);
 
   async function postcard(card) { //입력
-    const response = await fetch(`http://localhost:3002/${params.id}`, {
+    const response = await fetch(`/stickers?treeid=${params.id}`, {
       method: 'POST',
       body: JSON.stringify(card),
       headers: {
@@ -191,7 +191,8 @@ const Myfinal = () => {
       user: 1,//연동시주석
       treeid:params.id
     };
-     setCards([...cards, newObject]);
+    //  setCards([...cards, newObject]);
+    console.log('붙였다');
      postcard(newObject);
   }
  

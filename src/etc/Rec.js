@@ -29,8 +29,9 @@ console.log(props);
     <li className={classes.meal}>
       <div>
         <h3>{props.data.studentId} <button onClick={logout}>log out</button></h3>
-        
-        <div className={classes.description}>{props.data.nickname}</div>
+        <div className={classes.price}>{props.data.name} </div>
+        <div className={classes.price}>{props.data.department} </div>
+        <div className={classes.description}>닉네임: {props.data.nickname}</div>
         
         <div className={classes.price}> </div>
         

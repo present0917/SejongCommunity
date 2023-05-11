@@ -22,13 +22,14 @@ const FixUserModal = (props) => {
   const [disabled, setDisabled] = useState(true);
 
   async function getdata(info) {
-    const response = await fetch('http://localhost:3001/signup', {///members/add"
+    const response = await fetch('/members', {///members/add"
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(info),
+            
         });
+        console.log(response);
         try{
           if(!response.ok){
             throw new Error(`${response.status} 에러가 발생했습니다.`);
@@ -116,8 +117,8 @@ const FixUserModal = (props) => {
     setDisabled(false);
   }
   async function signUpSubmit(info) {
-    const response = await fetch('http://localhost:3001/signup', {///members/add"
-            method: 'POST',
+    const response = await fetch('/members', {///members/add"
+            method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
             },
