@@ -5,7 +5,7 @@ import Layout from "./components/Nav/Layout";
 import Error from "./components/Pages/Error/Error";
 import First from "./components/Pages/First";
 import Login from "./components/Pages/Login";
-import Errorl from "./components/Pages/Error/Errorl";
+
 import Forcheck from "./components/Pages/ForCheck";
 import AutoLogin from "./context/auto-login";
 import Alert from "./components/Pages/Alert";
@@ -15,6 +15,7 @@ import SearchTest from "./components/Pages/SearchTest";
 import Treeselect from "./components/Pages/Treeselect";
 import Dynamictest from "./components/Pages/test/Dynamictest";
 import Check from "./components/Pages/Check";
+import Errorlogin from "./components/Pages/Error/Errorlogin";
 //  import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
@@ -49,6 +50,7 @@ function App() {
             { path: "mypage", element: <MyPage /> },
             { path: "tree", element: <Treeselect /> },
             { path: "tree/:id", element: <Myfinal /> },
+           
           ],
         },
       ],
@@ -58,6 +60,7 @@ function App() {
       element: <Login onlogin={loginHandler} onlogout={logoutHandler} />,
       errorElement: <Error />,
     },
+    { path: "errorlogin", element: <Errorlogin /> }
     // {
     //   path: "/searchtest",
     //   element: <SearchTest />,

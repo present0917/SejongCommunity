@@ -43,7 +43,8 @@ console.log(props);
       <div>
         
         
-      <button onClick={login}>log in</button><button onClick={logout}>log out</button>
+      <button onClick={login}>log in</button>
+      <button onClick={logout}>log out</button>
         <h3>{props.data.studentId} </h3>
         
         <div className={classes.price}>{props.data.name} </div>
