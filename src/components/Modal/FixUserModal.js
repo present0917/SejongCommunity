@@ -108,10 +108,8 @@ const navigate=useNavigate();
         studentId:id ,
         password:password,
         nickname:name,
-        dataRange:{
-          studentId:allowId,
-          department:allowDepartment
-        },
+          openStudentId:allowId,
+          openDepartment:allowDepartment,
 
       };
       signUpSubmit(signUpData);

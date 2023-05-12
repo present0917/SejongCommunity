@@ -12,7 +12,8 @@
     bottom: 0;
     left: 0;
     right: 0;
-    height: 10vh;
+    height: auto;
+    
     background-color: #3b3939;
     text-align: center;
     color: aliceblue;

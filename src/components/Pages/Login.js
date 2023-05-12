@@ -5,6 +5,7 @@ import "./Login.css";
 import schoollogo from "../../pic/logo.png";
 import logo from "../../pic/logo3.png";
 import LoginFooter from "../Nav/LoginFooter";
+import Doyouknow from "../../etc/Doyouknow";
 const Login = (props) => {
   const [signUpOpen, setSignUpOpen] = useState(false);
 
@@ -182,9 +183,8 @@ const Login = (props) => {
   };
 
   return (
-    <div className="entire">
-        
-      {/* <img src={schoollogo} className="schoollogo" /> */}
+    <div >
+        <div className="entire">
       <img src={logo} className="logo" />      
       <div className="login-form">
         <form onSubmit={handleSubmit}>
@@ -235,30 +235,15 @@ const Login = (props) => {
             </button>
           </div>
         </form>
+        
       </div>
-      {/* <button
-        onClick={() => {
-          set();
-        }}
-      >
-        Logged in
-      </button>
-      <button
-        onClick={() => {
-          unset();
-        }}
-      >
-        logout
-      </button>
-
-      <button
-        onClick={() => {
-          datatestprint();
-        }}
-      >
-        DataTestButton
-      </button> */}
+      <Doyouknow></Doyouknow>
       <SignUp signUpOpen={signUpOpen} setSignUpOpen={setSignUpOpen}></SignUp>
+      
+      </div>
+      
+      
+
       <LoginFooter></LoginFooter>
 
     </div>
