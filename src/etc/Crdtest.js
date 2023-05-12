@@ -8,15 +8,15 @@ const imgg = styled.img`
 position: relative;
 `;
 const Crdtest = ( props ) => {
-  const { name, text, top, left,title } = props.data;
+  const { type, message, top, left,title } = props.data;
   // const style = { top, left }; // 스타일 객체 생성
   let imagePath;
-  if (name == 1) {
+  if (type == 1) {
     imagePath = post;
-  } else if (name == 2) {
+  } else if (type == 2) {
     imagePath = post1;
   }
-  else if (name == 3) {
+  else if (type == 3) {
     imagePath = post2;
   }
   return (
@@ -32,7 +32,7 @@ const Crdtest = ( props ) => {
           }
           }
           >
-          {text}
+          {title}
       </div>
     </div>
   );

@@ -59,9 +59,9 @@ const Myfinal = () => {
     }
     
   };
-  async function checkismine(data) { //수정
+  async function checkismine(data) { 
     console.log(data.data);
-    const stickerid=data.data.id;
+    const stickerid=data.data.stickerKey;
     console.log(stickerid);
     const response = await fetch(`/stickers/${stickerid}`, {
       headers: {
@@ -70,8 +70,9 @@ const Myfinal = () => {
     });
     const dat = await response.json();
     console.log('허가요청했다.');
-    console.log(dat.errorCode);
-    console.log(dat.stickerAuth);
+    console.log(dat.data.errorCode);
+    console.log(dat.data.stickerAuth);
+    //0이면 못열고 1이면 del만 가능 2면 fix만
     return dat.stickerAuth
   }
 
@@ -99,13 +100,14 @@ const Myfinal = () => {
   }
 
   async function fix(data) { //수정
-    const response = await fetch(`/${params.id}/${+data.id}`, {
+    const response = await fetch(`/stickers/${data.id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(data)
     });
+
     console.log('fixed');
     console.log(data);
     fetchcard();
@@ -166,11 +168,10 @@ const Myfinal = () => {
     console.log(data)
     const mapping = await data.stickers.map((element) => {
       return {
-        name: 1,
-        text: `${element.title}`,
-        id:element.stickerKey,
-        memo:element.message,
-        user:element.writer
+        type: 1,
+        title: `${element.title}`,
+        stickerKey:element.stickerKey,
+        message:element.message,
       };
     });
     const status =await data.isMine;
