@@ -212,7 +212,7 @@ const SignUp = (props) => {
             <input id="name" name="name" value={name} onChange={onChangeName} />
             <i className={isName ? "alert-ok" : "alert"}>{nameMessage}</i>
           </div>
-          <div>
+          {/* <div>
             공개할 정보
             <br />
             <Checkbox
@@ -229,7 +229,7 @@ const SignUp = (props) => {
             >
               학과
             </Checkbox>
-          </div>
+          </div> */}
           {/* <button
             className="button"
             onClick={() => {

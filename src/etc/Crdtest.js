@@ -22,8 +22,7 @@ const Crdtest = ( props ) => {
   return (
     <div className="Crd">
         <img src={imagePath} style=
-        {{width:"10vmin", height:"12vmi                                /                                                                                                                             n"}}
-        
+        {{width:"12vmin", height:"12vmin"}}
         />
         <div className="text-container" 
         onClick={()=>{

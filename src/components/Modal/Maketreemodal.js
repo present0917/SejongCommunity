@@ -69,10 +69,8 @@ const Maketreemodal = (props) => {
       const signUpData = {
          description:password,
          title:name,
-         dataRange:{
-           studentId: allowId,
-           department:allowDepartment
-         },
+         requestId: allowId,
+        requestDepartment:allowDepartment
         //  tag:tags[0]
 
       };
