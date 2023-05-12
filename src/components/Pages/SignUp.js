@@ -87,10 +87,12 @@ const SignUp = (props) => {
         studentId: id,
         password: password,
         nickname: name,
-        dataRange: {
-          studentId: allowId,
-          department: allowDepartment,
-        },
+        openStudentId:allowId,
+        openDepartment:allowDepartment,
+        // dataRange: {
+        //   studentId: allowId,
+        //   department: allowDepartment,
+        // },
       };
       // signUpSubmitTest(signUpData); //test
       signUpSubmit(signUpData); //실제
@@ -212,7 +214,7 @@ const SignUp = (props) => {
             <input id="name" name="name" value={name} onChange={onChangeName} />
             <i className={isName ? "alert-ok" : "alert"}>{nameMessage}</i>
           </div>
-          {/* <div>
+          <div>
             공개할 정보
             <br />
             <Checkbox
@@ -229,7 +231,7 @@ const SignUp = (props) => {
             >
               학과
             </Checkbox>
-          </div> */}
+          </div>
           {/* <button
             className="button"
             onClick={() => {
