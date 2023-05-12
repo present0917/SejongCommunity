@@ -74,7 +74,7 @@ const Maketreemodal = (props) => {
         requestDepartment: allowDepartment,
         tag: tags,
       };
-      //signUpSubmit(signUpData);
+      signUpSubmit(signUpData);
       console.log(signUpData);
       alert(`${name}트리가 생성되었습니다`);
     }

@@ -153,7 +153,7 @@ const MyPage = (prop) => {
         <div>
             <Rec data={searchData}></Rec>
             {/* 로그아웃함수도 Rec속에있다. */}
-            <buttons className='buttons'>
+            <div className='buttons'>
             <button onClick={() => { setSignUpOpen(true);   } }>정보 수정</button>
 
 
@@ -162,7 +162,7 @@ const MyPage = (prop) => {
 
             <button onClick={() => { mytree(); prop.func(false)  } }>내 트리</button> 
             <button onClick={() => { deletemytree(); prop.func(false)  } }>트리삭제</button> 
-            </buttons>
+            </div>
            
             <button className="logoutbutton"onClick={check}>log out</button>
             {/* <button onClick={logincheck}>check</button> */}
