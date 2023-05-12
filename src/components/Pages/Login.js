@@ -193,6 +193,7 @@ const Login = (props) => {
               <label htmlFor="ID"></label>
               <br />
               <input id="id" name="id" value={id} onChange={onChangeId} placeholder="ID" />
+              <br></br>
               <i className={isId ? "alert-ok" : "alert"}> {idMessage} </i>
             </div>
             <div className="login-form-el">
@@ -206,6 +207,7 @@ const Login = (props) => {
                 value={password}
                 onChange={onChangePass}
               />
+              <br></br>
               <i className={isPass ? "alert-ok" : "alert"}>
                 {" "}
                 {passwordMessage}{" "}

@@ -11,6 +11,13 @@
     justify-content: center;
     align-items: left;
     text-align: left;
+    font-size:1.5rem;
+
+
+    /* text-overflow: ellipsis;  	// 로 ... 을 만들기 
+    white-space: nowrap; 		// 아래줄로 내려가는 것을 막기위해 */
+    text-overflow: ellipsis;  	
+  white-space: nowrap; 		
   }
   
   .rec2.selected {

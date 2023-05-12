@@ -2,13 +2,15 @@
     justify-content: center;
     align-content: center;
     border: 2px solid #b3b1b1;
-    padding: 50px 100px 50px 100px;
+    padding: 30px 60px 30px 60px;
+    width: 30vw;
+    max-width: 30vw;
 }
 .logo{
     position: relative;
     text-align: center;
-    width: 40vh;
-    max-width: 40vh;
+    height: 50vh;
+    max-height: 50vh;
     height: auto;
 }
 .entire{
@@ -65,11 +67,11 @@
     color: #3792A6;
 } */
 .alert{
-    font-size: 10px;
+    font-size: 1rem;
     color: crimson;
 }
 .alert-ok {
-    font-size: 10px;
-    color: rgb(0, 255, 0);
+    font-size: 1rem;
+    color: rgb(5, 132, 5);
 }
   

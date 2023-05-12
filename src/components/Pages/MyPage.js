@@ -124,11 +124,36 @@ const MyPage = (prop) => {
         useEffect(()=>{
           fetchData();
         },[])
+
+
+        function check(){
+          const confirm = window.confirm("정말 로그아웃 하시겠습니까?");
+          if(confirm==true)
+          logout();
+        }
+                async function logout() {   //로그아웃
+                  console.log('out');
+                  const response = await fetch(`/logout`, {
+                    method: 'POST',
+                    headers: {
+                      'Content-Type': 'application/json',
+                    },
+                     
+                  });
+        
+                  if (!response.ok) {
+                    throw new Error('Failed to log out');
+                  }
+                  navigate('/login');
+                  console.log(response);
+                }
+
+
         return (
         <div>
             <Rec data={searchData}></Rec>
             {/* 로그아웃함수도 Rec속에있다. */}
-
+            <buttons className='buttons'>
             <button onClick={() => { setSignUpOpen(true);   } }>정보 수정</button>
 
 
@@ -137,6 +162,9 @@ const MyPage = (prop) => {
 
             <button onClick={() => { mytree(); prop.func(false)  } }>내 트리</button> 
             <button onClick={() => { deletemytree(); prop.func(false)  } }>트리삭제</button> 
+            </buttons>
+           
+            <button className="logoutbutton"onClick={check}>log out</button>
             {/* <button onClick={logincheck}>check</button> */}
             {/* prop.func(false) */}
             <FixUserModal signUpOpen={signUpOpen} setSignUpOpen={setSignUpOpen}> </FixUserModal>

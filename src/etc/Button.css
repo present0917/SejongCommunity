@@ -11,6 +11,8 @@ button {
     border-radius: 25px;
     margin-left: 10px;
     color: white;
+    text-overflow: ellipsis;  	
+    white-space: nowrap; 		
 } 
 button:hover,
 button:active {
@@ -18,6 +20,26 @@ button:active {
   border-color: #ffffff;
   color:  white;
 }
+.buttons{
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  width:40vw;
+  font-size:1.8rem;
+  
+}
+.myinfo{
+  font-size:1.2rem;
+}
+.logoutbutton{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width:40vw;
+  font-size:1.5rem;
+  margin-top:10vw;
+}
+
 body{
   font-size:calc(1.1vh + 1.0vw);
 }
