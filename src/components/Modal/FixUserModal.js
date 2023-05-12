@@ -30,19 +30,20 @@ const navigate=useNavigate();
             },
             
         });
-        console.log(response);
+       
         try{
           if(!response.ok){
             navigate('/error');
             throw new Error(`${response.status} 에러가 발생했습니다.`);
           }
           const data = await response.json();
+          console.log(data);
           if(data.errorCode != null){
             throw new Error(`Error Code:${data.errorCode} ${data.message}`);
           }
           
-          setName(data.nickname);
-          setId(data.studentId);
+          setName(data.member.nickname);
+          setId(data.member.studentId);
 
         } catch(e){
             alert(e);

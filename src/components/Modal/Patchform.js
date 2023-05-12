@@ -11,7 +11,6 @@ const Patchform = (props) => {
   const [id, setid] = useState(props.data.id);
   const submitHandler = (event) => {
     console.log(stickerKey);
-    setName(Number(type));
     event.preventDefault();
     console.log(type);
     const data = { type, title,message, stickerKey };

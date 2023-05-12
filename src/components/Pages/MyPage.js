@@ -12,6 +12,12 @@ const MyPage = (prop) => {
         const [signUpOpen, setSignUpOpen] = useState(false);
         const [maketreeOpen, setmaketreeOpen] = useState(false);
         const [islogin, setislogin] = useState(false);
+        const [prname, setprname] = useState("");
+        const [prstuid, setstuid] = useState("");
+        const [prdep, setdep] = useState("");
+        const [prnick, setnick] = useState("");
+        const [tomytree, settomytree] = useState("");
+        const [isthermytree, setistheremytree] = useState("");
         async function logintest() {
           //실제
           const response = await fetch("/login",);
@@ -37,13 +43,20 @@ const MyPage = (prop) => {
             throw new Error('No Search Data');
           }
           console.log(data);
+          setSearchData(data);
+          setprname(data.member.name);
+          setdep(data.member.department);
+          setstuid(data.member.studentId);
+          setnick(data.member.nickname);
+          settomytree(data.treeId[0].treeKey);
+          console.log(data.treeId[0].treeKey);
         //   const mapping = await data.posts.map((element) => {
         //   return {
         //       id: response.studentId,
         //       nickname: response.nickname,
         //     };
         //   });
-          setSearchData(data);
+          
         }
         // async function fetchData() {  //마이페이지정보 연동시, 내 트리 번호도 받아야함.
         //   const response = await fetch("/mypage");
@@ -96,7 +109,7 @@ const MyPage = (prop) => {
 
         function mytree(){
 
-          navigate(`/tree/${1}`); // 받은 값으로 이동하도록
+          navigate(`/tree/${tomytree}`); // 받은 값으로 이동하도록
         }
       
 
@@ -151,7 +164,21 @@ const MyPage = (prop) => {
 
         return (
         <div>
-            <Rec data={searchData}></Rec>
+          <div className="myinfo">
+          <div>
+           {prname}
+          </div>
+          <div>
+          {prdep}
+          </div>
+          <div>
+          {prstuid}
+          </div>
+          <div>
+            {prnick}
+          </div>
+          </div>
+            {/* <Rec data={searchData}></Rec> */}
             {/* 로그아웃함수도 Rec속에있다. */}
             <div className='buttons'>
             <button onClick={() => { setSignUpOpen(true);   } }>정보 수정</button>

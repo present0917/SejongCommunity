@@ -51,6 +51,17 @@ input {
 input[type="checkbox"] {
   transform: scale(1.2);
 }
+/* .myinfo{
+    text-decoration: none;
+  align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem;
+    margin-right:0;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #ccc;
+    width:50vw;
+} */
 
 /* button {
   font: inherit;
