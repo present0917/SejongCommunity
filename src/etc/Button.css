@@ -13,7 +13,11 @@ button {
     color: white;
     text-overflow: ellipsis;  	
     white-space: nowrap; 		
+<<<<<<< HEAD
     padding:2px;
+=======
+    padding:7px;
+>>>>>>> origin/master
 } 
 button:hover,
 button:active {
