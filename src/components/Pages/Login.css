@@ -1,5 +1,6 @@
 .login-form {
-    justify-content: center;
+    /* display:contents; */
+        justify-content: center;
     align-content: center;
     border: 2px solid rgb(230, 230, 220);
     padding: 30px 60px 30px 60px;
@@ -24,9 +25,11 @@
     
 }
 .login-form-el {
-    position: relative;
-   
-    
+    position:relative;
+    display:contents;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
 }
 .login-form input {
     border: 1px solid #000000;
@@ -37,8 +40,9 @@
     
 }
 .login-actions {
-    position: relative;
-    text-align: center;
+    display:grid;
+    justify-content: center;
+    align-items: center;
 }
 /* .login-actions button {
     font: inherit;

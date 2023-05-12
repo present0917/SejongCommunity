@@ -194,7 +194,9 @@ const Login = (props) => {
               <br />
               <input id="id" name="id" value={id} onChange={onChangeId} placeholder="ID" />
               <br></br>
+             
               <i className={isId ? "alert-ok" : "alert"}> {idMessage} </i>
+              <br></br>
             </div>
             <div className="login-form-el">
               <label htmlFor="password"></label>
@@ -218,6 +220,7 @@ const Login = (props) => {
           </div>
 
           <div className="login-actions">
+          <br></br>
             <button className="button" type="submit" disabled={disabled}>
             Login
             </button>
