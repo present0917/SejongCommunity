@@ -1,61 +1,55 @@
 button {
-    font: inherit;
-    cursor: pointer;
-    background-color: #ab132f;
-    border: 1px solid #ffffff;
+  font: inherit;
+  cursor: pointer;
+  background-color: #ab132f;
+  border: 1px solid #ffffff;
 
-    width: auto;
-    min-width:10vh;
-    min-height:3vh;
-    height: auto;
-    border-radius: 25px;
-    margin-left: 10px;
-    color: white;
-    text-overflow: ellipsis;  	
-    white-space: nowrap; 		
-<<<<<<< HEAD
-    padding:2px;
-=======
-    padding:7px;
->>>>>>> origin/master
-} 
+  width: auto;
+  min-width: 10vh;
+  min-height: 3vh;
+  height: auto;
+  border-radius: 25px;
+  margin-left: 10px;
+  color: white;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 7px;
+}
 button:hover,
 button:active {
   background-color: #4b0a16;
   border-color: #ffffff;
-  color:  white;
+  color: white;
 }
-.buttons{
+.buttons {
   display: flex;
   flex-direction: column;
   align-items: left;
-  width:40vw;
-  font-size:1.8rem;
-  
+  width: 40vw;
+  font-size: 1.8rem;
 }
-.myinfo{
-  font-size:1.2rem;
+.myinfo {
+  font-size: 1.2rem;
 }
-.logoutbutton{
+.logoutbutton {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width:40vw;
-  font-size:1.5rem;
-  margin-top:10vw;
+  width: 40vw;
+  font-size: 1.5rem;
+  margin-top: 10vw;
 }
 
-body{
-  font-size:calc(1.1vh + 1.0vw);
+body {
+  font-size: calc(1.1vh + 1vw);
 }
-input{
-  
-  font-size:calc(1.1vh + 1.0vw);
+input {
+  font-size: calc(1.1vh + 1vw);
   padding: calc(0.01vh + 0.01vw);
   padding: 7px 7px 7px 10px;
 }
 input[type="checkbox"] {
-  transform: scale(1.2); 
+  transform: scale(1.2);
 }
 
 /* button {
@@ -116,4 +110,4 @@ button:active {
 .login-actions .button {
   background-color: white;
   color: #3792A6;
-} */ 
+} */

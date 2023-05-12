@@ -8,7 +8,7 @@ import ToggleButtonGroup from "../../ui/toggle/toggleButtonGroup";
 
 const SearchBar = (props) => {
   const [search, setSearch] = useState("");
-  const [tags, setTags] = useState([""]);
+  const [tags, setTags] = useState([]);
   const [select, setSelect] = useState("title");
 
   const navigate = useNavigate();
@@ -28,11 +28,10 @@ const SearchBar = (props) => {
   }
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(tags[0] === ""){
+    if (tags[0] === "") {
       const search = `/forest?${handleSelect()}`;
       navigate("/search", { state: search });
-    }
-    else{
+    } else {
       const search = `/forest?${handleSelect()}&tag=${tags.join("&tag=")}`;
       navigate("/search", { state: search });
     }
@@ -67,6 +66,7 @@ const SearchBar = (props) => {
           values={tags}
           onChange={setTags}
           style={styles.searchToggleBox}
+          mode="single"
         >
           <ToggleButton
             style={
