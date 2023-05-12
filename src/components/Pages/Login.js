@@ -6,6 +6,8 @@ import schoollogo from "../../pic/logo.png";
 import logo from "../../pic/logo3.png";
 import LoginFooter from "../Nav/LoginFooter";
 import Doyouknow from "../../etc/Doyouknow";
+
+
 const Login = (props) => {
   const [signUpOpen, setSignUpOpen] = useState(false);
 
@@ -32,8 +34,9 @@ const Login = (props) => {
   };
 
   const handleSubmit = (event) => {
-    setDisabled(true);
     event.preventDefault();
+    setDisabled(true);
+    
     if (!isId || !isPass) {
       alert("아이디, 비밀번호를 확인해주세요.");
     } else {
@@ -153,6 +156,7 @@ const Login = (props) => {
   // };
 
   const onChangeId = (e) => {
+    
     const currentId = e.target.value;
     setId(currentId);
     const idRegExp = /^[0-9]{8}$/;
@@ -237,7 +241,9 @@ const Login = (props) => {
         </form>
         
       </div>
+      <div className="doyou"> 
       <Doyouknow></Doyouknow>
+      </div>
       <SignUp signUpOpen={signUpOpen} setSignUpOpen={setSignUpOpen}></SignUp>
       
       </div>

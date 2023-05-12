@@ -30,7 +30,7 @@ const Treeselect =()=>
         const data = await response.json();
 
         //const filteredData =Object.keys(data);
-
+        console.log(data);
         const mapping = await data.data.map((element) => {
           return {
             id: element.treeKey,
