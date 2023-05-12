@@ -193,11 +193,14 @@ const SignUp = (props) => {
         <form onSubmit={handleSubmit}>
           {" "}
           {}
+          <br>
+          </br>
           <div className="form-el">
             <label htmlFor="Id">Id</label> <br />
             <input id="id" name="id" value={id} onChange={onChangeId} />
             <i className={isId ? "alert-ok" : "alert"}> {idMessage} </i>
           </div>
+          <br></br>
           <div className="form-el">
             <label htmlFor="password">Password</label> <br />
             <input
@@ -208,13 +211,17 @@ const SignUp = (props) => {
               onChange={onChangePassword}
             />
             <i className={isPass ? "alert-ok" : "alert"}>{passwordMessage}</i>
+           
           </div>
+          <br></br>
           <div className="form-el">
             <label htmlFor="name">Nick Name</label> <br />
             <input id="name" name="name" value={name} onChange={onChangeName} />
             <i className={isName ? "alert-ok" : "alert"}>{nameMessage}</i>
+            <br></br>
           </div>
           <div>
+            <br></br>
             공개할 정보
             <br />
             <Checkbox
