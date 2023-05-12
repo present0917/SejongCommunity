@@ -1,4 +1,5 @@
 import "./Doyouknow.css"
+import { useEffect,useState } from "react";
 const Doyouknow = ( ) => {
 const tex=[
 "세계에서 가장 많이 방문하는 웹사이트는 구글로, 한 달에 900억 페이지 이상의 조회수를 기록하고 있다.",
@@ -11,10 +12,20 @@ const tex=[
 "세종대학교 애지헌 시계탑에는 기린이 살고있다는 소문이 있습니다.",
 
 ]
+// const [text,settext]=
+// const pr=()=>
+// {
+//   {tex[Math.floor(Math.random() * 6)]}
+// }
+
+// useEffect(() => {
+//   fetchcard();
+// }, []);
+
   return (
     <div className="doyou">
         알고 계셨나요?<br></br>
-       {tex[Math.floor(Math.random() * 6)]}
+       
     </div>
   );
 };

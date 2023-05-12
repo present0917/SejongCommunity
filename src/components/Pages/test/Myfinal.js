@@ -70,10 +70,10 @@ const Myfinal = () => {
     });
     const dat = await response.json();
     console.log('허가요청했다.');
-    console.log(dat.data.errorCode);
+    console.log(dat.errorCode);
     console.log(dat.data.stickerAuth);
     //0이면 못열고 1이면 del만 가능 2면 fix만
-    return dat.stickerAuth
+    return dat.data.stickerAuth
   }
 
 
@@ -100,7 +100,9 @@ const Myfinal = () => {
   }
 
   async function fix(data) { //수정
-    const response = await fetch(`/stickers/${data.id}`, {
+    console.log(data);
+    data.type=Number(data.type);
+    const response = await fetch(`/stickers/${data.stickerKey}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json'

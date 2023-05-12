@@ -184,6 +184,7 @@ const Maketreemodal = (props) => {
                     : styles.checked
                 }
                 value={tag.value}
+                key={Math.random()}
               >
                 #{tag.text}
               </ToggleButton>
