@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from "react";
 import ReactModal from "react-modal";
-import CheckboxGroup from "../ui/checkbox/CheckboxGroup";
-import Checkbox from "../ui/checkbox/Checkbox";
+import CheckboxGroup from "../../ui/checkbox/CheckboxGroup";
+import Checkbox from "../../ui/checkbox/Checkbox";
 import "./SignUp.css";
 const SignUp = (props) => {
   const [id, setId] = useState("");
@@ -87,8 +87,8 @@ const SignUp = (props) => {
         studentId: id,
         password: password,
         nickname: name,
-        openStudentId:allowId,
-        openDepartment:allowDepartment,
+        openStudentId: allowId,
+        openDepartment: allowDepartment,
         // dataRange: {
         //   studentId: allowId,
         //   department: allowDepartment,
@@ -193,8 +193,7 @@ const SignUp = (props) => {
         <form onSubmit={handleSubmit}>
           {" "}
           {}
-          <br>
-          </br>
+          <br></br>
           <div className="form-el">
             <label htmlFor="Id">Id</label> <br />
             <input id="id" name="id" value={id} onChange={onChangeId} />
@@ -211,7 +210,6 @@ const SignUp = (props) => {
               onChange={onChangePassword}
             />
             <i className={isPass ? "alert-ok" : "alert"}>{passwordMessage}</i>
-           
           </div>
           <br></br>
           <div className="form-el">

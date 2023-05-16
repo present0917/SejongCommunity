@@ -2,11 +2,10 @@ import { useNavigate } from "react-router-dom";
 import { React, useState, useEffect } from "react";
 import SignUp from "./SignUp";
 import "./Login.css";
-import schoollogo from "../../pic/logo.png";
-import logo from "../../pic/logo3.png";
-import LoginFooter from "../Nav/LoginFooter";
-import Doyouknow from "../../etc/Doyouknow";
-
+import schoollogo from "../../../pic/logo.png";
+import logo from "../../../pic/logo3.png";
+import LoginFooter from "../../Nav/LoginFooter";
+import Doyouknow from "../../../etc/Doyouknow";
 
 const Login = (props) => {
   const [signUpOpen, setSignUpOpen] = useState(false);
@@ -36,7 +35,7 @@ const Login = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     setDisabled(true);
-    
+
     if (!isId || !isPass) {
       alert("아이디, 비밀번호를 확인해주세요.");
     } else {
@@ -156,7 +155,6 @@ const Login = (props) => {
   // };
 
   const onChangeId = (e) => {
-    
     const currentId = e.target.value;
     setId(currentId);
     const idRegExp = /^[0-9]{8}$/;
@@ -187,71 +185,72 @@ const Login = (props) => {
   };
 
   return (
-    <div >
-        <div className="entire">
-      <img src={logo} className="logo" />      
-      <div className="login-form">
-        <form onSubmit={handleSubmit}>
-          <div>
-            <div className="login-form-el">
-              <label htmlFor="ID"></label>
-              <br />
-              <input id="id" name="id" value={id} onChange={onChangeId} placeholder="ID" />
-              <br></br>
-             
-              <i className={isId ? "alert-ok" : "alert"}> {idMessage} </i>
+    <div>
+      <div className="entire">
+        <img src={logo} className="logo" />
+        <div className="login-form">
+          <form onSubmit={handleSubmit}>
+            <div>
+              <div className="login-form-el">
+                <label htmlFor="ID"></label>
+                <br />
+                <input
+                  id="id"
+                  name="id"
+                  value={id}
+                  onChange={onChangeId}
+                  placeholder="ID"
+                />
+                <br></br>
+
+                <i className={isId ? "alert-ok" : "alert"}> {idMessage} </i>
+                <br></br>
+              </div>
+              <div className="login-form-el">
+                <label htmlFor="password"></label>
+                <br />
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  placeholder="PASSWORD"
+                  value={password}
+                  onChange={onChangePass}
+                />
+                <br></br>
+                <i className={isPass ? "alert-ok" : "alert"}>
+                  {" "}
+                  {passwordMessage}{" "}
+                </i>
+              </div>
+
               <br></br>
             </div>
-            <div className="login-form-el">
-              <label htmlFor="password"></label>
-              <br />
-              <input
-                type="password"
-                id="password"
-                name="password"
-                placeholder="PASSWORD"
-                value={password}
-                onChange={onChangePass}
-              />
+
+            <div className="login-actions">
               <br></br>
-              <i className={isPass ? "alert-ok" : "alert"}>
-                {" "}
-                {passwordMessage}{" "}
-              </i>
+              <button className="button" type="submit" disabled={disabled}>
+                Login
+              </button>
+              <button
+                className="button"
+                type="button"
+                onClick={() => {
+                  setSignUpOpen(true);
+                }}
+              >
+                Sign Up
+              </button>
             </div>
-
-            <br></br>
-          </div>
-
-          <div className="login-actions">
-          <br></br>
-            <button className="button" type="submit" disabled={disabled}>
-            Login
-            </button>
-            <button
-              className="button"
-              type="button"
-              onClick={() => {
-                setSignUpOpen(true);
-              }}
-            >
-              Sign Up
-            </button>
-          </div>
-        </form>
-        
+          </form>
+        </div>
+        <div className="doyou">
+          <Doyouknow></Doyouknow>
+        </div>
+        <SignUp signUpOpen={signUpOpen} setSignUpOpen={setSignUpOpen}></SignUp>
       </div>
-      <div className="doyou"> 
-      <Doyouknow></Doyouknow>
-      </div>
-      <SignUp signUpOpen={signUpOpen} setSignUpOpen={setSignUpOpen}></SignUp>
-      
-      </div>
-      
-      
 
       <LoginFooter></LoginFooter>
-
     </div>
   );
 };

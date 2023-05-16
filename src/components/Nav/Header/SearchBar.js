@@ -8,10 +8,11 @@ import ToggleButtonGroup from "../../ui/toggle/toggleButtonGroup";
 
 const SearchBar = (props) => {
   const [search, setSearch] = useState("");
-  const [tags, setTags] = useState([]);
+  const [tags, setTags] = useState([""]);
   const [select, setSelect] = useState("title");
 
   const navigate = useNavigate();
+  console.log(tags);
   function handleSelect() {
     switch (select) {
       case "title":

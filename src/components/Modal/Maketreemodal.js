@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import { React, useState } from "react";
 import ReactModal from "react-modal";
 import CheckboxGroup from "../ui/checkbox/pre/CheckboxGroup";
 import Checkbox from "../ui/checkbox/pre/Checkbox";
@@ -8,12 +8,10 @@ import styles from "../Nav/Header/SearchBar.module.css";
 import tagData from "../../dataJson/tagdata.json";
 const Maketreemodal = (props) => {
   const [tags, setTags] = useState([1]);
-  const [id, setId] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [allowId, setAllowId] = useState(false);
   const [allowDepartment, setAllowDepartment] = useState(false);
-  const [allows, setAllows] = useState(["studentId", "department"]);
 
   const [passwordMessage, setPasswordMessage] = useState("");
   const [nameMessage, setNameMessage] = useState("");
@@ -22,6 +20,31 @@ const Maketreemodal = (props) => {
   const [isName, setIsName] = useState(false);
 
   const [disabled, setDisabled] = useState(true);
+
+  const modalStyle = {
+    overlay: {
+      position: "fixed",
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      backgroundColor: "rgba(0, 0, 0, 0.75)",
+    },
+    content: {
+      position: "absolute",
+      top: "20%",
+      left: "20%",
+      right: "20%",
+      bottom: "20%",
+      border: "1px solid #ccc",
+      background: "#fff",
+      overflow: "auto",
+      WebkitOverflowScrolling: "touch",
+      borderRadius: "20px",
+      outline: "none",
+      padding: "20px",
+    },
+  };
 
   const onChangePassword = (e) => {
     const currentPass = e.target.value;
@@ -100,45 +123,11 @@ const Maketreemodal = (props) => {
     console.log(info);
     props.setmaketreeOpen(false);
   }
-
-  const datatestprint = () => {
-    const authData = {
-      id: { id },
-      password: { password },
-      name: { name },
-    };
-    console.log(authData);
-  };
   return (
-    // “/members/add”
-
     <ReactModal
       isOpen={props.maketreeOpen}
       onRequestClose={() => props.setmaketreeOpen(false)}
-      style={{
-        overlay: {
-          position: "fixed",
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundColor: "rgba(0, 0, 0, 0.75)",
-        },
-        content: {
-          position: "absolute",
-          top: "20%",
-          left: "20%",
-          right: "20%",
-          bottom: "20%",
-          border: "1px solid #ccc",
-          background: "#fff",
-          overflow: "auto",
-          WebkitOverflowScrolling: "touch",
-          borderRadius: "20px",
-          outline: "none",
-          padding: "20px",
-        },
-      }}
+      style={modalStyle}
       ariaHideApp={false}
     >
       <div className="form">
@@ -190,34 +179,6 @@ const Maketreemodal = (props) => {
                 #{tag.text}
               </ToggleButton>
             ))}
-            {/* <ToggleButton
-              style={
-                tags.find((v) => v === 1)
-                  ? styles.default
-                  : styles.checked
-              }
-              value={2}
-            >
-              #팀플
-            </ToggleButton>
-            <ToggleButton
-              style={
-                tags.find((v) => v === 2)
-                  ? styles.default
-                  : styles.checked
-              }
-              value="공모전"
-            >
-              #공모전
-            </ToggleButton>
-            <ToggleButton
-              style={
-                tags.find((v) => v === "번개") ? styles.default : styles.checked
-              }
-              value="번개"
-            >
-              #번개
-            </ToggleButton> */}
           </ToggleButtonGroup>
           {/* <button className="button" onClick={()=>{datatestprint();}}>PostTest</button> */}
           <div className="actions">

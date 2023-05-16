@@ -4,14 +4,13 @@ import Myfinal from "./components/Pages/test/Myfinal";
 import Layout from "./components/Nav/Layout";
 import Error from "./components/Pages/Error/Error";
 import First from "./components/Pages/First";
-import Login from "./components/Pages/Login";
+import Login from "./components/Pages/Login/Login";
 
 import Forcheck from "./components/Pages/ForCheck";
 import AutoLogin from "./context/auto-login";
 import Alert from "./components/Pages/Alert";
 import Search from "./components/Pages/Search";
 import MyPage from "./components/Pages/MyPage";
-import SearchTest from "./components/Pages/SearchTest";
 import Treeselect from "./components/Pages/Treeselect";
 import Dynamictest from "./components/Pages/test/Dynamictest";
 import Check from "./components/Pages/Check";
@@ -50,7 +49,6 @@ function App() {
             { path: "mypage", element: <MyPage /> },
             { path: "tree", element: <Treeselect /> },
             { path: "tree/:id", element: <Myfinal /> },
-           
           ],
         },
       ],
@@ -60,12 +58,7 @@ function App() {
       element: <Login onlogin={loginHandler} onlogout={logoutHandler} />,
       errorElement: <Error />,
     },
-    { path: "errorlogin", element: <Errorlogin /> }
-    // {
-    //   path: "/searchtest",
-    //   element: <SearchTest />,
-    //   errorElement: <Errorl />,
-    // },
+    { path: "errorlogin", element: <Errorlogin /> },
   ]);
   return (
     <AutoLogin.Provider

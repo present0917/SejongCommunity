@@ -20,11 +20,18 @@ function ToggleButtonGroup({
         onChange([value]);
       }
       if (mode === "multi") {
+        //다중선택 사용시
         onChange(values.concat(value));
       }
-      //다중선택 사용시
     } else {
-      onChange(values.filter((v) => v !== value));
+      if (mode === "single") {
+        //단일선택시
+        onChange([""]);
+      }
+      if (mode === "multi") {
+        //다중선택 사용시
+        onChange(values.filter((v) => v !== value));
+      }
     }
   };
   //toggleValue() 함수는 체크박스가 체크 여부에 따라서 values prop에 해당 값을 추가하거나 제거해줌.
