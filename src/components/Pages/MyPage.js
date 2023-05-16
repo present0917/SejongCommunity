@@ -4,6 +4,7 @@ import '../../etc/Button.css'
 import FixUserModal from "../Modal/FixUserModal";
 import Maketreemodal from "../Modal/Maketreemodal";
 import { useNavigate } from "react-router-dom";
+import Mystickers from "../Modal/Mystickers";
 const MyPage = (prop) => {
  
   
@@ -18,6 +19,16 @@ const MyPage = (prop) => {
         const [prnick, setnick] = useState("");
         const [tomytree, settomytree] = useState("");
         const [isthermytree, setistheremytree] = useState("");
+        const [ModalIsShown, setModalIsShown] = useState(false);
+
+        const showModalHandler = () => {//입력 모달
+          setModalIsShown(true);
+          // console.log('show');
+        };
+      
+        const hideModalHandler = () => { //입력 모달 숨기기
+          setModalIsShown(false);
+        };
         async function logintest() {
           //실제
           const response = await fetch("/login",);
@@ -48,8 +59,11 @@ const MyPage = (prop) => {
           setdep(data.member.department);
           setstuid(data.member.studentId);
           setnick(data.member.nickname);
-          settomytree(data.treeId[0].treeKey);
-          console.log(data.treeId[0].treeKey);
+          if(data.treeId.length>0){
+            settomytree(data.treeId[0].treeKey);
+            console.log(data.treeId[0].treeKey);
+          }
+          
         //   const mapping = await data.posts.map((element) => {
         //   return {
         //       id: response.studentId,
@@ -189,6 +203,7 @@ const MyPage = (prop) => {
 
             <button onClick={() => { mytree(); prop.func(false)  } }>내 트리</button> 
             <button onClick={() => { deletemytree(); prop.func(false)  } }>트리삭제</button> 
+            <button onClick={() => { setModalIsShown(true)} }>내 스티커</button> 
             </div>
            
             <button className="logoutbutton"onClick={check}>log out</button>
@@ -197,6 +212,8 @@ const MyPage = (prop) => {
             <FixUserModal signUpOpen={signUpOpen} setSignUpOpen={setSignUpOpen}> </FixUserModal>
             <Maketreemodal maketreeOpen={maketreeOpen} setmaketreeOpen={setmaketreeOpen}></Maketreemodal>
             
+            {ModalIsShown && <Mystickers onClose={hideModalHandler} />}
+
         </div>
     )
 }

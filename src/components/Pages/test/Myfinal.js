@@ -170,7 +170,7 @@ const Myfinal = () => {
     console.log(data)
     const mapping = await data.stickers.map((element) => {
       return {
-        type: 1,
+        type: element.type,
         title: `${element.title}`,
         stickerKey:element.stickerKey,
         message:element.message,
