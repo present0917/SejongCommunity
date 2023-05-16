@@ -119,7 +119,8 @@ const Maketreemodal = (props) => {
     if (data.errorCode != null) {
       throw new Error(`Error Code:${data.errorCode} ${data.message}`);
     }
-    console.log(data);
+    console.log("생성할때보낸정보");
+    console.log(info);
     props.setmaketreeOpen(false);
   }
   return (
@@ -173,6 +174,7 @@ const Maketreemodal = (props) => {
                     : styles.checked
                 }
                 value={tag.value}
+                key={Math.random()}
               >
                 #{tag.text}
               </ToggleButton>

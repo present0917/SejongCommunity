@@ -47,22 +47,6 @@ const Treeselect = () => {
     }
   }
 
-  //       async function fetchtrees() { //불러오기 테스트
-  //   const response = await fetch('http://localhost:3002/db');
-  //   if (!response.ok) {
-  //     throw new Error('Failed to fetch trees');
-  //   }
-  //   const data = await response.json();
-
-  // const mapping = await data.map((element) => {
-  //   return {
-  //     text: element.text,
-  //   };
-  // });
-  // console.log(mapping);
-
-  // };
-
   useEffect(() => {
     fetchtrees();
   }, []);

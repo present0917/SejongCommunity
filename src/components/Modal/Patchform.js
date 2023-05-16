@@ -4,15 +4,18 @@ import { useState } from 'react';
 
 const Patchform = (props) => {
   console.log(props);
-  const [name, setName] = useState('');
-  const [text, settext] = useState('');
-  const [memo, setmemo] = useState('');
+  const [type, setName] = useState();
+  const [title, settext] = useState('');
+  const [message, setmemo] = useState('');
+  const [stickerKey, setstickerKey] = useState(props.data.stickerKey);
   const [id, setid] = useState(props.data.id);
   const submitHandler = (event) => {
+    console.log(stickerKey);
     event.preventDefault();
-    const data = { name, text,memo,id };
+    console.log(type);
+    const data = { type, title,message, stickerKey };
     console.log('print id')
-    console.log(data.id)
+    console.log(data)
     console.log('print id')
     props.onClick(data);
     props.onClose();
@@ -29,11 +32,11 @@ const Patchform = (props) => {
           <label htmlFor="name">수정스티커종류</label>
           <div>
           <label>
-              <input type="radio" name="sticker" value="1" checked={name === '1'} onChange={radioHandler} />
+              <input type="radio" name="sticker" value="1" checked={type === '1'} onChange={radioHandler} />
               A 스티커
             </label>
             <label>
-              <input type="radio" name="sticker" value="2" checked={name === '2'} onChange={radioHandler} />
+              <input type="radio" name="sticker" value="2" checked={type === '2'} onChange={radioHandler} />
               B 스티커
             </label>
           </div>
@@ -43,7 +46,7 @@ const Patchform = (props) => {
           <input
             type="text"
             id="text"
-            value={text}
+            value={title}
             onChange={(event) => settext(event.target.value)}
           />
         </div>
@@ -52,7 +55,7 @@ const Patchform = (props) => {
           <textarea
             type="text"
             id="text"
-            value={memo}
+            value={message}
             onChange={(event) => setmemo(event.target.value)}
           />
         </div>

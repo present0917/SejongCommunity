@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 const Show = (props) => {
   console.log(props);
   const params = useParams();
-  const { id, name, text, memo } = props.data;
+  const { id, type, title, message } = props.data;
   const [des, setdes] = useState('here is description'); //입력 내용 담을곳
   const [stuid, setid] = useState('here is student id'); //입력 내용 담을곳
   console.log(id);//스티커아이디
@@ -56,13 +56,13 @@ const Show = (props) => {
     <Modal onClose={props.onClose}>
       <form onSubmit={Submithandler}>
       <div>
-        {name}
+        {type}
       </div>
         <div>
-          {text}
+          {title}
         </div>
         <div>
-      {memo}
+      {message}
       </div>
 
         <div className={classes.actions}>

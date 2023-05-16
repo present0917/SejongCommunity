@@ -23,7 +23,7 @@ const Myfinal = () => {
   const [majoropen, setmajoropen] = useState(null);
   const [cards, setCards] = useState([]); //입력 내용 담을곳
   const [ismine, setismine] = useState(false); //입력 내용 담을곳
-
+  const [valid, setvalid] = useState('retry');
   const params = useParams();
   const showpatchmodal = () => {//수정 모달
     setpatchmodalshow(true);
@@ -33,16 +33,50 @@ const Myfinal = () => {
   const hidepatchmodal = () => { //수정 모달 숨기기
     setpatchmodalshow(false);
   };
-  const showmodal = (info) => {// 뷰 모달
+  
+
+  function updatecarddata(info)
+  {
     setCardInfo(info.data);
-    if(info.data.user==1||info.ismine)
+    console.log(info);
+    showmodal(info);
+  }
+
+  async function showmodal(info){// 스티커 눌렀을 때
+    try{
+      let val = await checkismine(info);
+      console.log(val);
+    if(val==1||val==2)
     {
       setshowmodalshow(true);
     }
     else
     setshowmodalshow(false);
     // console.log('show');
+    }
+    catch(e){
+      console.log(e);
+    }
+    
   };
+  async function checkismine(data) { 
+    console.log(data.data);
+    const stickerid=data.data.stickerKey;
+    console.log(stickerid);
+    const response = await fetch(`/stickers/${stickerid}`, {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    });
+    const dat = await response.json();
+    console.log('허가요청했다.');
+    console.log(dat.errorCode);
+    console.log(dat.data.stickerAuth);
+    //0이면 못열고 1이면 del만 가능 2면 fix만
+    return dat.data.stickerAuth
+  }
+
+
   const hidemodal = () => { //뷰 모달 숨기기
     setshowmodalshow(false);
   };
@@ -66,13 +100,16 @@ const Myfinal = () => {
   }
 
   async function fix(data) { //수정
-    const response = await fetch(`/${params.id}/${+data.id}`, {
+    console.log(data);
+    data.type=Number(data.type);
+    const response = await fetch(`/stickers/${data.stickerKey}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(data)
     });
+
     console.log('fixed');
     console.log(data);
     fetchcard();
@@ -133,11 +170,10 @@ const Myfinal = () => {
     console.log(data)
     const mapping = await data.stickers.map((element) => {
       return {
-        name: 1,
-        text: element.title,
-        id:element.stickerKey,
-        memo:element.message,
-        user:element.writer
+        type: element.type,
+        title: `${element.title}`,
+        stickerKey:element.stickerKey,
+        message:element.message,
       };
     });
     const status =await data.isMine;
@@ -167,7 +203,8 @@ const Myfinal = () => {
   }, []);
 
   async function postcard(card) { //입력
-    const response = await fetch(`/stickers?treeid=${params.id}`, {
+    console.log(card)
+    const response = await fetch(`/stickers?treeId=${params.id}`, {
       method: 'POST',
       body: JSON.stringify(card),
       headers: {
@@ -184,15 +221,17 @@ const Myfinal = () => {
   function handleClick(data) { // 이거로 값을 채워서 스티커를 post로 보낸다.
 
     const newObject = {
-      id: Math.random(), // 연동시 주석
-      name: `${data.name}`,
-      text: `${data.text}`,
-      memo: `${data.memo}`,
-      user: 1,//연동시주석
-      treeid:params.id
+      // id: Math.random(), // 연동시 주석
+      type: Number(`${data.name}`),
+      title: `${data.text}`,
+      message: `${data.memo}`,
+
+      // user: 1,//연동시주석
+      treeId:params.id  
     };
     //  setCards([...cards, newObject]);
     console.log('붙였다');
+
      postcard(newObject);
   }
  
@@ -203,7 +242,7 @@ const Myfinal = () => {
         <img src={board} className="board" />
          {cards.map((cardData) => (
           <Crdtest key={Math.random()} data={cardData}
-            func={showmodal} ismine={ismine}
+            func={updatecarddata} ismine={ismine}
           />
         ))} 
       </div>

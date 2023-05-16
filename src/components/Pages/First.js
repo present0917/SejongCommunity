@@ -1,3 +1,4 @@
+import Doyouknow from "../../etc/Doyouknow";
 import "./First.css";
 import { useState } from "react";
 const First = () => {
@@ -9,6 +10,9 @@ const First = () => {
       </div>
       <div className="alertContainer">
         <div className="treeAlert">3</div>
+      </div>
+      <div className="kknow">
+        <Doyouknow></Doyouknow>
       </div>
     </div>
   );
