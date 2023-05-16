@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import "./Rec2.css";
 const Rec2 = ({ treeKey, memberKey, title, description, tags }) => {
   const [isSelected, setIsSelected] = useState(false);
+  const tag = [];
+  if (tags[0]) tag.push(...`${"#" + tag.join(", #")} `);
 
   return (
     <div className={`rec2 ${isSelected ? "selected" : ""}`}>
@@ -10,9 +12,7 @@ const Rec2 = ({ treeKey, memberKey, title, description, tags }) => {
         <div>{title}</div>
         <div>{memberKey}</div>
         <div>{description}</div>
-        {tags.map((tag) => (
-          <i key={Math.random()}>{"#" + tag.join(", #")}</i>
-        ))}
+        <i>{tag}</i>
       </Link>
     </div>
   );

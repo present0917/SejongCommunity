@@ -31,6 +31,7 @@ const Treeselect = () => {
       if (!data) {
         throw new Error("No Search Data");
       }
+      console.log(data);
       const mapping = data.data.map((element) => {
         return {
           treeKey: element.treeKey,
@@ -42,6 +43,7 @@ const Treeselect = () => {
       });
       //settrees(filteredData)
       settrees(mapping);
+      console.log(mapping);
     } catch (e) {
       alert(e);
     }

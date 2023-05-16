@@ -7,9 +7,10 @@ const Search = (props) => {
   const [searchData, setSearchData] = useState([]);
   const [page, setPage] = useState(1);
   const [pageLength, setPageLength] = useState(1);
-  const limit = 10;
   const { state } = useLocation();
 
+  console.log(`${state}&page=${page}`);
+  submitSearch();
   const handlePageUp = () => {
     const nextPage = page + 1;
     setPage(nextPage);
@@ -21,7 +22,6 @@ const Search = (props) => {
     //submitSearch()
   };
 
-  console.log(state);
   async function submitSearch() {
     const response = await fetch(`${state}&page=${page}`, {
       //"/forest"
@@ -55,7 +55,6 @@ const Search = (props) => {
       alert(e);
     }
   }
-  submitSearch();
   async function submitSearchTest() {
     const response = await fetch("http://localhost:3001/forest");
     if (!response.ok) {
