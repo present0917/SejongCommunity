@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import styles from "./SearchBar.module.css";
 import ToggleButton from "../../ui/toggle/toggleButton";
 import ToggleButtonGroup from "../../ui/toggle/toggleButtonGroup";
+import tagData from "../../../dataJson/tagdata.json";
 
 const SearchBar = (props) => {
   const [search, setSearch] = useState("");
@@ -69,38 +70,19 @@ const SearchBar = (props) => {
           style={styles.searchToggleBox}
           mode="single"
         >
-          <ToggleButton
-            style={
-              tags.find((v) => v === "밥약") ? styles.default : styles.checked
-            }
-            value="밥약"
-          >
-            #밥약
-          </ToggleButton>
-          <ToggleButton
-            style={
-              tags.find((v) => v === "스터디") ? styles.default : styles.checked
-            }
-            value="스터디"
-          >
-            #스터디
-          </ToggleButton>
-          <ToggleButton
-            style={
-              tags.find((v) => v === "공모전") ? styles.default : styles.checked
-            }
-            value="공모전"
-          >
-            #공모전
-          </ToggleButton>
-          <ToggleButton
-            style={
-              tags.find((v) => v === "번개") ? styles.default : styles.checked
-            }
-            value="번개"
-          >
-            #번개
-          </ToggleButton>
+          {tagData.tags.map((tag) => (
+            <ToggleButton
+              style={
+                tags.find((v) => v === tag.value)
+                  ? styles.default
+                  : styles.checked
+              }
+              value={tag.value}
+              key={Math.random()}
+            >
+              #{tag.text}
+            </ToggleButton>
+          ))}
         </ToggleButtonGroup>
       </form>
     </>
