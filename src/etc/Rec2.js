@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import "./Rec2.css";
 const Rec2 = ({ treeKey, memberKey, title, description, tags }) => {
   const [isSelected, setIsSelected] = useState(false);
+  console.log(tags);
   const tag = [];
-  if (tags[0]) tag.push(...`${"#" + tag.join(", #")} `);
+  if (tags[0]) tag.push(...`${"#" + tags.join(", #")} `);
 
   return (
     <div className={`rec2 ${isSelected ? "selected" : ""}`}>
