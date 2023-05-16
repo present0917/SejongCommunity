@@ -1,0 +1,13 @@
+.alertContainer {
+  width: 100%;
+  height: auto;
+}
+.treeAlert {
+  width: 200px;
+  height: 100px;
+  background-image: url("../../pic/board.png");
+  background-size: 200px 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

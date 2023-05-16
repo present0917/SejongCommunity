@@ -1,36 +1,20 @@
-import { useState,useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import './Rec2.css'
-const Rec2 = (props) => { 
-  const tag=[];
-
+import { useState, useEffect, Children } from "react";
+import { Link } from "react-router-dom";
+import "./Rec2.css";
+const Rec2 = ({ treeKey, memberKey, title, description, tags }) => {
   const [isSelected, setIsSelected] = useState(false);
-  if(props.data.tags[0])
-    tag.push(...`#${props.data.tags}`)
 
-
-console.log(props);
   return (
-    
-
-
-
-
-       <div className={`rec2 ${isSelected ? 'selected' : ''}`} >
-         <Link to={`${props.data.id}`} style={{ textDecoration: "none" }} >
-      <div>{props.data.title}</div>
-        <div >{props.data.maintext}</div>
-        <div >{tag}</div>
-        </Link>
-      </div> 
-
-
-   
-  
-
-
-    
-     
+    <div className={`rec2 ${isSelected ? "selected" : ""}`}>
+      <Link to={`/tree/${treeKey}`} style={{ textDecoration: "none" }}>
+        <div>{title}</div>
+        <div>{memberKey}</div>
+        <div>{description}</div>
+        {tags.map((tag) => (
+          <i key={Math.random()}>{"#" + tag.join(", #")}</i>
+        ))}
+      </Link>
+    </div>
   );
 };
 

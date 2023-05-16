@@ -2,9 +2,9 @@ import { useNavigate } from "react-router-dom";
 import { React, useState, useEffect } from "react";
 import SignUp from "./SignUp";
 import "./Login.css";
-import schoollogo from "../../pic/logo.png";
-import logo from "../../pic/logo3.png";
-import LoginFooter from "../Nav/LoginFooter";
+//import schoollogo from "../../../pic/logo.png";
+import logo from "../../../pic/logo3.png";
+import LoginFooter from "../../Nav/LoginFooter";
 const Login = (props) => {
   const [signUpOpen, setSignUpOpen] = useState(false);
 
@@ -183,18 +183,23 @@ const Login = (props) => {
 
   return (
     <div className="entire">
-        
       {/* <img src={schoollogo} className="schoollogo" /> */}
-      <img src={logo} className="logo" />      
+      <img src={logo} className="logo" />
       <div className="login-form">
         <form onSubmit={handleSubmit}>
           <div>
             <div className="login-form-el">
               <label htmlFor="ID"></label>
               <br />
-              <input id="id" name="id" value={id} onChange={onChangeId} placeholder="ID" />
+              <input
+                id="id"
+                name="id"
+                value={id}
+                onChange={onChangeId}
+                placeholder="ID"
+              />
               <br></br>
-             
+
               <i className={isId ? "alert-ok" : "alert"}> {idMessage} </i>
               <br></br>
             </div>
@@ -220,9 +225,9 @@ const Login = (props) => {
           </div>
 
           <div className="login-actions">
-          <br></br>
+            <br></br>
             <button className="button" type="submit" disabled={disabled}>
-            Login
+              Login
             </button>
             <button
               className="button"
@@ -260,7 +265,6 @@ const Login = (props) => {
       </button> */}
       <SignUp signUpOpen={signUpOpen} setSignUpOpen={setSignUpOpen}></SignUp>
       <LoginFooter></LoginFooter>
-
     </div>
   );
 };
