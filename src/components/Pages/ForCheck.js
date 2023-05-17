@@ -17,7 +17,7 @@ const Forcheck = () => {
     }
     const data = await response.json();
     console.log(data);
-    if (data == false) navigate("/Errorlogin");
+    if (data === false) navigate("/Errorlogin");
   }
 
   logintest();

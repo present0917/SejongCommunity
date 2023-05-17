@@ -67,20 +67,6 @@
   justify-content: flex-start;
   align-items: center;
 }
-.button > input {
-  display: none;
-}
-.button {
-  font: inherit;
-  cursor: pointer;
-  background-color: #ab132f;
-  border: 1px solid #ffffff;
-  width: 100px;
-  height: 25px;
-  border-radius: 25px;
-  color: white;
-  text-align: center;
-}
 
 .checked {
   font: inherit;
