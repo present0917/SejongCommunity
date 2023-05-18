@@ -1,4 +1,5 @@
 import ToggleButtonContext from "./toggleContext";
+import defaultStyle from "./toggleButton.module.css";
 
 function ToggleButtonGroup({
   label,
@@ -35,7 +36,18 @@ function ToggleButtonGroup({
     }
   };
   //toggleValue() 함수는 체크박스가 체크 여부에 따라서 values prop에 해당 값을 추가하거나 제거해줌.
-
+  if (!style) {
+    return (
+      <div className={defaultStyle.searchToggleBox}>
+        <legend>{label}</legend>
+        <ToggleButtonContext.Provider
+          value={{ isDisabled, isChecked, toggleValue }}
+        >
+          {children}
+        </ToggleButtonContext.Provider>
+      </div>
+    );
+  }
   return (
     <div className={style}>
       <legend>{label}</legend>

@@ -3,9 +3,9 @@ import React, { useState } from "react";
 //import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
 import styles from "./SearchBar.module.css";
+import tagData from "../../../dataJson/tagdata.json";
 import ToggleButton from "../../ui/toggle/toggleButton";
 import ToggleButtonGroup from "../../ui/toggle/toggleButtonGroup";
-import tagData from "../../../dataJson/tagdata.json";
 
 const SearchBar = (props) => {
   const [search, setSearch] = useState("");
@@ -13,7 +13,6 @@ const SearchBar = (props) => {
   const [select, setSelect] = useState("title");
 
   const navigate = useNavigate();
-  console.log(tags);
   function handleSelect() {
     switch (select) {
       case "title":
@@ -64,24 +63,9 @@ const SearchBar = (props) => {
             className={styles.searchBoxText}
           />
         </div>
-        <ToggleButtonGroup
-          values={tags}
-          onChange={setTags}
-          style={styles.searchToggleBox}
-          mode="single"
-        >
+        <ToggleButtonGroup values={tags} onChange={setTags} mode="single">
           {tagData.tags.map((tag) => (
-            <ToggleButton
-              style={
-                tags.find((v) => v === tag.value)
-                  ? styles.default
-                  : styles.checked
-              }
-              value={tag.value}
-              key={Math.random()}
-            >
-              #{tag.text}
-            </ToggleButton>
+            <ToggleButton value={tag.value}>#{tag.text}</ToggleButton>
           ))}
         </ToggleButtonGroup>
       </form>
