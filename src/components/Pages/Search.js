@@ -9,8 +9,11 @@ const Search = (props) => {
   const [pageLength, setPageLength] = useState(1);
   const { state } = useLocation();
 
-  console.log(`${state}&page=${page}`);
-  submitSearch();
+  useEffect(() => {
+    console.log(`${state}&page=${page}`);
+    submitSearch();
+  }, []);
+
   const handlePageUp = () => {
     const nextPage = page + 1;
     setPage(nextPage);
@@ -38,18 +41,17 @@ const Search = (props) => {
       if (!data) {
         throw new Error("No Search Data");
       }
-      console.log(data);
       // const length = await data.maxPage;
-      // const mapping = await data.posts.map((element) => {
-      //   return {
-      //     treeKey: element.treeKey,
-      //     memberKey: element.memberKey,
-      //     title: element.title,
-      //     description: element.description,
-      //     tags: [element.tags],
-      //   };
-      // });
-      // setSearchData(mapping);
+      const mapping = await data.data.map((element) => {
+        return {
+          treeKey: element.treeKey,
+          memberKey: element.memberKey,
+          title: element.title,
+          description: element.description,
+          tags: [element.tags],
+        };
+      });
+      setSearchData(mapping);
       // setPageLength(length);
     } catch (e) {
       alert(e);

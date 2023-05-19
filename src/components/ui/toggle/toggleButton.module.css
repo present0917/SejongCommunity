@@ -1,0 +1,39 @@
+.searchToggleBox {
+  width: 100vw;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+.checked {
+  font: inherit;
+  cursor: pointer;
+  background-color: #ffffff;
+  border: 1px solid #000000;
+
+  width: 100px;
+  min-width: 50px;
+  height: 15px;
+  margin-right: 5px;
+  padding-top: 5px;
+
+  border-radius: 25px;
+  color: rgb(0, 0, 0);
+  text-align: center;
+}
+.default {
+  font: inherit;
+  cursor: pointer;
+  background-color: #ab132f;
+  border: 1px solid #ffffff;
+
+  width: 100px;
+  min-width: 100px;
+  height: 15px;
+  margin-right: 5px;
+  padding-top: 5px;
+
+  border-radius: 25px;
+  color: white;
+  text-align: center;
+}
