@@ -18,20 +18,6 @@ import Errorlogin from "./components/Pages/Error/Errorlogin";
 //  import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  useEffect(() => {
-    const storedUserLoggedInInformation = localStorage.getItem("isLoggedIn");
-
-    if (storedUserLoggedInInformation === "1") {
-      setIsLoggedIn(true);
-    }
-  }, []);
-  const loginHandler = (id, password) => {
-    localStorage.setItem("isLoggedin", "1");
-  };
-  const logoutHandler = (id, password) => {
-    localStorage.setItem("isLoggedin", "0");
-  };
   const router = createBrowserRouter([
     {
       path: "/",
@@ -55,19 +41,15 @@ function App() {
     },
     {
       path: "/login",
-      element: <Login onlogin={loginHandler} onlogout={logoutHandler} />,
+      element: <Login />,
       errorElement: <Error />,
     },
     { path: "errorlogin", element: <Errorlogin /> },
   ]);
   return (
-    <AutoLogin.Provider
-      value={{
-        isLoggedin: isLoggedIn,
-      }}
-    >
+
       <RouterProvider router={router} />
-    </AutoLogin.Provider>
+
   );
 }
 export default App;
