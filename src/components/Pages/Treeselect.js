@@ -5,23 +5,7 @@ import "./Treeselect.css";
 
 const Treeselect = () => {
   const [trees, settrees] = useState([]);
-
-  // async function fetchtrees() { //불러오기 테스트
-  //     const response = await fetch('http://localhost:3002/db');
-  //     if (!response.ok) {
-  //       throw new Error('Failed to fetch trees');
-  //     }
-  //     const data = await response.json();
-  //     const filteredData = Object.fromEntries(
-  //         Object.entries(data).filter(([key, value]) => /^tree\d+$/.test(key))
-  //       );
-  //       const filteredKeys = Object.keys(filteredData);
-  //     console.log(filteredKeys);
-  //     settrees(filteredKeys)
-  //   };
-
   async function fetchtrees() {
-    //불러오기 테스트
     const response = await fetch("/forest");
     try {
       if (!response.ok) {
@@ -44,6 +28,7 @@ const Treeselect = () => {
       //settrees(filteredData)
       settrees(mapping);
       console.log(mapping);
+
     } catch (e) {
       alert(e);
     }
@@ -52,13 +37,13 @@ const Treeselect = () => {
   useEffect(() => {
     fetchtrees();
   }, []);
-
+  console.log(trees);
   if (trees !== null)
     return (
       <>
         <div className="recbox">
           {trees.map((post) => (
-            <Rec2
+            <Rec2 key={Math.random()}
               treeKey={post.treeKey}
               title={post.title}
               memberKey={post.memberKey}

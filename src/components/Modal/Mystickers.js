@@ -6,7 +6,7 @@ const Mystickers = (props) => {
 
   const [usetext, settext] = useState([]);
 
-  async function deletemytree() {   //내트리지우기
+  async function deletemytree() {   
     const response = await fetch("/stickers");
     if (!response.ok) {
       throw new Error('Failed to fetch del tree data');
@@ -27,8 +27,7 @@ const Mystickers = (props) => {
 
   return (
     <Modal onClose={props.onClose} style={{ overflow: "auto" }} >
-      <div style={{ color: "blue" }}>
-        test
+      <div style={{ textDecoration: "none"  }}>
         <div>
           
 
@@ -36,8 +35,8 @@ const Mystickers = (props) => {
               <div key={Math.random()} style={{
                 border: "1px solid black"
               }} >
-                <Link to={`/alert`}>
-                <div>
+                <Link to={`/alert`} style={{ textDecoration: "none"  }}>
+                <div >
                   제목{data.title}
                 </div>
                 <div>
