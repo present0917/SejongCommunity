@@ -1,8 +1,9 @@
 import Modal from './Modal';
 import { useState } from 'react';
 import { useEffect } from 'react';
-const  Mystickers = (props) => {
-    
+import { Link } from 'react-router-dom';
+const Mystickers = (props) => {
+
   const [usetext, settext] = useState([]);
 
   async function deletemytree() {   //내트리지우기
@@ -18,40 +19,46 @@ const  Mystickers = (props) => {
     settext(data.data);
   }
 
-// deletemytree();
+  // deletemytree();
 
-useEffect(() => {
+  useEffect(() => {
     deletemytree();
   }, []);
 
   return (
-    <Modal onClose={props.onClose} style={{overflow:"auto"}} >
-    <div style={{color:"blue"}}>
+    <Modal onClose={props.onClose} style={{ overflow: "auto" }} >
+      <div style={{ color: "blue" }}>
         test
         <div>
-        {usetext.map((data) => (
-          <div key={Math.random()} style={{
-            border: "1px solid black"
-          }} >
-            <div>
-            제목{data.title}   
-            </div>
-            <div>
-            내용{data.message}
-            </div>
-            <div>
-            스티커모양{data.type}
-            </div>
-            <div>
+          
 
-            트리번호{data.treeKey}      
-            </div>
-            </div>
-        ))} </div>
-            {/* {usetext.data[0].treeKey} */}
+            {usetext.map((data) => (
+              <div key={Math.random()} style={{
+                border: "1px solid black"
+              }} >
+                <Link to={`/alert`}>
+                <div>
+                  제목{data.title}
+                </div>
+                <div>
+                  내용{data.message}
+                </div>
+                <div>
+                  스티커모양{data.type}
+                </div>
+                <div>
 
-        </div>
-  </Modal>
+                  트리번호{data.treeKey}
+                </div>
+                </Link>
+              </div>
+            ))} </div>
+      
+
+      {/* {usetext.data[0].treeKey} */}
+
+    </div>
+  </Modal >
   );
 };
 

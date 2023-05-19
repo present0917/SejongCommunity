@@ -2,15 +2,16 @@ import Header from "./Header/Header";
 import Footer from "./Footer";
 import { Outlet } from "react-router-dom";
 import './Layout.css'
-const Layout = () => {
-
-    
+import { useOutletContext } from "react-router-dom";
+import { useState,useEffect } from "react";
+const Layout = (props) => {
+const {sum}=useOutletContext();
         return(
         <div className="padding">
 
             <Header />
-            <Outlet />
-            <Footer />
+            <Outlet context={{sum}}/>
+            <Footer sum={sum}/>
         </div>
     )
 }

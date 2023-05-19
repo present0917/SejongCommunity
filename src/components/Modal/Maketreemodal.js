@@ -95,7 +95,7 @@ const Maketreemodal = (props) => {
         title: name,
         requestId: allowId,
         requestDepartment: allowDepartment,
-        tag: tags,
+        tags: tags,
       };
       signUpSubmit(signUpData);
       console.log(signUpData);
