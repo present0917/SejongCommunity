@@ -24,13 +24,13 @@ const First = (props) => {
     <div className="first">
 
     
-<Link to={`/alert`}>
+<Link to={`/alert`} style={{ textDecoration: "none"  }}>
         {sum>0 && <div>  {sum}개의 알람이 있습니다.</div>}
     </Link>
 
-      <div className="alertContainer">
+      {/* <div className="alertContainer">
         <div className="treeAlert"></div>
-      </div>
+      </div> */}
       <div className="kknow">
         <Doyouknow></Doyouknow>
       </div>

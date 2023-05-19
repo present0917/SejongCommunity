@@ -35,7 +35,7 @@ const Mystickers = (props) => {
               <div key={Math.random()} style={{
                 border: "1px solid black"
               }} >
-                <Link to={`/alert`} style={{ textDecoration: "none"  }}>
+                <Link to={`/tree/${data.treeKey}`} style={{ textDecoration: "none"  }} onClick={props.onClose} >
                 <div >
                   제목{data.title}
                 </div>
