@@ -9,11 +9,6 @@ const Search = (props) => {
   const [pageLength, setPageLength] = useState(1);
   const { state } = useLocation();
 
-  useEffect(() => {
-    console.log(`${state}&page=${page}`);
-    submitSearch();
-  }, []);
-
   const handlePageUp = () => {
     const nextPage = page + 1;
     setPage(nextPage);
@@ -77,8 +72,12 @@ const Search = (props) => {
       };
     });
     setSearchData(mapping);
-    setPageLength(length);
+    //setPageLength(length);
   }
+  useEffect(() => {
+    console.log(`${state}&page=${page}`);
+    submitSearch();
+  }, []);
 
   return (
     <div>

@@ -6,7 +6,7 @@ const Rec2 = ({ treeKey, memberKey, title, description, tags }) => {
   const [isSelected, setIsSelected] = useState(false);
   const tagMap = tagData.tags.map((e)=>[e.value,e.text]);
   const tag = [];
-  if (tags[0]) tags.forEach(v=>{
+  if (tags !== undefined) tags.forEach(v=>{
     tag.push("#"+tagMap[v-1][1]);
   })
 
