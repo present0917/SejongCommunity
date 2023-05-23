@@ -4,8 +4,8 @@ import CheckboxGroup from "../ui/checkbox/pre/CheckboxGroup";
 import Checkbox from "../ui/checkbox/pre/Checkbox";
 import ToggleButton from "../ui/toggle/toggleButton";
 import ToggleButtonGroup from "../ui/toggle/toggleButtonGroup";
-import styles from "../Nav/Header/SearchBar.module.css";
 import tagData from "../../dataJson/tagdata.json";
+import "./Maketreemodal.css";
 const Maketreemodal = (props) => {
   const [tags, setTags] = useState([1]);
   const [name, setName] = useState("");
@@ -21,6 +21,7 @@ const Maketreemodal = (props) => {
 
   const [disabled, setDisabled] = useState(true);
 
+  const toggleGroupStyle = {};
   const modalStyle = {
     overlay: {
       position: "fixed",
@@ -83,6 +84,18 @@ const Maketreemodal = (props) => {
     setAllowId(false);
     setAllowDepartment(false);
   };
+  const testGene = (e) => {
+    for (let index = 0; index < 30; index++) {
+      const signUpData = {
+        description: "테스트용",
+        title: `테스트${index}`,
+        requestId: true,
+        requestDepartment: true,
+        tags: [1, 2, 3],
+      };
+      signUpSubmit(signUpData);
+    }
+  };
   const handleSubmit = (e) => {
     //제출
     setDisabled(true);
@@ -130,20 +143,24 @@ const Maketreemodal = (props) => {
       style={modalStyle}
       ariaHideApp={false}
     >
-      <div className="form">
+      <div className="container">
         <form onSubmit={handleSubmit}>
-          {" "}
-          {}
-          <div className="form-el">
-            <label>제목</label> <br />
-            <input value={name} onChange={onChangeName} />
-            <i className={isName ? "alert-ok" : "alert"}> {nameMessage} </i>
-          </div>
-          <div className="form">
-            <label>설명</label> <br />
-            <textarea value={password} onChange={onChangePassword} />
-            <i className={isPass ? "alert-ok" : "alert"}>{passwordMessage}</i>
-          </div>
+          <p>
+            <input
+              className="title"
+              placeholder="제목"
+              value={name}
+              onChange={onChangeName}
+            />
+          </p>
+          <p>
+            <textarea
+              className="text"
+              value={password}
+              onChange={onChangePassword}
+              placeholder="내용"
+            />
+          </p>
           <CheckboxGroup label="스티커 작성자의 정보 공개 범위를 선택하세요.">
             <Checkbox
               values="studentId"
@@ -160,22 +177,9 @@ const Maketreemodal = (props) => {
               학과
             </Checkbox>
           </CheckboxGroup>
-          <ToggleButtonGroup
-            values={tags}
-            onChange={setTags}
-            style={styles.searchToggleBox}
-            mode="multi"
-          >
+          <ToggleButtonGroup values={tags} onChange={setTags} mode="multi">
             {tagData.tags.map((tag) => (
-              <ToggleButton
-                style={
-                  tags.find((v) => v === tag.value)
-                    ? styles.default
-                    : styles.checked
-                }
-                value={tag.value}
-                key={Math.random()}
-              >
+              <ToggleButton value={tag.value} key={Math.random()}>
                 #{tag.text}
               </ToggleButton>
             ))}
@@ -194,6 +198,9 @@ const Maketreemodal = (props) => {
             </button>
           </div>
         </form>
+        <button type="button" onClick={testGene}>
+          테스트트리 생성
+        </button>
       </div>
     </ReactModal>
   );
