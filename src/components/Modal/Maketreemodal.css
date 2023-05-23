@@ -1,0 +1,41 @@
+.container {
+  width: 100%;
+  box-sizing: border-box;
+}
+.container > form {
+  margin-bottom: 5px;
+  border: 2px solid #d6d6d6;
+  box-sizing: border-box;
+}
+.container > form > p {
+  width: auto;
+  padding: 0px;
+  margin: 0;
+  border-bottom: 1px solid #e3e3e3;
+  background-color: #fff;
+  border: 1;
+  color: #292929;
+}
+.container > form > p input,
+.container > form > p textarea {
+  outline: none;
+}
+.container > form > p > input.title {
+  width: 95%;
+  height: 20px;
+  line-height: 10px;
+  border: 0;
+  color: #292929;
+  font-size: 16px;
+  font-weight: bold;
+}
+.container > form > p > textarea.text {
+  width: 95%;
+  height: 100px;
+  line-height: 10px;
+  border: 0;
+  color: #292929;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 10px 7px 7px 10px;
+}
