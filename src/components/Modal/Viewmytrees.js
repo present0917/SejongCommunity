@@ -36,7 +36,7 @@ const Viewmytrees = (props) => {
                 memberKey: element.memberKey,
                 title: element.title,
                 description: element.description,
-                tags: [element.tags],
+                tags: element.tags,
             };
         });
 

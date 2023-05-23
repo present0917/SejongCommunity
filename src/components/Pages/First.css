@@ -19,3 +19,6 @@
   align-items: center;
  text-align: center;
 }
+.smallboard{
+  max-width:20vw;
+}

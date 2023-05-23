@@ -2,6 +2,7 @@ import Modal from './Modal';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 const Mystickers = (props) => {
 
   const [usetext, settext] = useState([]);
@@ -25,6 +26,14 @@ const Mystickers = (props) => {
     deletemytree();
   }, []);
 
+  const navigate=useNavigate();
+
+  const nav=(data)=>
+  {
+    console.log('클릭');
+    navigate(`/tree/${data.treeKey}`)
+    window.location.reload();
+  }
   return (
     <Modal onClose={props.onClose} style={{ overflow: "auto" }} >
       <div style={{ textDecoration: "none"  }}>
@@ -35,7 +44,8 @@ const Mystickers = (props) => {
               <div key={Math.random()} style={{
                 border: "1px solid black"
               }} >
-                <Link to={`/tree/${data.treeKey}`} style={{ textDecoration: "none"  }} onClick={props.onClose} >
+                <div onClick={()=>nav(data)}>
+                {/* <Link to={`/tree/${data.treeKey}`} style={{ textDecoration: "none"  }} onClick={props.onClose} > */}
                 <div >
                   제목{data.title}
                 </div>
@@ -49,7 +59,8 @@ const Mystickers = (props) => {
 
                   트리번호{data.treeKey}
                 </div>
-                </Link>
+                </div>
+                {/* </Link> */}
               </div>
             ))} </div>
       
