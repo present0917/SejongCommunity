@@ -1,5 +1,5 @@
 import "../FontAwesome";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 //import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
 import styles from "./SearchBar.module.css";
@@ -11,8 +11,13 @@ const SearchBar = (props) => {
   const [search, setSearch] = useState("");
   const [tags, setTags] = useState([""]);
   const [select, setSelect] = useState("title");
-
   const navigate = useNavigate();
+
+  useEffect(()=>{
+    navigate("/tree");
+  },[])
+
+  
   function handleSelect() {
     switch (select) {
       case "title":
