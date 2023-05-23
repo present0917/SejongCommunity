@@ -6,6 +6,7 @@ import ToggleButton from "../ui/toggle/toggleButton";
 import ToggleButtonGroup from "../ui/toggle/toggleButtonGroup";
 import tagData from "../../dataJson/tagdata.json";
 import "./Maketreemodal.css";
+import tagBox from "../ui/toggle/toggleButton.module.css";
 const Maketreemodal = (props) => {
   const [tags, setTags] = useState([1]);
   const [name, setName] = useState("");
@@ -177,9 +178,22 @@ const Maketreemodal = (props) => {
               학과
             </Checkbox>
           </CheckboxGroup>
-          <ToggleButtonGroup values={tags} onChange={setTags} mode="multi">
+          <ToggleButtonGroup
+            style={tagBox.tagBox}
+            values={tags}
+            onChange={setTags}
+            mode="multi"
+          >
             {tagData.tags.map((tag) => (
-              <ToggleButton value={tag.value} key={Math.random()}>
+              <ToggleButton
+                value={tag.value}
+                style={
+                  tags.find((v) => v === tag.value)
+                    ? tagBox.createDefault
+                    : tagBox.createChecked
+                }
+                key={Math.random()}
+              >
                 #{tag.text}
               </ToggleButton>
             ))}
