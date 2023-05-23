@@ -15,7 +15,6 @@ const Treeselect = () => {
       if (!data) {
         throw new Error("No Search Data");
       }
-      console.log(data);
       const mapping = data.data.map((element) => {
         return {
           treeKey: element.treeKey,
@@ -27,8 +26,7 @@ const Treeselect = () => {
       });
       //settrees(filteredData)
       settrees(mapping);
-      console.log(mapping);
-
+      //console.log(mapping);
     } catch (e) {
       alert(e);
     }
@@ -37,13 +35,14 @@ const Treeselect = () => {
   useEffect(() => {
     fetchtrees();
   }, []);
-  console.log(trees);
+  //console.log(trees);
   if (trees !== null)
     return (
       <>
         <div className="recbox">
           {trees.map((post) => (
-            <Rec2 key={Math.random()}
+            <Rec2
+              key={Math.random()}
               treeKey={post.treeKey}
               title={post.title}
               memberKey={post.memberKey}
