@@ -43,7 +43,7 @@ const Search = (props) => {
           memberKey: element.memberKey,
           title: element.title,
           description: element.description,
-          tags: [element.tags],
+          tags: element.tags,
         };
       });
       setSearchData(mapping);
