@@ -6,10 +6,10 @@ const Show = (props) => {
   console.log(props);
   const params = useParams();
   const { id, type, title, message } = props.data;
+  const{auth}=props;
   const [des, setdes] = useState('here is description'); //입력 내용 담을곳
   const [stuid, setid] = useState('here is student id'); //입력 내용 담을곳
-  console.log(id);//스티커아이디
-  console.log(props.treeid);//트리id
+ console.log(auth);
   const Submithandler=(event)=>  
   {
      event.preventDefault();
@@ -63,15 +63,19 @@ const Show = (props) => {
         </div>
         <div>
       {message}
+
       </div>
+
 
         <div className={classes.actions}>
           <button className={classes['button--alt']} onClick={props.onClose}>
             Close
           </button>
-          <button className={classes['button--alt']} onClick={openhandler}>
+          {auth==2 &&
+          <button className={classes['button--alt']} onClick={openhandler} >
             Fix
           </button>
+}
           <button type="submit" className={classes.button}>
             delete
           </button>
