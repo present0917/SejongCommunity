@@ -23,14 +23,14 @@ const Alert = (props) => {
     return (
         <div>
           <ul>
-            {testData.map((data) => (
+            {/* {testData.map((data) => (
                 
           <li key={Math.random()}>
             <Link to={`/tree/${data.id}`}>
             {data.name} 트리에 {data.count}개의 알림이 있습니다.
             </Link>
           </li>
-        ))}
+        ))} */}
       </ul>
 
         </div>

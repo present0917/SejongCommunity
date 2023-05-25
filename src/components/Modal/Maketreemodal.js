@@ -126,13 +126,13 @@ const Maketreemodal = (props) => {
       },
       body: JSON.stringify(info),
     });
-    if (!response.ok) {
-      throw new Error(`${response.status} 에러가 발생했습니다.`);
-    }
+    // if (!response.ok) {
+    //   throw new Error(`${response.status} 에러가 발생했습니다.`);
+    // }
     const data = await response.json();
-    if (data.errorCode != null) {
-      throw new Error(`Error Code:${data.errorCode} ${data.message}`);
-    }
+    // if (data.errorCode != null) {
+    //   throw new Error(`Error Code:${data.errorCode} ${data.message}`);
+    // }
     console.log("생성할때보낸정보");
     console.log(info);
     props.setmaketreeOpen(false);

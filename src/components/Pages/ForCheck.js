@@ -29,19 +29,20 @@ const Forcheck = () => {
   async function alarm() {
       const response = await fetch('/login');
       const data = await response.json();
-
-    setTestData(data.alarmCount);
+      // let check = response.data.hasOwnProperty('alarmCount')
+      // if(check)
+      //   setTestData(data.alarmCount);
   };
   
 
 
-  useEffect(() => {
+  // useEffect(() => {
     
-    let test = testData.reduce((accumulator, currentObject) => accumulator + currentObject['count'], 0);
-    setSum(test);
+  //   let test = testData.reduce((accumulator, currentObject) => accumulator + currentObject['count'], 0);
+  //   setSum(test);
    
 
-  }, [testData]);
+  // }, [testData]);
   
 
 
