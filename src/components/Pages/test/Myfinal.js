@@ -15,6 +15,8 @@ const imagePaths = [
   post2
 ];
 const Myfinal = () => {
+  const [openid, setopenid] = useState(false);
+  const [opendep, setopendep] = useState(false);
   const [ModalIsShown, setModalIsShown] = useState(false);
   const [showmadalshow, setshowmodalshow] = useState(false);
   const [patchmadalshow, setpatchmodalshow] = useState(false);
@@ -24,6 +26,8 @@ const Myfinal = () => {
   const [cards, setCards] = useState([]); //입력 내용 담을곳
   const [ismine, setismine] = useState(false); //입력 내용 담을곳
   const [valid, setvalid] = useState('retry');
+  const [info,setinfo]=useState('');
+  const [tag, settag] = useState([]); //입력 내용 담을곳
   const params = useParams();
   const showpatchmodal = () => {//수정 모달
     setpatchmodalshow(true);
@@ -176,7 +180,15 @@ const Myfinal = () => {
         message:element.message,
       };
     });
+    const treeinfo=await data.tree;
     const status =await data.isMine;
+    const tagg=await data.tree.tags;
+    const id=await data.tree.requestId;
+    const de=await data.tree.requestDepartment;
+    setopenid(id);
+    setopendep(de);
+    settag(tagg);
+    setinfo(treeinfo);
     setCards(mapping);
     console.log(status);
     setismine(status);
@@ -238,6 +250,15 @@ const Myfinal = () => {
 
   return (
     <div>
+      <div>
+        {info.title}
+        {/* {tag.map((tags)=>(
+          <div>
+            {tags}
+            </div>
+            ))
+        } */}
+      </div>
       <div className="container">
         <img src={board} className="board" />
          {cards.map((cardData) => (
@@ -249,8 +270,14 @@ const Myfinal = () => {
       {showmadalshow && <Show onClose={hidemodal} data={cardInfo} delete={deletecard} open={showpatchmodal} treeid={params.id}/>}
       {ModalIsShown && <Form onClose={hideModalHandler} onClick={handleClick} />}
       {patchmadalshow && <Patchform onClose={hidepatchmodal} onClick={fix} data={cardInfo} />}
+      <div  >
+        이 페이지에 스티커를 붙일 때<br></br>
+        { openid ?  '학번이공개됩니다.': null }
+        { opendep ?  '학과가공개됩니다.': null }
+        </div>
+      
       <button onClick={showModalHandler} className='test'>스티커붙이기</button>
-
+     
       {/* <span className="spa" onClick={handleClick}>
             <Circle />
             </span>    */}

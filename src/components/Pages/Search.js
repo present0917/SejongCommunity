@@ -9,23 +9,18 @@ const Search = (props) => {
   const [pageLength, setPageLength] = useState(1);
   const { state } = useLocation();
 
-  useEffect(() => {
-    console.log(`${state}&page=${page}`);
-    submitSearch();
-  }, []);
-
   const handlePageUp = () => {
     const nextPage = page + 1;
     setPage(nextPage);
-    //submitSearch();
+    submitSearch(nextPage);
   };
   const handlePageDown = () => {
     const nextPage = page - 1;
     setPage(nextPage);
-    //submitSearch()
+    submitSearch(nextPage);
   };
 
-  async function submitSearch() {
+  async function submitSearch(page) {
     const response = await fetch(`${state}&page=${page}`, {
       //"/forest"
       method: "GET",
@@ -48,7 +43,7 @@ const Search = (props) => {
           memberKey: element.memberKey,
           title: element.title,
           description: element.description,
-          tags: [element.tags],
+          tags: element.tags,
         };
       });
       setSearchData(mapping);
@@ -77,8 +72,12 @@ const Search = (props) => {
       };
     });
     setSearchData(mapping);
-    setPageLength(length);
+    //setPageLength(length);
   }
+  useEffect(() => {
+    //console.log(`${state}&page=${page}`);
+    submitSearch(1);
+  }, []);
 
   return (
     <div>
@@ -115,13 +114,8 @@ const Search = (props) => {
           back
         </button>
         {page}
-        <button disabled={page === pageLength} onClick={handlePageUp}>
-          next
-        </button>
+        <button onClick={handlePageUp}>next</button>
       </div>
-      <button type="button" onClick={submitSearchTest}>
-        test
-      </button>
     </div>
   );
 };

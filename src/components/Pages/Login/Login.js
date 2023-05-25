@@ -172,7 +172,7 @@ const Login = (props) => {
   const onChangePass = (e) => {
     const currentPass = e.target.value;
     setPassword(currentPass);
-    const passRegExp = /^[a-zA-Zㄱ-힣0-9~!@#$%^&*()_+|<>?:{}]{8,30}$/;
+    const passRegExp = /^[a-zA-Zㄱ-힣0-9~!@#$%^&*()-_+|<>?:-{}]{8,30}$/;
     if (!passRegExp.test(currentPass)) {
       setPasswordMessage("비밀번호를 확인해주세요");
       setIsPass(false);

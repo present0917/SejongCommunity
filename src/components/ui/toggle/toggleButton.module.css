@@ -5,6 +5,7 @@
   justify-content: flex-start;
   align-items: center;
 }
+
 .checked {
   font: inherit;
   cursor: pointer;
@@ -14,8 +15,9 @@
   width: 100px;
   min-width: 50px;
   height: 15px;
-  margin-right: 5px;
+  margin: 1px;
   padding-top: 5px;
+  padding-bottom: 5px;
 
   border-radius: 25px;
   color: rgb(0, 0, 0);
@@ -28,12 +30,58 @@
   border: 1px solid #ffffff;
 
   width: 100px;
-  min-width: 100px;
+  min-width: 50px;
+  margin: 1px;
   height: 15px;
-  margin-right: 5px;
   padding-top: 5px;
+  padding-bottom: 5px;
 
   border-radius: 25px;
   color: white;
+  text-align: center;
+  justify-content: flex-start;
+}
+
+.tagBox {
+  width: 90%;
+  display: flex;
+  flex-flow: row wrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+.createDefault {
+  font: inherit;
+  cursor: pointer;
+  background-color: #ab132f;
+  border: 1px solid #ffffff;
+
+  margin-left: 30px;
+  width: 30%;
+  margin: 1px;
+  height: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+
+  border-radius: 25px;
+  color: white;
+  text-align: center;
+}
+.createChecked {
+  font: inherit;
+  cursor: pointer;
+  background-color: #ffffff;
+  border: 1px solid #000000;
+
+  width: 30%;
+  height: 15px;
+  margin: 1px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+
+  border-radius: 25px;
+  color: rgb(0, 0, 0);
   text-align: center;
 }

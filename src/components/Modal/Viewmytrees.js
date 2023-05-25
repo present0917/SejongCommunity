@@ -36,7 +36,7 @@ const Viewmytrees = (props) => {
                 memberKey: element.memberKey,
                 title: element.title,
                 description: element.description,
-                tags: [element.tags],
+                tags: element.tags,
             };
         });
 
@@ -59,9 +59,10 @@ const Viewmytrees = (props) => {
         <Modal onClose={props.onClose} style={{ overflow: "auto" }} >
             <div style={{ textDecoration: "none" }}>
                 <div>
-                    <div className="mytree">
+                    <div className="mytree" onClick={props.onClose}>
+
                         {mytrees.map((post) => (
-                            <Rec2 key={Math.random()} className="mytree"
+                            <Rec2 key={Math.random()} className="mytree"  onClick={props.onClose}
                                 treeKey={post.treeKey}
                                 title={post.title}
                                 memberKey={post.memberKey}

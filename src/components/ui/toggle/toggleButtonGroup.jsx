@@ -2,7 +2,7 @@ import ToggleButtonContext from "./toggleContext";
 import defaultStyle from "./toggleButton.module.css";
 
 function ToggleButtonGroup({
-  label,
+  // label,
   children,
   disabled: groupDisabled,
   values,
@@ -39,7 +39,7 @@ function ToggleButtonGroup({
   if (!style) {
     return (
       <div className={defaultStyle.searchToggleBox}>
-        <legend>{label}</legend>
+        {/* <legend>{label}</legend> */}
         <ToggleButtonContext.Provider
           value={{ isDisabled, isChecked, toggleValue }}
         >
@@ -50,7 +50,7 @@ function ToggleButtonGroup({
   }
   return (
     <div className={style}>
-      <legend>{label}</legend>
+      {/* <legend>{label}</legend> */}
       <ToggleButtonContext.Provider
         value={{ isDisabled, isChecked, toggleValue }}
       >
