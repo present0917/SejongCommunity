@@ -7,6 +7,7 @@ import ToggleButtonGroup from "../ui/toggle/toggleButtonGroup";
 import tagData from "../../dataJson/tagdata.json";
 import "./Maketreemodal.css";
 import tagBox from "../ui/toggle/toggleButton.module.css";
+import './ModalAnimation.css';
 const Maketreemodal = (props) => {
   const [tags, setTags] = useState([1]);
   const [name, setName] = useState("");
@@ -45,6 +46,9 @@ const Maketreemodal = (props) => {
       borderRadius: "20px",
       outline: "none",
       padding: "20px",
+      animationName: 'slide-down',
+        animationDuration: '300ms',
+        animationTimingFunction: 'ease-in-out'
     },
   };
 
