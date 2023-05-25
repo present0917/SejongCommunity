@@ -9,6 +9,7 @@ import Form from "../../Modal/Form";
 import Show from "../../Modal/Show"
 import Patchform from '../../Modal/Patchform'
 import { useParams } from 'react-router-dom'
+
 const imagePaths = [
   post,
   post1,
@@ -19,6 +20,7 @@ const Myfinal = () => {
   const [opendep, setopendep] = useState(false);
   const [ModalIsShown, setModalIsShown] = useState(false);
   const [showmadalshow, setshowmodalshow] = useState(false);
+  const [modalwithoutfix, setmodalwithoutfix] = useState(false);
   const [patchmadalshow, setpatchmodalshow] = useState(false);
   const [cardInfo, setCardInfo] = useState(null);
   const [idopen, setidopen] = useState(null);
@@ -28,6 +30,7 @@ const Myfinal = () => {
   const [valid, setvalid] = useState('retry');
   const [info,setinfo]=useState('');
   const [tag, settag] = useState([]); //입력 내용 담을곳
+  const [val, setval] = useState('retry');
   const params = useParams();
   const showpatchmodal = () => {//수정 모달
     setpatchmodalshow(true);
@@ -49,8 +52,9 @@ const Myfinal = () => {
   async function showmodal(info){// 스티커 눌렀을 때
     try{
       let val = await checkismine(info);
+      setval(val);
       console.log(val);
-    if(val==1||val==2)
+    if(val==2||val==1)
     {
       setshowmodalshow(true);
     }
@@ -267,7 +271,8 @@ const Myfinal = () => {
           />
         ))} 
       </div>
-      {showmadalshow && <Show onClose={hidemodal} data={cardInfo} delete={deletecard} open={showpatchmodal} treeid={params.id}/>}
+      
+      {showmadalshow && <Show onClose={hidemodal} data={cardInfo} delete={deletecard} open={showpatchmodal} treeid={params.id} auth={val}/>}
       {ModalIsShown && <Form onClose={hideModalHandler} onClick={handleClick} />}
       {patchmadalshow && <Patchform onClose={hidepatchmodal} onClick={fix} data={cardInfo} />}
       <div  >
