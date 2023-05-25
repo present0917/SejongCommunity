@@ -3,6 +3,7 @@ import ReactModal from "react-modal";
 import CheckboxGroup from "../ui/checkbox/pre/CheckboxGroup"
 import Checkbox from "../ui/checkbox/pre/Checkbox";
 import { useNavigate } from "react-router";
+import './ModalAnimation.css';
 const FixUserModal = (props) => {
 const navigate=useNavigate();
   const [id, setId] = useState("");
@@ -159,6 +160,7 @@ const navigate=useNavigate();
 
     <ReactModal isOpen={props.signUpOpen}
     onRequestClose={() => props.setSignUpOpen(false)}
+    className='modalstyle'
     style={{
       overlay: {
         position: 'fixed',
@@ -167,6 +169,7 @@ const navigate=useNavigate();
         right: 0,
         bottom: 0,
         backgroundColor: 'rgba(0, 0, 0, 0.75)'
+
       },
       content: {
         position: 'absolute',
@@ -180,7 +183,10 @@ const navigate=useNavigate();
         WebkitOverflowScrolling: 'touch',
         borderRadius: '20px',
         outline: 'none',
-        padding: '20px'
+        padding: '20px',
+        animationName: 'slide-down',
+        animationDuration: '300ms',
+        animationTimingFunction: 'ease-in-out'
       }
     }}
     ariaHideApp={false}>

@@ -3,6 +3,7 @@ import ReactModal from "react-modal";
 import CheckboxGroup from "../../ui/checkbox/CheckboxGroup";
 import Checkbox from "../../ui/checkbox/Checkbox";
 import "./SignUp.css";
+import '../../Modal/ModalAnimation.css';
 const SignUp = (props) => {
   const [id, setId] = useState("");
   const [name, setName] = useState("");
@@ -185,6 +186,9 @@ const SignUp = (props) => {
           borderRadius: "20px",
           outline: "none",
           padding: "20px",
+          animationName: 'slide-down',
+        animationDuration: '300ms',
+        animationTimingFunction: 'ease-in-out'
         },
       }}
       ariaHideApp={false}
