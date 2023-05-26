@@ -4,8 +4,12 @@ import { useEffect,useState } from 'react';
 import { useParams } from 'react-router-dom';
 const Show = (props) => {
   console.log(props);
+  // console.log(props.backdata.data.backSticker);
+  const backdatas=props.backdata.data.backSticker;
+  console.log(backdatas);
+  // const {title}=props.backcardInfo;
   const params = useParams();
-  const { id, type, title, message } = props.data;
+  const { id, type, message } = props.data;
   const{auth}=props;
   const [des, setdes] = useState('here is description'); //입력 내용 담을곳
   const [stuid, setid] = useState('here is student id'); //입력 내용 담을곳
@@ -59,13 +63,18 @@ const Show = (props) => {
         {type}
       </div>
         <div>
-          {title}
+
         </div>
         <div>
-      {message}
+      {backdatas.title}
 
       </div>
-
+      <div>
+      {backdatas.message}
+      </div>
+      <div>
+      {backdatas.created_at}
+      </div>
 
         <div className={classes.actions}>
           <button className={classes['button--alt']} onClick={props.onClose}>

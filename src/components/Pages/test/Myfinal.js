@@ -23,11 +23,11 @@ const Myfinal = () => {
   const [modalwithoutfix, setmodalwithoutfix] = useState(false);
   const [patchmadalshow, setpatchmodalshow] = useState(false);
   const [cardInfo, setCardInfo] = useState(null);
+  const [backcardInfo, setbackCardInfo] = useState(null);
   const [idopen, setidopen] = useState(null);
   const [majoropen, setmajoropen] = useState(null);
   const [cards, setCards] = useState([]); //입력 내용 담을곳
   const [ismine, setismine] = useState(false); //입력 내용 담을곳
-  const [valid, setvalid] = useState('retry');
   const [info,setinfo]=useState('');
   const [tag, settag] = useState([]); //입력 내용 담을곳
   const [val, setval] = useState('retry');
@@ -47,6 +47,13 @@ const Myfinal = () => {
     setCardInfo(info.data);
     console.log(info);
     showmodal(info);
+  }
+
+  async function updatebackcarddata(info)
+  {
+    await setbackCardInfo(info);
+    console.log('여기가인포다')
+    console.log(setbackCardInfo);
   }
 
   async function showmodal(info){// 스티커 눌렀을 때
@@ -77,11 +84,13 @@ const Myfinal = () => {
       },
     });
     const dat = await response.json();
-    console.log('허가요청했다.');
-    console.log(dat.errorCode);
-    console.log(dat.data.stickerAuth);
+    console.log(dat);
+    setbackCardInfo(dat);
+    // console.log('허가요청했다.');
+    // console.log(dat.errorCode);
+    // console.log(dat.data.stickerAuth);
     //0이면 못열고 1이면 del만 가능 2면 fix만
-    return dat.data.stickerAuth
+    return dat.data.stickerAuth;
   }
 
 
@@ -176,7 +185,6 @@ const Myfinal = () => {
       throw new Error('Failed to fetch card data');
     }
     const data = await response.json();
-    console.log(data)
     const mapping = await data.stickers.map((element) => {
       return {
         type: element.type,
@@ -195,9 +203,7 @@ const Myfinal = () => {
     settag(tagg);
     setinfo(treeinfo);
     setCards(mapping);
-    console.log(status);
     setismine(status);
-    console.log(cards);
   };
 
     // async function ismine() { //내 트리인지 불러오기
@@ -232,6 +238,7 @@ const Myfinal = () => {
     const data = await response.json();
     console.log('데이터');
     console.log(data);
+    
     fetchcard();
   }
 
@@ -269,11 +276,21 @@ const Myfinal = () => {
          {cards.map((cardData) => (
           <Crdtest key={Math.random()} data={cardData}
             func={updatecarddata} ismine={ismine}
+            back={backcardInfo}
+            backfunc={updatebackcarddata} 
+
           />
         ))} 
       </div>
       
-      {showmadalshow && <Show onClose={hidemodal} data={cardInfo} delete={deletecard} open={showpatchmodal} treeid={params.id} auth={val}/>}
+      {/* 
+      show에 backcardinfo를 주는거야
+      updatecarddata는 가져올때 데이터를 넣자.
+      crdtest를 누르면 해당 그거로 auth를 판단해.
+      */}
+      {showmadalshow && <Show onClose={hidemodal} data={cardInfo} delete={deletecard} open={showpatchmodal} treeid={params.id} auth={val}
+      backdata={backcardInfo}
+      />}
       {ModalIsShown && <Form onClose={hideModalHandler} onClick={handleClick} />}
       {patchmadalshow && <Patchform onClose={hidepatchmodal} onClick={fix} data={cardInfo} />}
       <div  >

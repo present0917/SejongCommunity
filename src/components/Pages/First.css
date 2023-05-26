@@ -22,3 +22,9 @@
 .smallboard{
   max-width:20vw;
 }
+.galarm{
+  display: flex;
+}
+.galarms{
+  padding-left: 10px;
+}
