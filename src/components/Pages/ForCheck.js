@@ -20,6 +20,7 @@ const Forcheck = () => {
       navigate("/Errorlogin");
     }
     const data = await response.json();
+    console.log(data);
     if (data.isLogin === false) navigate("/Errorlogin");
     
   }
@@ -31,18 +32,18 @@ const Forcheck = () => {
       const data = await response.json();
       // let check = response.data.hasOwnProperty('alarmCount')
       // if(check)
-      //   setTestData(data.alarmCount);
+        setTestData(data.alarmCount);
   };
   
 
 
-  // useEffect(() => {
+  useEffect(() => {
     
-  //   let test = testData.reduce((accumulator, currentObject) => accumulator + currentObject['count'], 0);
-  //   setSum(test);
+    let test = testData.reduce((accumulator, currentObject) => accumulator + currentObject['count'], 0);
+    setSum(test);
    
 
-  // }, [testData]);
+  }, [testData]);
   
 
 

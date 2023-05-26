@@ -100,7 +100,8 @@ const Myfinal = () => {
   
 
   async function deletecard(data) { //삭제
-    const response = await fetch(`http://localhost:3002/${params.id}/${+data.id}` , {
+    console.log(data.stickerKey)
+    const response = await fetch(`/stickers/${data.stickerKey}` , {
       method: 'DELETE',
     });
     console.log('delete');

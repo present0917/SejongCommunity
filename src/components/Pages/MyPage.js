@@ -6,6 +6,7 @@ import Maketreemodal from "../Modal/Maketreemodal";
 import { useNavigate } from "react-router-dom";
 import Mystickers from "../Modal/Mystickers";
 import Viewmytrees from "../Modal/Viewmytrees";
+import DeleteTree from "../Modal/DeleteTree";
 const MyPage = (prop) => {
   const navigate = useNavigate();
   const [searchData, setSearchData] = useState([]);
@@ -20,6 +21,7 @@ const MyPage = (prop) => {
   const [isthermytree, setistheremytree] = useState("");
   const [ModalIsShown, setModalIsShown] = useState(false);
   const [treeshow, settreeshow] = useState(false);
+  const [deleteModal, setdeleteModal] = useState(false);
   const showModalHandler = () => {
     //입력 모달
     setModalIsShown(true);
@@ -34,6 +36,10 @@ const MyPage = (prop) => {
     //입력 모달 숨기기
     settreeshow(false);
   };
+  // const hideModalHandler2 = () => {
+  //   //입력 모달 숨기기
+  //   settreeshow(false);
+  // };
   async function logintest() {
     //실제
     const response = await fetch("/login");
@@ -233,6 +239,7 @@ const MyPage = (prop) => {
         setmaketreeOpen={setmaketreeOpen}
       ></Maketreemodal>
 
+{deleteModal && <DeleteTree onClose={hideModalHandler2} />}
       {ModalIsShown && <Mystickers onClose={hideModalHandler} />}
       {treeshow && <Viewmytrees onClose={hideModalHandler2} />}
     </div>

@@ -8,6 +8,7 @@ import tagData from "../../dataJson/tagdata.json";
 import "./Maketreemodal.css";
 import tagBox from "../ui/toggle/toggleButton.module.css";
 import './ModalAnimation.css';
+import { useNavigate } from "react-router-dom";
 const Maketreemodal = (props) => {
   const [tags, setTags] = useState([1]);
   const [name, setName] = useState("");
@@ -22,7 +23,7 @@ const Maketreemodal = (props) => {
   const [isName, setIsName] = useState(false);
 
   const [disabled, setDisabled] = useState(true);
-
+  const navigate=useNavigate();
   const toggleGroupStyle = {};
   const modalStyle = {
     overlay: {
@@ -130,6 +131,7 @@ const Maketreemodal = (props) => {
       },
       body: JSON.stringify(info),
     });
+    console.log(response);
     // if (!response.ok) {
     //   throw new Error(`${response.status} 에러가 발생했습니다.`);
     // }
@@ -137,6 +139,8 @@ const Maketreemodal = (props) => {
     // if (data.errorCode != null) {
     //   throw new Error(`Error Code:${data.errorCode} ${data.message}`);
     // }
+    console.log(data);
+    navigate(`${data.redirectURL}`);
     console.log("생성할때보낸정보");
     console.log(info);
     props.setmaketreeOpen(false);
