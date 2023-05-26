@@ -119,7 +119,9 @@ const Maketreemodal = (props) => {
       console.log(signUpData);
       alert(`${name}트리가 생성되었습니다`);
     }
+    
     setDisabled(false);
+    window.location.reload();
   };
   async function signUpSubmit(info) {
     const response = await fetch("/forest", {

@@ -21,12 +21,7 @@ const Treeselect = () => {
       if (!data) {
         throw new Error("No Search Data");
       }
-<<<<<<< HEAD
-      console.log(data);
-      const mapping = data.data.map((element) => {
-=======
       const mapping = await data.data.map((element) => {
->>>>>>> origin/searchMapping
         return {
           treeKey: element.treeKey,
           title: element.title,
