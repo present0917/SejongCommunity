@@ -96,7 +96,7 @@ const Maketreemodal = (props) => {
         title: `테스트${index}`,
         requestId: true,
         requestDepartment: true,
-        tags: [1, 2, 3],
+        tags: [1],
       };
       signUpSubmit(signUpData);
     }
@@ -190,7 +190,7 @@ const Maketreemodal = (props) => {
             style={tagBox.tagBox}
             values={tags}
             onChange={setTags}
-            mode="multi"
+            mode="single"
           >
             {tagData.tags.map((tag) => (
               <ToggleButton
