@@ -9,6 +9,9 @@ const Treeselect = () => {
   const [comeTrees, setComeTrees] = useState([]);
   const [page, setPage] = useState(1);
   const [disabled, setDisabled] = useState(false);
+  useEffect(() => {
+    
+  }, []);
 
   async function fetchtrees(URL) {
     const response = await fetch(URL);
@@ -17,7 +20,7 @@ const Treeselect = () => {
         throw new Error("Failed to fetch trees");
       }
       const data = await response.json();
-
+      console.log(data);
       if (!data) {
         throw new Error("No Search Data");
       }
@@ -80,6 +83,7 @@ const Treeselect = () => {
               range={post.range}
               id={post.id}
               dep={post.dep}
+              nick={post.dataRange.nickname}
             ></Rec2>
           ))}
           <button onClick={nextLoad} disabled={disabled}>

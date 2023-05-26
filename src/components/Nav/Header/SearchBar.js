@@ -1,6 +1,5 @@
 import "../FontAwesome";
 import React, { useEffect, useState } from "react";
-//import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
 import styles from "./SearchBar.module.css";
 import tagData from "../../../dataJson/tagdata.json";

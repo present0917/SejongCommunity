@@ -8,7 +8,6 @@ const Form = (props) => {
   const [memo, setmemo] = useState('');
   const submitHandler = (event) => {
     event.preventDefault();
-    console.log(name, text);
     const data = { name, text ,memo};
     props.onClick(data);
     props.onClose();

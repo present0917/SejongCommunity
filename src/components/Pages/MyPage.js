@@ -141,7 +141,6 @@ const MyPage = (prop) => {
     if (!data) {
       throw new Error("No Search Data");
     }
-    console.log(data);
     //   const mapping = await data.posts.map((element) => {
     //   return {
     //       id: response.studentId,
@@ -160,8 +159,7 @@ const MyPage = (prop) => {
     if (confirm == true) logout();
   }
   async function logout() {
-    //로그아웃
-    console.log("out");
+
     const response = await fetch(`/logout`, {
       method: "POST",
       headers: {
