@@ -13,14 +13,19 @@ const DeleteTreecheck = (props) => {
 
 
 
-
+    function func()
+    {
+        props.okay();
+        props.fetch();
+       
+    }
 
 
     return (
         <Modal onClose={props.onClose} style={{ overflow: "auto" }} >
             <div className='dcheck'>
                 정말 삭제하실건가요?
-                <button onClick={props.okay}> 넵 </button>
+                <button onClick={func}> 넵 </button>
                 <button
                 onClick={props.onClose}> 아니요 </button>
             </div>

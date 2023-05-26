@@ -63,7 +63,7 @@ const DeleteTree = (props) => {
                                 memberKey={post.memberKey}
                                 description={post.description}
                                 tags={post.tags}
-             
+                                fetch={fetchData}
                             ></Rec2d>
                         ))}
                     </div>
