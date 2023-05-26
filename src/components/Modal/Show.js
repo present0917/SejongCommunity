@@ -1,27 +1,24 @@
-import Modal from './Modal';
-import classes from './Form.module.css';
-import { useEffect,useState } from 'react';
-import { useParams } from 'react-router-dom';
+import Modal from "./Modal";
+import classes from "./Form.module.css";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 const Show = (props) => {
   console.log(props);
   const params = useParams();
   const { id, type, title, message } = props.data;
-  const{auth}=props;
-  const [des, setdes] = useState('here is description'); //입력 내용 담을곳
-  const [stuid, setid] = useState('here is student id'); //입력 내용 담을곳
- console.log(auth);
-  const Submithandler=(event)=>  
-  {
-     event.preventDefault();
-     props.onClose();
-     props.delete(props.data);
-  }
-  const openhandler=(event)=>  
-  {
-     event.preventDefault();
-     props.open();
-     
-  }
+  const { auth } = props;
+  const [des, setdes] = useState("here is description"); //입력 내용 담을곳
+  const [stuid, setid] = useState("here is student id"); //입력 내용 담을곳
+  console.log(auth);
+  const Submithandler = (event) => {
+    event.preventDefault();
+    props.onClose();
+    props.delete(props.data);
+  };
+  const openhandler = (event) => {
+    event.preventDefault();
+    props.open();
+  };
   // useEffect(() => {
   //   desfetch();
   // }, []);
@@ -55,33 +52,24 @@ const Show = (props) => {
   return (
     <Modal onClose={props.onClose}>
       <form onSubmit={Submithandler}>
-      <div>
-        {type}
-      </div>
-        <div>
-          {title}
-        </div>
-        <div>
-      {message}
-
-      </div>
-
+        <div>{type}</div>
+        <div>{title}</div>
+        <div>{message}</div>
 
         <div className={classes.actions}>
-          <button className={classes['button--alt']} onClick={props.onClose}>
+          <button className={classes["button--alt"]} onClick={props.onClose}>
             Close
           </button>
-          {auth==2 &&
-          <button className={classes['button--alt']} onClick={openhandler} >
-            Fix
-          </button>
-}
+          {auth == 2 && (
+            <button className={classes["button--alt"]} onClick={openhandler}>
+              Fix
+            </button>
+          )}
           <button type="submit" className={classes.button}>
             delete
           </button>
-          
         </div>
-        </form>
+      </form>
     </Modal>
   );
 };
