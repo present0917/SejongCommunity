@@ -47,7 +47,8 @@ const Patchform = (props) => {
           </div>
         </div>
         <div className={classes["form-control"]}>
-          <label htmlFor="text">내용</label>
+        <label htmlFor="text">스티커제목</label>
+          <br></br>
           <input
             type="text"
             id="text"
@@ -55,13 +56,16 @@ const Patchform = (props) => {
             onChange={(event) => settext(event.target.value)}
           />
         </div>
-        <div className={classes["form-control"]}>
-          <label htmlFor="text">메모</label>
+        <br></br>
+        <div className={classes['form-control']}>
+          <label htmlFor="text">내용</label>
+          <br></br>
           <textarea
             type="text"
             id="text"
             value={message}
             onChange={(event) => setmemo(event.target.value)}
+            style={{ width:'70%',height:'10rem'}}
           />
         </div>
         <div className={classes.actions}>

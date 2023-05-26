@@ -67,8 +67,7 @@ const Myfinal = () => {
       },
       body: JSON.stringify(data)
     });
-    console.log('fixed');
-    console.log(data);
+
     fetchcard();
   }
 
@@ -81,6 +80,7 @@ const Myfinal = () => {
     if (!data.tree1) {
       throw new Error('Invalid card data');
     }
+
     const mapping = await data.tree1.map((element) => {
       return {
         name: element.name,

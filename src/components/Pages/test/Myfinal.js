@@ -96,6 +96,8 @@ const Myfinal = () => {
       method: 'DELETE',
     });
     fetchcard();
+
+
   }
 
   async function fix(data) { //수정

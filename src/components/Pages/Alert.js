@@ -1,6 +1,5 @@
 import { useState,useEffect } from "react";
-import PrintFetch from "../http/PrintFetch";
-import Alertlist from "../../etc/Alertlist";
+import './Alert.css'
 import { Link } from "react-router-dom";
 const Alert = (props) => {
     const [testData,setTestData] = useState([])
@@ -19,16 +18,19 @@ const Alert = (props) => {
       }, [testData]);
 
     return (
-        <div>
+        <div >
           <ul>
             {testData.map((data) => (
                 
           <li key={Math.random()}>
-            <Link to={`/tree/${data.id}`}>
-            {data.name} 트리에 {data.count}개의 알림이 있습니다.
+            <Link to={`/tree/${data.id}`}   className="lis">
+            <div>{data.name} 트리에 </div>{data.count}개의 알림이 있습니다.
+            <br></br><br></br>
             </Link>
           </li>
+          
         ))}
+        
       </ul>
 
         </div>
