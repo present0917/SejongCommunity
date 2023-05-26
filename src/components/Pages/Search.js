@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router";
-import { Link } from "react-router-dom";
 import Rec2 from "../../etc/Rec2";
 
 const Search = (props) => {
@@ -44,6 +43,7 @@ const Search = (props) => {
           dataRange: element.dataRange,
           description: element.description,
           tags: element.tags,
+          nick:element.dataRange.nickname
         };
       });
       console.log(mapping);
@@ -92,7 +92,7 @@ const Search = (props) => {
 
   return (
     <div>
-      it's search
+     
       <hr />
       {searchData.map((post) => (
         <Rec2
@@ -102,6 +102,7 @@ const Search = (props) => {
           title={post.title}
           description={post.description}
           tags={post.tags}
+          nick={post.nick}
         ></Rec2>
       ))}
       <div>
