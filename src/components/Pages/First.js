@@ -5,8 +5,9 @@ import { useState } from "react";
 import { useOutletContext } from "react-router";
 import { Link } from "react-router-dom";
 import board from "../../pic/board.png"
+import { useNavigate } from "react-router-dom";
 const First = (props) => {
-
+  const navigate=useNavigate();
   const [isalarm, setisalarm] = useState(0);
   const { sum } = useOutletContext();
 
@@ -26,11 +27,14 @@ const First = (props) => {
     //트리정보
     const response = await fetch("/members");
     if (!response.ok) {
-      throw new Error("Failed to fetch Search data");
+      console.log('re');
+      navigate("/Errorlogin");
+      // throw new Error("Failed to fetch Search data");
     }
     const data = await response.json();
     if (!data) {
-      throw new Error("No Search Data");
+      navigate("/Errorlogin");
+      // throw new Error("No Search Data");
     }
     
     const mapping = data.treeId.map((element) => {

@@ -1,6 +1,7 @@
 import { Outlet, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import { useState } from "react";
+import Errorlogin from "./Error/Errorlogin";
 const Forcheck = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -9,14 +10,20 @@ const Forcheck = () => {
 
 
   async function logintest() {
+    try{
     const response = await fetch("/login");
 
     if (!response.ok) {
+      console.log('re at for');
       navigate("/Errorlogin");
     }
     const data = await response.json();
     if (data.isLogin === false) navigate("/Errorlogin");
-    
+  }
+  catch(error)
+  {
+    navigate('/errorlogin')
+  }
   }
 
 
