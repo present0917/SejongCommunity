@@ -3,7 +3,6 @@ import Footer from "./Footer";
 import { Outlet } from "react-router-dom";
 import './Layout.css'
 import { useOutletContext } from "react-router-dom";
-import { useState,useEffect } from "react";
 const Layout = (props) => {
 const {sum}=useOutletContext();
         return(

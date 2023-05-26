@@ -4,7 +4,6 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useOutletContext } from "react-router";
 import { Link } from "react-router-dom";
-import Rec2 from "../../etc/Rec2";
 import board from "../../pic/board.png"
 const First = (props) => {
 
@@ -15,7 +14,6 @@ const First = (props) => {
     if (sum > 0) {
       setisalarm(sum);
     }
-    console.log(sum);
   }
   useEffect(() => {
     alarmcheck();
@@ -34,8 +32,6 @@ const First = (props) => {
     if (!data) {
       throw new Error("No Search Data");
     }
-    console.log('확인');
-    console.log(data);  
     
     const mapping = data.treeId.map((element) => {
       const found = data.alarmCount.find((obj) => obj.id === element.treeKey);
@@ -50,14 +46,12 @@ const First = (props) => {
     });
 
     setmytrees(mapping);
-    console.log(mapping);
 
   }
 
 
 
 
-console.log(trees);
   return (
     <div className="first">
 
@@ -76,22 +70,12 @@ console.log(trees);
            <span className="counttext">{post.count}</span>
            </Link>
            </div>
-          {/* treeKey={post.treeKey}
-          title={post.title}
-          memberKey={post.memberKey}
-          description={post.description}
-          tags={post.tags} */}
        </div>
       ))}
      
       </div>
 
 
-
-
-      {/* <div className="alertContainer">
-        <div className="treeAlert"></div>
-      </div> */}
       <div className="kknow">
         <Doyouknow></Doyouknow>
       </div>

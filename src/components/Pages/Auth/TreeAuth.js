@@ -1,9 +1,6 @@
 import { Outlet, Navigate, useLocation, useNavigate } from "react-router-dom";
-import AuthLogin from "../../context/auto-login";
-import { useContext, useEffect } from "react";
 const TreeAuth = () => {
   const location = useLocation();
-  console.log("TreeAuth입니다.");
 
   const navigate = useNavigate();
 
@@ -22,7 +19,6 @@ const TreeAuth = () => {
       //서버 응답 x
       if (!response.ok) { 
         throw new Error("서버와의 연결이 끊어졌습니다. 다시 로그인해주세요.");
-        <Navigate to="/login" replace state={{ from: location }} />
       }
       const data = await response.json();
       //서버 sessionId와 클라 sessionId 불일치
@@ -61,7 +57,7 @@ const TreeAuth = () => {
       navigate('/login');
     }
   }
-  //authCheck(); //실제
+
   authTest(); // 테스트
   return localStorage.getItem("isLoggedin") === "1" ? (
     <Outlet />

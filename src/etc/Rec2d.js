@@ -1,5 +1,5 @@
-import { useState, useEffect, Children } from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+
 import tagData from "../dataJson/tagdata.json";
 import "./Rec2.css";
 import DeleteTreecheck from "../components/Modal/DeleteCheck"
@@ -21,14 +21,12 @@ const Rec2d = (props) => {
 
     const checkopen=()=>
     {
-      console.log("체크모달열렸나?");
       setcheckmodal(true);
     }
 
 
 
     async function deletetree() {
-      console.log("삭제할거야");
       const response = await fetch(`/forest/${props.treeKey}`, {
         method: "DELETE",
         headers: {

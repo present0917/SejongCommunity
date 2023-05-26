@@ -33,7 +33,6 @@ const FixUserModal = (props) => {
         throw new Error(`${response.status} 에러가 발생했습니다.`);
       }
       const data = await response.json();
-      console.log(data);
       if (data.errorCode != null) {
         throw new Error(`Error Code:${data.errorCode} ${data.message}`);
       }
@@ -104,7 +103,6 @@ const FixUserModal = (props) => {
       if (!response.ok) {
         throw new Error(`${response.status} 에러가 발생했습니다.`);
       }
-      console.log(response);
       const data = await response.json();
       if (data.errorCode != null) {
         throw new Error(`Error Code:${data.errorCode} ${data.message}`);

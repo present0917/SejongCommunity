@@ -16,7 +16,6 @@ const Mystickers = (props) => {
     if (!data) {
       throw new Error('No Search Data');
     }
-    console.log(data);
     settext(data.data);
   }
 
@@ -30,7 +29,6 @@ const Mystickers = (props) => {
 
   const nav=(data)=>
   {
-    console.log('클릭');
     navigate(`/tree/${data.treeKey}`)
     window.location.reload();
   }

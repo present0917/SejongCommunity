@@ -1,7 +1,5 @@
 import { Outlet, Navigate, useLocation, useNavigate } from "react-router-dom";
-import AuthLogin from "../../context/auto-login";
 import { useContext, useEffect } from "react";
-import Errorlogin from "./Error/Errorlogin";
 import { useState } from "react";
 const Forcheck = () => {
   const location = useLocation();
@@ -11,16 +9,12 @@ const Forcheck = () => {
 
 
   async function logintest() {
-    //실제
-    console.log('테스트');
     const response = await fetch("/login");
 
-    //서버 응답 x
     if (!response.ok) {
       navigate("/Errorlogin");
     }
     const data = await response.json();
-    console.log(data);
     if (data.isLogin === false) navigate("/Errorlogin");
     
   }
@@ -30,8 +24,7 @@ const Forcheck = () => {
   async function alarm() {
       const response = await fetch('/login');
       const data = await response.json();
-      // let check = response.data.hasOwnProperty('alarmCount')
-      // if(check)
+
         setTestData(data.alarmCount);
   };
   
@@ -54,11 +47,8 @@ const Forcheck = () => {
 
 
   return (
-    // localStorage.getItem("isLoggedin") === "1" ? (
     <Outlet context={{sum}}/>
   );
-  // ) : (
-  //   <Navigate to="/login" replace state={{ from: location }} />
-  // );
+
 };
 export default Forcheck;

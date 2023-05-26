@@ -38,9 +38,8 @@ const Treeselect = () => {
         setComeTrees(trees);
         comeTrees.push(...mapping);
         settrees(comeTrees);
-        console.log(trees);
       } else {
-        console.log("예아");
+
         setDisabled(true);
       }
     } catch (e) {
@@ -62,7 +61,6 @@ const Treeselect = () => {
     } else {
       URL = "/forest";
     }
-    console.log(URL);
     fetchtrees(URL);
   }, [page]);
   if (page === 1 && disabled === true)

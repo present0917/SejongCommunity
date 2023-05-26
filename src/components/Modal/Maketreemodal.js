@@ -116,7 +116,6 @@ const Maketreemodal = (props) => {
         tags: tags,
       };
       signUpSubmit(signUpData);
-      console.log(signUpData);
       alert(`${name}트리가 생성되었습니다`);
     }
     
@@ -140,8 +139,7 @@ const Maketreemodal = (props) => {
       if (data.errorCode != null) {
         throw new Error(`Error Code:${data.errorCode} ${data.message}`);
       }
-      console.log("생성할때보낸정보");
-      console.log(info);
+
       props.setmaketreeOpen(false);
     } catch (e) {
       alert(e);

@@ -8,7 +8,6 @@ const Alert = (props) => {
     async function alarm() {
         const response = await fetch('/login');
         const data = await response.json();
-      console.log(data);
       setTestData(data.alarmCount);
 
     };
@@ -17,7 +16,6 @@ const Alert = (props) => {
       }, []);
 
       useEffect(() => {
-        console.log("Updated testData:", testData);
       }, [testData]);
 
     return (

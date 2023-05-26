@@ -1,8 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import { React, useState, useEffect } from "react";
+import { React, useState } from "react";
 import SignUp from "./SignUp";
 import "./Login.css";
-import schoollogo from "../../../pic/logo.png";
 import logo from "../../../pic/logo3.png";
 import LoginFooter from "../../Nav/LoginFooter";
 import Doyouknow from "../../../etc/Doyouknow";
@@ -23,12 +22,9 @@ const Login = (props) => {
   const nav = () => {
     if (
       {
-        /*JSON.parse(localStorage.getItem('isLoggedin'))==true*/
       }
     ) {
       navigate("..");
-      console.log(idMessage);
-      console.log("oka");
     }
   };
 
@@ -43,78 +39,11 @@ const Login = (props) => {
         studentId: { id },
         password: { password },
       };
-      loginSubmit(authData); //실제
-      // loginSubmitTest(authData); //test
-      //nav();
+      loginSubmit(authData); 
     }
     setDisabled(false);
   };
 
-  // const datatestprint = () => {
-  //   const authData = {
-  //     studentId: { id },
-  //     password: { password },
-  //   };
-  //   logintest(authData);
-  // };
-
-  async function logintest(info) {
-    const response = await fetch("http://localhost:3001/post/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(info),
-    });
-    if (response.status === 401) {
-      console.log("error 401");
-    }
-    console.log("확인용");
-    const data = await response.json();
-    console.log(data);
-
-    if (!data.ok) {
-      console.log("error");
-    }
-
-    const token = data.token;
-    localStorage.setItem("token", token);
-  }
-
-  //테스트용
-  async function loginSubmitTest(info) {
-    const response = await fetch("http://localhost:3001/login", {
-      method: "PUT", //테스트용 연동 때 POST로 바꾸면 됨
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        studentId: id,
-        password: password,
-      }),
-    });
-    const check = await response.json();
-    console.log("로그확인");
-    console.log(check);
-    //const data = await response.json();
-    const testres = await fetch("http://localhost:3001/res"); //테스트용
-    const data = await testres.json(); //테스트용
-    try {
-      if (!testres.ok) {
-        //서버 연결시 response로 교체
-        throw new Error(`${testres.status} 에러가 발생했습니다.`); //서버 연결시 response로 교체
-      } else if (data.message !== "") {
-        throw new Error(`Error Code:${data.errorCode} ${data.message}`);
-      }
-      sessionStorage.setItem("token", data.sessionId);
-      localStorage.setItem("isLoggedin", "1");
-      navigate("..");
-    } catch (e) {
-      alert(e);
-      setId("");
-      setPassword("");
-    }
-  }
   //실제
   async function loginSubmit(info) {
     const response = await fetch("/login", {
@@ -146,13 +75,6 @@ const Login = (props) => {
       setPassword("");
     }
   }
-
-  // const set = () => {
-  //   props.onlogin("a", "b");
-  // };
-  // const unset = () => {
-  //   props.onlogout();
-  // };
 
   const onChangeId = (e) => {
     const currentId = e.target.value;

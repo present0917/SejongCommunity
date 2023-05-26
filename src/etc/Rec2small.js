@@ -1,4 +1,4 @@
-import { useState, useEffect, Children } from "react";
+import { useState, Children } from "react";
 import { Link } from "react-router-dom";
 import tagData from "../dataJson/tagdata.json";
 import "./Rec2.css";

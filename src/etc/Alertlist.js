@@ -7,7 +7,7 @@ const Alertlist = (props) => {
 
  
 
-console.log(props);
+  
   return (
     <Link to={`${props.data.treeid}`}>
     <li className={classes.meal}>

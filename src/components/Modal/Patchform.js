@@ -3,21 +3,14 @@ import classes from "./Form.module.css";
 import { useState } from "react";
 
 const Patchform = (props) => {
-  console.log(props);
   const [type, setName] = useState();
   const [title, settext] = useState("");
   const [message, setmemo] = useState("");
   const [stickerKey, setstickerKey] = useState(props.data.stickerKey);
-  const [id, setid] = useState(props.data.id);
   const submitHandler = (event) => {
-    console.log(stickerKey);
     setName(Number(type));
     event.preventDefault();
-    console.log(type);
     const data = { type, title, message, stickerKey };
-    console.log("print id");
-    console.log(data);
-    console.log("print id");
     props.onClick(data);
     props.onClose();
   };

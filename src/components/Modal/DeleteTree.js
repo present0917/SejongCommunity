@@ -37,7 +37,6 @@ const DeleteTree = (props) => {
         });
 
         setmytrees(mapping);
-        console.log(mapping);
 
     }
 
@@ -48,7 +47,6 @@ const DeleteTree = (props) => {
         fetchData();
     }, []);
 
-    console.log(mytrees);
 
     return (
         <Modal onClose={props.onClose} style={{ overflow: "auto" }} >

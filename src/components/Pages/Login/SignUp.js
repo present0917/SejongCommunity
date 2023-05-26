@@ -149,17 +149,8 @@ const SignUp = (props) => {
     }
   }
 
-  // const datatestprint = () => {
-  //   const authData = {
-  //     id: { id },
-  //     password: { password },
-  //     name: { name },
-  //   };
-  //   console.log(authData);
-  // };
 
   return (
-    // “/members/add”
 
     <ReactModal
       isOpen={props.signUpOpen}
