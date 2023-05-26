@@ -40,7 +40,6 @@ const Search = (props) => {
       const mapping = await data.data.map((element) => {
         return {
           treeKey: element.treeKey,
-          memberKey: element.memberKey,
           title: element.title,
           description: element.description,
           tags: element.tags,
@@ -52,28 +51,27 @@ const Search = (props) => {
       alert(e);
     }
   }
-  async function submitSearchTest() {
-    const response = await fetch("http://localhost:3001/forest");
-    if (!response.ok) {
-      throw new Error("Failed to fetch Search data");
-    }
-    const data = await response.json();
-    if (!data) {
-      throw new Error("No Search Data");
-    }
-    const length = await data.maxPage;
-    const mapping = await data.data.map((element) => {
-      return {
-        treeKey: element.treeKey,
-        memberKey: element.memberKey,
-        title: element.title,
-        description: element.description,
-        tags: [element.tags],
-      };
-    });
-    setSearchData(mapping);
-    //setPageLength(length);
-  }
+  // async function submitSearchTest() {
+  //   const response = await fetch("http://localhost:3001/forest");
+  //   if (!response.ok) {
+  //     throw new Error("Failed to fetch Search data");
+  //   }
+  //   const data = await response.json();
+  //   if (!data) {
+  //     throw new Error("No Search Data");
+  //   }
+  //   const length = await data.maxPage;
+  //   const mapping = await data.data.map((element) => {
+  //     return {
+  //       treeKey: element.treeKey,
+  //       title: element.title,
+  //       description: element.description,
+  //       tags: [element.tags],
+  //     };
+  //   });
+  //   setSearchData(mapping);
+  //   //setPageLength(length);
+  // }
   useEffect(() => {
     //console.log(`${state}&page=${page}`);
     submitSearch(1);
@@ -84,31 +82,13 @@ const Search = (props) => {
       it's search
       <hr />
       {searchData.map((post) => (
-        // <Link to={`/tree/${post.treeKey}`}>
-        //   <h3>{post.title}</h3>
-        //   <p>{post.memberKey}</p>
-        //   <p>{post.description}</p>
-        //   {post.tags.map((tag) => (
-        //     <i key={tag}>#{tag}</i>
-        //   ))}
-        // </Link>
         <Rec2
           treeKey={post.treeKey}
           title={post.title}
-          memberKey={post.memberKey}
           description={post.description}
           tags={post.tags}
         ></Rec2>
       ))}
-      {/*나중에 Link로 감싸서 해당 게시판 호출*/}
-      {/* <footer>
-        <Pagination
-          total={pageLength}
-          limit={limit}
-          page={page}s
-          setPage={setPage}
-        />
-      </footer> */}
       <div>
         <button disabled={page === 1} onClick={handlePageDown}>
           back

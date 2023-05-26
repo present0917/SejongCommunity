@@ -13,21 +13,21 @@ const SearchBar = (props) => {
   const [select, setSelect] = useState("title");
   const navigate = useNavigate();
 
-  useEffect(()=>{
+  useEffect(() => {
     navigate("/tree");
-  },[])
+  }, []);
 
-  
   function handleSelect() {
+    const str = search.replace(/ /g, "");
     switch (select) {
       case "title":
-        return `title=${search}`;
+        return `title=${str}`;
       case "description":
-        return `description=${search}`;
+        return `description=${str}`;
       case "nickname":
-        return `nickname=${search}`;
-      case "titcont":
-        return `title=${search}&description=${search}`;
+        return `nickname=${str}`;
+      case "titdesc":
+        return `titdesc=${str}`;
       default:
         break;
     }
@@ -55,9 +55,9 @@ const SearchBar = (props) => {
             onChange={(e) => setSelect(e.target.value)}
           >
             <option value="title">제목</option>
-            <option value="content">내용</option>
+            <option value="description">내용</option>
             <option value="nickname">작성자</option>
-            <option value="titcont">제목+내용</option>
+            <option value="titdesc">제목+내용</option>
           </select>
           <input
             type="text"

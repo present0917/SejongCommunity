@@ -101,20 +101,19 @@ useEffect(() => {
 
 
         <div className={classes.actions}>
-          <button className={classes['button--alt']} onClick={props.onClose}>
+          <button className={classes["button--alt"]} onClick={props.onClose}>
             Close
           </button>
-          {auth==2 &&
-          <button className={classes['button--alt']} onClick={openhandler} >
-            Fix
-          </button>
-}
+          {auth == 2 && (
+            <button className={classes["button--alt"]} onClick={openhandler}>
+              Fix
+            </button>
+          )}
           <button type="submit" className={classes.button}>
             delete
           </button>
-          
         </div>
-        </form>
+      </form>
     </Modal>
   );
 };
