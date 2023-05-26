@@ -2,7 +2,7 @@ import Modal from './Modal';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Rec2 from '../../etc/Rec2';
+import Rec2s from '../../etc/Rec2small';
 import './Viewmytrees.css'
 const Viewmytrees = (props) => {
 
@@ -59,16 +59,19 @@ const Viewmytrees = (props) => {
         <Modal onClose={props.onClose} style={{ overflow: "auto" }} >
             <div style={{ textDecoration: "none" }}>
                 <div>
-                    <div className="mytree" onClick={props.onClose}>
+                    <div className="mytree" 
+                    onClick={props.onClose}
+                    >
 
                         {mytrees.map((post) => (
-                            <Rec2 key={Math.random()} className="mytree"  onClick={props.onClose}
+                            <Rec2s key={Math.random()} className="mytree" 
+                             onClick={props.onClose}
                                 treeKey={post.treeKey}
                                 title={post.title}
                                 memberKey={post.memberKey}
                                 description={post.description}
                                 tags={post.tags}
-                            ></Rec2>
+                            ></Rec2s>
                         ))}
                     </div>
 

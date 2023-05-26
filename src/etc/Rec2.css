@@ -27,3 +27,67 @@
   .rec2:hover {
     background-color: #f5f5f5;
   }
+
+  .rec2s {
+    width: 50vw;
+    height: 50px;
+    padding: 16px;
+    border: 1px solid black;
+    border-radius: 4px;
+    margin: 0 auto;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    text-align: left;
+    font-size:1rem;
+
+
+    /* text-overflow: ellipsis;  	// 로 ... 을 만들기 
+    white-space: nowrap; 		// 아래줄로 내려가는 것을 막기위해 */
+    text-overflow: ellipsis;  	
+  white-space: nowrap; 		
+  }
+  
+  .rec2s.selected {
+    background-color: #f0f0f0;
+  }
+  
+  .rec2s:hover {
+    background-color: #f5f5f5;
+  }
+
+  .rec2d {
+    width: 50vw;
+    height: 70px;
+    padding: 16px;
+    border: 1px solid black;
+    border-radius: 4px;
+    margin: 0 auto;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    text-align: left;
+    font-size:1rem;
+
+
+    /* text-overflow: ellipsis;  	// 로 ... 을 만들기 
+    white-space: nowrap; 		// 아래줄로 내려가는 것을 막기위해 */
+    text-overflow: ellipsis;  	
+  white-space: nowrap; 		
+  }
+  .rec2d button{
+    padding-top:0;
+    font-size:1rem;
+  }
+
+  .rec2d.selected {
+    background-color: #f0f0f0;
+  }
+  
+  .rec2d:hover {
+    background-color: #f5f5f5;
+  }
