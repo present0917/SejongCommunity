@@ -13,10 +13,6 @@ const SearchBar = (props) => {
   const [select, setSelect] = useState("title");
   const navigate = useNavigate();
 
-  useEffect(() => {
-    navigate("/tree");
-  }, []);
-
   function handleSelect() {
     const str = search.replace(/ /g, "");
     switch (select) {
