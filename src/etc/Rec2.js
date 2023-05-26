@@ -2,7 +2,8 @@ import { useState, useEffect, Children } from "react";
 import { Link } from "react-router-dom";
 import tagData from "../dataJson/tagdata.json";
 import "./Rec2.css";
-const Rec2 = ({ treeKey, memberKey, title, description, tags }) => {
+const Rec2 = ({ treeKey, memberKey, title, description, tags,dep,id,range }) => {
+  
   const [isSelected, setIsSelected] = useState(false);
   const tagMap = tagData.tags.map((e) => [e.value, e.text]);
   const tag = [];
@@ -10,13 +11,13 @@ const Rec2 = ({ treeKey, memberKey, title, description, tags }) => {
     tags.forEach((v) => {
       tag.push("#" + tagMap[v - 1][1]);
     });
-
   return (
     <div className={`rec2 ${isSelected ? "selected" : ""}`}>
       <Link to={`/tree/${treeKey}`} style={{ textDecoration: "none" }}>
         <div>{title}</div>
-        <div>{memberKey}</div>
         <div>{description}</div>
+        <div>{id ? `${range.studentId} 학번`:null}</div>
+        <div>{dep ? range.department:null}</div>
         <i>{tag} </i>
       </Link>
     </div>

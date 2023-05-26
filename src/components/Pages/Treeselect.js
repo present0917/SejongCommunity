@@ -20,6 +20,7 @@ const Treeselect = () => {
       if (!data) {
         throw new Error("No Search Data");
       }
+      console.log(data);
       const mapping = data.data.map((element) => {
         return {
           treeKey: element.treeKey,
@@ -27,6 +28,9 @@ const Treeselect = () => {
           title: element.title,
           description: element.description,
           tags: element.tags,
+          range:element.dataRange,
+          dep:element.requestDepartment,
+          id:element.requestId,
         };
       });
       //settrees(filteredData)
@@ -59,6 +63,9 @@ const Treeselect = () => {
               memberKey={post.memberKey}
               description={post.description}
               tags={post.tags}
+              range={post.range}
+              id={post.id}
+              dep={post.dep}
             ></Rec2>
           ))}
         </div>
