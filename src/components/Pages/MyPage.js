@@ -36,10 +36,11 @@ const MyPage = (prop) => {
     //입력 모달 숨기기
     settreeshow(false);
   };
-  // const hideModalHandler2 = () => {
-  //   //입력 모달 숨기기
-  //   settreeshow(false);
-  // };
+  const hideModalHandler3 = () => {
+    //입력 모달 숨기기
+    console.log("삭제숨기기");
+    setdeleteModal(false);
+  };
   async function logintest() {
     //실제
     const response = await fetch("/login");
@@ -211,8 +212,8 @@ const MyPage = (prop) => {
         </button>
         <button
           onClick={() => {
-            deletemytree();
-            prop.func(false);
+            setdeleteModal(true);
+            console.log("삭제열기");
           }}
         >
           트리삭제
@@ -239,7 +240,7 @@ const MyPage = (prop) => {
         setmaketreeOpen={setmaketreeOpen}
       ></Maketreemodal>
 
-{deleteModal && <DeleteTree onClose={hideModalHandler2} />}
+      {deleteModal && <DeleteTree onClose={hideModalHandler3} />}
       {ModalIsShown && <Mystickers onClose={hideModalHandler} />}
       {treeshow && <Viewmytrees onClose={hideModalHandler2} />}
     </div>
