@@ -25,6 +25,7 @@ const First = (props) => {
   const [trees, setmytrees] = useState([]);
   async function fetchData() {
     //트리정보
+    try{
     const response = await fetch("/members");
     if (!response.ok) {
       console.log('re');
@@ -36,6 +37,8 @@ const First = (props) => {
       navigate("/Errorlogin");
       // throw new Error("No Search Data");
     }
+  
+  
     
     const mapping = data.treeId.map((element) => {
       const found = data.alarmCount.find((obj) => obj.id === element.treeKey);
@@ -50,7 +53,11 @@ const First = (props) => {
     });
 
     setmytrees(mapping);
-
+  }
+  catch(e)
+  {
+    navigate("/Errorlogin");
+  }
   }
 
 
@@ -58,7 +65,7 @@ const First = (props) => {
 
   return (
     <div className="first">
-
+a
 
 <Link to={`/alert`} style={{ textDecoration: "none" }}>
         {sum > 0 && <div>  {sum}개의 알람이 있습니다.</div>}
