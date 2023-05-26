@@ -23,7 +23,6 @@ const Treeselect = () => {
       const mapping = data.data.map((element) => {
         return {
           treeKey: element.treeKey,
-          memberKey: element.memberKey,
           title: element.title,
           description: element.description,
           tags: element.tags,
@@ -56,7 +55,6 @@ const Treeselect = () => {
               key={Math.random()}
               treeKey={post.treeKey}
               title={post.title}
-              memberKey={post.memberKey}
               description={post.description}
               tags={post.tags}
             ></Rec2>

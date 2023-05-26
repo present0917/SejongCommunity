@@ -7,7 +7,7 @@ import ToggleButtonGroup from "../ui/toggle/toggleButtonGroup";
 import tagData from "../../dataJson/tagdata.json";
 import "./Maketreemodal.css";
 import tagBox from "../ui/toggle/toggleButton.module.css";
-import './ModalAnimation.css';
+import "./ModalAnimation.css";
 import { useNavigate } from "react-router-dom";
 const Maketreemodal = (props) => {
   const [tags, setTags] = useState([1]);
@@ -23,8 +23,7 @@ const Maketreemodal = (props) => {
   const [isName, setIsName] = useState(false);
 
   const [disabled, setDisabled] = useState(true);
-  const navigate=useNavigate();
-  const toggleGroupStyle = {};
+  const navigate = useNavigate();
   const modalStyle = {
     overlay: {
       position: "fixed",
@@ -47,9 +46,9 @@ const Maketreemodal = (props) => {
       borderRadius: "20px",
       outline: "none",
       padding: "20px",
-      animationName: 'slide-down',
-        animationDuration: '300ms',
-        animationTimingFunction: 'ease-in-out'
+      animationName: "slide-down",
+      animationDuration: "300ms",
+      animationTimingFunction: "ease-in-out",
     },
   };
 
@@ -131,19 +130,20 @@ const Maketreemodal = (props) => {
       },
       body: JSON.stringify(info),
     });
-    console.log(response);
-    // if (!response.ok) {
-    //   throw new Error(`${response.status} 에러가 발생했습니다.`);
-    // }
-    const data = await response.json();
-    // if (data.errorCode != null) {
-    //   throw new Error(`Error Code:${data.errorCode} ${data.message}`);
-    // }
-    console.log(data);
-    navigate(`${data.redirectURL}`);
-    console.log("생성할때보낸정보");
-    console.log(info);
-    props.setmaketreeOpen(false);
+    try {
+      if (!response.ok) {
+        throw new Error(`${response.status} 에러가 발생했습니다.`);
+      }
+      const data = await response.json();
+      if (data.errorCode != null) {
+        throw new Error(`Error Code:${data.errorCode} ${data.message}`);
+      }
+      console.log("생성할때보낸정보");
+      console.log(info);
+      props.setmaketreeOpen(false);
+    } catch (e) {
+      alert(e);
+    }
   }
   return (
     <ReactModal
