@@ -18,15 +18,16 @@ const SearchBar = (props) => {
   }, []);
 
   function handleSelect() {
+    const str = search.replace(/ /g, "");
     switch (select) {
       case "title":
-        return `title=${search}`;
+        return `title=${str}`;
       case "description":
-        return `description=${search}`;
+        return `description=${str}`;
       case "nickname":
-        return `nickname=${search}`;
+        return `nickname=${str}`;
       case "titdesc":
-        return `titdesc=${search}`;
+        return `titdesc=${str}`;
       default:
         break;
     }
