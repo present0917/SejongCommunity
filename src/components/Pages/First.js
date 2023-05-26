@@ -36,13 +36,16 @@ const First = (props) => {
     }
     console.log('확인');
     console.log(data);  
+    
     const mapping = data.treeId.map((element) => {
+      const found = data.alarmCount.find((obj) => obj.id === element.treeKey);
       return {
         treeKey: element.treeKey,
         memberKey: element.memberKey,
         title: element.title,
         description: element.description,
         tags: element.tags,
+        count: found ? found.count : 0,
       };
     });
 
@@ -54,7 +57,7 @@ const First = (props) => {
 
 
 
-
+console.log(trees);
   return (
     <div className="first">
 
@@ -63,9 +66,16 @@ const First = (props) => {
         {sum > 0 && <div>  {sum}개의 알람이 있습니다.</div>}
       </Link>
     <div className='galarm'>
+      
       {trees.map((post) => (
         <div key={Math.random()} className='galarms'>
+          <div className="imgcontainer">
+          <Link to={`/tree/${post.treeKey}`}>
            <img src={board} className="smallboard" />
+
+           <span className="counttext">{post.count}</span>
+           </Link>
+           </div>
           {/* treeKey={post.treeKey}
           title={post.title}
           memberKey={post.memberKey}
@@ -73,6 +83,7 @@ const First = (props) => {
           tags={post.tags} */}
        </div>
       ))}
+     
       </div>
 
 

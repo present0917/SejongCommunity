@@ -21,6 +21,7 @@
 }
 .smallboard{
   max-width:20vw;
+  position: relative;
 }
 .galarm{
   display: flex;
@@ -28,4 +29,21 @@
 }
 .galarms{
   padding-left: 10px;
+}
+
+
+.imgcontainer {
+  position: relative;
+}
+
+.counttext {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* Additional styling properties for the text */
+  color: black;
+  font-size: 18px;
+  font-weight: bold;
+  z-index: 2; 
 }
