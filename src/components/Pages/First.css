@@ -24,6 +24,7 @@
 }
 .galarm{
   display: flex;
+  flex-wrap: wrap; 
 }
 .galarms{
   padding-left: 10px;

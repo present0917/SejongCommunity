@@ -35,7 +35,7 @@ const First = (props) => {
       throw new Error("No Search Data");
     }
     console.log('확인');
-    console.log(data);
+    console.log(data);  
     const mapping = data.treeId.map((element) => {
       return {
         treeKey: element.treeKey,
@@ -58,6 +58,10 @@ const First = (props) => {
   return (
     <div className="first">
 
+
+<Link to={`/alert`} style={{ textDecoration: "none" }}>
+        {sum > 0 && <div>  {sum}개의 알람이 있습니다.</div>}
+      </Link>
     <div className='galarm'>
       {trees.map((post) => (
         <div key={Math.random()} className='galarms'>
@@ -71,9 +75,6 @@ const First = (props) => {
       ))}
       </div>
 
-      <Link to={`/alert`} style={{ textDecoration: "none" }}>
-        {sum > 0 && <div>  {sum}개의 알람이 있습니다.</div>}
-      </Link>
 
 
 
