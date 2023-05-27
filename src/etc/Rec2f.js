@@ -14,7 +14,7 @@ const Rec2f = (props) => {
   const tags=props.tags
   const tagMap = tagData.tags.map((e) => [e.value, e.text]);
   const tag = [];
-  if (tags !== undefined)
+  if (tags !== null)
     tags.forEach((v) => {
       tag.push("#" + tagMap[v - 1][1]);
     });
