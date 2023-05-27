@@ -24,7 +24,7 @@ const DeleteTreecheck = (props) => {
     return (
         <Modal onClose={props.onClose} style={{ overflow: "auto" }} >
             <div className='dcheck'>
-                삭제된 트리는<div>
+                삭제된 보드는<div>
                 </div>
                 복구할 수<div></div> 
                 없습니다.

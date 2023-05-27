@@ -9,6 +9,7 @@ import Form from "../../Modal/Form";
 import Show from "../../Modal/Show"
 import Patchform from '../../Modal/Patchform'
 import { useParams } from 'react-router-dom'
+import ErrorModal from '../../Modal/ErrorModal'
 
 const imagePaths = [
   post,
@@ -19,6 +20,7 @@ const Myfinal = () => {
   const [openid, setopenid] = useState(false);
   const [opendep, setopendep] = useState(false);
   const [ModalIsShown, setModalIsShown] = useState(false);
+  const [errrormodalshow, seterrormodalshow] = useState(false);
   const [showmadalshow, setshowmodalshow] = useState(false);
   const [patchmadalshow, setpatchmodalshow] = useState(false);
   const [cardInfo, setCardInfo] = useState(null);
@@ -28,6 +30,10 @@ const Myfinal = () => {
   const [info,setinfo]=useState('');
   const [tag, settag] = useState([]); //입력 내용 담을곳
   const [val, setval] = useState('retry');
+
+  const [errormessage, seterrormessage] = useState('no error');
+  const [errorcode, seterrorcode] = useState('no error');
+
   const params = useParams();
   const showpatchmodal = () => {//수정 모달
     setpatchmodalshow(true);
@@ -89,14 +95,21 @@ const Myfinal = () => {
   const hideModalHandler = () => { //입력 모달 숨기기
     setModalIsShown(false);
   };
+  const hideModalHandlererror = () => { //에러모달
+    seterrormodalshow(false);
+  };
   
+  const showerrormodalhandler = () => {//입력 모달
+    seterrormodalshow(true);
+  };
 
   async function deletecard(data) { //삭제
     const response = await fetch(`/stickers/${data.stickerKey}` , {
       method: 'DELETE',
     });
     fetchcard();
-
+    console.log('삭제단계');
+    console.log(response);
 
   }
 
@@ -155,9 +168,19 @@ const Myfinal = () => {
         'Content-Type': 'application/json'
       }
     });
-    
+
     const data = await response.json();
-  
+    console.log(data);
+
+    if(data.errorCode!=0)
+    {
+      seterrorcode(data.errorCode);
+      seterrormessage(data.message);
+      showerrormodalhandler()
+    }
+    
+
+
     
     fetchcard();
   }
@@ -208,6 +231,9 @@ const Myfinal = () => {
       />}
       {ModalIsShown && <Form onClose={hideModalHandler} onClick={handleClick} />}
       {patchmadalshow && <Patchform onClose={hidepatchmodal} onClick={fix} data={cardInfo} />}
+
+      {errrormodalshow && <ErrorModal onClose={hideModalHandlererror} code={errorcode} message={errormessage}/>}
+
       <div  >
         이 페이지에 스티커를 붙일 때<br></br>
         { openid ?  '학번이공개됩니다.': null }

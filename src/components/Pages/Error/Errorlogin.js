@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router"
 import { useEffect } from "react";
+import errorimg from '../../../pic/log.png'
 const Errorlogin =()=>
 {
     const navigate= useNavigate();
@@ -15,9 +16,12 @@ const Errorlogin =()=>
     
       }, []); 
     return(
-        <div className="error">
+      <div className="containera">
+      <img src={errorimg} className="imga" />
+        <div className="errormessage">
             로그인이 만료되었습니다.<br></br>
-            3초 후 로그인 화면으로 이동합니다.
+            3초 후 로그인 화면으로<br></br> 이동합니다.
+        </div>
         </div>
     )
 }

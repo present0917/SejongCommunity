@@ -22,9 +22,10 @@ const Forcheck = () => {
   }
   catch(error)
   {
+    console.log('redirect from logintest catch')
     navigate('/errorlogin')
   }
-  }
+}
 
 
 
