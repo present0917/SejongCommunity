@@ -15,6 +15,7 @@ import Treeselect from "./components/Pages/Treeselect";
 import Dynamictest from "./components/Pages/test/Dynamictest";
 import Check from "./components/Pages/Check";
 import Errorlogin from "./components/Pages/Error/Errorlogin";
+import Waypoint from "./Waypoint";
 //  import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
             { path: "mypage", element: <MyPage /> },
             { path: "tree", element: <Treeselect /> },
             { path: "tree/:id", element: <Myfinal /> },
+            { path: "waypoint", element: <Waypoint/>}
           ],
         },
       ],

@@ -5,16 +5,26 @@ import { useState } from "react";
 import ReactModal from "react-modal";
 import SearchBar from "./SearchBar";
 import SideBar from "./SideBar";
+import { useNavigate } from "react-router-dom";
 
 const Header = (props) => {
   const [searchBarOpen, setsearchBarOpen] = useState(false);
   const [listOpen, setlistOpen] = useState(false);
+  const navigate = useNavigate()
 
+  const handleOpenSearchBar= () => {
+    navigate("/waypoint",{state:true});
+    setsearchBarOpen(true);
+  }
+  const handleCloseSearchBar = () => {
+    navigate("/tree");
+    setsearchBarOpen(false);
+  }
   return (
     <header className="header">
       <ReactModal
         isOpen={searchBarOpen}
-        onRequestClose={() => setsearchBarOpen(false)}
+        onRequestClose={() => handleCloseSearchBar()}
         className="searchbar"
         style={{
           overlay: {
@@ -45,7 +55,7 @@ const Header = (props) => {
           <div className="topicon">
           <FontAwesomeIcon
             icon="magnifying-glass"
-            onClick={() => setsearchBarOpen(true)}
+            onClick={() => handleOpenSearchBar()}
             style={{ color: "white" }}
           />
           </div>
