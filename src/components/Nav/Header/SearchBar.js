@@ -65,7 +65,7 @@ const SearchBar = (props) => {
         </div>
         <ToggleButtonGroup values={tags} onChange={setTags} mode="single">
           {tagData.tags.map((tag) => (
-            <ToggleButton value={tag.value}>#{tag.text}</ToggleButton>
+            <ToggleButton key={Math.random()} value={tag.value}>#{tag.text}</ToggleButton>
           ))}
         </ToggleButtonGroup>
       </form>

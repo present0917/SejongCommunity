@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router";
+import { useNavigate } from "react-router-dom";
 import Rec2 from "../../etc/Rec2";
+import Pulse from "../ui/loading/Pulse";
 
 const Search = (props) => {
   const [searchData, setSearchData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [nextButton, setNextButton] = useState(false);
   const [backButton, setBackButton] = useState(true);
@@ -17,9 +20,11 @@ const Search = (props) => {
     const nextPage = page - 1;
     setPage(nextPage);
   };
-
+  const navigate = useNavigate();
   async function submitSearch(page) {
     console.log(`${state}&page=${page}`);
+    
+    setIsLoading(true);
     const response = await fetch(`${state}&page=${page}`, {
       //"/forest"
       method: "GET",
@@ -28,6 +33,10 @@ const Search = (props) => {
       },
     });
     try {
+      if(state === null){
+        navigate("/");
+        throw new Error("잘못된 접근");
+      }
       if (!response.ok) {
         throw new Error("Failed to fetch Search data");
       }
@@ -35,6 +44,7 @@ const Search = (props) => {
       if (!data) {
         throw new Error("No Search Data");
       }
+      setIsLoading(false);
       console.log(data);
       const mapping = await data.data.map((element) => {
         return {
@@ -54,6 +64,7 @@ const Search = (props) => {
         setNextButton(false);
       }
     } catch (e) {
+      setIsLoading(false);
       alert(e);
     }
   }
@@ -92,7 +103,7 @@ const Search = (props) => {
 
   return (
     <div>
-     
+     <Pulse isLoading={isLoading}>검색중</Pulse>
       <hr />
       {searchData.map((post) => (
         <Rec2
