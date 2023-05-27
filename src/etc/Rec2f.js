@@ -9,6 +9,8 @@ const Rec2f = (props) => {
   const [isSelected, setIsSelected] = useState(false);
   const [checkmodal, setcheckmodal] = useState(false);
   const [maketreeOpen, setmaketreeOpen] = useState(false);
+  const [fixtreeOpen, setfixtreeOpen] = useState(false);
+
   const tags=props.tags
   const tagMap = tagData.tags.map((e) => [e.value, e.text]);
   const tag = [];
@@ -51,12 +53,22 @@ const Rec2f = (props) => {
       </div>
       <button
    onClick={() => {
-    props.open();
-    props.closeone();
+    setfixtreeOpen(true);
+
+
+    // props.closeone();
+    
     }}
       >수정</button>
 
   
+
+<Fixtreeform className="newModal"
+        maketreeOpen={fixtreeOpen}
+        setmaketreeOpen={setfixtreeOpen}
+        datas={props}
+        reload={props.reload}
+      ></Fixtreeform>
     </div>
     
   );

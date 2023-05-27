@@ -64,6 +64,7 @@ const Fixtree = (props) => {
                                 fetch={fetchData}
                                 open={props.plus}
                                 closeone={props.onClose}
+                                reload={fetchData}
                             ></Rec2f>
                         ))}
                     </div>

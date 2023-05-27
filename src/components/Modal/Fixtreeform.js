@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState,useEffect } from "react";
 import ReactModal from "react-modal";
 import CheckboxGroup from "../ui/checkbox/pre/CheckboxGroup";
 import Checkbox from "../ui/checkbox/pre/Checkbox";
@@ -10,12 +10,14 @@ import tagBox from "../ui/toggle/toggleButton.module.css";
 import "./ModalAnimation.css";
 import { useNavigate } from "react-router-dom";
 const Fixtreeform = (props) => {
-  console.log('수정프롭')
 
-  console.log(props)
   const [tags, setTags] = useState([1]);
+
+
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
+
+
   const [allowId, setAllowId] = useState(false);
   const [allowDepartment, setAllowDepartment] = useState(false);
 
@@ -26,7 +28,32 @@ const Fixtreeform = (props) => {
   const [isName, setIsName] = useState(false);
 
   const [disabled, setDisabled] = useState(true);
-  const navigate = useNavigate();
+
+  const [title, settitle] = useState('a');
+  const [message, setmessage] = useState('a');
+  const [thiskey,setthiskey]=useState(-1);
+
+function fun(){
+  console.log('수정프롭')
+
+  console.log(props)
+  console.log(props.datas)
+  if (props.datas && props.datas.hasOwnProperty('title')) {
+    setName(props.datas.title)
+  }
+  if (props.datas && props.datas.hasOwnProperty('description')) {
+    setPassword(props.datas.description)
+  }
+  if (props.datas && props.datas.hasOwnProperty('treeKey')) {
+    setthiskey(props.datas.treeKey)
+  }
+}
+
+  useEffect(() => {
+    fun();
+  }, []);
+
+  const navigat = useNavigate();
   const modalStyle = {
     overlay: {
       position: "fixed",
@@ -35,6 +62,7 @@ const Fixtreeform = (props) => {
       right: 0,
       bottom: 0,
       backgroundColor: "rgba(0, 0, 0, 0.75)",
+      zIndex:100,
     },
     content: {
       position: "absolute",
@@ -108,16 +136,12 @@ const Fixtreeform = (props) => {
         tags: tags,
       };
       signUpSubmit(signUpData);
-      alert(`트리가 수정되었습니다`);
     }
-    
     setDisabled(false);
-    window.location.reload();
   };
   async function signUpSubmit(info) {
-    const response = await fetch("/forest", {
-      ///members/add"
-      method: "POST",
+    const response = await fetch(`/forest/${thiskey}`, {
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
@@ -128,10 +152,10 @@ const Fixtreeform = (props) => {
         throw new Error(`${response.status} 에러가 발생했습니다.`);
       }
       const data = await response.json();
-      if (data.errorCode != null) {
+      if (data.errorCode != 0) {
         throw new Error(`Error Code:${data.errorCode} ${data.message}`);
       }
-
+      props.reload();
       props.setmaketreeOpen(false);
     } catch (e) {
       alert(e);
@@ -201,7 +225,7 @@ const Fixtreeform = (props) => {
           {/* <button className="button" onClick={()=>{datatestprint();}}>PostTest</button> */}
           <div className="actions">
             <button type="submit" className="button" disabled={disabled}>
-              생성
+              수정
             </button>
             <button
               type="button"
