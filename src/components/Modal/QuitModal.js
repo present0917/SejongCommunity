@@ -19,12 +19,10 @@ const QuitModal = (props) => {
             console.log('탈퇴중오류');
             navigate("/Error");
           }
-        const data=await response.json();
-        console.log(data);
         alert('탈퇴가 완료되었습니다.');
     }
     catch(e){
-        
+        console.log(e);
         navigate('/Error');
     }
       }
