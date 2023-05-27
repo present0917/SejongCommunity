@@ -224,7 +224,7 @@ function forfix()
             setmaketreeOpen(true);
           }}
         >
-          트리생성
+          보드생성
         </button>
 
         <button
@@ -232,7 +232,7 @@ function forfix()
             setshowfixmodal(true);
           }}
         >
-          트리수정
+          보드수정
         </button>
         <button
           onClick={() => {
@@ -240,7 +240,7 @@ function forfix()
             console.log("삭제열기");
           }}
         >
-          트리삭제
+          보드삭제
         </button>
         <button
           onClick={() => {

@@ -38,7 +38,7 @@ const QuitModal = (props) => {
       <img src={sad} className="imga" />
         <div className="errormessage">
         정말 탈퇴하실건가요?<br></br>
-                탈퇴 시 모든 스티커와 트리가<br></br>
+                탈퇴 시 모든 스티커와 보드가<br></br>
                 삭제되며, 복구할 수 없습니다<br></br>
             <button onClick={iquit}>탈퇴하기</button><button onClick={props.onClose}>취소</button> 
         </div>

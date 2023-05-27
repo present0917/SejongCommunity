@@ -24,7 +24,7 @@ const Alert = (props) => {
                 
           <li key={Math.random()}>
             <Link to={`/tree/${data.id}`}   className="lis">
-            <div>{data.name} 트리에 </div>{data.count}개의 알림이 있습니다.
+            <div>{data.name} 보드에 </div>{data.count}개의 알림이 있습니다.
             <br></br><br></br>
             </Link>
           </li>
