@@ -5,8 +5,9 @@ import { useState } from "react";
 import { useOutletContext } from "react-router";
 import { Link } from "react-router-dom";
 import board from "../../pic/board.png"
+import { useNavigate } from "react-router-dom";
 const First = (props) => {
-
+  const navigate=useNavigate();
   const [isalarm, setisalarm] = useState(0);
   const { sum } = useOutletContext();
 
@@ -24,14 +25,20 @@ const First = (props) => {
   const [trees, setmytrees] = useState([]);
   async function fetchData() {
     //트리정보
+    try{
     const response = await fetch("/members");
     if (!response.ok) {
-      throw new Error("Failed to fetch Search data");
+      console.log('re');
+      navigate("/Errorlogin");
+      // throw new Error("Failed to fetch Search data");
     }
     const data = await response.json();
     if (!data) {
-      throw new Error("No Search Data");
+      navigate("/Errorlogin");
+      // throw new Error("No Search Data");
     }
+  
+  
     
     const mapping = data.treeId.map((element) => {
       const found = data.alarmCount.find((obj) => obj.id === element.treeKey);
@@ -46,7 +53,11 @@ const First = (props) => {
     });
 
     setmytrees(mapping);
-
+  }
+  catch(e)
+  {
+    navigate("/Errorlogin");
+  }
   }
 
 
@@ -54,7 +65,7 @@ const First = (props) => {
 
   return (
     <div className="first">
-
+a
 
 <Link to={`/alert`} style={{ textDecoration: "none" }}>
         {sum > 0 && <div>  {sum}개의 알람이 있습니다.</div>}

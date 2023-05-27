@@ -11,11 +11,11 @@ const Show = (props) => {
   const check=()=>{
   if(backdatas.dataRange.hasOwnProperty("studentId"))
   {
-    setisdep(true);
+    setisid(true);
   }
   if(backdatas.dataRange.hasOwnProperty("department"))
   {
-    setisid(true);
+    setisdep(true);
   }
 }
 useEffect(() => {
@@ -49,18 +49,19 @@ useEffect(() => {
       {backdatas.message}
       </div>
       <br></br><br></br>
-      <div>{isid ? `${backdatas.dataRange.studentId} 학번`:null}</div>
+      <div>{isid ? `${backdatas.dataRange.studentId} 학번 ${backdatas.dataRange.nickname} 님 께서 `:null}</div>
       <div>{isdep ? `${backdatas.dataRange.department}`:null}</div>
       <div>
-      {`${backdatas.dataRange.nickname} 님 께서 ${moment(backdatas.created_at).format('YYYY년M월D일')}`}
+      {`${moment(backdatas.created_at).format('YYYY년M월D일')}`}
       </div>
       <div>
       {`${moment(backdatas.created_at).format('h시m분s초')} 에 부착된 스티커입니다.`}
       </div>
 
 
-
-        <div className={classes.actions}>
+<div></div>
+<br></br>
+        <div >
           <button className={classes["button--alt"]} onClick={props.onClose}>
             Close
           </button>

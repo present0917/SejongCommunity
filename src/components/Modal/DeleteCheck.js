@@ -24,10 +24,15 @@ const DeleteTreecheck = (props) => {
     return (
         <Modal onClose={props.onClose} style={{ overflow: "auto" }} >
             <div className='dcheck'>
-                정말 삭제하실건가요?
-                <button onClick={func}> 넵 </button>
+                삭제된 트리는<div>
+                </div>
+                복구할 수<div></div> 
+                없습니다.
+                <br></br><br></br>
+
+                <button onClick={func}> 삭제 </button>
                 <button
-                onClick={props.onClose}> 아니요 </button>
+                onClick={props.onClose}> 취소 </button>
             </div>
            
         </Modal >
