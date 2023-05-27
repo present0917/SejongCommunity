@@ -60,8 +60,21 @@ const First = (props) => {
   }
   }
 
-
-
+  async function randomtree() {
+    //트리정보
+    const response = await fetch("/forest/random-tree");
+    if (!response.ok) {
+      console.log('re');
+      navigate("/Errorlogin");
+      // throw new Error("Failed to fetch Search data");
+    }
+    const data = await response.json();
+    if (!data) {
+      navigate("/Errorlogin");
+      // throw new Error("No Search Data");
+    }
+    navigate(`/tree/${data.tree.treeKey}`)
+  }
 
   return (
     <div className="first">
@@ -91,6 +104,7 @@ const First = (props) => {
 
 
       <div className="kknow">
+        <button onClick={randomtree}>I'm Feeling Lucky</button>
         <Doyouknow></Doyouknow>
       </div>
     </div>
