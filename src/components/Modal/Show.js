@@ -26,6 +26,7 @@ useEffect(() => {
      event.preventDefault();
      props.onClose();
      props.delete(props.data);
+     console.log('폼이 제출됐을때');
   }
   const openhandler=(event)=>  
   {

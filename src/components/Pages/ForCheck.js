@@ -9,6 +9,7 @@ const Forcheck = () => {
 
 
   async function logintest() {
+    try{
     const response = await fetch("/login");
 
     if (!response.ok) {
@@ -16,8 +17,13 @@ const Forcheck = () => {
     }
     const data = await response.json();
     if (data.isLogin === false) navigate("/Errorlogin");
-    
   }
+  catch(error)
+  {
+    console.log('redirect from logintest catch')
+    navigate('/errorlogin')
+  }
+}
 
 
 
