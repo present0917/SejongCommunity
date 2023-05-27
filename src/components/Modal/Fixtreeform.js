@@ -9,6 +9,7 @@ import "./Maketreemodal.css";
 import tagBox from "../ui/toggle/toggleButton.module.css";
 import "./ModalAnimation.css";
 import { useNavigate } from "react-router-dom";
+import Pulse from "../ui/loading/Pulse";
 const Fixtreeform = (props) => {
 
   const [tags, setTags] = useState([1]);
@@ -21,13 +22,13 @@ const Fixtreeform = (props) => {
   const [allowId, setAllowId] = useState(false);
   const [allowDepartment, setAllowDepartment] = useState(false);
 
-  const [passwordMessage, setPasswordMessage] = useState("");
-  const [nameMessage, setNameMessage] = useState("");
 
   const [isPass, setIsPass] = useState(false);
   const [isName, setIsName] = useState(false);
+  const [checkChanged,setCheckChanged] = useState(false);
 
-  const [disabled, setDisabled] = useState(true);
+  const [disabled, setDisabled] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const [title, settitle] = useState('a');
   const [message, setmessage] = useState('a');
@@ -36,24 +37,31 @@ const Fixtreeform = (props) => {
 function fun(){
   console.log('수정프롭')
 
-  console.log(props)
-  console.log(props.datas)
-  if (props.datas && props.datas.hasOwnProperty('title')) {
-    setName(props.datas.title)
-  }
-  if (props.datas && props.datas.hasOwnProperty('description')) {
-    setPassword(props.datas.description)
-  }
-  if (props.datas && props.datas.hasOwnProperty('treeKey')) {
-    setthiskey(props.datas.treeKey)
+  // console.log(props)
+  // console.log(props.datas)
+  if(props.datas){
+    setName(props.datas.title);
+    setPassword(props.datas.description);
+    setthiskey(props.datas.treeKey);
+    setTags(props.datas.tags);
+    setAllowId(props.datas.allowId);
+    setAllowDepartment(props.datas.allowDepartment);
   }
 }
-
+  
   useEffect(() => {
     fun();
-  }, []);
-
-  const navigat = useNavigate();
+  }, [props]);
+  useEffect(()=>{
+    if(props.datas){
+      if(tags.toString() === props.datas.tags.toString() && allowId === props.datas.allowId && allowDepartment === props.datas.allowDepartment){
+        console.log("x")
+        setCheckChanged(false);
+      } else {
+        setCheckChanged(true);
+      }
+    }
+  },[tags,allowId,allowDepartment])
   const modalStyle = {
     overlay: {
       position: "fixed",
@@ -83,49 +91,34 @@ function fun(){
     },
   };
 
+  const onChangeName = (e) => {
+    const currentName = e.target.value;
+    
+    if(currentName === props.datas.title || currentName === ''){
+      setIsName(false);
+    } else{
+      setIsName(true);
+    }
+    setName(currentName);
+  };
   const onChangePassword = (e) => {
     const currentPass = e.target.value;
     setPassword(currentPass);
-    const passRegExp = /^.+$/;
-    if (!passRegExp.test(currentPass)) {
-      setPasswordMessage("작성해주세요");
+    if(currentPass === props.datas.description || currentPass === ''){
       setIsPass(false);
-      setDisabled(true);
-    } else {
-      setPasswordMessage("ok!");
+    } else{
       setIsPass(true);
-      setDisabled(false);
     }
+    console.log(currentPass);
+    
   };
-  const onChangeName = (e) => {
-    const currentName = e.target.value;
-    setName(currentName);
-
-    const passRegExp = /^.+$/;
-    if (!passRegExp.test(currentName)) {
-      setNameMessage("작성해주세요");
-      setIsName(false);
-      setDisabled(true);
-    } else {
-      setNameMessage("ok!");
-      setIsName(true);
-      setDisabled(false);
-    }
-  };
-  const initInput = () => {
-    setIsPass(false);
-    setIsName(false);
-    setPassword("");
-    setName("");
-    setAllowId(false);
-    setAllowDepartment(false);
-  };
+  
 
   const handleSubmit = (e) => {
     //제출
     setDisabled(true);
     e.preventDefault();
-    if (!isPass || !isName) {
+    if (!isPass && !isName && !checkChanged) {
       alert("입력 정보를 다시 확인해주세요.");
     } else {
       const signUpData = {
@@ -140,6 +133,7 @@ function fun(){
     setDisabled(false);
   };
   async function signUpSubmit(info) {
+    setIsLoading(true);
     const response = await fetch(`/forest/${thiskey}`, {
       method: "PATCH",
       headers: {
@@ -155,6 +149,7 @@ function fun(){
       if (data.errorCode != 0) {
         throw new Error(`Error Code:${data.errorCode} ${data.message}`);
       }
+      setIsLoading(false);
       props.reload();
       props.setmaketreeOpen(false);
     } catch (e) {
@@ -168,6 +163,7 @@ function fun(){
       style={modalStyle}
       ariaHideApp={false}
     >
+      <Pulse isLoading={isLoading}>수정 사항 전달중...</Pulse>
       <div className="container">
         <form onSubmit={handleSubmit}>
           <p>

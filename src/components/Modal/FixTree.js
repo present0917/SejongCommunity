@@ -12,7 +12,7 @@ const Fixtree = (props) => {
 
 
 
-
+    console.log(1);
 
 
       
@@ -26,18 +26,21 @@ const Fixtree = (props) => {
         if (!data) {
             throw new Error("No Search Data");
         }
+        //console.log(data);
         const mapping = data.treeId.map((element) => {
             return {
                 treeKey: element.treeKey,
-                memberKey: element.memberKey,
                 title: element.title,
+                dataRange: element.dataRange,
                 description: element.description,
                 tags: element.tags,
+                nick:element.dataRange.nickname,
+                allowId:element.requestId,
+                allowDepartment:element.requestDepartment
             };
         });
 
         setmytrees(mapping);
-
     }
 
 
@@ -58,8 +61,10 @@ const Fixtree = (props) => {
                             <Rec2f key={Math.random()} className="mytree"  
                                 treeKey={post.treeKey}
                                 title={post.title}
-                                memberKey={post.memberKey}
+                                dataRange={post.dataRange}
                                 description={post.description}
+                                allowId={post.allowId}
+                                allowDepartment={post.allowDepartment}
                                 tags={post.tags}
                                 fetch={fetchData}
                                 open={props.plus}
