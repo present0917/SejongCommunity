@@ -20,7 +20,7 @@
  text-align: center;
 }
 .smallboard{
-  max-width:20vw;
+  width:40vw;
   position: relative;
 }
 .galarm{
@@ -29,11 +29,13 @@
 }
 .galarms{
   padding-left: 10px;
+  width:40vw;
 }
 
 
 .imgcontainer {
   position: relative;
+  width:40vw;
 }
 
 .counttext {
@@ -45,5 +47,6 @@
   color: black;
   font-size: 18px;
   font-weight: bold;
+  text-align: center;
   /* z-index: 2;  */
 }
