@@ -10,7 +10,7 @@ const ErrorModal = (props) => {
 
     return (
         <Modal onClose={props.onClose} style={{ overflow: "auto" }} >
-            <div className='dcheck'>
+            <div style={{fontSize:'1.5rem'}}>
                 <br></br>
                 <br></br>
                 {props.message}
