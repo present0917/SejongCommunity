@@ -9,7 +9,10 @@ import "./Maketreemodal.css";
 import tagBox from "../ui/toggle/toggleButton.module.css";
 import "./ModalAnimation.css";
 import { useNavigate } from "react-router-dom";
-const Maketreemodal = (props) => {
+const Fixtreeform = (props) => {
+  console.log('수정프롭')
+
+  console.log(props)
   const [tags, setTags] = useState([1]);
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
@@ -105,7 +108,7 @@ const Maketreemodal = (props) => {
         tags: tags,
       };
       signUpSubmit(signUpData);
-      alert(`${name}트리가 생성되었습니다`);
+      alert(`트리가 수정되었습니다`);
     }
     
     setDisabled(false);
@@ -195,6 +198,7 @@ const Maketreemodal = (props) => {
               </ToggleButton>
             ))}
           </ToggleButtonGroup>
+          {/* <button className="button" onClick={()=>{datatestprint();}}>PostTest</button> */}
           <div className="actions">
             <button type="submit" className="button" disabled={disabled}>
               생성
@@ -213,4 +217,4 @@ const Maketreemodal = (props) => {
   );
 };
 
-export default Maketreemodal;
+export default Fixtreeform;

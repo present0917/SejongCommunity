@@ -8,11 +8,15 @@ import Mystickers from "../Modal/Mystickers";
 import Viewmytrees from "../Modal/Viewmytrees";
 import DeleteTree from "../Modal/DeleteTree";
 import QuitModal from "../Modal/QuitModal";
+import Fixtree from "../Modal/FixTree";
+import Fixtreeform from "../Modal/Fixtreeform";
+
 const MyPage = (prop) => {
   const navigate = useNavigate();
   const [searchData, setSearchData] = useState([]);
   const [signUpOpen, setSignUpOpen] = useState(false);
   const [maketreeOpen, setmaketreeOpen] = useState(false);
+  const [fixtreeOpen, setfixtreeOpen] = useState(false);
   const [islogin, setislogin] = useState(false);
   const [prname, setprname] = useState("");
   const [prstuid, setstuid] = useState("");
@@ -22,6 +26,7 @@ const MyPage = (prop) => {
   const [isthermytree, setistheremytree] = useState("");
   const [ModalIsShown, setModalIsShown] = useState(false);
   const [showquitmodal, setshowquitmodal] = useState(false);
+  const [showfixmodal, setshowfixmodal] = useState(false);
   const [treeshow, settreeshow] = useState(false);
   const [deleteModal, setdeleteModal] = useState(false);
   const showModalHandler = () => {
@@ -45,6 +50,10 @@ const MyPage = (prop) => {
   const hideModalHandler4 = () => {
     //탈퇴 모달 숨기기
     setshowquitmodal(false);
+  };
+  const hideModalHandler5 = () => {
+    //트리수정 모달 숨기기
+    setshowfixmodal(false);
   };
   async function logintest() {
     //실제
@@ -158,7 +167,6 @@ const MyPage = (prop) => {
   useEffect(() => {
     fetchData();
   }, []);
-
   function check() {
     const confirm = window.confirm("정말 로그아웃 하시겠습니까?");
     if (confirm == true) logout();
@@ -179,6 +187,13 @@ const MyPage = (prop) => {
     console.log(response);
   }
 
+function forfix()
+{
+  console.log('되나.,.');
+  setfixtreeOpen(true);
+}
+
+
   return (
     <div>
       <div className="myinfo">
@@ -197,7 +212,13 @@ const MyPage = (prop) => {
         >
           정보 수정
         </button>
-
+        <button
+          onClick={() => {
+            settreeshow(true);
+          }}
+        >
+          내 트리
+        </button>
         <button
           onClick={() => {
             setmaketreeOpen(true);
@@ -208,10 +229,10 @@ const MyPage = (prop) => {
 
         <button
           onClick={() => {
-            settreeshow(true);
+            setshowfixmodal(true);
           }}
         >
-          내 트리
+          트리수정
         </button>
         <button
           onClick={() => {
@@ -245,6 +266,11 @@ const MyPage = (prop) => {
         maketreeOpen={maketreeOpen}
         setmaketreeOpen={setmaketreeOpen}
       ></Maketreemodal>
+        <Fixtreeform className="newModal"
+        maketreeOpen={fixtreeOpen}
+        setmaketreeOpen={setfixtreeOpen}
+      ></Fixtreeform>
+      {showfixmodal && <Fixtree onClose={hideModalHandler5} plus={forfix}/>}
       {showquitmodal && <QuitModal onClose={hideModalHandler4} />}
       {deleteModal && <DeleteTree onClose={hideModalHandler3} />}
       {ModalIsShown && <Mystickers onClose={hideModalHandler} />}
