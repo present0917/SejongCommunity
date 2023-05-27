@@ -72,7 +72,6 @@ const First = (props) => {
       </Link>
       
       <br></br>
-      
       <br></br>
           <div className='galarm'>
       

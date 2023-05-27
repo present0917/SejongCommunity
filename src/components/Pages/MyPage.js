@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import Mystickers from "../Modal/Mystickers";
 import Viewmytrees from "../Modal/Viewmytrees";
 import DeleteTree from "../Modal/DeleteTree";
+import QuitModal from "../Modal/QuitModal";
 const MyPage = (prop) => {
   const navigate = useNavigate();
   const [searchData, setSearchData] = useState([]);
@@ -20,6 +21,7 @@ const MyPage = (prop) => {
   const [tomytree, settomytree] = useState("");
   const [isthermytree, setistheremytree] = useState("");
   const [ModalIsShown, setModalIsShown] = useState(false);
+  const [showquitmodal, setshowquitmodal] = useState(false);
   const [treeshow, settreeshow] = useState(false);
   const [deleteModal, setdeleteModal] = useState(false);
   const showModalHandler = () => {
@@ -38,8 +40,11 @@ const MyPage = (prop) => {
   };
   const hideModalHandler3 = () => {
     //입력 모달 숨기기
-    console.log("삭제숨기기");
     setdeleteModal(false);
+  };
+  const hideModalHandler4 = () => {
+    //탈퇴 모달 숨기기
+    setshowquitmodal(false);
   };
   async function logintest() {
     //실제
@@ -228,16 +233,19 @@ const MyPage = (prop) => {
       <button className="logoutbutton" onClick={check}>
         log out
       </button>
+      <button className="logoutbutton"  onClick={() => {
+            setshowquitmodal(true);
+          }} >
+          회원 탈퇴
+      </button>
       {/* <button onClick={logincheck}>check</button> */}
       {/* prop.func(false) */}
-      <FixUserModal signUpOpen={signUpOpen} setSignUpOpen={setSignUpOpen}>
-        {" "}
-      </FixUserModal>
+      <FixUserModal signUpOpen={signUpOpen} setSignUpOpen={setSignUpOpen}></FixUserModal>
       <Maketreemodal
         maketreeOpen={maketreeOpen}
         setmaketreeOpen={setmaketreeOpen}
       ></Maketreemodal>
-
+      {showquitmodal && <QuitModal onClose={hideModalHandler4} />}
       {deleteModal && <DeleteTree onClose={hideModalHandler3} />}
       {ModalIsShown && <Mystickers onClose={hideModalHandler} />}
       {treeshow && <Viewmytrees onClose={hideModalHandler2} />}
