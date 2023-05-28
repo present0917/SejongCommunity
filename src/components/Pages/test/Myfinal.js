@@ -4,12 +4,13 @@ import Crdtest from "../../../etc/Crdtest"
 import post from "../../../pic/post.png"
 import post1 from "../../../pic/post1.png"
 import post2 from "../../../pic/post2.png"
-import { useState,useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import Form from "../../Modal/Form";
 import Show from "../../Modal/Show"
 import Patchform from '../../Modal/Patchform'
 import { useParams } from 'react-router-dom'
 import ErrorModal from '../../Modal/ErrorModal'
+import LoadingContext from '../../Nav/LoadingContext'
 
 const imagePaths = [
   post,
@@ -33,7 +34,7 @@ const Myfinal = () => {
 
   const [errormessage, seterrormessage] = useState('no error');
   const [errorcode, seterrorcode] = useState('no error');
-
+  const {updateLoading} = useContext(LoadingContext)
   const params = useParams();
   const showpatchmodal = () => {//수정 모달
     setpatchmodalshow(true);
@@ -73,6 +74,7 @@ const Myfinal = () => {
   };
   async function checkismine(data) { 
     const stickerid=data.data.stickerKey;
+    updateLoading(true);
     const response = await fetch(`/stickers/${stickerid}`, {
       headers: {
         'Content-Type': 'application/json'
@@ -80,6 +82,7 @@ const Myfinal = () => {
     });
     const dat = await response.json();
     setbackCardInfo(dat);
+    updateLoading(false);
     return dat.data.stickerAuth;
   }
 
@@ -104,17 +107,19 @@ const Myfinal = () => {
   };
 
   async function deletecard(data) { //삭제
+    updateLoading(true,"스티커 삭제 중...");
     const response = await fetch(`/stickers/${data.stickerKey}` , {
       method: 'DELETE',
     });
     fetchcard();
     console.log('삭제단계');
     console.log(response);
-
+    updateLoading(false);
   }
 
   async function fix(data) { //수정
     data.type=Number(data.type);
+    updateLoading(true,"스티커 수정 중...");
     const response = await fetch(`/stickers/${data.stickerKey}`, {
       method: 'PATCH',
       headers: {
@@ -122,37 +127,44 @@ const Myfinal = () => {
       },
       body: JSON.stringify(data)
     });
-
+    updateLoading(false);
     fetchcard();
   }
 
 
   async function fetchcard() { //불러오기 연동시
     const num=params.id;
+    updateLoading(true,"스티커 불러오는 중...");
     const response = await fetch(`/forest/${num}`);
-    if (!response.ok) {
-      throw new Error('Failed to fetch card data');
+    try{
+      if (!response.ok) {
+        throw new Error('Failed to fetch card data');
+      }
+      const data = await response.json();
+      const mapping = await data.stickers.map((element) => {
+        return {
+          type: element.type,
+          title: `${element.title}`,
+          stickerKey:element.stickerKey,
+          message:element.message,
+        };
+      });
+      const treeinfo=await data.tree;
+      const status =await data.isMine;
+      const tagg=await data.tree.tags;
+      const id=await data.tree.requestId;
+      const de=await data.tree.requestDepartment;
+      setopenid(id);
+      setopendep(de);
+      settag(tagg);
+      setinfo(treeinfo);
+      setCards(mapping);
+      setismine(status);
+    } catch(e) {
+      alert(e);
+    } finally {
+      updateLoading(false);
     }
-    const data = await response.json();
-    const mapping = await data.stickers.map((element) => {
-      return {
-        type: element.type,
-        title: `${element.title}`,
-        stickerKey:element.stickerKey,
-        message:element.message,
-      };
-    });
-    const treeinfo=await data.tree;
-    const status =await data.isMine;
-    const tagg=await data.tree.tags;
-    const id=await data.tree.requestId;
-    const de=await data.tree.requestDepartment;
-    setopenid(id);
-    setopendep(de);
-    settag(tagg);
-    setinfo(treeinfo);
-    setCards(mapping);
-    setismine(status);
   };
 
 
@@ -161,6 +173,7 @@ const Myfinal = () => {
   }, []);
 
   async function postcard(card) { //입력
+    updateLoading(true,"스티커 붙이는 중...");
     const response = await fetch(`/stickers?treeId=${params.id}`, {
       method: 'POST',
       body: JSON.stringify(card),
@@ -178,10 +191,7 @@ const Myfinal = () => {
       seterrormessage(data.message);
       showerrormodalhandler()
     }
-    
-
-
-    
+    updateLoading(false);
     fetchcard();
   }
 

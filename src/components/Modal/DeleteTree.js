@@ -1,13 +1,13 @@
 import Modal from './Modal';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Rec2d from '../../etc/Rec2d';
 import './Viewmytrees.css'
+import LoadingContext from '../Nav/LoadingContext';//로딩 context
 
 const DeleteTree = (props) => {
-
-    const [usetext, settext] = useState([]);
+    const {updateLoading} = useContext(LoadingContext);//로딩창에 대한 state 함수를 context로 받아옴
     const [mytrees, setmytrees] = useState([]);
 
 
@@ -18,29 +18,29 @@ const DeleteTree = (props) => {
       
     async function fetchData() {
         //트리정보
+        updateLoading(true,"보드 불러오는중...");//로딩 on
         const response = await fetch("/members");
-        if (!response.ok) {
-            throw new Error("Failed to fetch Search data");
+        try{
+            if (!response.ok) {
+                throw new Error("보드를 불러올 수 없습니다.");
+            }
+            const data = await response.json();
+            const mapping = data.treeId.map((element) => {
+                return {
+                    treeKey: element.treeKey,
+                    memberKey: element.memberKey,
+                    title: element.title,
+                    description: element.description,
+                    tags: element.tags,
+                };
+            });
+            setmytrees(mapping);
+        } catch(e) {
+            alert(e);
+        } finally {
+            updateLoading(false);//로딩off
         }
-        const data = await response.json();
-        if (!data) {
-            throw new Error("No Search Data");
-        }
-        const mapping = data.treeId.map((element) => {
-            return {
-                treeKey: element.treeKey,
-                memberKey: element.memberKey,
-                title: element.title,
-                description: element.description,
-                tags: element.tags,
-            };
-        });
-
-        setmytrees(mapping);
-
     }
-
-
 
     useEffect(() => {
         

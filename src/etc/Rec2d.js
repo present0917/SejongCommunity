@@ -1,12 +1,16 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 
 import tagData from "../dataJson/tagdata.json";
 import "./Rec2.css";
 import DeleteTreecheck from "../components/Modal/DeleteCheck"
+import LoadingContext from "../components/Nav/LoadingContext";
 
 const Rec2d = (props) => {
   const [isSelected, setIsSelected] = useState(false);
   const [checkmodal, setcheckmodal] = useState(false);
+
+  const {updateLoading} = useContext(LoadingContext);
+
   const tags=props.tags
   const tagMap = tagData.tags.map((e) => [e.value, e.text]);
   const tag = [];
@@ -27,13 +31,26 @@ const Rec2d = (props) => {
 
 
     async function deletetree() {
+      updateLoading(true,"보드 삭제 중...");
       const response = await fetch(`/forest/${props.treeKey}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
         },
       });
-      hideModalHandler();
+      try{
+        if(response){
+          console.log("삭제완료");
+          props.fetch();
+        } else {
+          throw new Error("서버 응답 없음");
+        }
+      } catch(e) {
+        alert(e);
+      } finally {
+        hideModalHandler();
+        updateLoading(false);
+      }
     }
 
 

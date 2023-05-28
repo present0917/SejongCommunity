@@ -1,9 +1,10 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, useContext } from "react";
 import ReactModal from "react-modal";
 import CheckboxGroup from "../ui/checkbox/pre/CheckboxGroup";
 import Checkbox from "../ui/checkbox/pre/Checkbox";
 import { useNavigate } from "react-router";
 import "./ModalAnimation.css";
+import LoadingContext from "../Nav/LoadingContext";
 const FixUserModal = (props) => {
   const navigate = useNavigate();
   const [id, setId] = useState("");
@@ -17,6 +18,7 @@ const FixUserModal = (props) => {
   const [isName, setIsName] = useState(true);
 
   const [disabled, setDisabled] = useState(true);
+  const {updateLoading} = useContext(LoadingContext);
 
   async function getdata() {
     const response = await fetch("/members", {
@@ -26,8 +28,8 @@ const FixUserModal = (props) => {
         "Content-Type": "application/json",
       },
     });
-
     try {
+      updateLoading(true);
       if (!response.ok) {
         navigate("/error");
         throw new Error(`${response.status} 에러가 발생했습니다.`);
@@ -36,14 +38,15 @@ const FixUserModal = (props) => {
       if (data.errorCode != null) {
         throw new Error(`Error Code:${data.errorCode} ${data.message}`);
       }
-
       setName(data.member.nickname);
       setId(data.member.studentId);
       setAllowId(data.member.openStudentId);
       setAllowDepartment(data.member.openDepartment);
       setInitValue([data.member.openStudentId, data.member.openDepartment]);
+      updateLoading(false);
     } catch (e) {
       alert(e);
+      updateLoading(false);
     }
   }
   useEffect(() => {
@@ -91,6 +94,7 @@ const FixUserModal = (props) => {
     setDisabled(false);
   };
   async function signUpSubmit(info) {
+    updateLoading(true,"사용자 정보 수정중...");
     const response = await fetch("/members", {
       ///members/add"
       method: "PATCH",
@@ -104,13 +108,15 @@ const FixUserModal = (props) => {
         throw new Error(`${response.status} 에러가 발생했습니다.`);
       }
       const data = await response.json();
-      if (data.errorCode != null) {
+      if (data.errorCode !== 0) {
         throw new Error(`Error Code:${data.errorCode} ${data.message}`);
       }
       alert("수정완료.");
       props.setSignUpOpen(false);
     } catch (e) {
       alert(e);
+    } finally {
+      updateLoading(false);
     }
   }
 

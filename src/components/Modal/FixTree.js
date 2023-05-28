@@ -1,31 +1,25 @@
 import Modal from './Modal';
-import { useState } from 'react';
-import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect, useContext } from "react";
+import { Link, useNavigate } from 'react-router-dom';
 import Rec2f from '../../etc/Rec2f';
 import './Viewmytrees.css'
+import LoadingContext from '../Nav/LoadingContext';//로딩 context
 
 const Fixtree = (props) => {
 
     const [usetext, settext] = useState([]);
+    const {updateLoading} = useContext(LoadingContext);//로딩창에 대한 state 함수를 context로 받아옴
     const [mytrees, setmytrees] = useState([]);
-
-
-
-    console.log(1);
-
-
-      
+    const navigate = useNavigate();
     async function fetchData() {
         //트리정보
+        updateLoading(true,"보드 불러오는중...");//로딩 on
         const response = await fetch("/members");
+        try{
         if (!response.ok) {
-            throw new Error("Failed to fetch Search data");
+            throw new Error("서버 응답 없음");
         }
         const data = await response.json();
-        if (!data) {
-            throw new Error("No Search Data");
-        }
         //console.log(data);
         const mapping = data.treeId.map((element) => {
             return {
@@ -39,8 +33,13 @@ const Fixtree = (props) => {
                 allowDepartment:element.requestDepartment
             };
         });
-
         setmytrees(mapping);
+        } catch(e){
+            alert(e);
+            navigate("/login");
+        } finally {
+            updateLoading(false);
+        }
     }
 
 
@@ -56,7 +55,6 @@ const Fixtree = (props) => {
             <div style={{ textDecoration: "none" }}>
                 <div>
                     <div className="mytree" >
-
                         {mytrees.map((post) => (
                             <Rec2f key={Math.random()} className="mytree"  
                                 treeKey={post.treeKey}

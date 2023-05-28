@@ -1,22 +1,30 @@
 import Modal from './Modal';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import LoadingContext from '../Nav/LoadingContext';
 const Mystickers = (props) => {
 
   const [usetext, settext] = useState([]);
-
+  const {updateLoading} = useContext(LoadingContext);
   async function deletemytree() {   
+    updateLoading(true,"스티커 불러오는중...");
     const response = await fetch("/stickers");
-    if (!response.ok) {
-      throw new Error('Failed to fetch del tree data');
+    try{
+      if (!response.ok) {
+        throw new Error('Failed to fetch del tree data');
+      }
+      const data = await response.json();
+      if (!data) {
+        throw new Error('No Search Data');
+      }
+      settext(data.data);
+    } catch(e) {
+      alert(e);
+      
+    } finally {
+      updateLoading(false);
     }
-    const data = await response.json();
-    if (!data) {
-      throw new Error('No Search Data');
-    }
-    settext(data.data);
   }
 
   // deletemytree();

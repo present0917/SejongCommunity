@@ -1,13 +1,14 @@
 import Doyouknow from "../../etc/Doyouknow";
 import "./First.css";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useOutletContext } from "react-router";
 import { Link } from "react-router-dom";
 import board from "../../pic/board.png"
 import { useNavigate } from "react-router-dom";
+import LoadingContext from "../Nav/LoadingContext";
 const First = (props) => {
   const navigate=useNavigate();
+  const {updateLoading} = useContext(LoadingContext)
   const [isalarm, setisalarm] = useState(0);
   const { sum } = useOutletContext();
 
@@ -25,52 +26,45 @@ const First = (props) => {
   const [trees, setmytrees] = useState([]);
   async function fetchData() {
     //트리정보
-    try{
+    updateLoading(true,"내 보드 불러오는중...");
     const response = await fetch("/members");
-    if (!response.ok) {
-      console.log('re');
-      navigate("/Errorlogin");
-      // throw new Error("Failed to fetch Search data");
-    }
-    const data = await response.json();
-    if (!data) {
-      navigate("/Errorlogin");
-      // throw new Error("No Search Data");
-    }
-  
-  
-    
-    const mapping = data.treeId.map((element) => {
-      const found = data.alarmCount.find((obj) => obj.id === element.treeKey);
-      return {
-        treeKey: element.treeKey,
-        memberKey: element.memberKey,
-        title: element.title,
-        description: element.description,
-        tags: element.tags,
-        count: found ? found.count : 0,
-      };
-    });
-
-    setmytrees(mapping);
+    try{
+      if (!response.ok) {
+        throw new Error("서버 응답 없음");
+        // throw new Error("Failed to fetch Search data");
+      }
+      const data = await response.json();
+      console.log(data);
+        const mapping = data.treeId.map((element) => {
+          const found = data.alarmCount.find((obj) => obj.id === element.treeKey);
+          return {
+            treeKey: element.treeKey,
+            memberKey: element.memberKey,
+            title: element.title,
+            description: element.description,
+            tags: element.tags,
+            count: found ? found.count : 0,
+          };
+      });
+      setmytrees(mapping);
+  } catch(e) {
+    navigate("/errorlogin");
+  } finally{
+    updateLoading(false);
   }
-  catch(e)
-  {
-    navigate("/Errorlogin");
-  }
-  }
+}
 
   async function randomtree() {
     //트리정보
     const response = await fetch("/forest/random-tree");
     if (!response.ok) {
       console.log('re');
-      navigate("/Errorlogin");
+      navigate("/errorlogin");
       // throw new Error("Failed to fetch Search data");
     }
     const data = await response.json();
     if (!data) {
-      navigate("/Errorlogin");
+      navigate("/errorlogin");
       // throw new Error("No Search Data");
     }
     navigate(`/tree/${data.tree.treeKey}`)

@@ -1,23 +1,24 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import './Alert.css'
 import { Link } from "react-router-dom";
+import LoadingContext from "../Nav/LoadingContext";
 const Alert = (props) => {
-    const [testData,setTestData] = useState([])
+  const [testData,setTestData] = useState([])
+  const {updateLoading} = useContext(LoadingContext)
+  async function alarm() {
+    updateLoading(true,"알림 확인중...")
+    const response = await fetch('/login');
+    const data = await response.json();
+    setTestData(data.alarmCount);
+    updateLoading(false);
+  };
+  useEffect(() => {
+      alarm();
+    }, []);
 
-    async function alarm() {
-        const response = await fetch('/login');
-        const data = await response.json();
-      setTestData(data.alarmCount);
-
-    };
-    useEffect(() => {
-        alarm();
-      }, []);
-
-      useEffect(() => {
-      }, [testData]);
-
-    return (
+  useEffect(() => {
+    }, [testData]);
+  return (
         <div >
           <ul>
             {testData.map((data) => (

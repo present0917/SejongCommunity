@@ -1,6 +1,5 @@
 import Modal from './Modal';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Rec2d from '../../etc/Rec2d';
 import './Viewmytrees.css'
@@ -8,28 +7,31 @@ import './DeleteCheck.css'
 import sad from '../../pic/sad.png'
 import errorimg from '../../pic/404.png'
 import { useNavigate } from 'react-router-dom';
-const QuitModal = (props) => {
-
-    const navigate=useNavigate();
-    async function iquit() { //삭제
-        try{
-        const response = await fetch(`/members` , {
-          method: 'DELETE',
-        });
-        if (!response.ok) {
-            console.log('탈퇴중오류');
-            navigate("/Error");
-          }
-          const data=await response.json();
-          alert('탈퇴가 완료되었습니다.');
-          navigate('/login');
-        
-    }
-    catch(e){
-        console.log(e);
-        navigate('/Error');
-    }
+import LoadingContext from '../Nav/LoadingContext';
+const QuitModal = (props) => { 
+  const {updateLoading} = useContext(LoadingContext)
+  const navigate  = useNavigate();
+  async function iquit() { //삭제
+    updateLoading(true,"탇퇴하는 중...ㅠㅠ")
+    const response = await fetch(`/members` , {
+      method: 'DELETE',
+    });
+    try{
+    if (!response.ok) {
+        throw new Error("서버응답 없음");
       }
+      const data=await response.json();
+      if(data.errorCode !==0){
+        throw new Error('서버에서 문제 발생');
+      }
+      alert('탈퇴가 완료되었습니다.');
+      navigate('/login');
+    } catch(e) {
+      alert(e);
+    } finally {
+      updateLoading(false);
+    }
+  }
 
 
     return (

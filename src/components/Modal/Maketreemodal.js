@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, useContext } from "react";
 import ReactModal from "react-modal";
 import CheckboxGroup from "../ui/checkbox/pre/CheckboxGroup";
 import Checkbox from "../ui/checkbox/pre/Checkbox";
@@ -9,6 +9,7 @@ import "./Maketreemodal.css";
 import tagBox from "../ui/toggle/toggleButton.module.css";
 import "./ModalAnimation.css";
 import { useNavigate } from "react-router-dom";
+import LoadingContext from "../Nav/LoadingContext";
 const Maketreemodal = (props) => {
   const [tags, setTags] = useState([1]);
   const [name, setName] = useState("");
@@ -16,13 +17,11 @@ const Maketreemodal = (props) => {
   const [allowId, setAllowId] = useState(false);
   const [allowDepartment, setAllowDepartment] = useState(false);
 
-  const [passwordMessage, setPasswordMessage] = useState("");
-  const [nameMessage, setNameMessage] = useState("");
-
   const [isPass, setIsPass] = useState(false);
   const [isName, setIsName] = useState(false);
 
-  const [disabled, setDisabled] = useState(true);
+  const [disabled, setDisabled] = useState(false);
+  const {updateLoading} = useContext(LoadingContext);
   const navigate = useNavigate();
   const modalStyle = {
     overlay: {
@@ -55,39 +54,21 @@ const Maketreemodal = (props) => {
   const onChangePassword = (e) => {
     const currentPass = e.target.value;
     setPassword(currentPass);
-    const passRegExp = /^.+$/;
-    if (!passRegExp.test(currentPass)) {
-      setPasswordMessage("작성해주세요");
+    if(currentPass === ""){
       setIsPass(false);
-      setDisabled(true);
-    } else {
-      setPasswordMessage("ok!");
+    } else{
       setIsPass(true);
-      setDisabled(false);
     }
   };
   const onChangeName = (e) => {
     const currentName = e.target.value;
     setName(currentName);
-
-    const passRegExp = /^.+$/;
-    if (!passRegExp.test(currentName)) {
-      setNameMessage("작성해주세요");
+    if(currentName === ""){
       setIsName(false);
-      setDisabled(true);
-    } else {
-      setNameMessage("ok!");
+    } else{
       setIsName(true);
-      setDisabled(false);
     }
-  };
-  const initInput = () => {
-    setIsPass(false);
-    setIsName(false);
-    setPassword("");
-    setName("");
-    setAllowId(false);
-    setAllowDepartment(false);
+
   };
 
   const handleSubmit = (e) => {
@@ -95,7 +76,7 @@ const Maketreemodal = (props) => {
     setDisabled(true);
     e.preventDefault();
     if (!isPass || !isName) {
-      alert("입력 정보를 다시 확인해주세요.");
+      alert("제목과 내용을 입력해주세요");
     } else {
       const signUpData = {
         description: password,
@@ -105,13 +86,11 @@ const Maketreemodal = (props) => {
         tags: tags,
       };
       signUpSubmit(signUpData);
-      alert(`${name}트리가 생성되었습니다`);
     }
-    
     setDisabled(false);
-    window.location.reload();
   };
   async function signUpSubmit(info) {
+    updateLoading(true,"보드 생성중...");
     const response = await fetch("/forest", {
       ///members/add"
       method: "POST",
@@ -128,10 +107,14 @@ const Maketreemodal = (props) => {
       if (data.errorCode != null) {
         throw new Error(`Error Code:${data.errorCode} ${data.message}`);
       }
-
+      alert(`${name}트리가 생성되었습니다`);
       props.setmaketreeOpen(false);
+      window.location.reload();
     } catch (e) {
       alert(e);
+
+    } finally {
+      updateLoading(false);
     }
   }
   return (

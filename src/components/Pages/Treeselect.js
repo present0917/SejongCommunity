@@ -1,19 +1,21 @@
-import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Rec2 from "../../etc/Rec2";
 import "./Treeselect.css";
-import { element } from "prop-types";
+import LoadingContext from "../Nav/LoadingContext";
 
 const Treeselect = () => {
   const [trees, settrees] = useState([]);
   const [comeTrees, setComeTrees] = useState([]);
   const [page, setPage] = useState(1);
   const [disabled, setDisabled] = useState(false);
+
+  const {updateLoading} = useContext(LoadingContext);
   useEffect(() => {
     
   }, []);
 
   async function fetchtrees(URL) {
+    updateLoading(true,"전체 보드 로딩중...");
     const response = await fetch(URL);
     try {
       if (!response.ok) {
@@ -46,7 +48,9 @@ const Treeselect = () => {
         setDisabled(true);
       }
     } catch (e) {
-      alert(e);
+      alert(e); 
+    } finally{
+      updateLoading(false);
     }
   }
   const nextLoad = () => {

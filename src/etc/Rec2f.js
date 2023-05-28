@@ -19,29 +19,6 @@ const Rec2f = (props) => {
       tag.push("#" + tagMap[v - 1][1]);
     });
 
-    const hideModalHandler = () => {
-       setcheckmodal(false);
-    };
-
-    const checkopen=()=>
-    {
-      setcheckmodal(true);
-    }
-
-
-
-    async function fixtree() {
-      const response = await fetch(`/forest/${props.treeKey}`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      hideModalHandler();
-    }
-
-
-
   return (
     <div className={`rec2d ${isSelected ? "selected" : ""}`}>
       <div to={`/tree/${props.treeKey}`} style={{ textDecoration: "none" }}

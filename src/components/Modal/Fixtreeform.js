@@ -1,4 +1,4 @@
-import { React, useState,useEffect } from "react";
+import { React, useState,useEffect, useContext } from "react";
 import ReactModal from "react-modal";
 import CheckboxGroup from "../ui/checkbox/pre/CheckboxGroup";
 import Checkbox from "../ui/checkbox/pre/Checkbox";
@@ -8,30 +8,23 @@ import tagData from "../../dataJson/tagdata.json";
 import "./Maketreemodal.css";
 import tagBox from "../ui/toggle/toggleButton.module.css";
 import "./ModalAnimation.css";
-import { useNavigate } from "react-router-dom";
-import Pulse from "../ui/loading/Pulse";
+import LoadingContext from "../Nav/LoadingContext";
 const Fixtreeform = (props) => {
 
   const [tags, setTags] = useState([1]);
-
-
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
-
-
   const [allowId, setAllowId] = useState(false);
   const [allowDepartment, setAllowDepartment] = useState(false);
-
 
   const [isPass, setIsPass] = useState(false);
   const [isName, setIsName] = useState(false);
   const [checkChanged,setCheckChanged] = useState(false);
 
   const [disabled, setDisabled] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-
-  const [title, settitle] = useState('a');
-  const [message, setmessage] = useState('a');
+  //const [isLoading, setIsLoading] = useState(false);
+  const {updateLoading} = useContext(LoadingContext);
+  
   const [thiskey,setthiskey]=useState(-1);
 
 function fun(){
@@ -55,7 +48,6 @@ function fun(){
   useEffect(()=>{
     if(props.datas){
       if(tags.toString() === props.datas.tags.toString() && allowId === props.datas.allowId && allowDepartment === props.datas.allowDepartment){
-        console.log("x")
         setCheckChanged(false);
       } else {
         setCheckChanged(true);
@@ -133,7 +125,8 @@ function fun(){
     setDisabled(false);
   };
   async function signUpSubmit(info) {
-    setIsLoading(true);
+    //setIsLoading(true);
+    updateLoading(true,"보드 수정 중...");
     const response = await fetch(`/forest/${thiskey}`, {
       method: "PATCH",
       headers: {
@@ -149,11 +142,13 @@ function fun(){
       if (data.errorCode != 0) {
         throw new Error(`Error Code:${data.errorCode} ${data.message}`);
       }
-      setIsLoading(false);
+      //setIsLoading(false);
       props.reload();
       props.setmaketreeOpen(false);
     } catch (e) {
       alert(e);
+    } finally{
+      updateLoading(false);
     }
   }
   return (
@@ -163,7 +158,6 @@ function fun(){
       style={modalStyle}
       ariaHideApp={false}
     >
-      <Pulse isLoading={isLoading}>수정 사항 전달중...</Pulse>
       <div className="container">
         <form onSubmit={handleSubmit}>
           <p>
