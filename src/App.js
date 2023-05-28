@@ -16,6 +16,7 @@ import Dynamictest from "./components/Pages/test/Dynamictest";
 import Check from "./components/Pages/Check";
 import Errorlogin from "./components/Pages/Error/Errorlogin";
 import Waypoint from "./Waypoint";
+import { LoadingProvider } from "./components/Nav/LoadingContext";
 //  import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
@@ -49,9 +50,9 @@ function App() {
     { path: "errorlogin", element: <Errorlogin /> },
   ]);
   return (
-
-      <RouterProvider router={router} />
-
+      <LoadingProvider>
+        <RouterProvider router={router} />
+      </LoadingProvider>
   );
 }
 export default App;

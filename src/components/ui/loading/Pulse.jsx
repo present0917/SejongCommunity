@@ -3,6 +3,9 @@ import { PulseLoader } from "react-spinners";
 import ReactModal from "react-modal";
 
 function Pulse(props) {
+  if(props.isLoading){
+    console.log(props.children)
+  }
   return (
     <>
       <ReactModal
