@@ -1,23 +1,23 @@
-import React from 'react';
-import Pulse from '../ui/loading/Pulse';
+import React from "react";
+import Pulse from "../ui/loading/Pulse";
 
 const LoadingContext = React.createContext();
 
 export const LoadingProvider = ({ children }) => {
   const [isLoading, setIsLoading] = React.useState(false);
-  const [loadingText,setLoadingText] = React.useState("로딩중...")
-  const updateLoading = (bool,text) => {
+  const [loadingText, setLoadingText] = React.useState("로딩중...");
+  const updateLoading = (bool, text) => {
     setIsLoading(bool);
-    if(text){
-        setLoadingText(text);
+    if (text || text === null || text === undefined) {
+      setLoadingText(text);
     } else {
-        setLoadingText("로딩중...");
+      setLoadingText("로딩중...");
     }
   };
 
   return (
     <LoadingContext.Provider value={{ updateLoading }}>
-        <Pulse isLoading={isLoading}>{loadingText}</Pulse>
+      <Pulse isLoading={isLoading}>{loadingText}</Pulse>
       {children}
     </LoadingContext.Provider>
   );
