@@ -1,4 +1,4 @@
-import { React, useState, useContext } from "react";
+import { React, useState,useEffect, useContext } from "react";
 import ReactModal from "react-modal";
 import CheckboxGroup from "../ui/checkbox/pre/CheckboxGroup";
 import Checkbox from "../ui/checkbox/pre/Checkbox";
@@ -8,9 +8,9 @@ import tagData from "../../dataJson/tagdata.json";
 import "./Maketreemodal.css";
 import tagBox from "../ui/toggle/toggleButton.module.css";
 import "./ModalAnimation.css";
-import { useNavigate } from "react-router-dom";
 import LoadingContext from "../Nav/LoadingContext";
-const Maketreemodal = (props) => {
+const Fixtreeform = (props) => {
+
   const [tags, setTags] = useState([1]);
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
@@ -19,10 +19,41 @@ const Maketreemodal = (props) => {
 
   const [isPass, setIsPass] = useState(false);
   const [isName, setIsName] = useState(false);
+  const [checkChanged,setCheckChanged] = useState(false);
 
   const [disabled, setDisabled] = useState(false);
+  //const [isLoading, setIsLoading] = useState(false);
   const {updateLoading} = useContext(LoadingContext);
-  const navigate = useNavigate();
+  
+  const [thiskey,setthiskey]=useState(-1);
+
+function fun(){
+  console.log('수정프롭')
+
+  // console.log(props)
+  // console.log(props.datas)
+  if(props.datas){
+    setName(props.datas.title);
+    setPassword(props.datas.description);
+    setthiskey(props.datas.treeKey);
+    setTags(props.datas.tags);
+    setAllowId(props.datas.allowId);
+    setAllowDepartment(props.datas.allowDepartment);
+  }
+}
+  
+  useEffect(() => {
+    fun();
+  }, [props]);
+  useEffect(()=>{
+    if(props.datas){
+      if(tags.toString() === props.datas.tags.toString() && allowId === props.datas.allowId && allowDepartment === props.datas.allowDepartment){
+        setCheckChanged(false);
+      } else {
+        setCheckChanged(true);
+      }
+    }
+  },[tags,allowId,allowDepartment])
   const modalStyle = {
     overlay: {
       position: "fixed",
@@ -31,6 +62,7 @@ const Maketreemodal = (props) => {
       right: 0,
       bottom: 0,
       backgroundColor: "rgba(0, 0, 0, 0.75)",
+      zIndex:100,
     },
     content: {
       position: "absolute",
@@ -51,32 +83,35 @@ const Maketreemodal = (props) => {
     },
   };
 
-  const onChangePassword = (e) => {
-    const currentPass = e.target.value;
-    setPassword(currentPass);
-    if(currentPass === ""){
-      setIsPass(false);
-    } else{
-      setIsPass(true);
-    }
-  };
   const onChangeName = (e) => {
     const currentName = e.target.value;
-    setName(currentName);
-    if(currentName === ""){
+    
+    if(currentName === props.datas.title || currentName === ''){
       setIsName(false);
     } else{
       setIsName(true);
     }
-
+    setName(currentName);
   };
+  const onChangePassword = (e) => {
+    const currentPass = e.target.value;
+    setPassword(currentPass);
+    if(currentPass === props.datas.description || currentPass === ''){
+      setIsPass(false);
+    } else{
+      setIsPass(true);
+    }
+    console.log(currentPass);
+    
+  };
+  
 
   const handleSubmit = (e) => {
     //제출
     setDisabled(true);
     e.preventDefault();
-    if (!isPass || !isName) {
-      alert("제목과 내용을 입력해주세요");
+    if (!isPass && !isName && !checkChanged) {
+      alert("입력 정보를 다시 확인해주세요.");
     } else {
       const signUpData = {
         description: password,
@@ -90,10 +125,10 @@ const Maketreemodal = (props) => {
     setDisabled(false);
   };
   async function signUpSubmit(info) {
-    updateLoading(true,"보드 생성중...");
-    const response = await fetch("/forest", {
-      ///members/add"
-      method: "POST",
+    //setIsLoading(true);
+    updateLoading(true,"보드 수정 중...");
+    const response = await fetch(`/forest/${thiskey}`, {
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
@@ -104,16 +139,15 @@ const Maketreemodal = (props) => {
         throw new Error(`${response.status} 에러가 발생했습니다.`);
       }
       const data = await response.json();
-      if (data.errorCode != null) {
+      if (data.errorCode != 0) {
         throw new Error(`Error Code:${data.errorCode} ${data.message}`);
       }
-      alert(`${name}트리가 생성되었습니다`);
+      //setIsLoading(false);
+      props.reload();
       props.setmaketreeOpen(false);
-      window.location.reload();
     } catch (e) {
       alert(e);
-
-    } finally {
+    } finally{
       updateLoading(false);
     }
   }
@@ -178,9 +212,10 @@ const Maketreemodal = (props) => {
               </ToggleButton>
             ))}
           </ToggleButtonGroup>
+          {/* <button className="button" onClick={()=>{datatestprint();}}>PostTest</button> */}
           <div className="actions">
             <button type="submit" className="button" disabled={disabled}>
-              생성
+              수정
             </button>
             <button
               type="button"
@@ -196,4 +231,4 @@ const Maketreemodal = (props) => {
   );
 };
 
-export default Maketreemodal;
+export default Fixtreeform;

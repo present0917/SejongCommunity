@@ -2,19 +2,31 @@ import Modal from './Modal';
 import classes from './Form.module.css';
 import { useEffect,useState } from 'react';
 import { useParams } from 'react-router-dom';
+import moment from 'moment';
 const Show = (props) => {
-  console.log(props);
-  const params = useParams();
-  const { id, type, title, message } = props.data;
-  const [des, setdes] = useState('here is description'); //입력 내용 담을곳
-  const [stuid, setid] = useState('here is student id'); //입력 내용 담을곳
-  console.log(id);//스티커아이디
-  console.log(props.treeid);//트리id
+  const backdatas=props.backdata.data.backSticker;
+  const{auth}=props;
+  const [isdep,setisdep]=useState(false);
+  const [isid,setisid]=useState(false);
+  const check=()=>{
+  if(backdatas.dataRange.hasOwnProperty("studentId"))
+  {
+    setisid(true);
+  }
+  if(backdatas.dataRange.hasOwnProperty("department"))
+  {
+    setisdep(true);
+  }
+}
+useEffect(() => {
+  check();
+}, []);
   const Submithandler=(event)=>  
   {
      event.preventDefault();
      props.onClose();
      props.delete(props.data);
+     console.log('폼이 제출됐을때');
   }
   const openhandler=(event)=>  
   {
@@ -22,62 +34,47 @@ const Show = (props) => {
      props.open();
      
   }
-  // useEffect(() => {
-  //   desfetch();
-  // }, []);
-  // async function desfetch() { //상세 불러오기 GET /stickers/{stickerKey}
-  //   console.log('desfetch');
-  //   const num=params.id;
-  //   //console.log(num);
-  //   const response = await fetch(`http://localhost:3002/${num}`);
 
-  //   //const response = await fetch(`/${num}/${id}`);
-
-  //   if (!response.ok) {
-  //     throw new Error('Failed to fetch card data');
-  //   }
-  //   const data = await response.json();
-  //   // if (!data.tree1) {
-  //   //   throw new Error('Invalid card data');
-  //   // }
-  //   const mapping = await data.map((element) => {
-  //     return {
-  //       des: element.memo,
-  //       studid: element.studentId
-  //     };
-  //   });
-  //   //setdes('test');
-  //   setdes(mapping.des);
-  //   setid(mapping.studid);
-  //   console.log(data);
-  //   console.log(mapping);
-  // };
   return (
     <Modal onClose={props.onClose}>
       <form onSubmit={Submithandler}>
-      <div>
-        {type}
-      </div>
         <div>
-          {title}
+
         </div>
         <div>
-      {message}
+      {backdatas.title}
+<br></br><br></br>
+      </div>
+      <div>
+      {backdatas.message}
+      </div>
+      <br></br><br></br>
+      <div>{isid ? `${backdatas.dataRange.studentId} 학번 ${backdatas.dataRange.nickname} 님 께서 `:null}</div>
+      <div>{isdep ? `${backdatas.dataRange.department}`:null}</div>
+      <div>
+      {`${moment(backdatas.created_at).format('YYYY년M월D일')}`}
+      </div>
+      <div>
+      {`${moment(backdatas.created_at).format('h시m분s초')} 에 부착된 스티커입니다.`}
       </div>
 
-        <div className={classes.actions}>
-          <button className={classes['button--alt']} onClick={props.onClose}>
+
+<div></div>
+<br></br>
+        <div >
+          <button className={classes["button--alt"]} onClick={props.onClose}>
             Close
           </button>
-          <button className={classes['button--alt']} onClick={openhandler}>
-            Fix
-          </button>
+          {auth == 2 && (
+            <button className={classes["button--alt"]} onClick={openhandler}>
+              Fix
+            </button>
+          )}
           <button type="submit" className={classes.button}>
             delete
           </button>
-          
         </div>
-        </form>
+      </form>
     </Modal>
   );
 };

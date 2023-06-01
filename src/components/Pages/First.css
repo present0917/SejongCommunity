@@ -19,3 +19,34 @@
   align-items: center;
  text-align: center;
 }
+.smallboard{
+  width:40vw;
+  position: relative;
+}
+.galarm{
+  display: flex;
+  flex-wrap: wrap; 
+}
+.galarms{
+  padding-left: 10px;
+  width:40vw;
+}
+
+
+.imgcontainer {
+  position: relative;
+  width:40vw;
+}
+
+.counttext {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* Additional styling properties for the text */
+  color: black;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  /* z-index: 2;  */
+}

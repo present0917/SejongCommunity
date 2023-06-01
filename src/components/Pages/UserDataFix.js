@@ -128,7 +128,6 @@ const SignUp = (props) => {
             password: {password},
             name :{name},
         };
-        console.log(authData);
     }
 
 

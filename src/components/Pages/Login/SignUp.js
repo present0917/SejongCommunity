@@ -3,6 +3,7 @@ import ReactModal from "react-modal";
 import CheckboxGroup from "../../ui/checkbox/CheckboxGroup";
 import Checkbox from "../../ui/checkbox/Checkbox";
 import "./SignUp.css";
+import '../../Modal/ModalAnimation.css';
 const SignUp = (props) => {
   const [id, setId] = useState("");
   const [name, setName] = useState("");
@@ -42,7 +43,7 @@ const SignUp = (props) => {
   const onChangePassword = (e) => {
     const currentPass = e.target.value;
     setPassword(currentPass);
-    const passRegExp = /^[a-zA-Zㄱ-힣0-9~!@#$%^&*()_+|<>?:{}]{8,30}$/;
+    const passRegExp = /^[a-zA-Zㄱ-힣0-9~!@#$%^&*()-_+|<>?:{}]{8,30}$/;
     if (!passRegExp.test(currentPass)) {
       setPasswordMessage("비밀번호를 확인해주세요!");
       setIsPass(false);
@@ -148,17 +149,8 @@ const SignUp = (props) => {
     }
   }
 
-  // const datatestprint = () => {
-  //   const authData = {
-  //     id: { id },
-  //     password: { password },
-  //     name: { name },
-  //   };
-  //   console.log(authData);
-  // };
 
   return (
-    // “/members/add”
 
     <ReactModal
       isOpen={props.signUpOpen}
@@ -185,6 +177,9 @@ const SignUp = (props) => {
           borderRadius: "20px",
           outline: "none",
           padding: "20px",
+          animationName: 'slide-down',
+        animationDuration: '300ms',
+        animationTimingFunction: 'ease-in-out'
         },
       }}
       ariaHideApp={false}
