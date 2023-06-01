@@ -217,7 +217,7 @@ function forfix()
             settreeshow(true);
           }}
         >
-          내 트리
+          내 보드
         </button>
         <button
           onClick={() => {
