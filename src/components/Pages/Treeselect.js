@@ -9,13 +9,11 @@ const Treeselect = () => {
   const [page, setPage] = useState(1);
   const [disabled, setDisabled] = useState(false);
 
-  const {updateLoading} = useContext(LoadingContext);
-  useEffect(() => {
-    
-  }, []);
+  const { updateLoading } = useContext(LoadingContext);
+  useEffect(() => {}, []);
 
   async function fetchtrees(URL) {
-    updateLoading(true,"전체 보드 로딩중...");
+    updateLoading(true, "전체 보드 로딩중...");
     const response = await fetch(URL);
     try {
       if (!response.ok) {
@@ -33,9 +31,9 @@ const Treeselect = () => {
           dataRange: element.dataRange,
           description: element.description,
           tags: element.tags,
-          range:element.dataRange,
-          dep:element.requestDepartment,
-          id:element.requestId,
+          range: element.dataRange,
+          dep: element.requestDepartment,
+          id: element.requestId,
         };
       });
 
@@ -44,12 +42,11 @@ const Treeselect = () => {
         comeTrees.push(...mapping);
         settrees(comeTrees);
       } else {
-
         setDisabled(true);
       }
     } catch (e) {
-      alert(e); 
-    } finally{
+      alert(e);
+    } finally {
       updateLoading(false);
     }
   }

@@ -6,7 +6,7 @@ import LoadingContext from "../Nav/LoadingContext"; //로딩 context
 
 const Search = (props) => {
   const [searchData, setSearchData] = useState([]);
-  const {updateLoading} = useContext(LoadingContext);//로딩창에 대한 state 함수를 context로 받아옴
+  const { updateLoading } = useContext(LoadingContext); //로딩창에 대한 state 함수를 context로 받아옴
   const [page, setPage] = useState(1);
   const [nextButton, setNextButton] = useState(false);
   const [backButton, setBackButton] = useState(true);
@@ -23,8 +23,8 @@ const Search = (props) => {
   const navigate = useNavigate();
   async function submitSearch(page) {
     console.log(`${state}&page=${page}`);
-    
-    updateLoading(true);//로딩창 on
+
+    updateLoading(true); //로딩창 on
     const response = await fetch(`${state}&page=${page}`, {
       //"/forest"
       method: "GET",
@@ -33,7 +33,7 @@ const Search = (props) => {
       },
     });
     try {
-      if(state === null){
+      if (state === null) {
         navigate("/");
         throw new Error("잘못된 접근");
       }
@@ -44,7 +44,6 @@ const Search = (props) => {
       if (!data) {
         throw new Error("No Search Data");
       }
-      updateLoading(false); // 로딩창 off
       console.log(data);
       const mapping = await data.data.map((element) => {
         return {
@@ -53,7 +52,7 @@ const Search = (props) => {
           dataRange: element.dataRange,
           description: element.description,
           tags: element.tags,
-          nick:element.dataRange.nickname
+          nick: element.dataRange.nickname,
         };
       });
       console.log(mapping);
@@ -64,9 +63,9 @@ const Search = (props) => {
         setNextButton(false);
       }
     } catch (e) {
-      //setIsLoading(false);
-      updateLoading(false);
       alert(e);
+    } finally {
+      updateLoading(false); // 로딩창 off
     }
   }
   // async function submitSearchTest() {
@@ -104,8 +103,7 @@ const Search = (props) => {
 
   return (
     <div>
-     {/* <Pulse isLoading={isLoading}>검색중</Pulse> */}
-      <hr />
+      {/* <Pulse isLoading={isLoading}>검색중</Pulse> */}
       {searchData.map((post) => (
         <Rec2
           key={Math.random()}

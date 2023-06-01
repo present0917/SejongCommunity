@@ -1,16 +1,16 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #EEEDE3 !important; 
- font-family:"neofont"; 
+  background-color: #ffffff !important;
+  font-family: "neofont";
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 /* @font-face {
@@ -21,8 +21,8 @@ code {
 } */
 
 @font-face {
-	font-family: "newfont";
-	src: url("./font/NeoDunggeunmoPro-Regular.woff2"),
-  url("./font/NeoDunggeunmoPro-Regular.woff"),
-  url("./font/NeoDunggeunmoPro-Regular.ttf")
+  font-family: "newfont";
+  src: url("./font/NeoDunggeunmoPro-Regular.woff2"),
+    url("./font/NeoDunggeunmoPro-Regular.woff"),
+    url("./font/NeoDunggeunmoPro-Regular.ttf");
 }
