@@ -11,6 +11,7 @@ import Patchform from '../../Modal/Patchform'
 import { useParams } from 'react-router-dom'
 import ErrorModal from '../../Modal/ErrorModal'
 import LoadingContext from '../../Nav/LoadingContext'
+import { useNavigate } from 'react-router-dom'
 
 const imagePaths = [
   post,
@@ -18,6 +19,7 @@ const imagePaths = [
   post2
 ];
 const Myfinal = () => {
+  const navigate = useNavigate();
   const [openid, setopenid] = useState(false);
   const [opendep, setopendep] = useState(false);
   const [ModalIsShown, setModalIsShown] = useState(false);
@@ -57,6 +59,7 @@ const Myfinal = () => {
   }
 
   async function showmodal(info){// 스티커 눌렀을 때
+    logintest()
     try{
       let val = await checkismine(info);
       setval(val);
@@ -202,8 +205,29 @@ const Myfinal = () => {
     fetchcard();
   }
 
-  function handleClick(data) { // 이거로 값을 채워서 스티커를 post로 보낸다.
 
+  async function logintest() {
+    console.log('logintest')
+    try{
+    const response = await fetch("/login");
+
+    if (!response.ok) {
+      console.log('re at for');
+      navigate("/Errorlogin");
+    }
+    const data = await response.json();
+    if (data.isLogin === false) navigate("/Errorlogin");
+  }
+  catch(error)
+  {
+    console.log('redirect from logintest catch')
+    navigate('/errorlogin')
+  }
+}
+
+
+  function handleClick(data) { // 이거로 값을 채워서 스티커를 post로 보낸다.
+ 
     const newObject = {
       // id: Math.random(), // 연동시 주석
       type: Number(`${data.name}`),
