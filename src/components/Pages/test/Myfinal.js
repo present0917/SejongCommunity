@@ -141,6 +141,7 @@ const Myfinal = () => {
         throw new Error('Failed to fetch card data');
       }
       const data = await response.json();
+      console.log(data)
       const mapping = await data.stickers.map((element) => {
         return {
           type: element.type,
@@ -183,14 +184,20 @@ const Myfinal = () => {
     });
 
     const data = await response.json();
-    console.log(data);
 
-    if(data.errorCode!=0)
-    {
-      seterrorcode(data.errorCode);
-      seterrormessage(data.message);
-      showerrormodalhandler()
+    try {
+      if (data.errorCode !== 0) {
+        throw new Error(` ${data.message}`);
+      }
+    } catch (e) {
+      alert(e);
     }
+    // if(data.errorCode!=0)
+    // {
+    //   seterrorcode(data.errorCode);
+    //   seterrormessage(data.message);
+    //   showerrormodalhandler()
+    // }
     updateLoading(false);
     fetchcard();
   }

@@ -14,7 +14,18 @@ const ErrorModal = (props) => {
                 <br></br>
                 <br></br>
                 {props.message}
-            
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+
+            <button onClick={props.onClose}>close</button>
             </div>
            
         </Modal >

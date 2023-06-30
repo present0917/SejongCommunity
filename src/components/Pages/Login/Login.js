@@ -64,7 +64,7 @@ const Login = (props) => {
       const data = await response.json();
       // errorCode !== 0 에러
       if (data.errorCode !== 0) {
-        throw new Error(`Error Code:${data.errorCode} ${data.message}`);
+        throw new Error(`${data.message}`);
       }
       sessionStorage.setItem("token", data.sessionId);
       localStorage.setItem("isLoggedin", "1");
@@ -108,7 +108,7 @@ const Login = (props) => {
 
   return (
     <div>
-      깃헙액션 테스트
+      6/30
       <div className="entire">
         <img src={logo} className="logo" />
         <div className="login-form">

@@ -179,12 +179,17 @@ const MyPage = (prop) => {
         "Content-Type": "application/json",
       },
     });
-
+    try{
     if (!response.ok) {
       throw new Error("Failed to log out");
     }
     navigate("/login");
     console.log(response);
+  }
+    catch (e) {
+      alert(e);
+
+    }
   }
 
 function forfix()
