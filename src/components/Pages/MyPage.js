@@ -69,7 +69,7 @@ const MyPage = (prop) => {
   }
   async function fetchData() {
     //마이페이지정보
-    const response = await fetch("/members");
+    const response = await fetch("http://ec2-3-24-166-96.ap-southeast-2.compute.amazonaws.com:8080/members");
     if (!response.ok) {
       throw new Error("Failed to fetch Search data");
     }
