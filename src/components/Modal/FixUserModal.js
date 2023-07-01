@@ -31,7 +31,7 @@ const FixUserModal = (props) => {
     try {
       updateLoading(true);
       if (!response.ok) {
-        navigate("/error");
+        //navigate("/error");
         throw new Error(`${response.status} 에러가 발생했습니다.`);
       }
       const data = await response.json();
