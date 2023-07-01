@@ -24,7 +24,7 @@ function App() {
     {
       path: "/",
       element: <Forcheck />,
-      errorElement: <Error />,
+      //errorElement: <Error />,
       children: [
         {
           path: "",
@@ -45,7 +45,7 @@ function App() {
     {
       path: "/login",
       element: <Login />,
-      errorElement: <Error />,
+      //errorElement: <Error />,
     },
     { path: "errorlogin", element: <Errorlogin /> },
   ]);
