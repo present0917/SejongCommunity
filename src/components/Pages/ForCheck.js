@@ -35,28 +35,28 @@ const Forcheck = () => {
 
 
 
-  async function alarm() {
-      const response = await fetch('http://ec2-3-24-166-96.ap-southeast-2.compute.amazonaws.com:8080/login');
-      const data = await response.json();
+  // async function alarm() {
+  //     const response = await fetch('http://ec2-3-24-166-96.ap-southeast-2.compute.amazonaws.com:8080/login');
+  //     const data = await response.json();
 
-        setTestData(data.alarmCount);
-  };
+  //       setTestData(data.alarmCount);
+  // };
   
 
 
-  useEffect(() => {
+  // useEffect(() => {
     
-    let test = testData.reduce((accumulator, currentObject) => accumulator + currentObject['count'], 0);
-    setSum(test);
+  //   let test = testData.reduce((accumulator, currentObject) => accumulator + currentObject['count'], 0);
+  //   setSum(test);
    
 
-  }, [testData]);
+  // }, [testData]);
   
 
 
   useEffect(() => {
     logintest();
-    alarm();
+    // alarm();
   }, [location]);
 
 
