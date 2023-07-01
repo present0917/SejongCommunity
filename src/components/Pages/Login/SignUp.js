@@ -128,7 +128,7 @@ const SignUp = (props) => {
     const response = await fetch("http://ec2-3-24-166-96.ap-southeast-2.compute.amazonaws.com:8080/members", {
       ///members/add"
       method: "POST",
-      credentials: "include",
+      //credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },
