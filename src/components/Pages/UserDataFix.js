@@ -97,7 +97,7 @@ const SignUp = (props) => {
     setDisabled(false);
   }
   async function signUpSubmit(info) {
-    const response = await fetch('http://localhost:3001/signup', {///members/add"
+    const response = await fetch('http://ec2-3-24-166-96.ap-southeast-2.compute.amazonaws.com:8080/signup', {///members/add"
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

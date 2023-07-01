@@ -13,7 +13,7 @@ const QuitModal = (props) => {
   const navigate  = useNavigate();
   async function iquit() { //삭제
     updateLoading(true,"탇퇴하는 중...ㅠㅠ")
-    const response = await fetch(`/members` , {
+    const response = await fetch(`http://ec2-3-24-166-96.ap-southeast-2.compute.amazonaws.com:8080/members` , {
       method: 'DELETE',
     });
     try{

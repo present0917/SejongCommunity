@@ -127,7 +127,7 @@ function fun(){
   async function signUpSubmit(info) {
     //setIsLoading(true);
     updateLoading(true,"보드 수정 중...");
-    const response = await fetch(`/forest/${thiskey}`, {
+    const response = await fetch(`http://ec2-3-24-166-96.ap-southeast-2.compute.amazonaws.com:8080/forest/${thiskey}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

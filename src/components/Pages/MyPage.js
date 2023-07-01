@@ -57,7 +57,7 @@ const MyPage = (prop) => {
   };
   async function logintest() {
     //실제
-    const response = await fetch("/login");
+    const response = await fetch("http://ec2-3-24-166-96.ap-southeast-2.compute.amazonaws.com:8080/login");
 
     //서버 응답 x
     if (!response.ok) {
@@ -128,7 +128,7 @@ const MyPage = (prop) => {
   async function logincheck() {
     //test
     console.log("check");
-    const response = await fetch(`/login`, {
+    const response = await fetch(`http://ec2-3-24-166-96.ap-southeast-2.compute.amazonaws.com:8080/login`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -145,24 +145,24 @@ const MyPage = (prop) => {
     navigate(`/tree/${tomytree}`); // 받은 값으로 이동하도록
   }
 
-  async function deletemytree() {
-    //내트리지우기
-    const response = await fetch("");
-    if (!response.ok) {
-      throw new Error("Failed to fetch del tree data");
-    }
-    const data = await response.json();
-    if (!data) {
-      throw new Error("No Search Data");
-    }
-    //   const mapping = await data.posts.map((element) => {
-    //   return {
-    //       id: response.studentId,
-    //       nickname: response.nickname,
-    //     };
-    //   });
-    setSearchData(data);
-  }
+  // async function deletemytree() {
+  //   //내트리지우기
+  //   const response = await fetch("");
+  //   if (!response.ok) {
+  //     throw new Error("Failed to fetch del tree data");
+  //   }
+  //   const data = await response.json();
+  //   if (!data) {
+  //     throw new Error("No Search Data");
+  //   }
+  //   //   const mapping = await data.posts.map((element) => {
+  //   //   return {
+  //   //       id: response.studentId,
+  //   //       nickname: response.nickname,
+  //   //     };
+  //   //   });
+  //   setSearchData(data);
+  // }
 
   useEffect(() => {
     fetchData();

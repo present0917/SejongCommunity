@@ -78,7 +78,7 @@ const Myfinal = () => {
   async function checkismine(data) { 
     const stickerid=data.data.stickerKey;
     updateLoading(true);
-    const response = await fetch(`/stickers/${stickerid}`, {
+    const response = await fetch(`http://ec2-3-24-166-96.ap-southeast-2.compute.amazonaws.com:8080/stickers/${stickerid}`, {
       headers: {
         'Content-Type': 'application/json'
       },
@@ -111,7 +111,7 @@ const Myfinal = () => {
 
   async function deletecard(data) { //삭제
     updateLoading(true,"스티커 삭제 중...");
-    const response = await fetch(`/stickers/${data.stickerKey}` , {
+    const response = await fetch(`http://ec2-3-24-166-96.ap-southeast-2.compute.amazonaws.com:8080/stickers/${data.stickerKey}` , {
       method: 'DELETE',
     });
     fetchcard();
@@ -123,7 +123,7 @@ const Myfinal = () => {
   async function fix(data) { //수정
     data.type=Number(data.type);
     updateLoading(true,"스티커 수정 중...");
-    const response = await fetch(`/stickers/${data.stickerKey}`, {
+    const response = await fetch(`http://ec2-3-24-166-96.ap-southeast-2.compute.amazonaws.com:8080/stickers/${data.stickerKey}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json'
@@ -138,7 +138,7 @@ const Myfinal = () => {
   async function fetchcard() { //불러오기 연동시
     const num=params.id;
     updateLoading(true,"스티커 불러오는 중...");
-    const response = await fetch(`/forest/${num}`);
+    const response = await fetch(`http://ec2-3-24-166-96.ap-southeast-2.compute.amazonaws.com:8080/forest/${num}`);
     try{
       if (!response.ok) {
         throw new Error('Failed to fetch card data');
@@ -178,7 +178,7 @@ const Myfinal = () => {
 
   async function postcard(card) { //입력
     updateLoading(true,"스티커 붙이는 중...");
-    const response = await fetch(`/stickers?treeId=${params.id}`, {
+    const response = await fetch(`http://ec2-3-24-166-96.ap-southeast-2.compute.amazonaws.com:8080/stickers?treeId=${params.id}`, {
       method: 'POST',
       body: JSON.stringify(card),
       headers: {
@@ -209,7 +209,7 @@ const Myfinal = () => {
   async function logintest() {
     console.log('logintest')
     try{
-    const response = await fetch("/login");
+    const response = await fetch("http://ec2-3-24-166-96.ap-southeast-2.compute.amazonaws.com:8080/login");
 
     if (!response.ok) {
       console.log('re at for');

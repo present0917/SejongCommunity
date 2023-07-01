@@ -27,7 +27,7 @@ const First = (props) => {
   async function fetchData() {
     //트리정보
     updateLoading(true,"내 보드 불러오는중...");
-    const response = await fetch("/members");
+    const response = await fetch("http://ec2-3-24-166-96.ap-southeast-2.compute.amazonaws.com:8080/members");
     try{
       if (!response.ok) {
         throw new Error("서버 응답 없음");
@@ -56,7 +56,7 @@ const First = (props) => {
 
   async function randomtree() {
     //트리정보
-    const response = await fetch("/forest/random-tree");
+    const response = await fetch("http://ec2-3-24-166-96.ap-southeast-2.compute.amazonaws.com:8080/forest/random-tree");
     if (!response.ok) {
       console.log('re');
       navigate("/errorlogin");

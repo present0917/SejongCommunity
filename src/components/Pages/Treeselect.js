@@ -59,7 +59,7 @@ const Treeselect = () => {
     if (page === 1) {
       setDisabled(false);
     }
-    var URL = "/forest";
+    var URL = "http://ec2-3-24-166-96.ap-southeast-2.compute.amazonaws.com:8080/forest";
     if (page !== 1) {
       URL = `/forest?page=${page}`;
     } else {
