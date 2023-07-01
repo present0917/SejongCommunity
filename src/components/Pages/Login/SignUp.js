@@ -3,7 +3,7 @@ import ReactModal from "react-modal";
 import CheckboxGroup from "../../ui/checkbox/CheckboxGroup";
 import Checkbox from "../../ui/checkbox/Checkbox";
 import "./SignUp.css";
-import '../../Modal/ModalAnimation.css';
+import "../../Modal/ModalAnimation.css";
 const SignUp = (props) => {
   const [id, setId] = useState("");
   const [name, setName] = useState("");
@@ -125,21 +125,32 @@ const SignUp = (props) => {
   //   }
   // }
   async function signUpSubmit(info) {
-    const response = await fetch("http://ec2-3-24-166-96.ap-southeast-2.compute.amazonaws.com:8080/members", {
-      ///members/add"
-      method: "POST",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(info),
-    });
+    let headers = new Headers();
+
+    headers.append("Content-Type", "application/json");
+    headers.append("Accept", "application/json");
+
+    headers.append(
+      "Access-Control-Allow-Origin",
+      "http://sejongsticker.s3-website.ap-northeast-2.amazonaws.com"
+    );
+    headers.append("Access-Control-Allow-Credentials", "true");
+
+    headers.append("GET", "POST", "OPTIONS");
+    const response = await fetch(
+      "http://ec2-3-24-166-96.ap-southeast-2.compute.amazonaws.com:8080/members",
+      {
+        method: "POST",
+        headers: headers,
+        body: JSON.stringify(info),
+      }
+    );
     try {
       const data = await response.json();
       if (!response.ok) {
         throw new Error(`${data.message}`);
       }
-     
+
       if (data.errorCode !== 0) {
         throw new Error(` ${data.message}`);
       }
@@ -151,9 +162,7 @@ const SignUp = (props) => {
     }
   }
 
-
   return (
-
     <ReactModal
       isOpen={props.signUpOpen}
       onRequestClose={() => props.setSignUpOpen(false)}
@@ -179,9 +188,9 @@ const SignUp = (props) => {
           borderRadius: "20px",
           outline: "none",
           padding: "20px",
-          animationName: 'slide-down',
-        animationDuration: '300ms',
-        animationTimingFunction: 'ease-in-out'
+          animationName: "slide-down",
+          animationDuration: "300ms",
+          animationTimingFunction: "ease-in-out",
         },
       }}
       ariaHideApp={false}
