@@ -6,11 +6,11 @@ const Rec2s = ({ treeKey, memberKey, title, description, tags }) => {
   const [isSelected, setIsSelected] = useState(false);
   const tagMap = tagData.tags.map((e) => [e.value, e.text]);
   const tag = [];
-  if (tags !== undefined)
+  if (tags !== null)
     tags.forEach((v) => {
       tag.push("#" + tagMap[v - 1][1]);
     });
-
+  else return <></>;
   return (
     <div className={`rec2s ${isSelected ? "selected" : ""}`}>
       <Link to={`/tree/${treeKey}`} style={{ textDecoration: "none" }}>

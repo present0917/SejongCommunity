@@ -8,10 +8,10 @@ export const LoadingProvider = ({ children }) => {
   const [loadingText, setLoadingText] = React.useState("로딩중...");
   const updateLoading = (bool, text) => {
     setIsLoading(bool);
-    if (text || text === null || text === undefined) {
-      setLoadingText(text);
-    } else {
+    if (!text || text === null || text === undefined) {
       setLoadingText("로딩중...");
+    } else {
+      setLoadingText(text);
     }
   };
 
