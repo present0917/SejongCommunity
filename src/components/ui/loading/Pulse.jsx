@@ -1,8 +1,18 @@
 import React, { useState } from "react";
 import { PulseLoader } from "react-spinners";
 import ReactModal from "react-modal";
-
+import { useEffect } from "react";
 function Pulse(props) {
+  useEffect(() => {
+    const delayedFunction = () => {
+      console.log("time out");
+      props.isLoading = false;
+    };
+
+    const timer = setTimeout(delayedFunction, 15000);
+
+    return () => clearTimeout(timer); // Cleanup function to clear the timer if the component unmounts before the 5 seconds
+  }, []);
   if (props.isLoading) {
     console.log(props.children);
   }
