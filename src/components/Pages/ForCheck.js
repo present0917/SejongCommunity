@@ -22,7 +22,7 @@ const Forcheck = () => {
       //navigate("/Errorlogin");
     }
     
-    if (data.isLogin === false) navigate("/Errorlogin");
+    //if (data.isLogin === false) navigate("/Errorlogin");
   }
   catch(error)
   {
