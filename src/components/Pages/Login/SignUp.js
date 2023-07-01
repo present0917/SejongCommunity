@@ -125,37 +125,26 @@ const SignUp = (props) => {
   //   }
   // }
   async function signUpSubmit(info) {
-// <<<<<<< Updated upstream
-//     let headers = new Headers();
+    let headers = new Headers();
 
-//     headers.append("Content-Type", "application/json");
-//     headers.append("Accept", "application/json");
+    headers.append("Content-Type", "application/json");
+    headers.append("Accept", "application/json");
 
-//     headers.append(
-//       "Access-Control-Allow-Origin",
-//       "http://sejongsticker.s3-website.ap-northeast-2.amazonaws.com"
-//     );
-//     headers.append("Access-Control-Allow-Credentials", "true");
+    headers.append(
+      "Access-Control-Allow-Origin",
+      "http://sejongsticker.s3-website.ap-northeast-2.amazonaws.com"
+    );
+    headers.append("Access-Control-Allow-Credentials", "true");
 
-//     headers.append("GET", "POST", "OPTIONS");
-//     const response = await fetch(
-//       "http://ec2-3-24-166-96.ap-southeast-2.compute.amazonaws.com:8080/members",
-//       {
-//         method: "POST",
-//         headers: headers,
-//         body: JSON.stringify(info),
-//       }
-//     );
-// =======
-    const response = await fetch("/members", {
-      ///members/add"
-      method: "POST",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(info),
-    });
+    headers.append("GET", "POST", "OPTIONS");
+    const response = await fetch(
+      "http://ec2-3-24-166-96.ap-southeast-2.compute.amazonaws.com:8080/members",
+      {
+        method: "POST",
+        headers: headers,
+        body: JSON.stringify(info),
+      }
+    );
     try {
       const data = await response.json();
       if (!response.ok) {
