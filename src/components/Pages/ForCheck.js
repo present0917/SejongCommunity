@@ -12,12 +12,16 @@ const Forcheck = () => {
   async function logintest() {
     try{
     const response = await fetch("http://ec2-3-24-166-96.ap-southeast-2.compute.amazonaws.com:8080/login");
-
+    console.log('리')
+    console.log(response)
+    const data = await response.json();
+    console.log('d')
+    console.log(data)
     if (!response.ok) {
       console.log('re at for');
       navigate("/Errorlogin");
     }
-    const data = await response.json();
+    
     if (data.isLogin === false) navigate("/Errorlogin");
   }
   catch(error)

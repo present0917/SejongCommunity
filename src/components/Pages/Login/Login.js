@@ -47,6 +47,7 @@ const Login = (props) => {
   //실제
   async function loginSubmit(info) {
     const response = await fetch("http://ec2-3-24-166-96.ap-southeast-2.compute.amazonaws.com:8080/login", {
+
       method: "POST",
 
       headers: {
@@ -56,10 +57,12 @@ const Login = (props) => {
         studentId: Number(id),
         password: password,
       }),
+      
     });
     try {
       const data = await response.json();
-
+      console.log('data')
+      console.log(data)
       if (!response.ok) {
         throw new Error(`${data.message}`);
       }
