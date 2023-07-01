@@ -108,7 +108,7 @@ const Login = (props) => {
 
   return (
     <div>
-      6/30
+      리트
       <div className="entire">
         <img src={logo} className="logo" />
         <div className="login-form">
