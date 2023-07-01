@@ -125,7 +125,7 @@ const SignUp = (props) => {
   //   }
   // }
   async function signUpSubmit(info) {
-    const response = await fetch("/members", {
+    const response = await fetch("http://ec2-3-24-166-96.ap-southeast-2.compute.amazonaws.com:8080/members", {
       ///members/add"
       method: "POST",
       headers: {
