@@ -19,7 +19,7 @@ const Forcheck = () => {
     console.log(data)
     if (!response.ok) {
       console.log('re at for');
-      navigate("/Errorlogin");
+      //navigate("/Errorlogin");
     }
     
     if (data.isLogin === false) navigate("/Errorlogin");
@@ -27,7 +27,7 @@ const Forcheck = () => {
   catch(error)
   {
     console.log('redirect from logintest catch')
-    navigate('/errorlogin')
+    //navigate('/errorlogin')
   }
 }
 
