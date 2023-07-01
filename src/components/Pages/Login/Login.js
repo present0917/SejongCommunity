@@ -113,7 +113,7 @@ const Login = (props) => {
 
   return (
     <div>
-      6/30
+      7/1
       <div className="entire">
         <img src={logo} className="logo" />
         <div className="login-form">
