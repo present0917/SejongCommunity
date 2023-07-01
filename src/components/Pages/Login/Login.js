@@ -46,7 +46,7 @@ const Login = (props) => {
 
   //실제
   async function loginSubmit(info) {
-    const response = await fetch("http://ec2-3-24-166-96.ap-southeast-2.compute.amazonaws.com:8080/login", {
+    const response = await fetch("/login", {
       method: "POST",
 
       headers: {
