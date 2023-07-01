@@ -91,7 +91,7 @@ const Maketreemodal = (props) => {
   };
   async function signUpSubmit(info) {
     updateLoading(true,"보드 생성중...");
-    const response = await fetch("/forest", {
+    const response = await fetch("http://ec2-3-24-166-96.ap-southeast-2.compute.amazonaws.com:8080/forest", {
       ///members/add"
       method: "POST",
       headers: {

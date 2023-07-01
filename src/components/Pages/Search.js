@@ -25,7 +25,7 @@ const Search = (props) => {
     console.log(`${state}&page=${page}`);
 
     updateLoading(true); //로딩창 on
-    const response = await fetch(`${state}&page=${page}`, {
+    const response = await fetch(`http://ec2-3-24-166-96.ap-southeast-2.compute.amazonaws.com:8080${state}&page=${page}`, {
       //"/forest"
       method: "GET",
       headers: {

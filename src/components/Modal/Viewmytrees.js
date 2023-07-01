@@ -8,7 +8,7 @@ const Viewmytrees = (props) => {
     const [usetext, settext] = useState([]);
     const [mytrees, setmytrees] = useState([]);
     async function deletemytree() {   //내트리지우기
-        const response = await fetch("/stickers");
+        const response = await fetch("http://ec2-3-24-166-96.ap-southeast-2.compute.amazonaws.com:8080/stickers");
         if (!response.ok) {
             throw new Error('Failed to fetch del tree data');
         }
@@ -19,7 +19,7 @@ const Viewmytrees = (props) => {
         settext(data.data);
     }
     async function fetchData() {
-        const response = await fetch("/members");
+        const response = await fetch("http://ec2-3-24-166-96.ap-southeast-2.compute.amazonaws.com:8080/members");
         if (!response.ok) {
             throw new Error("Failed to fetch Search data");
         }

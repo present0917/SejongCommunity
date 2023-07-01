@@ -7,7 +7,7 @@ const Alert = (props) => {
   const { updateLoading } = useContext(LoadingContext);
   async function alarm() {
     updateLoading(true, "알림 확인중...");
-    const response = await fetch("/login");
+    const response = await fetch("http://ec2-3-24-166-96.ap-southeast-2.compute.amazonaws.com:8080/login");
     const data = await response.json();
     setTestData(data.alarmCount);
     updateLoading(false);
