@@ -14,7 +14,10 @@ const Fixtree = (props) => {
     async function fetchData() {
         //트리정보
         updateLoading(true,"보드 불러오는중...");//로딩 on
-        const response = await fetch("http://ec2-3-24-166-96.ap-southeast-2.compute.amazonaws.com:8080/members");
+        const response = await fetch("http://ec2-3-24-166-96.ap-southeast-2.compute.amazonaws.com:8080/members",{
+            credentials: 'include'
+          })
+          ;
         try{
         if (!response.ok) {
             throw new Error("서버 응답 없음");

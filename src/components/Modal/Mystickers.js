@@ -9,7 +9,10 @@ const Mystickers = (props) => {
   const {updateLoading} = useContext(LoadingContext);
   async function deletemytree() {   
     updateLoading(true,"스티커 불러오는중...");
-    const response = await fetch("http://ec2-3-24-166-96.ap-southeast-2.compute.amazonaws.com:8080/stickers");
+    const response = await fetch("http://ec2-3-24-166-96.ap-southeast-2.compute.amazonaws.com:8080/stickers",{
+      credentials: 'include'
+    })
+    ;
     try{
       if (!response.ok) {
         throw new Error('Failed to fetch del tree data');

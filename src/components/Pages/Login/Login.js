@@ -48,7 +48,9 @@ const Login = (props) => {
   async function loginSubmit(info) {
     const response = await fetch("http://ec2-3-24-166-96.ap-southeast-2.compute.amazonaws.com:8080/login", {
       method: "POST",
-
+      
+        credentials: 'include',
+     
       headers: {
         "Content-Type": "application/json",
       },
@@ -108,7 +110,7 @@ const Login = (props) => {
 
   return (
     <div>
-      리트
+      credential
       <div className="entire">
         <img src={logo} className="logo" />
         <div className="login-form">

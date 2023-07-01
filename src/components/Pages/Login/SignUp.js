@@ -131,6 +131,10 @@ const SignUp = (props) => {
       headers: {
         "Content-Type": "application/json",
       },
+     
+        credentials: 'include',
+     
+
       body: JSON.stringify(info),
     });
     try {

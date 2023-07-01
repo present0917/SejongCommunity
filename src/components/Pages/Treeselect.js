@@ -14,7 +14,10 @@ const Treeselect = () => {
 
   async function fetchtrees(URL) {
     updateLoading(true, "전체 보드 로딩중...");
-    const response = await fetch(URL);
+    const response = await fetch(URL,{
+      credentials: 'include'
+    })
+    ;
     try {
       if (!response.ok) {
         throw new Error("Failed to fetch trees");
@@ -61,9 +64,9 @@ const Treeselect = () => {
     }
     var URL = "http://ec2-3-24-166-96.ap-southeast-2.compute.amazonaws.com:8080/forest";
     if (page !== 1) {
-      URL = `/forest?page=${page}`;
+      URL = `http://ec2-3-24-166-96.ap-southeast-2.compute.amazonaws.com:8080/forest?page=${page}`;
     } else {
-      URL = "/forest";
+      URL = "http://ec2-3-24-166-96.ap-southeast-2.compute.amazonaws.com:8080/forest";
     }
     fetchtrees(URL);
   }, [page]);

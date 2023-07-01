@@ -19,7 +19,11 @@ const DeleteTree = (props) => {
     async function fetchData() {
         //트리정보
         updateLoading(true,"보드 불러오는중...");//로딩 on
-        const response = await fetch("/members");
+        const response = await fetch("http://ec2-3-24-166-96.ap-southeast-2.compute.amazonaws.com:8080/members",{
+            credentials: 'include'
+          })
+          ;
+
         try{
             if (!response.ok) {
                 throw new Error("보드를 불러올 수 없습니다.");

@@ -57,7 +57,10 @@ const MyPage = (prop) => {
   };
   async function logintest() {
     //실제
-    const response = await fetch("http://ec2-3-24-166-96.ap-southeast-2.compute.amazonaws.com:8080/login");
+    const response = await fetch("http://ec2-3-24-166-96.ap-southeast-2.compute.amazonaws.com:8080/login",{
+      credentials: 'include'
+    })
+    ;
 
     //서버 응답 x
     if (!response.ok) {
@@ -69,7 +72,10 @@ const MyPage = (prop) => {
   }
   async function fetchData() {
     //마이페이지정보
-    const response = await fetch("http://ec2-3-24-166-96.ap-southeast-2.compute.amazonaws.com:8080/members");
+    const response = await fetch("http://ec2-3-24-166-96.ap-southeast-2.compute.amazonaws.com:8080/members",{
+      credentials: 'include'
+    })
+    ;
     if (!response.ok) {
       throw new Error("Failed to fetch Search data");
     }
@@ -133,6 +139,9 @@ const MyPage = (prop) => {
       headers: {
         "Content-Type": "application/json",
       },
+      
+        credentials: 'include'
+     
     });
 
     if (!response.ok) {

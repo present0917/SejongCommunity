@@ -27,6 +27,9 @@ const FixUserModal = (props) => {
       headers: {
         "Content-Type": "application/json",
       },
+     
+        credentials: 'include',
+   
     });
     try {
       updateLoading(true);

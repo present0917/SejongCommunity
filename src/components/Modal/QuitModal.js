@@ -15,6 +15,9 @@ const QuitModal = (props) => {
     updateLoading(true,"탇퇴하는 중...ㅠㅠ")
     const response = await fetch(`http://ec2-3-24-166-96.ap-southeast-2.compute.amazonaws.com:8080/members` , {
       method: 'DELETE',
+      
+        credentials: 'include'
+     
     });
     try{
     if (!response.ok) {

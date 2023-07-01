@@ -31,6 +31,9 @@ const Search = (props) => {
       headers: {
         "Content-Type": "application/json",
       },
+    
+        credentials: 'include'
+      
     });
     try {
       if (state === null) {

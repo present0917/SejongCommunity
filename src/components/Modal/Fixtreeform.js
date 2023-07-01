@@ -133,6 +133,9 @@ function fun(){
         "Content-Type": "application/json",
       },
       body: JSON.stringify(info),
+     
+        credentials: 'include',
+
     });
     try {
       if (!response.ok) {
