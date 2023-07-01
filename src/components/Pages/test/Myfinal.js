@@ -213,7 +213,7 @@ const Myfinal = () => {
 
     if (!response.ok) {
       console.log('re at for');
-      navigate("/Errorlogin");
+      //navigate("/Errorlogin");
     }
     const data = await response.json();
     if (data.isLogin === false) navigate("/Errorlogin");
@@ -221,7 +221,7 @@ const Myfinal = () => {
   catch(error)
   {
     console.log('redirect from logintest catch')
-    navigate('/errorlogin')
+    //navigate('/errorlogin')
   }
 }
 

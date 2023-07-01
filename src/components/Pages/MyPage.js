@@ -65,7 +65,7 @@ const MyPage = (prop) => {
     }
     const data = await response.json();
     console.log(data);
-    if (data == false) navigate("/Errorlogin");
+    //if (data == false) navigate("/Errorlogin");
   }
   async function fetchData() {
     //마이페이지정보

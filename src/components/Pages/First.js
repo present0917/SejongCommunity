@@ -48,7 +48,7 @@ const First = (props) => {
       });
       setmytrees(mapping);
   } catch(e) {
-    navigate("/errorlogin");
+    //navigate("/errorlogin");
   } finally{
     updateLoading(false);
   }
@@ -59,12 +59,12 @@ const First = (props) => {
     const response = await fetch("http://ec2-3-24-166-96.ap-southeast-2.compute.amazonaws.com:8080/forest/random-tree");
     if (!response.ok) {
       console.log('re');
-      navigate("/errorlogin");
+      //navigate("/errorlogin");
       // throw new Error("Failed to fetch Search data");
     }
     const data = await response.json();
     if (!data) {
-      navigate("/errorlogin");
+      //navigate("/errorlogin");
       // throw new Error("No Search Data");
     }
     navigate(`/tree/${data.tree.treeKey}`)
