@@ -58,10 +58,12 @@ const Login = (props) => {
       }),
     });
     try {
-      if (!response.ok) {
-        throw new Error(`${response.status} 에러가 발생했습니다.`);
-      }
       const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(`${data.message}`);
+      }
+      
       // errorCode !== 0 에러
       if (data.errorCode !== 0) {
         throw new Error(`${data.message}`);

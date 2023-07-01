@@ -134,10 +134,11 @@ const SignUp = (props) => {
       body: JSON.stringify(info),
     });
     try {
+      const data = await response.json();
       if (!response.ok) {
         throw new Error(`${data.message}`);
       }
-      const data = await response.json();
+     
       if (data.errorCode !== 0) {
         throw new Error(` ${data.message}`);
       }
