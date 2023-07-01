@@ -172,32 +172,27 @@ const MyPage = (prop) => {
     if (confirm == true) logout();
   }
   async function logout() {
-
     const response = await fetch(`/logout`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
     });
-    try{
-    if (!response.ok) {
-      throw new Error("Failed to log out");
-    }
-    navigate("/login");
-    console.log(response);
-  }
-    catch (e) {
+    try {
+      if (!response.ok) {
+        throw new Error("서버 응답 없음");
+      }
+      navigate("/login");
+      console.log(response);
+    } catch (e) {
       alert(e);
-
     }
   }
 
-function forfix()
-{
-  console.log('되나.,.');
-  setfixtreeOpen(true);
-}
-
+  function forfix() {
+    console.log("되나.,.");
+    setfixtreeOpen(true);
+  }
 
   return (
     <div>
@@ -259,23 +254,30 @@ function forfix()
       <button className="logoutbutton" onClick={check}>
         log out
       </button>
-      <button className="logoutbutton"  onClick={() => {
-            setshowquitmodal(true);
-          }} >
-          회원 탈퇴
+      <button
+        className="logoutbutton"
+        onClick={() => {
+          setshowquitmodal(true);
+        }}
+      >
+        회원 탈퇴
       </button>
       {/* <button onClick={logincheck}>check</button> */}
       {/* prop.func(false) */}
-      <FixUserModal signUpOpen={signUpOpen} setSignUpOpen={setSignUpOpen}></FixUserModal>
+      <FixUserModal
+        signUpOpen={signUpOpen}
+        setSignUpOpen={setSignUpOpen}
+      ></FixUserModal>
       <Maketreemodal
         maketreeOpen={maketreeOpen}
         setmaketreeOpen={setmaketreeOpen}
       ></Maketreemodal>
-        <Fixtreeform className="newModal"
+      <Fixtreeform
+        className="newModal"
         maketreeOpen={fixtreeOpen}
         setmaketreeOpen={setfixtreeOpen}
       ></Fixtreeform>
-      {showfixmodal && <Fixtree onClose={hideModalHandler5} plus={forfix}/>}
+      {showfixmodal && <Fixtree onClose={hideModalHandler5} plus={forfix} />}
       {showquitmodal && <QuitModal onClose={hideModalHandler4} />}
       {deleteModal && <DeleteTree onClose={hideModalHandler3} />}
       {ModalIsShown && <Mystickers onClose={hideModalHandler} />}
