@@ -2,3 +2,7 @@
 
 # SejongSticker
 
+[![Video Label](http://img.youtube.com/vi/YVOc4iyrtXs/0.jpg)](https://youtu.be/YVOc4iyrtXs)
+
+
+[![Video Label](http://img.youtube.com/vi/9VVrpzlUdiU/0.jpg)](https://youtu.be/9VVrpzlUdiU)
